@@ -356,6 +356,7 @@
             Controls.Add(panelContent);
             Name = "SystemSettingsGeneral";
             Text = "SystemSettingsGeneral";
+            Load += SystemSettingsGeneral_Load;
             systempanelcontents.ResumeLayout(false);
             systemsearchbarpanel.ResumeLayout(false);
             systemsearchbarpanel.PerformLayout();

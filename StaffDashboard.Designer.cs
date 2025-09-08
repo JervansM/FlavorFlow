@@ -88,6 +88,10 @@
             addorderbtn = new Button();
             applydiscountbtn = new Button();
             staffdashlogout = new Button();
+            label3 = new Label();
+            label8 = new Label();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
@@ -248,6 +252,10 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(label3);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -275,9 +283,9 @@
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(328, 308);
             label7.Name = "label7";
-            label7.Size = new Size(32, 20);
+            label7.Size = new Size(90, 20);
             label7.TabIndex = 42;
-            label7.Text = "Qty";
+            label7.Text = "Net Amount";
             // 
             // label6
             // 
@@ -285,9 +293,9 @@
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(242, 308);
             label6.Name = "label6";
-            label6.Size = new Size(32, 20);
+            label6.Size = new Size(30, 20);
             label6.TabIndex = 41;
-            label6.Text = "Qty";
+            label6.Text = "Tax";
             // 
             // label5
             // 
@@ -295,9 +303,9 @@
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(154, 308);
             label5.Name = "label5";
-            label5.Size = new Size(32, 20);
+            label5.Size = new Size(42, 20);
             label5.TabIndex = 40;
-            label5.Text = "Qty";
+            label5.Text = "Total";
             // 
             // label4
             // 
@@ -596,7 +604,7 @@
             panel3.Controls.Add(allitembtn);
             panel3.Location = new Point(630, 257);
             panel3.Name = "panel3";
-            panel3.Size = new Size(225, 344);
+            panel3.Size = new Size(225, 442);
             panel3.TabIndex = 25;
             // 
             // essertbtn
@@ -776,6 +784,46 @@
             staffdashlogout.UseVisualStyleBackColor = true;
             staffdashlogout.Click += staffdashlogout_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(37, 361);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 20);
+            label3.TabIndex = 43;
+            label3.Text = "Discount:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(301, 361);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 20);
+            label8.TabIndex = 44;
+            label8.Text = "Fixed Amount:";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.Silver;
+            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox2.Location = new Point(411, 344);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(167, 37);
+            textBox2.TabIndex = 45;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Silver;
+            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox3.Location = new Point(105, 344);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(167, 37);
+            textBox3.TabIndex = 46;
+            // 
             // StaffDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -876,5 +924,9 @@
         private Label label6;
         private Label label5;
         private Button staffdashlogout;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private Label label8;
+        private Label label3;
     }
 }

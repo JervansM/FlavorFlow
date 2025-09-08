@@ -141,7 +141,7 @@ namespace FlavorFlowIT13
         }
         private void LoadUsers()
         {
-            string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
             string query = "SELECT UserID, Username, Role, Password, IsLocked FROM [User]";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -156,7 +156,7 @@ namespace FlavorFlowIT13
         }
         private void ToggleLock(int userId, bool lockAccount)
         {
-            string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
             string query = "UPDATE [User] SET IsLocked = @IsLocked WHERE UserID = @UserID";
 
             using (SqlConnection con = new SqlConnection(connectionString))

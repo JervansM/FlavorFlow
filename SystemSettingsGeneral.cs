@@ -127,5 +127,10 @@ namespace FlavorFlowIT13
         {
             LoadContent(new SystemSettingsAppConfigure());
         }
+
+        private void SystemSettingsGeneral_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

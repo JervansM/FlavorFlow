@@ -14,7 +14,7 @@ namespace FlavorFlowIT13
 {
     public partial class CreateUserAdmin : Form
     {
-        string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
+        string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
 
         public CreateUserAdmin()
         {
@@ -44,15 +44,15 @@ namespace FlavorFlowIT13
                 MessageBox.Show("⚠️ Please fill up the form.");
                 return;
             }
-            connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
-            string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @PasswordHashed, @Role)";
+            connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
+            string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @Password, @Role)";
 
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Username", createusertxt.Text);
-                cmd.Parameters.AddWithValue("@PasswordHashed", createpasswordtxt.Text);
+                cmd.Parameters.AddWithValue("@Password", createpasswordtxt.Text);
                 cmd.Parameters.AddWithValue("@Role", rolecombobox.SelectedItem?.ToString() ?? "Customer");
 
                 try

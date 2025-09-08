@@ -28,184 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelContent = new Panel();
-            panel5 = new Panel();
-            textBox1 = new TextBox();
-            label10 = new Label();
-            panel3 = new Panel();
-            netsalestxtbox = new TextBox();
-            label9 = new Label();
-            panel4 = new Panel();
-            totaldiscountstxtbox = new TextBox();
-            label8 = new Label();
-            panel2 = new Panel();
-            totalsalestxtbox = new TextBox();
-            label7 = new Label();
-            systempanelcontents = new Panel();
             netprofitbtn = new Button();
-            systempanelheadercoral = new Panel();
+            salespospanelcontents = new Panel();
+            salespanelsalespospanelcontentsheader = new Panel();
+            label8 = new Label();
+            label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
-            expensesreportbtn = new Button();
-            salesreportsbtn = new Button();
-            systemsearchbarpanel = new Panel();
-            systemsearchbaricon = new PictureBox();
-            systemsearchbar = new TextBox();
-            panelContent.SuspendLayout();
-            panel5.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            panel2.SuspendLayout();
-            systempanelheadercoral.SuspendLayout();
-            systemsearchbarpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
+            salespostotalsalessummarytxt = new Panel();
+            dashsalestxsalespostotalsalessummarytxt2 = new Label();
+            salesposaverageordervaluetxt = new Panel();
+            salespostotalsalespanel = new Panel();
+            salespostotalsalestxtdata = new Label();
+            salesposnetsalestxt = new Label();
+            saleposrefundspanel = new Panel();
+            salesposrefundstxtdata = new Label();
+            saleposrefundstxt = new Label();
+            salesposdiscountappliedpanel = new Panel();
+            salesposdiscountappliedtxtdata = new Label();
+            salesposdiscountappliedtxt = new Label();
+            salesposgrossrevenuepanel = new Panel();
+            salesposgrossrevenuedata = new Label();
+            salesposgrossrevenuetxt = new Label();
+            averageordervaluepanel = new Panel();
+            salesposaverageordervaluetxtdata = new Label();
+            salesposaverageordervalue = new Label();
+            salespostotalordersdatapanel = new Panel();
+            salespostotalordersdata = new Label();
+            label2 = new Label();
+            salespostotalordersdatapaneltxt = new Label();
+            salespostotalsalesdatapanel = new Panel();
+            salespostotalsalesdatapaneltxtdata = new Label();
+            salespostotalsalesdatapaneltxt = new Label();
+            salesposreporttype = new ComboBox();
+            salespanelsalespospanelcontentsheader.SuspendLayout();
+            salespostotalsalessummarytxt.SuspendLayout();
+            salesposaverageordervaluetxt.SuspendLayout();
+            salespostotalsalespanel.SuspendLayout();
+            saleposrefundspanel.SuspendLayout();
+            salesposdiscountappliedpanel.SuspendLayout();
+            salesposgrossrevenuepanel.SuspendLayout();
+            averageordervaluepanel.SuspendLayout();
+            salespostotalordersdatapanel.SuspendLayout();
+            salespostotalsalesdatapanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // panelContent
-            // 
-            panelContent.BackColor = Color.Silver;
-            panelContent.Controls.Add(systemsearchbarpanel);
-            panelContent.Controls.Add(panel5);
-            panelContent.Controls.Add(panel3);
-            panelContent.Controls.Add(panel4);
-            panelContent.Controls.Add(panel2);
-            panelContent.Controls.Add(systempanelcontents);
-            panelContent.Controls.Add(netprofitbtn);
-            panelContent.Controls.Add(systempanelheadercoral);
-            panelContent.Controls.Add(expensesreportbtn);
-            panelContent.Controls.Add(salesreportsbtn);
-            panelContent.Location = new Point(0, 0);
-            panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1538, 1021);
-            panelContent.TabIndex = 2;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Black;
-            panel5.Controls.Add(textBox1);
-            panel5.Controls.Add(label10);
-            panel5.Location = new Point(47, 237);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(308, 57);
-            panel5.TabIndex = 50;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(135, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(169, 50);
-            textBox1.TabIndex = 1;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(12, 13);
-            label10.Name = "label10";
-            label10.Size = new Size(107, 30);
-            label10.TabIndex = 0;
-            label10.Text = "Category:";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Black;
-            panel3.Controls.Add(netsalestxtbox);
-            panel3.Controls.Add(label9);
-            panel3.Location = new Point(1057, 928);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(301, 57);
-            panel3.TabIndex = 50;
-            // 
-            // netsalestxtbox
-            // 
-            netsalestxtbox.Location = new Point(129, 4);
-            netsalestxtbox.Multiline = true;
-            netsalestxtbox.Name = "netsalestxtbox";
-            netsalestxtbox.Size = new Size(169, 50);
-            netsalestxtbox.TabIndex = 3;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(17, 13);
-            label9.Name = "label9";
-            label9.Size = new Size(106, 30);
-            label9.TabIndex = 2;
-            label9.Text = "Net Sales:";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Black;
-            panel4.Controls.Add(totaldiscountstxtbox);
-            panel4.Controls.Add(label8);
-            panel4.Location = new Point(634, 928);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(359, 57);
-            panel4.TabIndex = 50;
-            // 
-            // totaldiscountstxtbox
-            // 
-            totaldiscountstxtbox.Location = new Point(185, 3);
-            totaldiscountstxtbox.Multiline = true;
-            totaldiscountstxtbox.Name = "totaldiscountstxtbox";
-            totaldiscountstxtbox.Size = new Size(169, 50);
-            totaldiscountstxtbox.TabIndex = 2;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 13);
-            label8.Name = "label8";
-            label8.Size = new Size(164, 30);
-            label8.TabIndex = 1;
-            label8.Text = "Total Discounts:";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.Black;
-            panel2.Controls.Add(totalsalestxtbox);
-            panel2.Controls.Add(label7);
-            panel2.Location = new Point(203, 928);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(308, 57);
-            panel2.TabIndex = 49;
-            // 
-            // totalsalestxtbox
-            // 
-            totalsalestxtbox.Location = new Point(135, 3);
-            totalsalestxtbox.Multiline = true;
-            totalsalestxtbox.Name = "totalsalestxtbox";
-            totalsalestxtbox.Size = new Size(169, 50);
-            totalsalestxtbox.TabIndex = 1;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(12, 13);
-            label7.Name = "label7";
-            label7.Size = new Size(118, 30);
-            label7.TabIndex = 0;
-            label7.Text = "Total Sales:";
-            // 
-            // systempanelcontents
-            // 
-            systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(46, 403);
-            systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 493);
-            systempanelcontents.TabIndex = 46;
             // 
             // netprofitbtn
             // 
@@ -215,205 +84,499 @@
             netprofitbtn.FlatStyle = FlatStyle.Flat;
             netprofitbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             netprofitbtn.ForeColor = Color.White;
-            netprofitbtn.Location = new Point(754, 146);
+            netprofitbtn.Location = new Point(351, 103);
             netprofitbtn.Name = "netprofitbtn";
             netprofitbtn.Size = new Size(309, 58);
             netprofitbtn.TabIndex = 44;
             netprofitbtn.Text = "Net Profit Summary";
             netprofitbtn.UseVisualStyleBackColor = false;
             // 
-            // systempanelheadercoral
+            // salespospanelcontents
             // 
-            systempanelheadercoral.BackColor = Color.Coral;
-            systempanelheadercoral.Controls.Add(label6);
-            systempanelheadercoral.Controls.Add(label5);
-            systempanelheadercoral.Controls.Add(label4);
-            systempanelheadercoral.Controls.Add(label3);
-            systempanelheadercoral.Controls.Add(label2);
-            systempanelheadercoral.Controls.Add(label1);
-            systempanelheadercoral.Location = new Point(46, 324);
-            systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1447, 82);
-            systempanelheadercoral.TabIndex = 38;
+            salespospanelcontents.BackColor = Color.White;
+            salespospanelcontents.Location = new Point(13, 345);
+            salespospanelcontents.Name = "salespospanelcontents";
+            salespospanelcontents.Size = new Size(1507, 641);
+            salespospanelcontents.TabIndex = 46;
+            salespospanelcontents.Paint += salespospanelcontents_Paint;
+            // 
+            // salespanelsalespospanelcontentsheader
+            // 
+            salespanelsalespospanelcontentsheader.BackColor = Color.Black;
+            salespanelsalespospanelcontentsheader.Controls.Add(label8);
+            salespanelsalespospanelcontentsheader.Controls.Add(label7);
+            salespanelsalespospanelcontentsheader.Controls.Add(label6);
+            salespanelsalespospanelcontentsheader.Controls.Add(label5);
+            salespanelsalespospanelcontentsheader.Controls.Add(label4);
+            salespanelsalespospanelcontentsheader.Controls.Add(label3);
+            salespanelsalespospanelcontentsheader.Controls.Add(label1);
+            salespanelsalespospanelcontentsheader.Location = new Point(12, 345);
+            salespanelsalespospanelcontentsheader.Name = "salespanelsalespospanelcontentsheader";
+            salespanelsalespospanelcontentsheader.Size = new Size(1508, 82);
+            salespanelsalespospanelcontentsheader.TabIndex = 39;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(1354, 28);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 32);
+            label8.TabIndex = 6;
+            label8.Text = "Total";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(1151, 28);
+            label7.Name = "label7";
+            label7.Size = new Size(97, 32);
+            label7.TabIndex = 5;
+            label7.Text = "Cashier";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label6.Location = new Point(766, 28);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(855, 28);
             label6.Name = "label6";
-            label6.Size = new Size(134, 32);
-            label6.TabIndex = 5;
-            label6.Text = "Total Sales";
+            label6.Size = new Size(209, 32);
+            label6.TabIndex = 4;
+            label6.Text = "Payment Method";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.Location = new Point(1270, 28);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(652, 28);
             label5.Name = "label5";
-            label5.Size = new Size(119, 32);
-            label5.TabIndex = 4;
-            label5.Text = "Net Sales";
+            label5.Size = new Size(126, 32);
+            label5.TabIndex = 3;
+            label5.Text = "Unit Price";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label4.Location = new Point(288, 28);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(448, 28);
             label4.Name = "label4";
-            label4.Size = new Size(67, 32);
-            label4.TabIndex = 3;
-            label4.Text = "Date";
+            label4.Size = new Size(118, 32);
+            label4.TabIndex = 2;
+            label4.Text = "Category";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(1030, 28);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(248, 28);
             label3.Name = "label3";
-            label3.Size = new Size(116, 32);
-            label3.TabIndex = 2;
-            label3.Text = "Discount";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label2.Location = new Point(496, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(141, 32);
-            label2.TabIndex = 1;
-            label2.Text = "Order Type";
+            label3.Size = new Size(113, 32);
+            label3.TabIndex = 1;
+            label3.Text = "Quantity";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(40, 28);
             label1.Name = "label1";
-            label1.Size = new Size(125, 32);
+            label1.Size = new Size(141, 32);
             label1.TabIndex = 0;
-            label1.Text = "Report ID";
+            label1.Text = "Food Items";
+            label1.Click += label1_Click;
             // 
-            // expensesreportbtn
+            // salespostotalsalessummarytxt
             // 
-            expensesreportbtn.BackColor = Color.Black;
-            expensesreportbtn.BackgroundImageLayout = ImageLayout.None;
-            expensesreportbtn.Cursor = Cursors.Hand;
-            expensesreportbtn.FlatStyle = FlatStyle.Flat;
-            expensesreportbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            expensesreportbtn.ForeColor = Color.White;
-            expensesreportbtn.Location = new Point(400, 146);
-            expensesreportbtn.Name = "expensesreportbtn";
-            expensesreportbtn.Size = new Size(309, 58);
-            expensesreportbtn.TabIndex = 43;
-            expensesreportbtn.Text = "Expenses Report";
-            expensesreportbtn.UseVisualStyleBackColor = false;
+            salespostotalsalessummarytxt.BackColor = Color.Black;
+            salespostotalsalessummarytxt.Controls.Add(dashsalestxsalespostotalsalessummarytxt2);
+            salespostotalsalessummarytxt.Location = new Point(13, 12);
+            salespostotalsalessummarytxt.Name = "salespostotalsalessummarytxt";
+            salespostotalsalessummarytxt.Size = new Size(309, 71);
+            salespostotalsalessummarytxt.TabIndex = 51;
             // 
-            // salesreportsbtn
+            // dashsalestxsalespostotalsalessummarytxt2
             // 
-            salesreportsbtn.BackColor = Color.Black;
-            salesreportsbtn.BackgroundImageLayout = ImageLayout.None;
-            salesreportsbtn.Cursor = Cursors.Hand;
-            salesreportsbtn.FlatStyle = FlatStyle.Flat;
-            salesreportsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            salesreportsbtn.ForeColor = Color.White;
-            salesreportsbtn.Location = new Point(46, 146);
-            salesreportsbtn.Name = "salesreportsbtn";
-            salesreportsbtn.Size = new Size(309, 58);
-            salesreportsbtn.TabIndex = 42;
-            salesreportsbtn.Text = "Sales Reports";
-            salesreportsbtn.UseVisualStyleBackColor = false;
+            dashsalestxsalespostotalsalessummarytxt2.AutoSize = true;
+            dashsalestxsalespostotalsalessummarytxt2.BackColor = Color.Transparent;
+            dashsalestxsalespostotalsalessummarytxt2.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            dashsalestxsalespostotalsalessummarytxt2.ForeColor = Color.White;
+            dashsalestxsalespostotalsalessummarytxt2.Location = new Point(12, 16);
+            dashsalestxsalespostotalsalessummarytxt2.Name = "dashsalestxsalespostotalsalessummarytxt2";
+            dashsalestxsalespostotalsalessummarytxt2.Size = new Size(284, 37);
+            dashsalestxsalespostotalsalessummarytxt2.TabIndex = 0;
+            dashsalestxsalespostotalsalessummarytxt2.Text = "Total Sales Summary";
             // 
-            // systemsearchbarpanel
+            // salesposaverageordervaluetxt
             // 
-            systemsearchbarpanel.BackColor = Color.White;
-            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
-            systemsearchbarpanel.Controls.Add(systemsearchbar);
-            systemsearchbarpanel.Location = new Point(46, 26);
-            systemsearchbarpanel.Name = "systemsearchbarpanel";
-            systemsearchbarpanel.Size = new Size(1447, 59);
-            systemsearchbarpanel.TabIndex = 23;
+            salesposaverageordervaluetxt.AutoScroll = true;
+            salesposaverageordervaluetxt.BackColor = Color.Silver;
+            salesposaverageordervaluetxt.Controls.Add(salespostotalsalespanel);
+            salesposaverageordervaluetxt.Controls.Add(saleposrefundspanel);
+            salesposaverageordervaluetxt.Controls.Add(salesposdiscountappliedpanel);
+            salesposaverageordervaluetxt.Controls.Add(salesposgrossrevenuepanel);
+            salesposaverageordervaluetxt.Controls.Add(averageordervaluepanel);
+            salesposaverageordervaluetxt.Controls.Add(salespostotalordersdatapanel);
+            salesposaverageordervaluetxt.Controls.Add(salespostotalsalesdatapanel);
+            salesposaverageordervaluetxt.Controls.Add(salesposreporttype);
+            salesposaverageordervaluetxt.Controls.Add(salespostotalsalessummarytxt);
+            salesposaverageordervaluetxt.Controls.Add(salespanelsalespospanelcontentsheader);
+            salesposaverageordervaluetxt.Controls.Add(salespospanelcontents);
+            salesposaverageordervaluetxt.Controls.Add(netprofitbtn);
+            salesposaverageordervaluetxt.Location = new Point(0, 0);
+            salesposaverageordervaluetxt.Name = "salesposaverageordervaluetxt";
+            salesposaverageordervaluetxt.Size = new Size(1538, 1021);
+            salesposaverageordervaluetxt.TabIndex = 2;
+            salesposaverageordervaluetxt.Paint += panelContent_Paint_1;
             // 
-            // systemsearchbaricon
+            // salespostotalsalespanel
             // 
-            systemsearchbaricon.BackColor = Color.Transparent;
-            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
-            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
-            systemsearchbaricon.Location = new Point(1363, 6);
-            systemsearchbaricon.Name = "systemsearchbaricon";
-            systemsearchbaricon.Size = new Size(81, 46);
-            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
-            systemsearchbaricon.TabIndex = 23;
-            systemsearchbaricon.TabStop = false;
+            salespostotalsalespanel.BackColor = Color.Black;
+            salespostotalsalespanel.Controls.Add(salespostotalsalestxtdata);
+            salespostotalsalespanel.Controls.Add(salesposnetsalestxt);
+            salespostotalsalespanel.Location = new Point(12, 266);
+            salespostotalsalespanel.Name = "salespostotalsalespanel";
+            salespostotalsalespanel.Size = new Size(197, 76);
+            salespostotalsalespanel.TabIndex = 53;
             // 
-            // systemsearchbar
+            // salespostotalsalestxtdata
             // 
-            systemsearchbar.Anchor = AnchorStyles.None;
-            systemsearchbar.BorderStyle = BorderStyle.None;
-            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(10, 5);
-            systemsearchbar.Multiline = true;
-            systemsearchbar.Name = "systemsearchbar";
-            systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(124, 47);
-            systemsearchbar.TabIndex = 22;
+            salespostotalsalestxtdata.AutoSize = true;
+            salespostotalsalestxtdata.BackColor = Color.Transparent;
+            salespostotalsalestxtdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salespostotalsalestxtdata.ForeColor = Color.LimeGreen;
+            salespostotalsalestxtdata.Location = new Point(23, 30);
+            salespostotalsalestxtdata.Name = "salespostotalsalestxtdata";
+            salespostotalsalestxtdata.Size = new Size(34, 37);
+            salespostotalsalestxtdata.TabIndex = 1;
+            salespostotalsalestxtdata.Text = "₱";
+            // 
+            // salesposnetsalestxt
+            // 
+            salesposnetsalestxt.AutoSize = true;
+            salesposnetsalestxt.BackColor = Color.Transparent;
+            salesposnetsalestxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            salesposnetsalestxt.ForeColor = Color.White;
+            salesposnetsalestxt.Location = new Point(23, 0);
+            salesposnetsalestxt.Name = "salesposnetsalestxt";
+            salesposnetsalestxt.Size = new Size(122, 30);
+            salesposnetsalestxt.TabIndex = 0;
+            salesposnetsalestxt.Text = "Net Sales : ";
+            // 
+            // saleposrefundspanel
+            // 
+            saleposrefundspanel.BackColor = Color.Black;
+            saleposrefundspanel.Controls.Add(salesposrefundstxtdata);
+            saleposrefundspanel.Controls.Add(saleposrefundstxt);
+            saleposrefundspanel.Location = new Point(1255, 184);
+            saleposrefundspanel.Name = "saleposrefundspanel";
+            saleposrefundspanel.Size = new Size(254, 76);
+            saleposrefundspanel.TabIndex = 55;
+            // 
+            // salesposrefundstxtdata
+            // 
+            salesposrefundstxtdata.AutoSize = true;
+            salesposrefundstxtdata.BackColor = Color.Transparent;
+            salesposrefundstxtdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salesposrefundstxtdata.ForeColor = Color.LimeGreen;
+            salesposrefundstxtdata.Location = new Point(21, 30);
+            salesposrefundstxtdata.Name = "salesposrefundstxtdata";
+            salesposrefundstxtdata.Size = new Size(34, 37);
+            salesposrefundstxtdata.TabIndex = 1;
+            salesposrefundstxtdata.Text = "₱";
+            // 
+            // saleposrefundstxt
+            // 
+            saleposrefundstxt.AutoSize = true;
+            saleposrefundstxt.BackColor = Color.Transparent;
+            saleposrefundstxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            saleposrefundstxt.ForeColor = Color.White;
+            saleposrefundstxt.Location = new Point(3, 0);
+            saleposrefundstxt.Name = "saleposrefundstxt";
+            saleposrefundstxt.Size = new Size(99, 30);
+            saleposrefundstxt.TabIndex = 0;
+            saleposrefundstxt.Text = "Refunds:";
+            // 
+            // salesposdiscountappliedpanel
+            // 
+            salesposdiscountappliedpanel.BackColor = Color.Black;
+            salesposdiscountappliedpanel.Controls.Add(salesposdiscountappliedtxtdata);
+            salesposdiscountappliedpanel.Controls.Add(salesposdiscountappliedtxt);
+            salesposdiscountappliedpanel.Location = new Point(995, 184);
+            salesposdiscountappliedpanel.Name = "salesposdiscountappliedpanel";
+            salesposdiscountappliedpanel.Size = new Size(254, 76);
+            salesposdiscountappliedpanel.TabIndex = 55;
+            // 
+            // salesposdiscountappliedtxtdata
+            // 
+            salesposdiscountappliedtxtdata.AutoSize = true;
+            salesposdiscountappliedtxtdata.BackColor = Color.Transparent;
+            salesposdiscountappliedtxtdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salesposdiscountappliedtxtdata.ForeColor = Color.LimeGreen;
+            salesposdiscountappliedtxtdata.Location = new Point(21, 30);
+            salesposdiscountappliedtxtdata.Name = "salesposdiscountappliedtxtdata";
+            salesposdiscountappliedtxtdata.Size = new Size(34, 37);
+            salesposdiscountappliedtxtdata.TabIndex = 1;
+            salesposdiscountappliedtxtdata.Text = "₱";
+            // 
+            // salesposdiscountappliedtxt
+            // 
+            salesposdiscountappliedtxt.AutoSize = true;
+            salesposdiscountappliedtxt.BackColor = Color.Transparent;
+            salesposdiscountappliedtxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            salesposdiscountappliedtxt.ForeColor = Color.White;
+            salesposdiscountappliedtxt.Location = new Point(3, 0);
+            salesposdiscountappliedtxt.Name = "salesposdiscountappliedtxt";
+            salesposdiscountappliedtxt.Size = new Size(189, 30);
+            salesposdiscountappliedtxt.TabIndex = 0;
+            salesposdiscountappliedtxt.Text = "Discount Applied:";
+            // 
+            // salesposgrossrevenuepanel
+            // 
+            salesposgrossrevenuepanel.BackColor = Color.Black;
+            salesposgrossrevenuepanel.Controls.Add(salesposgrossrevenuedata);
+            salesposgrossrevenuepanel.Controls.Add(salesposgrossrevenuetxt);
+            salesposgrossrevenuepanel.Location = new Point(735, 184);
+            salesposgrossrevenuepanel.Name = "salesposgrossrevenuepanel";
+            salesposgrossrevenuepanel.Size = new Size(254, 76);
+            salesposgrossrevenuepanel.TabIndex = 54;
+            salesposgrossrevenuepanel.Paint += salesposgrossrevenuepanel_Paint;
+            // 
+            // salesposgrossrevenuedata
+            // 
+            salesposgrossrevenuedata.AutoSize = true;
+            salesposgrossrevenuedata.BackColor = Color.Transparent;
+            salesposgrossrevenuedata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salesposgrossrevenuedata.ForeColor = Color.LimeGreen;
+            salesposgrossrevenuedata.Location = new Point(21, 30);
+            salesposgrossrevenuedata.Name = "salesposgrossrevenuedata";
+            salesposgrossrevenuedata.Size = new Size(34, 37);
+            salesposgrossrevenuedata.TabIndex = 1;
+            salesposgrossrevenuedata.Text = "₱";
+            // 
+            // salesposgrossrevenuetxt
+            // 
+            salesposgrossrevenuetxt.AutoSize = true;
+            salesposgrossrevenuetxt.BackColor = Color.Transparent;
+            salesposgrossrevenuetxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            salesposgrossrevenuetxt.ForeColor = Color.White;
+            salesposgrossrevenuetxt.Location = new Point(3, 0);
+            salesposgrossrevenuetxt.Name = "salesposgrossrevenuetxt";
+            salesposgrossrevenuetxt.Size = new Size(156, 30);
+            salesposgrossrevenuetxt.TabIndex = 0;
+            salesposgrossrevenuetxt.Text = "Gross Revenue";
+            // 
+            // averageordervaluepanel
+            // 
+            averageordervaluepanel.BackColor = Color.Black;
+            averageordervaluepanel.Controls.Add(salesposaverageordervaluetxtdata);
+            averageordervaluepanel.Controls.Add(salesposaverageordervalue);
+            averageordervaluepanel.Location = new Point(475, 184);
+            averageordervaluepanel.Name = "averageordervaluepanel";
+            averageordervaluepanel.Size = new Size(254, 76);
+            averageordervaluepanel.TabIndex = 53;
+            averageordervaluepanel.Paint += averageordervaluepanel_Paint;
+            // 
+            // salesposaverageordervaluetxtdata
+            // 
+            salesposaverageordervaluetxtdata.AutoSize = true;
+            salesposaverageordervaluetxtdata.BackColor = Color.Transparent;
+            salesposaverageordervaluetxtdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salesposaverageordervaluetxtdata.ForeColor = Color.LimeGreen;
+            salesposaverageordervaluetxtdata.Location = new Point(21, 30);
+            salesposaverageordervaluetxtdata.Name = "salesposaverageordervaluetxtdata";
+            salesposaverageordervaluetxtdata.Size = new Size(34, 37);
+            salesposaverageordervaluetxtdata.TabIndex = 1;
+            salesposaverageordervaluetxtdata.Text = "₱";
+            salesposaverageordervaluetxtdata.Click += salesposaverageordervaluetxtdata_Click;
+            // 
+            // salesposaverageordervalue
+            // 
+            salesposaverageordervalue.AutoSize = true;
+            salesposaverageordervalue.BackColor = Color.Transparent;
+            salesposaverageordervalue.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            salesposaverageordervalue.ForeColor = Color.White;
+            salesposaverageordervalue.Location = new Point(3, 0);
+            salesposaverageordervalue.Name = "salesposaverageordervalue";
+            salesposaverageordervalue.Size = new Size(232, 30);
+            salesposaverageordervalue.TabIndex = 0;
+            salesposaverageordervalue.Text = "  Average Order Value:";
+            salesposaverageordervalue.Click += label4_Click;
+            // 
+            // salespostotalordersdatapanel
+            // 
+            salespostotalordersdatapanel.BackColor = Color.Black;
+            salespostotalordersdatapanel.Controls.Add(salespostotalordersdata);
+            salespostotalordersdatapanel.Controls.Add(label2);
+            salespostotalordersdatapanel.Controls.Add(salespostotalordersdatapaneltxt);
+            salespostotalordersdatapanel.Location = new Point(216, 184);
+            salespostotalordersdatapanel.Name = "salespostotalordersdatapanel";
+            salespostotalordersdatapanel.Size = new Size(253, 76);
+            salespostotalordersdatapanel.TabIndex = 53;
+            salespostotalordersdatapanel.Paint += salespostotalordersdatapanel_Paint;
+            // 
+            // salespostotalordersdata
+            // 
+            salespostotalordersdata.AutoSize = true;
+            salespostotalordersdata.BackColor = Color.Transparent;
+            salespostotalordersdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salespostotalordersdata.ForeColor = Color.SandyBrown;
+            salespostotalordersdata.Location = new Point(26, 30);
+            salespostotalordersdata.Name = "salespostotalordersdata";
+            salespostotalordersdata.Size = new Size(33, 37);
+            salespostotalordersdata.TabIndex = 2;
+            salespostotalordersdata.Text = "0";
+            salespostotalordersdata.Click += label3_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            label2.ForeColor = Color.LimeGreen;
+            label2.Location = new Point(59, 62);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 37);
+            label2.TabIndex = 1;
+            // 
+            // salespostotalordersdatapaneltxt
+            // 
+            salespostotalordersdatapaneltxt.AutoSize = true;
+            salespostotalordersdatapaneltxt.BackColor = Color.Transparent;
+            salespostotalordersdatapaneltxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            salespostotalordersdatapaneltxt.ForeColor = Color.White;
+            salespostotalordersdatapaneltxt.Location = new Point(21, 0);
+            salespostotalordersdatapaneltxt.Name = "salespostotalordersdatapaneltxt";
+            salespostotalordersdatapaneltxt.Size = new Size(144, 30);
+            salespostotalordersdatapaneltxt.TabIndex = 0;
+            salespostotalordersdatapaneltxt.Text = "Total Orders: ";
+            salespostotalordersdatapaneltxt.Click += salespostotalordersdatapaneltxt_Click;
+            // 
+            // salespostotalsalesdatapanel
+            // 
+            salespostotalsalesdatapanel.BackColor = Color.Black;
+            salespostotalsalesdatapanel.Controls.Add(salespostotalsalesdatapaneltxtdata);
+            salespostotalsalesdatapanel.Controls.Add(salespostotalsalesdatapaneltxt);
+            salespostotalsalesdatapanel.Location = new Point(13, 184);
+            salespostotalsalesdatapanel.Name = "salespostotalsalesdatapanel";
+            salespostotalsalesdatapanel.Size = new Size(197, 76);
+            salespostotalsalesdatapanel.TabIndex = 52;
+            salespostotalsalesdatapanel.Paint += salespostotalsalesdatapanel_Paint;
+            // 
+            // salespostotalsalesdatapaneltxtdata
+            // 
+            salespostotalsalesdatapaneltxtdata.AutoSize = true;
+            salespostotalsalesdatapaneltxtdata.BackColor = Color.Transparent;
+            salespostotalsalesdatapaneltxtdata.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            salespostotalsalesdatapaneltxtdata.ForeColor = Color.LimeGreen;
+            salespostotalsalesdatapaneltxtdata.Location = new Point(23, 30);
+            salespostotalsalesdatapaneltxtdata.Name = "salespostotalsalesdatapaneltxtdata";
+            salespostotalsalesdatapaneltxtdata.Size = new Size(34, 37);
+            salespostotalsalesdatapaneltxtdata.TabIndex = 1;
+            salespostotalsalesdatapaneltxtdata.Text = "₱";
+            salespostotalsalesdatapaneltxtdata.Click += salespostotalsalesdatapaneltxtdata_Click;
+            // 
+            // salespostotalsalesdatapaneltxt
+            // 
+            salespostotalsalesdatapaneltxt.AutoSize = true;
+            salespostotalsalesdatapaneltxt.BackColor = Color.Transparent;
+            salespostotalsalesdatapaneltxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            salespostotalsalesdatapaneltxt.ForeColor = Color.White;
+            salespostotalsalesdatapaneltxt.Location = new Point(23, 0);
+            salespostotalsalesdatapaneltxt.Name = "salespostotalsalesdatapaneltxt";
+            salespostotalsalesdatapaneltxt.Size = new Size(134, 30);
+            salespostotalsalesdatapaneltxt.TabIndex = 0;
+            salespostotalsalesdatapaneltxt.Text = "Total Sales : ";
+            salespostotalsalesdatapaneltxt.Click += salespostotalsalesdatapaneltxt_Click_1;
+            // 
+            // salesposreporttype
+            // 
+            salesposreporttype.BackColor = Color.Coral;
+            salesposreporttype.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
+            salesposreporttype.ForeColor = Color.White;
+            salesposreporttype.FormattingEnabled = true;
+            salesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly" });
+            salesposreporttype.Location = new Point(13, 109);
+            salesposreporttype.Name = "salesposreporttype";
+            salesposreporttype.Size = new Size(309, 48);
+            salesposreporttype.TabIndex = 52;
+            salesposreporttype.Text = "       Report Type";
             // 
             // SalesPOS
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1560, 1061);
-            Controls.Add(panelContent);
+            Controls.Add(salesposaverageordervaluetxt);
             Name = "SalesPOS";
             Text = "SalesPOS";
-            panelContent.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            systempanelheadercoral.ResumeLayout(false);
-            systempanelheadercoral.PerformLayout();
-            systemsearchbarpanel.ResumeLayout(false);
-            systemsearchbarpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
+            Load += SalesPOS_Load;
+            salespanelsalespospanelcontentsheader.ResumeLayout(false);
+            salespanelsalespospanelcontentsheader.PerformLayout();
+            salespostotalsalessummarytxt.ResumeLayout(false);
+            salespostotalsalessummarytxt.PerformLayout();
+            salesposaverageordervaluetxt.ResumeLayout(false);
+            salespostotalsalespanel.ResumeLayout(false);
+            salespostotalsalespanel.PerformLayout();
+            saleposrefundspanel.ResumeLayout(false);
+            saleposrefundspanel.PerformLayout();
+            salesposdiscountappliedpanel.ResumeLayout(false);
+            salesposdiscountappliedpanel.PerformLayout();
+            salesposgrossrevenuepanel.ResumeLayout(false);
+            salesposgrossrevenuepanel.PerformLayout();
+            averageordervaluepanel.ResumeLayout(false);
+            averageordervaluepanel.PerformLayout();
+            salespostotalordersdatapanel.ResumeLayout(false);
+            salespostotalordersdatapanel.PerformLayout();
+            salespostotalsalesdatapanel.ResumeLayout(false);
+            salespostotalsalesdatapanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panelContent;
-        private Panel panel5;
-        private TextBox textBox1;
-        private Label label10;
-        private Panel panel3;
-        private TextBox netsalestxtbox;
-        private Label label9;
-        private Panel panel4;
-        private TextBox totaldiscountstxtbox;
-        private Label label8;
-        private Panel panel2;
-        private TextBox totalsalestxtbox;
-        private Label label7;
-        private Panel systempanelcontents;
         private Button netprofitbtn;
-        private Panel systempanelheadercoral;
+        private Panel salespospanelcontents;
+        private Panel salespanelsalespospanelcontentsheader;
+        private Label label1;
+        private Panel salespostotalsalessummarytxt;
+        private Label dashsalestxsalespostotalsalessummarytxt2;
+        private Panel salesposaverageordervaluetxt;
+        private ComboBox salesposreporttype;
+        private Panel salespostotalsalesdatapanel;
+        private Label salespostotalsalesdatapaneltxt;
+        private Label salespostotalsalesdatapaneltxtdata;
+        private Panel salespostotalordersdatapanel;
+        private Label label2;
+        private Label salespostotalordersdatapaneltxt;
+        private Label salespostotalordersdata;
+        private Panel averageordervaluepanel;
+        private Label salesposaverageordervaluetxtdata;
+        private Label salesposaverageordervalue;
+        private Panel salesposgrossrevenuepanel;
+        private Label salesposgrossrevenuedata;
+        private Label salesposgrossrevenuetxt;
+        private Panel saleposrefundspanel;
+        private Label salesposrefundstxtdata;
+        private Label saleposrefundstxt;
+        private Panel salesposdiscountappliedpanel;
+        private Label salesposdiscountappliedtxtdata;
+        private Label salesposdiscountappliedtxt;
+        private Panel salespostotalsalespanel;
+        private Label salespostotalsalestxtdata;
+        private Label salesposnetsalestxt;
+        private Label label8;
+        private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
-        private Label label2;
-        private Label label1;
-        private Button expensesreportbtn;
-        private Button salesreportsbtn;
-        private Panel systemsearchbarpanel;
-        private PictureBox systemsearchbaricon;
-        private TextBox systemsearchbar;
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient; 
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FlavorFlowIT13
 {
@@ -41,7 +42,7 @@ namespace FlavorFlowIT13
         private void loginbtn_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Server=localhost;Database=FlavorFlowDB;Trusted_Connection=True;Encrypt=False;";
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
 
 
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
