@@ -499,15 +499,15 @@
             // salesposreporttype
             // 
             salesposreporttype.BackColor = Color.Coral;
-            salesposreporttype.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
+            salesposreporttype.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             salesposreporttype.ForeColor = Color.White;
             salesposreporttype.FormattingEnabled = true;
-            salesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly" });
+            salesposreporttype.Items.AddRange(new object[] { " Daily", " Weekly", " Monthly" });
             salesposreporttype.Location = new Point(13, 109);
             salesposreporttype.Name = "salesposreporttype";
-            salesposreporttype.Size = new Size(309, 48);
+            salesposreporttype.Size = new Size(309, 45);
             salesposreporttype.TabIndex = 52;
-            salesposreporttype.Text = "       Report Type";
+            salesposreporttype.Text = "  Report Type : ";
             // 
             // SalesPOS
             // 

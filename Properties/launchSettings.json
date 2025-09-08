@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FlavorFlowIT13": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
