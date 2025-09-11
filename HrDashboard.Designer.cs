@@ -40,22 +40,18 @@
             label2 = new Label();
             dashtotalexpense = new Panel();
             dashtotalexptxt = new Label();
-            dashinventorystatus = new Panel();
+            dashattendancetodaypanel = new Panel();
             dashinventorytxt = new Label();
             dashactive = new Panel();
             dashactiveon = new PictureBox();
             label1 = new Label();
             dashnotif = new Panel();
-            dashsystemnotif = new Label();
-            dashpendingapprovals = new Label();
             dashlowstackalerts = new Label();
             dashrecenttransactions = new Label();
             dashvisuals = new Panel();
             dashvisualtoptxt = new Label();
             dashvisualtxtsales = new Label();
             dashtotalsales = new Panel();
-            dashsalescontent = new Label();
-            dashsalesicon = new PictureBox();
             dashsalestxt = new Label();
             panelNav = new Panel();
             admenubtn = new Button();
@@ -71,22 +67,32 @@
             adminicon = new PictureBox();
             userwelcome = new Label();
             fficonadmin = new PictureBox();
+            hrdashboardleaverequestspanel = new Panel();
+            label3 = new Label();
+            hrdashboardleaverequeststxt = new TextBox();
+            hrdashboardattendancetodaytxt = new TextBox();
+            hrdashboardleavecontractstxt = new TextBox();
+            label4 = new Label();
+            hrdashboardemployeeheadcounttxt = new TextBox();
+            label5 = new Label();
+            hrdashboardbirthdaystxt = new TextBox();
+            hrdashboardexpiriestxt = new TextBox();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             panelContent.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
-            dashinventorystatus.SuspendLayout();
+            dashattendancetodaypanel.SuspendLayout();
             dashactive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashactiveon).BeginInit();
             dashnotif.SuspendLayout();
             dashvisuals.SuspendLayout();
             dashtotalsales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dashsalesicon).BeginInit();
             panelNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
+            hrdashboardleaverequestspanel.SuspendLayout();
             SuspendLayout();
             // 
             // panelTop
@@ -150,12 +156,15 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(label5);
+            panelContent.Controls.Add(dashnotif);
+            panelContent.Controls.Add(hrdashboardleaverequestspanel);
+            panelContent.Controls.Add(dashvisualtxtsales);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
             panelContent.Controls.Add(dashtotalexpense);
-            panelContent.Controls.Add(dashinventorystatus);
+            panelContent.Controls.Add(dashattendancetodaypanel);
             panelContent.Controls.Add(dashactive);
-            panelContent.Controls.Add(dashnotif);
             panelContent.Controls.Add(dashvisuals);
             panelContent.Controls.Add(dashtotalsales);
             panelContent.Location = new Point(303, 125);
@@ -229,14 +238,15 @@
             dashtotalexptxt.TabIndex = 3;
             dashtotalexptxt.Text = "Total Expense";
             // 
-            // dashinventorystatus
+            // dashattendancetodaypanel
             // 
-            dashinventorystatus.BackColor = Color.Black;
-            dashinventorystatus.Controls.Add(dashinventorytxt);
-            dashinventorystatus.Location = new Point(919, 20);
-            dashinventorystatus.Name = "dashinventorystatus";
-            dashinventorystatus.Size = new Size(603, 180);
-            dashinventorystatus.TabIndex = 2;
+            dashattendancetodaypanel.BackColor = Color.Black;
+            dashattendancetodaypanel.Controls.Add(hrdashboardattendancetodaytxt);
+            dashattendancetodaypanel.Controls.Add(dashinventorytxt);
+            dashattendancetodaypanel.Location = new Point(919, 20);
+            dashattendancetodaypanel.Name = "dashattendancetodaypanel";
+            dashattendancetodaypanel.Size = new Size(603, 126);
+            dashattendancetodaypanel.TabIndex = 2;
             // 
             // dashinventorytxt
             // 
@@ -246,18 +256,20 @@
             dashinventorytxt.ForeColor = Color.White;
             dashinventorytxt.Location = new Point(26, 6);
             dashinventorytxt.Name = "dashinventorytxt";
-            dashinventorytxt.Size = new Size(265, 45);
+            dashinventorytxt.Size = new Size(289, 45);
             dashinventorytxt.TabIndex = 2;
-            dashinventorytxt.Text = "Inventory Status";
+            dashinventorytxt.Text = "Attendance Today";
             // 
             // dashactive
             // 
             dashactive.BackColor = Color.Black;
+            dashactive.Controls.Add(label4);
+            dashactive.Controls.Add(hrdashboardleavecontractstxt);
             dashactive.Controls.Add(dashactiveon);
             dashactive.Controls.Add(label1);
             dashactive.Location = new Point(456, 20);
             dashactive.Name = "dashactive";
-            dashactive.Size = new Size(457, 180);
+            dashactive.Size = new Size(457, 241);
             dashactive.TabIndex = 1;
             // 
             // dashactiveon
@@ -281,16 +293,17 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(30, 6);
             label1.Name = "label1";
-            label1.Size = new Size(223, 45);
+            label1.Size = new Size(173, 90);
             label1.TabIndex = 1;
-            label1.Text = "Active Orders";
+            label1.Text = " Pending \nApprovals";
+            label1.Click += label1_Click;
             // 
             // dashnotif
             // 
             dashnotif.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dashnotif.BackColor = Color.Black;
-            dashnotif.Controls.Add(dashsystemnotif);
-            dashnotif.Controls.Add(dashpendingapprovals);
+            dashnotif.Controls.Add(hrdashboardexpiriestxt);
+            dashnotif.Controls.Add(hrdashboardbirthdaystxt);
             dashnotif.Controls.Add(dashlowstackalerts);
             dashnotif.Controls.Add(dashrecenttransactions);
             dashnotif.Location = new Point(27, 570);
@@ -298,41 +311,18 @@
             dashnotif.Size = new Size(1021, 939);
             dashnotif.TabIndex = 2;
             // 
-            // dashsystemnotif
-            // 
-            dashsystemnotif.AutoSize = true;
-            dashsystemnotif.BackColor = Color.Transparent;
-            dashsystemnotif.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            dashsystemnotif.ForeColor = Color.White;
-            dashsystemnotif.Location = new Point(19, 164);
-            dashsystemnotif.Name = "dashsystemnotif";
-            dashsystemnotif.Size = new Size(317, 32);
-            dashsystemnotif.TabIndex = 6;
-            dashsystemnotif.Text = "System Alerts / Audit Logs";
-            // 
-            // dashpendingapprovals
-            // 
-            dashpendingapprovals.AutoSize = true;
-            dashpendingapprovals.BackColor = Color.Transparent;
-            dashpendingapprovals.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            dashpendingapprovals.ForeColor = Color.White;
-            dashpendingapprovals.Location = new Point(19, 112);
-            dashpendingapprovals.Name = "dashpendingapprovals";
-            dashpendingapprovals.Size = new Size(231, 32);
-            dashpendingapprovals.TabIndex = 5;
-            dashpendingapprovals.Text = "Pending Approvals";
-            // 
             // dashlowstackalerts
             // 
             dashlowstackalerts.AutoSize = true;
             dashlowstackalerts.BackColor = Color.Transparent;
             dashlowstackalerts.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             dashlowstackalerts.ForeColor = Color.White;
-            dashlowstackalerts.Location = new Point(19, 60);
+            dashlowstackalerts.Location = new Point(19, 90);
             dashlowstackalerts.Name = "dashlowstackalerts";
-            dashlowstackalerts.Size = new Size(203, 32);
+            dashlowstackalerts.Size = new Size(110, 32);
             dashlowstackalerts.TabIndex = 4;
-            dashlowstackalerts.Text = "Low Stock Alerts";
+            dashlowstackalerts.Text = "Expiries:";
+            dashlowstackalerts.Click += dashlowstackalerts_Click;
             // 
             // dashrecenttransactions
             // 
@@ -340,20 +330,19 @@
             dashrecenttransactions.BackColor = Color.Transparent;
             dashrecenttransactions.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             dashrecenttransactions.ForeColor = Color.White;
-            dashrecenttransactions.Location = new Point(19, 10);
+            dashrecenttransactions.Location = new Point(19, 27);
             dashrecenttransactions.Name = "dashrecenttransactions";
-            dashrecenttransactions.Size = new Size(241, 32);
+            dashrecenttransactions.Size = new Size(129, 32);
             dashrecenttransactions.TabIndex = 3;
-            dashrecenttransactions.Text = "Recent Transactions";
+            dashrecenttransactions.Text = "Birthdays:";
             // 
             // dashvisuals
             // 
             dashvisuals.BackColor = Color.Black;
             dashvisuals.Controls.Add(dashvisualtoptxt);
-            dashvisuals.Controls.Add(dashvisualtxtsales);
-            dashvisuals.Location = new Point(27, 206);
+            dashvisuals.Location = new Point(27, 338);
             dashvisuals.Name = "dashvisuals";
-            dashvisuals.Size = new Size(1021, 357);
+            dashvisuals.Size = new Size(1021, 172);
             dashvisuals.TabIndex = 1;
             // 
             // dashvisualtoptxt
@@ -362,11 +351,11 @@
             dashvisualtoptxt.BackColor = Color.Transparent;
             dashvisualtoptxt.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             dashvisualtoptxt.ForeColor = Color.White;
-            dashvisualtoptxt.Location = new Point(438, 12);
+            dashvisualtoptxt.Location = new Point(3, 4);
             dashvisualtoptxt.Name = "dashvisualtoptxt";
-            dashvisualtoptxt.Size = new Size(285, 45);
+            dashvisualtoptxt.Size = new Size(474, 45);
             dashvisualtoptxt.TabIndex = 2;
-            dashvisualtoptxt.Text = "Top-Selling Menu";
+            dashvisualtoptxt.Text = "Upcoming Contracts Renewals";
             // 
             // dashvisualtxtsales
             // 
@@ -374,46 +363,21 @@
             dashvisualtxtsales.BackColor = Color.Transparent;
             dashvisualtxtsales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             dashvisualtxtsales.ForeColor = Color.White;
-            dashvisualtxtsales.Location = new Point(36, 12);
+            dashvisualtxtsales.Location = new Point(27, 290);
             dashvisualtxtsales.Name = "dashvisualtxtsales";
-            dashvisualtxtsales.Size = new Size(190, 45);
+            dashvisualtxtsales.Size = new Size(235, 45);
             dashvisualtxtsales.TabIndex = 1;
-            dashvisualtxtsales.Text = "Sales Trend";
+            dashvisualtxtsales.Text = "Visual Insights";
             // 
             // dashtotalsales
             // 
             dashtotalsales.BackColor = Color.Black;
-            dashtotalsales.Controls.Add(dashsalescontent);
-            dashtotalsales.Controls.Add(dashsalesicon);
+            dashtotalsales.Controls.Add(hrdashboardemployeeheadcounttxt);
             dashtotalsales.Controls.Add(dashsalestxt);
             dashtotalsales.Location = new Point(27, 20);
             dashtotalsales.Name = "dashtotalsales";
-            dashtotalsales.Size = new Size(423, 180);
+            dashtotalsales.Size = new Size(423, 241);
             dashtotalsales.TabIndex = 0;
-            // 
-            // dashsalescontent
-            // 
-            dashsalescontent.AutoSize = true;
-            dashsalescontent.BackColor = Color.Transparent;
-            dashsalescontent.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dashsalescontent.ForeColor = Color.LimeGreen;
-            dashsalescontent.Location = new Point(112, 68);
-            dashsalescontent.Name = "dashsalescontent";
-            dashsalescontent.Size = new Size(59, 65);
-            dashsalescontent.TabIndex = 2;
-            dashsalescontent.Text = "₱";
-            // 
-            // dashsalesicon
-            // 
-            dashsalesicon.BackColor = Color.Transparent;
-            dashsalesicon.BackgroundImageLayout = ImageLayout.None;
-            dashsalesicon.Image = (Image)resources.GetObject("dashsalesicon.Image");
-            dashsalesicon.Location = new Point(290, 0);
-            dashsalesicon.Name = "dashsalesicon";
-            dashsalesicon.Size = new Size(118, 62);
-            dashsalesicon.SizeMode = PictureBoxSizeMode.Zoom;
-            dashsalesicon.TabIndex = 1;
-            dashsalesicon.TabStop = false;
             // 
             // dashsalestxt
             // 
@@ -423,9 +387,9 @@
             dashsalestxt.ForeColor = Color.White;
             dashsalestxt.Location = new Point(18, 8);
             dashsalestxt.Name = "dashsalestxt";
-            dashsalestxt.Size = new Size(286, 45);
+            dashsalestxt.Size = new Size(263, 90);
             dashsalestxt.TabIndex = 0;
-            dashsalestxt.Text = "Total Sales Today ";
+            dashsalestxt.Text = "Employee Head \ncount";
             // 
             // panelNav
             // 
@@ -456,7 +420,7 @@
             admenubtn.Name = "admenubtn";
             admenubtn.Size = new Size(243, 62);
             admenubtn.TabIndex = 13;
-            admenubtn.Text = "Menu Management";
+            admenubtn.Text = "Payroll";
             admenubtn.UseVisualStyleBackColor = false;
             // 
             // adlogoutbtn
@@ -486,7 +450,7 @@
             adlogsbtn.Name = "adlogsbtn";
             adlogsbtn.Size = new Size(243, 62);
             adlogsbtn.TabIndex = 11;
-            adlogsbtn.Text = "Audit Logs / Security";
+            adlogsbtn.Text = "Reports & Analytics";
             adlogsbtn.UseVisualStyleBackColor = false;
             // 
             // adsystembtn
@@ -500,7 +464,7 @@
             adsystembtn.Name = "adsystembtn";
             adsystembtn.Size = new Size(243, 62);
             adsystembtn.TabIndex = 10;
-            adsystembtn.Text = "System Settings";
+            adsystembtn.Text = "Compliance & Policies";
             adsystembtn.UseVisualStyleBackColor = false;
             // 
             // adsupplybtn
@@ -516,7 +480,7 @@
             adsupplybtn.Name = "adsupplybtn";
             adsupplybtn.Size = new Size(243, 38);
             adsupplybtn.TabIndex = 9;
-            adsupplybtn.Text = "    Suppliers / Orders";
+            adsupplybtn.Text = "Recruitment and Onboarding ";
             // 
             // adfinancebtn
             // 
@@ -529,7 +493,7 @@
             adfinancebtn.Name = "adfinancebtn";
             adfinancebtn.Size = new Size(243, 62);
             adfinancebtn.TabIndex = 8;
-            adfinancebtn.Text = "Finance / Expenses";
+            adfinancebtn.Text = "Performance & Training";
             adfinancebtn.UseVisualStyleBackColor = false;
             // 
             // adstaffbtn
@@ -543,7 +507,7 @@
             adstaffbtn.Name = "adstaffbtn";
             adstaffbtn.Size = new Size(243, 62);
             adstaffbtn.TabIndex = 7;
-            adstaffbtn.Text = "Staff Management";
+            adstaffbtn.Text = "Leave &Time-Off";
             adstaffbtn.UseVisualStyleBackColor = false;
             // 
             // adinventorybtn
@@ -557,7 +521,7 @@
             adinventorybtn.Name = "adinventorybtn";
             adinventorybtn.Size = new Size(243, 62);
             adinventorybtn.TabIndex = 6;
-            adinventorybtn.Text = "Inventory Management";
+            adinventorybtn.Text = "Attendance & Shifts";
             adinventorybtn.UseVisualStyleBackColor = false;
             // 
             // adsalesbtn
@@ -571,7 +535,7 @@
             adsalesbtn.Name = "adsalesbtn";
             adsalesbtn.Size = new Size(243, 62);
             adsalesbtn.TabIndex = 5;
-            adsalesbtn.Text = "Sales / POS Reports";
+            adsalesbtn.Text = "Employee Management";
             adsalesbtn.UseVisualStyleBackColor = false;
             // 
             // dashbtn
@@ -625,6 +589,100 @@
             fficonadmin.TabIndex = 0;
             fficonadmin.TabStop = false;
             // 
+            // hrdashboardleaverequestspanel
+            // 
+            hrdashboardleaverequestspanel.BackColor = Color.Black;
+            hrdashboardleaverequestspanel.Controls.Add(hrdashboardleaverequeststxt);
+            hrdashboardleaverequestspanel.Controls.Add(label3);
+            hrdashboardleaverequestspanel.Location = new Point(919, 152);
+            hrdashboardleaverequestspanel.Name = "hrdashboardleaverequestspanel";
+            hrdashboardleaverequestspanel.Size = new Size(603, 126);
+            hrdashboardleaverequestspanel.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(26, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(246, 45);
+            label3.TabIndex = 2;
+            label3.Text = "Leave Requests";
+            // 
+            // hrdashboardleaverequeststxt
+            // 
+            hrdashboardleaverequeststxt.Location = new Point(127, 57);
+            hrdashboardleaverequeststxt.Multiline = true;
+            hrdashboardleaverequeststxt.Name = "hrdashboardleaverequeststxt";
+            hrdashboardleaverequeststxt.Size = new Size(174, 52);
+            hrdashboardleaverequeststxt.TabIndex = 3;
+            // 
+            // hrdashboardattendancetodaytxt
+            // 
+            hrdashboardattendancetodaytxt.Location = new Point(127, 54);
+            hrdashboardattendancetodaytxt.Multiline = true;
+            hrdashboardattendancetodaytxt.Name = "hrdashboardattendancetodaytxt";
+            hrdashboardattendancetodaytxt.Size = new Size(174, 52);
+            hrdashboardattendancetodaytxt.TabIndex = 4;
+            // 
+            // hrdashboardleavecontractstxt
+            // 
+            hrdashboardleavecontractstxt.Location = new Point(223, 148);
+            hrdashboardleavecontractstxt.Multiline = true;
+            hrdashboardleavecontractstxt.Name = "hrdashboardleavecontractstxt";
+            hrdashboardleavecontractstxt.Size = new Size(185, 75);
+            hrdashboardleavecontractstxt.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(30, 143);
+            label4.Name = "label4";
+            label4.Size = new Size(148, 80);
+            label4.TabIndex = 5;
+            label4.Text = "Leave\nContracts";
+            // 
+            // hrdashboardemployeeheadcounttxt
+            // 
+            hrdashboardemployeeheadcounttxt.Location = new Point(120, 101);
+            hrdashboardemployeeheadcounttxt.Multiline = true;
+            hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
+            hrdashboardemployeeheadcounttxt.Size = new Size(192, 118);
+            hrdashboardemployeeheadcounttxt.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(27, 522);
+            label5.Name = "label5";
+            label5.Size = new Size(231, 45);
+            label5.TabIndex = 5;
+            label5.Text = "Notifications: ";
+            // 
+            // hrdashboardbirthdaystxt
+            // 
+            hrdashboardbirthdaystxt.Location = new Point(252, 15);
+            hrdashboardbirthdaystxt.Multiline = true;
+            hrdashboardbirthdaystxt.Name = "hrdashboardbirthdaystxt";
+            hrdashboardbirthdaystxt.Size = new Size(171, 44);
+            hrdashboardbirthdaystxt.TabIndex = 5;
+            // 
+            // hrdashboardexpiriestxt
+            // 
+            hrdashboardexpiriestxt.Location = new Point(252, 85);
+            hrdashboardexpiriestxt.Multiline = true;
+            hrdashboardexpiriestxt.Name = "hrdashboardexpiriestxt";
+            hrdashboardexpiriestxt.Size = new Size(171, 44);
+            hrdashboardexpiriestxt.TabIndex = 6;
+            // 
             // HrDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -638,14 +696,15 @@
             panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).EndInit();
             panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
             dashinventoryusage.PerformLayout();
             dashtotalexpense.ResumeLayout(false);
             dashtotalexpense.PerformLayout();
-            dashinventorystatus.ResumeLayout(false);
-            dashinventorystatus.PerformLayout();
+            dashattendancetodaypanel.ResumeLayout(false);
+            dashattendancetodaypanel.PerformLayout();
             dashactive.ResumeLayout(false);
             dashactive.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dashactiveon).EndInit();
@@ -655,10 +714,11 @@
             dashvisuals.PerformLayout();
             dashtotalsales.ResumeLayout(false);
             dashtotalsales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dashsalesicon).EndInit();
             panelNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
+            hrdashboardleaverequestspanel.ResumeLayout(false);
+            hrdashboardleaverequestspanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -675,22 +735,18 @@
         private Label label2;
         private Panel dashtotalexpense;
         private Label dashtotalexptxt;
-        private Panel dashinventorystatus;
+        private Panel dashattendancetodaypanel;
         private Label dashinventorytxt;
         private Panel dashactive;
         private PictureBox dashactiveon;
         private Label label1;
         private Panel dashnotif;
-        private Label dashsystemnotif;
-        private Label dashpendingapprovals;
         private Label dashlowstackalerts;
         private Label dashrecenttransactions;
         private Panel dashvisuals;
         private Label dashvisualtoptxt;
         private Label dashvisualtxtsales;
         private Panel dashtotalsales;
-        private Label dashsalescontent;
-        private PictureBox dashsalesicon;
         private Label dashsalestxt;
         private Panel panelNav;
         private Button admenubtn;
@@ -706,5 +762,15 @@
         private PictureBox adminicon;
         private Label userwelcome;
         private PictureBox fficonadmin;
+        private Panel hrdashboardleaverequestspanel;
+        private Label label3;
+        private TextBox hrdashboardleaverequeststxt;
+        private TextBox hrdashboardattendancetodaytxt;
+        private Label label5;
+        private TextBox hrdashboardbirthdaystxt;
+        private Label label4;
+        private TextBox hrdashboardleavecontractstxt;
+        private TextBox hrdashboardemployeeheadcounttxt;
+        private TextBox hrdashboardexpiriestxt;
     }
 }
