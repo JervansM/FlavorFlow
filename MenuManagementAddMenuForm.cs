@@ -9,15 +9,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FlavorFlowIT13
 {
     public partial class MenuManagementAddMenuForm : Form
     {
+        private bool _isEditMode = false;
+        private int _editMenuID = -1;
+
+        private int? _menuId;
         public MenuManagementAddMenuForm()
         {
             InitializeComponent();
+        }
+
+        public MenuManagementAddMenuForm(int menuId) : this()
+        {
+            _isEditMode = true;
+           _editMenuID = menuId;
+
+        
+            _menuId = menuId;
 
 
             panelFormHeader.BackColor = ColorTranslator.FromHtml("Coral");
@@ -30,9 +45,51 @@ namespace FlavorFlowIT13
 
         }
 
+
         private void MenuManagementAddMenuForm_Load(object sender, EventArgs e)
         {
+            if (_isEditMode && _editMenuID > 0)
+            {
+                string query = "SELECT * FROM Menu WHERE MenuID = @MenuID";
 
+                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
+                    con.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            menunametxt.Text = reader["Name"].ToString();
+                            menuformdesctxt.Text = reader["Description"].ToString();
+                            menuformcategory.Text = reader["Category"].ToString();
+                            menuformpricetxt.Text = reader["Price"].ToString();
+                            menuformstatuscheckbox.Checked = (bool)reader["IsAvailable"];
+
+                            // Load image
+                            if (reader["ImagePath"] != DBNull.Value)
+                            {
+                                string path = reader["ImagePath"].ToString();
+                                if (File.Exists(path))
+                                {
+                                    pictoreBoxMenu.Image = Image.FromFile(path);
+                                    pictoreBoxMenu.SizeMode = PictureBoxSizeMode.Zoom;
+                                    SelectedImagePath = path;
+                                }
+                                else
+                                {
+                                    pictoreBoxMenu.Image = SystemIcons.Warning.ToBitmap();
+                                    pictoreBoxMenu.SizeMode = PictureBoxSizeMode.CenterImage;
+                                }
+                            }
+                        }
+
+                        this.Text = "Edit Menu Item"; // change title for clarity
+                        menuformsavebtn.Text = "Update";
+                    }
+                }
+            }
         }
         private void RoundPanel(Panel pnl, int radius)
         {
@@ -44,7 +101,7 @@ namespace FlavorFlowIT13
             path.CloseAllFigures();
             pnl.Region = new Region(path);
         }
-        private void RoundButton(Button button, int radius)
+        private void RoundButton(System.Windows.Forms.Button button, int radius)
         {
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             path.AddArc(0, 0, radius, radius, 180, 90);
@@ -131,7 +188,6 @@ namespace FlavorFlowIT13
 
         private void menuformsavebtn_Click(object sender, EventArgs e)
         {
-            // Validate inputs
             if (string.IsNullOrWhiteSpace(menunametxt.Text))
             {
                 MessageBox.Show("Menu name is required.");
@@ -144,69 +200,46 @@ namespace FlavorFlowIT13
                 return;
             }
 
-            string name = menunametxt.Text.Trim();
-            string description = menuformdesctxt.Text.Trim();
-            string category = menuformcategory.Text.Trim();
-            bool isAvailable = menuformstatuscheckbox.Checked;
-            DateTime dateCreated = DateTime.Now;
-            string imagePath = string.IsNullOrEmpty(SelectedImagePath) ? null : SelectedImagePath;
-
-            // Insert into database
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
                 {
-                    conn.Open();
-                    string query = @"INSERT INTO Menu (Name, Description, Category, Price, IsAvailable, DateCreated, ImagePath)
-                             VALUES (@Name, @Description, @Category, @Price, @IsAvailable, @DateCreated, @ImagePath)";
+                    con.Open();
+                    SqlCommand cmd;
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    if (_isEditMode)
                     {
-                        cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@Description", string.IsNullOrEmpty(description) ? DBNull.Value : (object)description);
-                        cmd.Parameters.AddWithValue("@Category", string.IsNullOrEmpty(category) ? DBNull.Value : (object)category);
-                        cmd.Parameters.Add("@Price", System.Data.SqlDbType.Decimal).Value = price;
-                        cmd.Parameters.AddWithValue("@IsAvailable", isAvailable);
-                        cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
-                        cmd.Parameters.AddWithValue("@ImagePath", string.IsNullOrEmpty(imagePath) ? DBNull.Value : (object)imagePath);
-
-                        cmd.ExecuteNonQuery();
+                        // UPDATE
+                        cmd = new SqlCommand(@"UPDATE Menu 
+                           SET Name=@Name, Description=@Description, Category=@Category, 
+                               Price=@Price, IsAvailable=@IsAvailable, ImagePath=@ImagePath 
+                           WHERE MenuID=@MenuID", con);
+                        cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
                     }
+                    else
+                    {
+                        // INSERT
+                        cmd = new SqlCommand(@"INSERT INTO Menu (Name, Description, Category, Price, IsAvailable, ImagePath) 
+                           VALUES (@Name, @Description, @Category, @Price, @IsAvailable, @ImagePath)", con);
+                    }
+
+                    cmd.Parameters.AddWithValue("@Name", menunametxt.Text);
+                    cmd.Parameters.AddWithValue("@Description", menuformdesctxt.Text);
+                    cmd.Parameters.AddWithValue("@Category", menuformcategory.Text);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@IsAvailable", menuformstatuscheckbox.Checked);
+                    cmd.Parameters.AddWithValue("@ImagePath", (object)SelectedImagePath ?? DBNull.Value);
+
+                    cmd.ExecuteNonQuery();
                 }
 
+                this.DialogResult = DialogResult.OK;
+                this.Close();
                 MessageBox.Show("Menu item saved successfully!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error saving menu item: " + ex.Message);
-                return; // Stop here if DB fails
-            }
-
-            // Clear form safely
-            try
-            {
-                menunametxt.Clear();
-                menuformdesctxt.Clear();
-                menuformpricetxt.Clear();
-
-                if (menuformcategory.Items.Count > 0)
-                    menuformcategory.SelectedIndex = -1;
-
-                menuformstatuscheckbox.Checked = false;
-
-                // Dispose the image safely
-                if (pictoreBoxMenu.Image != null)
-                {
-                    pictoreBoxMenu.Image.Dispose();
-                    pictoreBoxMenu.Image = null;
-                }
-
-                SelectedImagePath = null;
-            }
-            catch (Exception ex)
-            {
-                // Log error but don't show to user to avoid double-message
-                Console.WriteLine("Form clear error: " + ex.Message);
             }
         }
 

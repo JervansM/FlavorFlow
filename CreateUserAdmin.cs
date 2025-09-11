@@ -44,7 +44,7 @@ namespace FlavorFlowIT13
                 MessageBox.Show("⚠️ Please fill up the form.");
                 return;
             }
-            connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
+            connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
             string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @Password, @Role)";
 
 

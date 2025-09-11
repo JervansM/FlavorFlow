@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebAppSignUp));
             signuppanel = new Panel();
             webapploginbtn = new Button();
             webappsignupbtn = new Button();
@@ -48,7 +49,7 @@
             // 
             // signuppanel
             // 
-            signuppanel.BackColor = Color.Transparent;
+            signuppanel.BackColor = Color.WhiteSmoke;
             signuppanel.Controls.Add(webapploginbtn);
             signuppanel.Controls.Add(webappsignupbtn);
             signuppanel.Controls.Add(webappaddresstxt);
@@ -77,6 +78,7 @@
             webapploginbtn.TabIndex = 13;
             webapploginbtn.Text = "Log In";
             webapploginbtn.UseVisualStyleBackColor = true;
+            webapploginbtn.Click += webapploginbtn_Click;
             // 
             // webappsignupbtn
             // 
@@ -213,8 +215,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.loginback;
             ClientSize = new Size(1370, 749);
             Controls.Add(signuppanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WebAppSignUp";
             Text = "WebAppSignUp";
             Load += WebAppSignUp_Load;

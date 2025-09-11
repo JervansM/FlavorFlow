@@ -21,5 +21,12 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void webapploginbtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
 }

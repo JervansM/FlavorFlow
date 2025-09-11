@@ -90,12 +90,13 @@
             // 
             // pictoreBoxMenu
             // 
+            pictoreBoxMenu.Anchor = AnchorStyles.None;
             pictoreBoxMenu.BackColor = Color.Transparent;
             pictoreBoxMenu.BorderStyle = BorderStyle.FixedSingle;
             pictoreBoxMenu.Location = new Point(798, 105);
             pictoreBoxMenu.Name = "pictoreBoxMenu";
             pictoreBoxMenu.Size = new Size(362, 328);
-            pictoreBoxMenu.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictoreBoxMenu.SizeMode = PictureBoxSizeMode.Zoom;
             pictoreBoxMenu.TabIndex = 33;
             pictoreBoxMenu.TabStop = false;
             pictoreBoxMenu.Click += pictoreBoxMenu_Click;
@@ -176,6 +177,7 @@
             menuformpricetxt.Name = "menuformpricetxt";
             menuformpricetxt.Size = new Size(480, 81);
             menuformpricetxt.TabIndex = 27;
+            menuformpricetxt.WordWrap = false;
             // 
             // menuformpricelbl
             // 
@@ -201,6 +203,7 @@
             menuformdesctxt.Name = "menuformdesctxt";
             menuformdesctxt.Size = new Size(480, 110);
             menuformdesctxt.TabIndex = 23;
+            menuformdesctxt.WordWrap = false;
             // 
             // menuformdesclbl
             // 
@@ -226,6 +229,7 @@
             menunametxt.Name = "menunametxt";
             menunametxt.Size = new Size(480, 81);
             menunametxt.TabIndex = 21;
+            menunametxt.WordWrap = false;
             // 
             // menunamelbl
             // 

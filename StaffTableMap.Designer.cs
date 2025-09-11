@@ -43,18 +43,17 @@
             panel17 = new Panel();
             printbillbtn = new Button();
             sendtokitchenbtn = new Button();
-            holdorderbtn = new Button();
             saveorderbtn = new Button();
             voidbtn = new Button();
             addorderbtn = new Button();
             applydiscountbtn = new Button();
             panel2 = new Panel();
-            table1btn = new Button();
-            table2btn = new Button();
-            table3btn = new Button();
-            table4btn = new Button();
-            table5btn = new Button();
             table6btn = new Button();
+            table5btn = new Button();
+            table4btn = new Button();
+            table3btn = new Button();
+            table2btn = new Button();
+            table1btn = new Button();
             panel3 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
@@ -196,7 +195,6 @@
             panel17.BackColor = Color.White;
             panel17.Controls.Add(printbillbtn);
             panel17.Controls.Add(sendtokitchenbtn);
-            panel17.Controls.Add(holdorderbtn);
             panel17.Controls.Add(saveorderbtn);
             panel17.Controls.Add(voidbtn);
             panel17.Controls.Add(addorderbtn);
@@ -221,7 +219,7 @@
             // sendtokitchenbtn
             // 
             sendtokitchenbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sendtokitchenbtn.Location = new Point(344, 125);
+            sendtokitchenbtn.Location = new Point(309, 126);
             sendtokitchenbtn.Name = "sendtokitchenbtn";
             sendtokitchenbtn.Size = new Size(319, 79);
             sendtokitchenbtn.TabIndex = 10;
@@ -229,20 +227,10 @@
             sendtokitchenbtn.UseVisualStyleBackColor = true;
             sendtokitchenbtn.Click += sendtokitchenbtn_Click;
             // 
-            // holdorderbtn
-            // 
-            holdorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            holdorderbtn.Location = new Point(14, 124);
-            holdorderbtn.Name = "holdorderbtn";
-            holdorderbtn.Size = new Size(296, 80);
-            holdorderbtn.TabIndex = 9;
-            holdorderbtn.Text = "Hold Order";
-            holdorderbtn.UseVisualStyleBackColor = true;
-            // 
             // saveorderbtn
             // 
             saveorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            saveorderbtn.Location = new Point(207, 21);
+            saveorderbtn.Location = new Point(483, 21);
             saveorderbtn.Name = "saveorderbtn";
             saveorderbtn.Size = new Size(175, 80);
             saveorderbtn.TabIndex = 8;
@@ -252,7 +240,7 @@
             // voidbtn
             // 
             voidbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            voidbtn.Location = new Point(388, 21);
+            voidbtn.Location = new Point(82, 125);
             voidbtn.Name = "voidbtn";
             voidbtn.Size = new Size(167, 80);
             voidbtn.TabIndex = 7;
@@ -262,7 +250,7 @@
             // addorderbtn
             // 
             addorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addorderbtn.Location = new Point(561, 21);
+            addorderbtn.Location = new Point(252, 21);
             addorderbtn.Name = "addorderbtn";
             addorderbtn.Size = new Size(176, 80);
             addorderbtn.TabIndex = 6;
@@ -293,50 +281,16 @@
             panel2.Size = new Size(960, 414);
             panel2.TabIndex = 35;
             // 
-            // table1btn
+            // table6btn
             // 
-            table1btn.BackColor = Color.DodgerBlue;
-            table1btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            table1btn.Location = new Point(67, 23);
-            table1btn.Name = "table1btn";
-            table1btn.Size = new Size(209, 137);
-            table1btn.TabIndex = 0;
-            table1btn.Text = "Table 1";
-            table1btn.UseVisualStyleBackColor = false;
-            // 
-            // table2btn
-            // 
-            table2btn.BackColor = Color.LimeGreen;
-            table2btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            table2btn.Location = new Point(372, 23);
-            table2btn.Name = "table2btn";
-            table2btn.Size = new Size(209, 137);
-            table2btn.TabIndex = 1;
-            table2btn.Text = "Table 2";
-            table2btn.UseVisualStyleBackColor = false;
-            table2btn.Click += button2_Click;
-            // 
-            // table3btn
-            // 
-            table3btn.BackColor = Color.Firebrick;
-            table3btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            table3btn.Location = new Point(674, 23);
-            table3btn.Name = "table3btn";
-            table3btn.Size = new Size(209, 137);
-            table3btn.TabIndex = 2;
-            table3btn.Text = "Table 3";
-            table3btn.UseVisualStyleBackColor = false;
-            // 
-            // table4btn
-            // 
-            table4btn.BackColor = Color.Firebrick;
-            table4btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            table4btn.Location = new Point(67, 206);
-            table4btn.Name = "table4btn";
-            table4btn.Size = new Size(209, 137);
-            table4btn.TabIndex = 3;
-            table4btn.Text = "Table 4";
-            table4btn.UseVisualStyleBackColor = false;
+            table6btn.BackColor = Color.LimeGreen;
+            table6btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table6btn.Location = new Point(674, 206);
+            table6btn.Name = "table6btn";
+            table6btn.Size = new Size(209, 137);
+            table6btn.TabIndex = 5;
+            table6btn.Text = "Table 6";
+            table6btn.UseVisualStyleBackColor = false;
             // 
             // table5btn
             // 
@@ -350,16 +304,50 @@
             table5btn.UseVisualStyleBackColor = false;
             table5btn.Click += button5_Click;
             // 
-            // table6btn
+            // table4btn
             // 
-            table6btn.BackColor = Color.LimeGreen;
-            table6btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            table6btn.Location = new Point(674, 206);
-            table6btn.Name = "table6btn";
-            table6btn.Size = new Size(209, 137);
-            table6btn.TabIndex = 5;
-            table6btn.Text = "Table 6";
-            table6btn.UseVisualStyleBackColor = false;
+            table4btn.BackColor = Color.Firebrick;
+            table4btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table4btn.Location = new Point(67, 206);
+            table4btn.Name = "table4btn";
+            table4btn.Size = new Size(209, 137);
+            table4btn.TabIndex = 3;
+            table4btn.Text = "Table 4";
+            table4btn.UseVisualStyleBackColor = false;
+            // 
+            // table3btn
+            // 
+            table3btn.BackColor = Color.Firebrick;
+            table3btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table3btn.Location = new Point(674, 23);
+            table3btn.Name = "table3btn";
+            table3btn.Size = new Size(209, 137);
+            table3btn.TabIndex = 2;
+            table3btn.Text = "Table 3";
+            table3btn.UseVisualStyleBackColor = false;
+            // 
+            // table2btn
+            // 
+            table2btn.BackColor = Color.LimeGreen;
+            table2btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table2btn.Location = new Point(372, 23);
+            table2btn.Name = "table2btn";
+            table2btn.Size = new Size(209, 137);
+            table2btn.TabIndex = 1;
+            table2btn.Text = "Table 2";
+            table2btn.UseVisualStyleBackColor = false;
+            table2btn.Click += button2_Click;
+            // 
+            // table1btn
+            // 
+            table1btn.BackColor = Color.DodgerBlue;
+            table1btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table1btn.Location = new Point(67, 23);
+            table1btn.Name = "table1btn";
+            table1btn.Size = new Size(209, 137);
+            table1btn.TabIndex = 0;
+            table1btn.Text = "Table 1";
+            table1btn.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -411,7 +399,6 @@
         private Panel panel17;
         private Button printbillbtn;
         private Button sendtokitchenbtn;
-        private Button holdorderbtn;
         private Button saveorderbtn;
         private Button voidbtn;
         private Button addorderbtn;
