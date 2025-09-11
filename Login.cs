@@ -13,24 +13,26 @@ namespace FlavorFlowIT13
         public Login()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            RoundTextBox(loginpanelinput,usertxt ,20);
-            RoundTextBox(loginpanelinput, passwordtxt, 20);
-           
+
+
 
 
             loginbtn.FlatStyle = FlatStyle.Flat;
             loginbtn.UseVisualStyleBackColor = false;
             loginbtn.FlatAppearance.BorderSize = 0;
 
-            loginbtn.BackColor = ColorTranslator.FromHtml("Coral");   
-   
-            loginbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green"); 
+            loginbtn.BackColor = ColorTranslator.FromHtml("Coral");
+
+            loginbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
             loginbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");
-       
+
 
         }
 
@@ -42,7 +44,7 @@ namespace FlavorFlowIT13
         private void loginbtn_Click(object sender, EventArgs e)
         {
 
-            string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
 
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
@@ -100,24 +102,7 @@ namespace FlavorFlowIT13
                 }
             }
         }
-        private void RoundTextBox(Panel pnl, TextBox txt, int radius)
-        {
-         
-            txt.BorderStyle = BorderStyle.None;
-            
-            txt.ForeColor = ColorTranslator.FromHtml("Black");
 
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
-            path.CloseAllFigures();
-
-            pnl.Region = new Region(path);
-            pnl.BackColor = ColorTranslator.FromHtml("Transparent");
-        }
-        
 
         private void usertxt_TextChanged(object sender, EventArgs e)
         {
@@ -131,7 +116,14 @@ namespace FlavorFlowIT13
 
         private void loginpanelinput_Paint(object sender, PaintEventArgs e)
         {
-           
+
+        }
+
+        private void loginsignupbtn_Click(object sender, EventArgs e)
+        {
+            WebAppSignUp webAppSignUp = new WebAppSignUp();
+            webAppSignUp.Show();
+            this.Hide();
         }
     }
 }

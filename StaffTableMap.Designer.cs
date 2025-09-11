@@ -43,7 +43,6 @@
             panel17 = new Panel();
             printbillbtn = new Button();
             sendtokitchenbtn = new Button();
-            holdorderbtn = new Button();
             saveorderbtn = new Button();
             voidbtn = new Button();
             addorderbtn = new Button();
@@ -200,7 +199,6 @@
             panel17.BackColor = Color.White;
             panel17.Controls.Add(printbillbtn);
             panel17.Controls.Add(sendtokitchenbtn);
-            panel17.Controls.Add(holdorderbtn);
             panel17.Controls.Add(saveorderbtn);
             panel17.Controls.Add(voidbtn);
             panel17.Controls.Add(addorderbtn);
@@ -225,7 +223,7 @@
             // sendtokitchenbtn
             // 
             sendtokitchenbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sendtokitchenbtn.Location = new Point(344, 125);
+            sendtokitchenbtn.Location = new Point(309, 126);
             sendtokitchenbtn.Name = "sendtokitchenbtn";
             sendtokitchenbtn.Size = new Size(319, 79);
             sendtokitchenbtn.TabIndex = 10;
@@ -233,20 +231,10 @@
             sendtokitchenbtn.UseVisualStyleBackColor = true;
             sendtokitchenbtn.Click += sendtokitchenbtn_Click;
             // 
-            // holdorderbtn
-            // 
-            holdorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            holdorderbtn.Location = new Point(14, 124);
-            holdorderbtn.Name = "holdorderbtn";
-            holdorderbtn.Size = new Size(296, 80);
-            holdorderbtn.TabIndex = 9;
-            holdorderbtn.Text = "Hold Order";
-            holdorderbtn.UseVisualStyleBackColor = true;
-            // 
             // saveorderbtn
             // 
             saveorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            saveorderbtn.Location = new Point(207, 21);
+            saveorderbtn.Location = new Point(483, 21);
             saveorderbtn.Name = "saveorderbtn";
             saveorderbtn.Size = new Size(175, 80);
             saveorderbtn.TabIndex = 8;
@@ -256,7 +244,7 @@
             // voidbtn
             // 
             voidbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            voidbtn.Location = new Point(388, 21);
+            voidbtn.Location = new Point(82, 125);
             voidbtn.Name = "voidbtn";
             voidbtn.Size = new Size(167, 80);
             voidbtn.TabIndex = 7;
@@ -266,7 +254,7 @@
             // addorderbtn
             // 
             addorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addorderbtn.Location = new Point(561, 21);
+            addorderbtn.Location = new Point(252, 21);
             addorderbtn.Name = "addorderbtn";
             addorderbtn.Size = new Size(176, 80);
             addorderbtn.TabIndex = 6;
@@ -415,7 +403,6 @@
         private Panel panel17;
         private Button printbillbtn;
         private Button sendtokitchenbtn;
-        private Button holdorderbtn;
         private Button saveorderbtn;
         private Button voidbtn;
         private Button addorderbtn;

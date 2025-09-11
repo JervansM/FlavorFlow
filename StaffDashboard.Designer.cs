@@ -157,7 +157,7 @@
             adminicon.SizeMode = PictureBoxSizeMode.Zoom;
             adminicon.TabIndex = 19;
             adminicon.TabStop = false;
-            adminicon.Click += adminicon_Click;
+        
             // 
             // userwelcome
             // 
@@ -196,7 +196,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1835, 80);
             panel1.TabIndex = 23;
-            panel1.Paint += panel1_Paint;
+           
             // 
             // menubtn
             // 
@@ -208,7 +208,7 @@
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
-            menubtn.Click += menubtn_Click;
+          
             // 
             // onlineordersbtn
             // 

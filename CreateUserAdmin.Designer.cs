@@ -115,6 +115,7 @@
             createusertxt.Name = "createusertxt";
             createusertxt.Size = new Size(415, 81);
             createusertxt.TabIndex = 2;
+            createusertxt.WordWrap = false;
             createusertxt.TextChanged += createusertxt_TextChanged;
             // 
             // savebtn
@@ -161,6 +162,7 @@
             createpasswordtxt.PasswordChar = '*';
             createpasswordtxt.Size = new Size(415, 81);
             createpasswordtxt.TabIndex = 3;
+            createpasswordtxt.WordWrap = false;
             createpasswordtxt.TextChanged += createpasswordtxt_TextChanged;
             // 
             // passwordlbl

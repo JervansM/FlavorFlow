@@ -51,23 +51,26 @@
             panel2 = new Panel();
             label1 = new Label();
             panel3 = new Panel();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            namedetxt = new TextBox();
-            phonenumberdetxt = new TextBox();
             addressdetxt = new TextBox();
+            phonenumberdetxt = new TextBox();
+            namedetxt = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             panel4 = new Panel();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
             panel5 = new Panel();
-            label10 = new Label();
             totalboxtxt = new TextBox();
+            label10 = new Label();
             button1 = new Button();
             button2 = new Button();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
@@ -328,36 +331,32 @@
             panel3.Size = new Size(787, 234);
             panel3.TabIndex = 5;
             // 
-            // label2
+            // addressdetxt
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label2.Location = new Point(280, 11);
-            label2.Name = "label2";
-            label2.Size = new Size(232, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Customer Information";
+            addressdetxt.BackColor = Color.Silver;
+            addressdetxt.Location = new Point(121, 162);
+            addressdetxt.Multiline = true;
+            addressdetxt.Name = "addressdetxt";
+            addressdetxt.Size = new Size(312, 35);
+            addressdetxt.TabIndex = 7;
             // 
-            // label3
+            // phonenumberdetxt
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(23, 69);
-            label3.Name = "label3";
-            label3.Size = new Size(73, 28);
-            label3.TabIndex = 2;
-            label3.Text = "Name:";
-            label3.Click += label3_Click;
+            phonenumberdetxt.BackColor = Color.Silver;
+            phonenumberdetxt.Location = new Point(185, 113);
+            phonenumberdetxt.Multiline = true;
+            phonenumberdetxt.Name = "phonenumberdetxt";
+            phonenumberdetxt.Size = new Size(312, 35);
+            phonenumberdetxt.TabIndex = 6;
             // 
-            // label4
+            // namedetxt
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 169);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 28);
-            label4.TabIndex = 3;
-            label4.Text = "Address:";
+            namedetxt.BackColor = Color.Silver;
+            namedetxt.Location = new Point(99, 62);
+            namedetxt.Multiline = true;
+            namedetxt.Name = "namedetxt";
+            namedetxt.Size = new Size(312, 35);
+            namedetxt.TabIndex = 5;
             // 
             // label5
             // 
@@ -370,36 +369,43 @@
             label5.Text = "Phone number:";
             label5.Click += label5_Click;
             // 
-            // namedetxt
+            // label4
             // 
-            namedetxt.BackColor = Color.Silver;
-            namedetxt.Location = new Point(99, 62);
-            namedetxt.Multiline = true;
-            namedetxt.Name = "namedetxt";
-            namedetxt.Size = new Size(312, 35);
-            namedetxt.TabIndex = 5;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(23, 169);
+            label4.Name = "label4";
+            label4.Size = new Size(92, 28);
+            label4.TabIndex = 3;
+            label4.Text = "Address:";
             // 
-            // phonenumberdetxt
+            // label3
             // 
-            phonenumberdetxt.BackColor = Color.Silver;
-            phonenumberdetxt.Location = new Point(185, 113);
-            phonenumberdetxt.Multiline = true;
-            phonenumberdetxt.Name = "phonenumberdetxt";
-            phonenumberdetxt.Size = new Size(312, 35);
-            phonenumberdetxt.TabIndex = 6;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(23, 69);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 28);
+            label3.TabIndex = 2;
+            label3.Text = "Name:";
+            label3.Click += label3_Click;
             // 
-            // addressdetxt
+            // label2
             // 
-            addressdetxt.BackColor = Color.Silver;
-            addressdetxt.Location = new Point(121, 162);
-            addressdetxt.Multiline = true;
-            addressdetxt.Name = "addressdetxt";
-            addressdetxt.Size = new Size(312, 35);
-            addressdetxt.TabIndex = 7;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label2.Location = new Point(280, 11);
+            label2.Name = "label2";
+            label2.Size = new Size(232, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Customer Information";
             // 
             // panel4
             // 
             panel4.BackColor = Color.White;
+            panel4.Controls.Add(textBox3);
+            panel4.Controls.Add(textBox2);
+            panel4.Controls.Add(textBox1);
             panel4.Controls.Add(label9);
             panel4.Controls.Add(label8);
             panel4.Controls.Add(label7);
@@ -408,6 +414,36 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(787, 220);
             panel4.TabIndex = 35;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(23, 112);
+            label9.Name = "label9";
+            label9.Size = new Size(100, 28);
+            label9.TabIndex = 10;
+            label9.Text = "Payment:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(23, 166);
+            label8.Name = "label8";
+            label8.Size = new Size(76, 28);
+            label8.TabIndex = 9;
+            label8.Text = "Status:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(23, 60);
+            label7.Name = "label7";
+            label7.Size = new Size(165, 28);
+            label7.TabIndex = 8;
+            label7.Text = "Assigned Rider: ";
             // 
             // label6
             // 
@@ -420,36 +456,6 @@
             label6.Text = "Delivery Details:";
             label6.Click += label6_Click;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(23, 60);
-            label7.Name = "label7";
-            label7.Size = new Size(165, 28);
-            label7.TabIndex = 8;
-            label7.Text = "Assigned Rider: ";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(23, 166);
-            label8.Name = "label8";
-            label8.Size = new Size(76, 28);
-            label8.TabIndex = 9;
-            label8.Text = "Status:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(23, 112);
-            label9.Name = "label9";
-            label9.Size = new Size(100, 28);
-            label9.TabIndex = 10;
-            label9.Text = "Payment:";
-            // 
             // panel5
             // 
             panel5.BackColor = Color.Silver;
@@ -459,6 +465,14 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(787, 90);
             panel5.TabIndex = 36;
+            // 
+            // totalboxtxt
+            // 
+            totalboxtxt.Location = new Point(459, 21);
+            totalboxtxt.Multiline = true;
+            totalboxtxt.Name = "totalboxtxt";
+            totalboxtxt.Size = new Size(313, 53);
+            totalboxtxt.TabIndex = 38;
             // 
             // label10
             // 
@@ -470,14 +484,6 @@
             label10.Size = new Size(89, 37);
             label10.TabIndex = 37;
             label10.Text = "Total:";
-            // 
-            // totalboxtxt
-            // 
-            totalboxtxt.Location = new Point(459, 21);
-            totalboxtxt.Multiline = true;
-            totalboxtxt.Name = "totalboxtxt";
-            totalboxtxt.Size = new Size(313, 53);
-            totalboxtxt.TabIndex = 38;
             // 
             // button1
             // 
@@ -500,6 +506,33 @@
             button2.TabIndex = 37;
             button2.Text = "Mark as Dispatched";
             button2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.Silver;
+            textBox1.Location = new Point(202, 53);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(312, 35);
+            textBox1.TabIndex = 8;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.Silver;
+            textBox2.Location = new Point(144, 105);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(312, 35);
+            textBox2.TabIndex = 11;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Silver;
+            textBox3.Location = new Point(121, 159);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(312, 35);
+            textBox3.TabIndex = 12;
             // 
             // StaffDelivery
             // 
@@ -579,5 +612,8 @@
         private TextBox totalboxtxt;
         private Button button1;
         private Button button2;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }
