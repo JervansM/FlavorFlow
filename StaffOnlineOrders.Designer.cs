@@ -99,6 +99,7 @@
             deliverybtn.TabIndex = 2;
             deliverybtn.Text = "Delivery";
             deliverybtn.UseVisualStyleBackColor = true;
+            deliverybtn.Click += deliverybtn_Click;
             // 
             // takeoutbtn
             // 
@@ -109,6 +110,7 @@
             takeoutbtn.TabIndex = 1;
             takeoutbtn.Text = "Take-out";
             takeoutbtn.UseVisualStyleBackColor = true;
+            takeoutbtn.Click += takeoutbtn_Click;
             // 
             // tablemapbtn
             // 
@@ -119,6 +121,7 @@
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
+            tablemapbtn.Click += tablemapbtn_Click;
             // 
             // dashaddate
             // 
@@ -284,7 +287,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(1370, 749);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(dashadrefreshicon);

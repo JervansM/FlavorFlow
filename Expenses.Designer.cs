@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
+            systempanelcontents = new Panel();
             netprofitbtn = new Button();
             systempanelheadercoral = new Panel();
             label4 = new Label();
@@ -40,8 +42,6 @@
             systemsearchbaricon = new PictureBox();
             systemsearchbar = new TextBox();
             generatereportbtn = new Button();
-            systempanelcontents = new Panel();
-            button1 = new Button();
             panel1.SuspendLayout();
             systempanelheadercoral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -65,6 +65,30 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(296, 907);
+            button1.Name = "button1";
+            button1.Size = new Size(309, 58);
+            button1.TabIndex = 46;
+            button1.Text = "Add Expense";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // systempanelcontents
+            // 
+            systempanelcontents.BackColor = Color.White;
+            systempanelcontents.Location = new Point(46, 325);
+            systempanelcontents.Name = "systempanelcontents";
+            systempanelcontents.Size = new Size(1447, 547);
+            systempanelcontents.TabIndex = 45;
+            systempanelcontents.Paint += systempanelcontents_Paint;
+            // 
             // netprofitbtn
             // 
             netprofitbtn.BackColor = Color.Black;
@@ -79,6 +103,7 @@
             netprofitbtn.TabIndex = 44;
             netprofitbtn.Text = "Net Profit Summary";
             netprofitbtn.UseVisualStyleBackColor = false;
+            netprofitbtn.Click += netprofitbtn_Click;
             // 
             // systempanelheadercoral
             // 
@@ -203,35 +228,11 @@
             generatereportbtn.Text = "Export";
             generatereportbtn.UseVisualStyleBackColor = false;
             // 
-            // systempanelcontents
-            // 
-            systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(46, 325);
-            systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 547);
-            systempanelcontents.TabIndex = 45;
-            systempanelcontents.Paint += systempanelcontents_Paint;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Black;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(296, 907);
-            button1.Name = "button1";
-            button1.Size = new Size(309, 58);
-            button1.TabIndex = 46;
-            button1.Text = "Add Expense";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // Expenses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1633, 1058);
+            ClientSize = new Size(1370, 749);
             Controls.Add(panel1);
             Name = "Expenses";
             Text = "Expenses";

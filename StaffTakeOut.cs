@@ -21,5 +21,33 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void onlineordersbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffOnlineOrders());
+        }
+
+        private void tablemapbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffTableMap());
+        }
+
+        private void deliverybtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffDelivery());
+        }
+
+        private void menubtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffDashboard());
+        }
+
+        private void LoadContent(Form form)
+        {
+            form.Show();
+            this.Hide(); // Optionally hide the current form
+        }
+
+        
     }
 }

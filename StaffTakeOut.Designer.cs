@@ -79,6 +79,7 @@
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
+            menubtn.Click += menubtn_Click;
             // 
             // onlineordersbtn
             // 
@@ -89,6 +90,7 @@
             onlineordersbtn.TabIndex = 3;
             onlineordersbtn.Text = "Online orders";
             onlineordersbtn.UseVisualStyleBackColor = true;
+            onlineordersbtn.Click += onlineordersbtn_Click;
             // 
             // deliverybtn
             // 
@@ -99,6 +101,7 @@
             deliverybtn.TabIndex = 2;
             deliverybtn.Text = "Delivery";
             deliverybtn.UseVisualStyleBackColor = true;
+            deliverybtn.Click += deliverybtn_Click;
             // 
             // takeoutbtn
             // 
@@ -119,6 +122,7 @@
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
+            tablemapbtn.Click += tablemapbtn_Click;
             // 
             // dashaddate
             // 
@@ -292,7 +296,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(1370, 749);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel17);

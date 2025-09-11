@@ -42,6 +42,10 @@
             takeoutbtn = new Button();
             tablemapbtn = new Button();
             panel2 = new Panel();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            label8 = new Label();
+            label3 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -88,10 +92,6 @@
             addorderbtn = new Button();
             applydiscountbtn = new Button();
             staffdashlogout = new Button();
-            label3 = new Label();
-            label8 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
@@ -208,6 +208,7 @@
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
+            menubtn.Click += menubtn_Click;
             // 
             // onlineordersbtn
             // 
@@ -218,6 +219,7 @@
             onlineordersbtn.TabIndex = 3;
             onlineordersbtn.Text = "Online orders";
             onlineordersbtn.UseVisualStyleBackColor = true;
+            onlineordersbtn.Click += onlineordersbtn_Click;
             // 
             // deliverybtn
             // 
@@ -228,6 +230,7 @@
             deliverybtn.TabIndex = 2;
             deliverybtn.Text = "Delivery";
             deliverybtn.UseVisualStyleBackColor = true;
+            deliverybtn.Click += deliverybtn_Click;
             // 
             // takeoutbtn
             // 
@@ -248,6 +251,7 @@
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
+            tablemapbtn.Click += tablemapbtn_Click;
             // 
             // panel2
             // 
@@ -276,6 +280,46 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(595, 720);
             panel2.TabIndex = 24;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Silver;
+            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox3.Location = new Point(105, 344);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(167, 37);
+            textBox3.TabIndex = 46;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.Silver;
+            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox2.Location = new Point(411, 344);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(167, 37);
+            textBox2.TabIndex = 45;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(301, 361);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 20);
+            label8.TabIndex = 44;
+            label8.Text = "Fixed Amount:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(37, 361);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 20);
+            label3.TabIndex = 43;
+            label3.Text = "Discount:";
             // 
             // label7
             // 
@@ -784,52 +828,12 @@
             staffdashlogout.UseVisualStyleBackColor = true;
             staffdashlogout.Click += staffdashlogout_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(37, 361);
-            label3.Name = "label3";
-            label3.Size = new Size(70, 20);
-            label3.TabIndex = 43;
-            label3.Text = "Discount:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(301, 361);
-            label8.Name = "label8";
-            label8.Size = new Size(104, 20);
-            label8.TabIndex = 44;
-            label8.Text = "Fixed Amount:";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.Silver;
-            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox2.Location = new Point(411, 344);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(167, 37);
-            textBox2.TabIndex = 45;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.Silver;
-            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox3.Location = new Point(105, 344);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(167, 37);
-            textBox3.TabIndex = 46;
-            // 
             // StaffDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(1370, 749);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
             Controls.Add(panelitems);

@@ -16,5 +16,15 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void WebAppThankYou_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

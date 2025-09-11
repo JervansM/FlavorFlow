@@ -31,5 +31,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void netprofitbtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
