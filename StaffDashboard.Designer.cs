@@ -42,6 +42,10 @@
             takeoutbtn = new Button();
             tablemapbtn = new Button();
             panel2 = new Panel();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            label8 = new Label();
+            label3 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -77,8 +81,7 @@
             maincoursesbtn = new Button();
             appetizerbtn = new Button();
             allitembtn = new Button();
-            panelitems = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            panelContent = new Panel();
             panel17 = new Panel();
             printbillbtn = new Button();
             sendtokitchenbtn = new Button();
@@ -88,10 +91,6 @@
             addorderbtn = new Button();
             applydiscountbtn = new Button();
             staffdashlogout = new Button();
-            label3 = new Label();
-            label8 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
@@ -100,7 +99,6 @@
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
-            panelitems.SuspendLayout();
             panel17.SuspendLayout();
             SuspendLayout();
             // 
@@ -208,6 +206,7 @@
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
+            menubtn.Click += menubtn_Click;
             // 
             // onlineordersbtn
             // 
@@ -248,6 +247,7 @@
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
+            tablemapbtn.Click += tablemapbtn_Click;
             // 
             // panel2
             // 
@@ -276,6 +276,46 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(595, 720);
             panel2.TabIndex = 24;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Silver;
+            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox3.Location = new Point(105, 344);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(167, 37);
+            textBox3.TabIndex = 46;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.Silver;
+            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            textBox2.Location = new Point(411, 344);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(167, 37);
+            textBox2.TabIndex = 45;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(301, 361);
+            label8.Name = "label8";
+            label8.Size = new Size(104, 20);
+            label8.TabIndex = 44;
+            label8.Text = "Fixed Amount:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(37, 361);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 20);
+            label3.TabIndex = 43;
+            label3.Text = "Discount:";
             // 
             // label7
             // 
@@ -658,31 +698,13 @@
             allitembtn.Text = "All Items";
             allitembtn.UseVisualStyleBackColor = true;
             // 
-            // panelitems
+            // panelContent
             // 
-            panelitems.BackColor = Color.White;
-            panelitems.Controls.Add(tableLayoutPanel1);
-            panelitems.Location = new Point(873, 255);
-            panelitems.Name = "panelitems";
-            panelitems.Size = new Size(990, 442);
-            panelitems.TabIndex = 26;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Location = new Point(21, 22);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Size = new Size(948, 399);
-            tableLayoutPanel1.TabIndex = 0;
+            panelContent.BackColor = Color.White;
+            panelContent.Location = new Point(873, 255);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(990, 442);
+            panelContent.TabIndex = 26;
             // 
             // panel17
             // 
@@ -784,46 +806,6 @@
             staffdashlogout.UseVisualStyleBackColor = true;
             staffdashlogout.Click += staffdashlogout_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(37, 361);
-            label3.Name = "label3";
-            label3.Size = new Size(70, 20);
-            label3.TabIndex = 43;
-            label3.Text = "Discount:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(301, 361);
-            label8.Name = "label8";
-            label8.Size = new Size(104, 20);
-            label8.TabIndex = 44;
-            label8.Text = "Fixed Amount:";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.Silver;
-            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox2.Location = new Point(411, 344);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(167, 37);
-            textBox2.TabIndex = 45;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.Silver;
-            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox3.Location = new Point(105, 344);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(167, 37);
-            textBox3.TabIndex = 46;
-            // 
             // StaffDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -832,7 +814,7 @@
             ClientSize = new Size(1924, 1061);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
-            Controls.Add(panelitems);
+            Controls.Add(panelContent);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -857,7 +839,6 @@
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panelitems.ResumeLayout(false);
             panel17.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -874,10 +855,9 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Panel panelitems;
+        private Panel panelContent;
         private Panel panel4;
         private Panel panel17;
-        private TableLayoutPanel tableLayoutPanel1;
         private Button allitembtn;
         private Button appetizerbtn;
         private Button essertbtn;

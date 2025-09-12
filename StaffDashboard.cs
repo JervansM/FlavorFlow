@@ -37,6 +37,25 @@ namespace FlavorFlowIT13
             this.Close();
 
         }
+        private void LoadContent(Form form)
+        {
+            foreach (Control ctrl in panelContent.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panelContent.Controls.Clear();
+
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            // Add to panel
+            panelContent.Controls.Add(form);
+            form.Show();
+
+        }
         private void StaffDashboard_Load_1(object sender, EventArgs e)
         {
             dashaddate.Text = DateTime.Now.ToString("d");
@@ -124,6 +143,17 @@ namespace FlavorFlowIT13
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void tablemapbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffTableMap());
+
+        }
+
+        private void menubtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new MenuManagement());
         }
     }
 }

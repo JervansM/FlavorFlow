@@ -31,5 +31,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void StaffTableMap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

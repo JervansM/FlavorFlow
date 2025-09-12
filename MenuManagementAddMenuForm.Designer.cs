@@ -53,7 +53,6 @@
             // panelForm
             // 
             panelForm.BackColor = Color.White;
-            panelForm.BackgroundImage = Properties.Resources.logo;
             panelForm.BackgroundImageLayout = ImageLayout.Zoom;
             panelForm.Controls.Add(menuformimagepreviewtxt);
             panelForm.Controls.Add(pictoreBoxMenu);
@@ -264,9 +263,9 @@
             addmenuitemtxt.ForeColor = Color.White;
             addmenuitemtxt.Location = new Point(14, 13);
             addmenuitemtxt.Name = "addmenuitemtxt";
-            addmenuitemtxt.Size = new Size(282, 37);
+            addmenuitemtxt.Size = new Size(233, 37);
             addmenuitemtxt.TabIndex = 19;
-            addmenuitemtxt.Text = "Add New Menu Item";
+            addmenuitemtxt.Text = "Input Menu Item";
             // 
             // MenuManagementAddMenuForm
             // 
