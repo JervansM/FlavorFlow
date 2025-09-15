@@ -59,6 +59,9 @@
             label3 = new Label();
             label2 = new Label();
             panel4 = new Panel();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -68,9 +71,6 @@
             label10 = new Label();
             button1 = new Button();
             button2 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
@@ -144,6 +144,7 @@
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
+            tablemapbtn.Click += tablemapbtn_Click;
             // 
             // dashaddate
             // 
@@ -415,6 +416,33 @@
             panel4.Size = new Size(787, 220);
             panel4.TabIndex = 35;
             // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Silver;
+            textBox3.Location = new Point(121, 159);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(312, 35);
+            textBox3.TabIndex = 12;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.Silver;
+            textBox2.Location = new Point(144, 105);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(312, 35);
+            textBox2.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.Silver;
+            textBox1.Location = new Point(202, 53);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(312, 35);
+            textBox1.TabIndex = 8;
+            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -507,39 +535,12 @@
             button2.Text = "Mark as Dispatched";
             button2.UseVisualStyleBackColor = false;
             // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.Silver;
-            textBox1.Location = new Point(202, 53);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(312, 35);
-            textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.Silver;
-            textBox2.Location = new Point(144, 105);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(312, 35);
-            textBox2.TabIndex = 11;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.Silver;
-            textBox3.Location = new Point(121, 159);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(312, 35);
-            textBox3.TabIndex = 12;
-            // 
             // StaffDelivery
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(1370, 749);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(panel5);
@@ -553,6 +554,7 @@
             Controls.Add(dashaddate);
             Controls.Add(userwelcome);
             Controls.Add(fficonadmin);
+            MinimumSize = new Size(1364, 718);
             Name = "StaffDelivery";
             Text = "StaffDelivery";
             panel1.ResumeLayout(false);

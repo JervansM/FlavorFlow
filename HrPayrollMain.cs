@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class HrLeave : Form
+    public partial class HrPayrollMain : Form
     {
-        public HrLeave()
+        public HrPayrollMain()
         {
             InitializeComponent();
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void systempanelcontents_Paint(object sender, PaintEventArgs e)
         {
 
         }
