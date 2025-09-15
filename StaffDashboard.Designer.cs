@@ -81,8 +81,7 @@
             maincoursesbtn = new Button();
             appetizerbtn = new Button();
             allitembtn = new Button();
-            panelitems = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            panelContent = new Panel();
             panel17 = new Panel();
             printbillbtn = new Button();
             sendtokitchenbtn = new Button();
@@ -100,7 +99,6 @@
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
-            panelitems.SuspendLayout();
             panel17.SuspendLayout();
             SuspendLayout();
             // 
@@ -702,31 +700,13 @@
             allitembtn.Text = "All Items";
             allitembtn.UseVisualStyleBackColor = true;
             // 
-            // panelitems
+            // panelContent
             // 
-            panelitems.BackColor = Color.White;
-            panelitems.Controls.Add(tableLayoutPanel1);
-            panelitems.Location = new Point(873, 255);
-            panelitems.Name = "panelitems";
-            panelitems.Size = new Size(990, 442);
-            panelitems.TabIndex = 26;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Location = new Point(21, 22);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Size = new Size(948, 399);
-            tableLayoutPanel1.TabIndex = 0;
+            panelContent.BackColor = Color.White;
+            panelContent.Location = new Point(873, 255);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(990, 442);
+            panelContent.TabIndex = 26;
             // 
             // panel17
             // 
@@ -836,7 +816,7 @@
             ClientSize = new Size(1370, 749);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
-            Controls.Add(panelitems);
+            Controls.Add(panelContent);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -861,7 +841,6 @@
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panelitems.ResumeLayout(false);
             panel17.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -878,10 +857,9 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Panel panelitems;
+        private Panel panelContent;
         private Panel panel4;
         private Panel panel17;
-        private TableLayoutPanel tableLayoutPanel1;
         private Button allitembtn;
         private Button appetizerbtn;
         private Button essertbtn;

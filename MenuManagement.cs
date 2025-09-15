@@ -50,9 +50,9 @@ namespace FlavorFlowIT13
                 var result = addMenuForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    LoadMenuData(); 
+                    LoadMenuData();
 
-                
+
                     MessageBox.Show("New menu item added!");
                 }
             }
@@ -88,10 +88,18 @@ namespace FlavorFlowIT13
                 RoundPanel(systemsearchbarpanel, 25);
                 RoundButton(addmenuitembtn, 20);
                 RoundPanel(salespospanelcontents, 25);
-
+                RoundButton(menumanagementrecipebtn, 20);
                 RoundButton(menuedititembtn, 20);
 
+                
 
+                menumanagementrecipebtn.UseVisualStyleBackColor = false;
+                menumanagementrecipebtn.FlatStyle = FlatStyle.Flat;
+                menumanagementrecipebtn.FlatAppearance.BorderSize = 0;
+                menumanagementrecipebtn.BackColor = ColorTranslator.FromHtml("#2823B1");
+                menumanagementrecipebtn.ForeColor = Color.White;
+                menumanagementrecipebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#221E8D");
+                menumanagementrecipebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#221E8D");
 
                 addmenuitembtn.UseVisualStyleBackColor = false;
                 addmenuitembtn.FlatStyle = FlatStyle.Flat;
@@ -110,6 +118,110 @@ namespace FlavorFlowIT13
                 menuedititembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#B47E32");
             }
         }
+        public void AddMenuIngredients(int menuId, List<(int InventoryId, decimal QuantityUsed)> ingredients)
+        {
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                foreach (var item in ingredients)
+                {
+                    using (var cmd = new SqlCommand(
+                        "INSERT INTO MenuInventory (MenuID, InventoryID, QuantityUsed) VALUES (@MenuID, @InventoryID, @QuantityUsed)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MenuID", menuId);
+                        cmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
+                        cmd.Parameters.AddWithValue("@QuantityUsed", item.QuantityUsed);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+        public DataTable GetMenuIngredients(int menuId)
+        {
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new SqlCommand(@"
+            SELECT MI.InventoryID, I.Name, MI.QuantityUsed
+            FROM MenuInventory MI
+            JOIN Inventory I ON MI.InventoryID = I.InventoryID
+            WHERE MI.MenuID = @MenuID", conn);
+                cmd.Parameters.AddWithValue("@MenuID", menuId);
+
+                var dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                return dt;
+            }
+        }
+        public bool PlaceOrder(int menuId, int quantity)
+        {
+            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // 1. Get ingredients for this menu
+                        var cmd = new SqlCommand(@"
+                    SELECT InventoryID, QuantityUsed
+                    FROM MenuInventory
+                    WHERE MenuID = @MenuID", conn, transaction);
+                        cmd.Parameters.AddWithValue("@MenuID", menuId);
+
+                        var reader = cmd.ExecuteReader();
+                        var ingredients = new List<(int InventoryId, decimal QuantityUsed)>();
+                        while (reader.Read())
+                        {
+                            ingredients.Add((reader.GetInt32(0), reader.GetDecimal(1)));
+                        }
+                        reader.Close();
+
+                        // 2. Check stock
+                        foreach (var item in ingredients)
+                        {
+                            var checkCmd = new SqlCommand(
+                                "SELECT Quantity FROM Inventory WHERE InventoryID=@InventoryID", conn, transaction);
+                            checkCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
+                            decimal stock = (decimal)checkCmd.ExecuteScalar();
+
+                            if (stock < item.QuantityUsed * quantity)
+                                throw new Exception($"Out of stock: InventoryID {item.InventoryId}");
+                        }
+
+                        // 3. Deduct stock
+                        foreach (var item in ingredients)
+                        {
+                            var updateCmd = new SqlCommand(@"
+                        UPDATE Inventory
+                        SET Quantity = Quantity - @Qty,
+                            UpdatedAt = GETDATE()
+                        WHERE InventoryID=@InventoryID", conn, transaction);
+                            updateCmd.Parameters.AddWithValue("@Qty", item.QuantityUsed * quantity);
+                            updateCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
+                            updateCmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -159,7 +271,7 @@ namespace FlavorFlowIT13
                             card.BackColor = Color.White;
                             card.BorderStyle = BorderStyle.FixedSingle;
 
-                           
+
                             flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
                         }
                     }
@@ -204,7 +316,7 @@ namespace FlavorFlowIT13
 
             // Picture
             PictureBox pic = new PictureBox();
-           
+
             pic.SizeMode = PictureBoxSizeMode.Zoom;
             pic.MinimumSize = new Size(320, 200);
             pic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -231,7 +343,7 @@ namespace FlavorFlowIT13
             lblName.ForeColor = Color.Black;
             lblName.Font = new Font("Segoe UI", 15, FontStyle.Bold);
             card.Controls.Add(lblName);
-            y += lblName.Height + 5 ;
+            y += lblName.Height + 5;
 
             Label lblDesc = new Label();
             lblDesc.Text = reader["Description"].ToString();
@@ -249,7 +361,7 @@ namespace FlavorFlowIT13
             lblCategory.ForeColor = ColorTranslator.FromHtml("#2823B1");
             lblCategory.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             card.Controls.Add(lblCategory);
-            y += lblDesc.Height + 5 ;
+            y += lblDesc.Height + 5;
 
             Label lblPrice = new Label();
             lblPrice.Text = "₱" + Convert.ToDecimal(reader["Price"]).ToString("N2");
@@ -270,7 +382,7 @@ namespace FlavorFlowIT13
             card.Controls.Add(lblStatus);
             lblStatus.TextAlign = ContentAlignment.BottomRight;
 
-           
+
 
 
 
@@ -280,10 +392,17 @@ namespace FlavorFlowIT13
 
 
 
-     
+
 
         private void flowLayoutMenuCard_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void menumanagementrecipebtn_Click(object sender, EventArgs e)
+        {
+            MenuRecipeForm recipeForm = new MenuRecipeForm();
+            recipeForm.Show();
 
         }
     }

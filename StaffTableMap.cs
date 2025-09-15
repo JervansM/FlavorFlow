@@ -32,6 +32,7 @@ namespace FlavorFlowIT13
 
         }
 
+<<<<<<< HEAD
         private void deliverybtn_Click(object sender, EventArgs e)
         {
             LoadContent(new StaffDelivery());
@@ -59,5 +60,11 @@ namespace FlavorFlowIT13
         }
 
         
+=======
+        private void StaffTableMap_Load(object sender, EventArgs e)
+        {
+
+        }
+>>>>>>> master
     }
 }
