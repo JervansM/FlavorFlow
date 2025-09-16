@@ -49,7 +49,7 @@
             // 
             // signuppanel
             // 
-            signuppanel.BackColor = Color.WhiteSmoke;
+            signuppanel.BackColor = Color.Transparent;
             signuppanel.Controls.Add(webapploginbtn);
             signuppanel.Controls.Add(webappsignupbtn);
             signuppanel.Controls.Add(webappaddresstxt);
@@ -64,7 +64,7 @@
             signuppanel.Controls.Add(label2);
             signuppanel.Controls.Add(label1);
             signuppanel.Controls.Add(name);
-            signuppanel.Location = new Point(318, 106);
+            signuppanel.Location = new Point(124, 95);
             signuppanel.Name = "signuppanel";
             signuppanel.Size = new Size(732, 583);
             signuppanel.TabIndex = 1;

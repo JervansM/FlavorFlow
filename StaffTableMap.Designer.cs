@@ -54,69 +54,87 @@
             // 
             // table6btn
             // 
-            table6btn.BackColor = Color.LimeGreen;
+            table6btn.BackColor = SystemColors.ActiveBorder;
+            table6btn.FlatStyle = FlatStyle.Flat;
             table6btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table6btn.ForeColor = SystemColors.Control;
             table6btn.Location = new Point(694, 254);
             table6btn.Name = "table6btn";
             table6btn.Size = new Size(209, 137);
             table6btn.TabIndex = 34;
             table6btn.Text = "Table 6";
             table6btn.UseVisualStyleBackColor = false;
+            table6btn.Click += table6btn_Click;
             // 
             // table3btn
             // 
-            table3btn.BackColor = Color.Firebrick;
+            table3btn.BackColor = SystemColors.ActiveBorder;
+            table3btn.FlatStyle = FlatStyle.Flat;
             table3btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table3btn.ForeColor = SystemColors.Control;
             table3btn.Location = new Point(694, 71);
             table3btn.Name = "table3btn";
             table3btn.Size = new Size(209, 137);
             table3btn.TabIndex = 31;
             table3btn.Text = "Table 3";
             table3btn.UseVisualStyleBackColor = false;
+            table3btn.Click += table3btn_Click;
             // 
             // table5btn
             // 
-            table5btn.BackColor = Color.DodgerBlue;
+            table5btn.BackColor = SystemColors.ActiveBorder;
+            table5btn.FlatStyle = FlatStyle.Flat;
             table5btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table5btn.ForeColor = SystemColors.Control;
             table5btn.Location = new Point(392, 254);
             table5btn.Name = "table5btn";
             table5btn.Size = new Size(209, 137);
             table5btn.TabIndex = 33;
             table5btn.Text = "Table 5";
             table5btn.UseVisualStyleBackColor = false;
+            table5btn.Click += table5btn_Click;
             // 
             // table1btn
             // 
-            table1btn.BackColor = Color.DodgerBlue;
+            table1btn.BackColor = SystemColors.ActiveBorder;
+            table1btn.FlatStyle = FlatStyle.Flat;
             table1btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table1btn.ForeColor = SystemColors.Control;
             table1btn.Location = new Point(87, 71);
             table1btn.Name = "table1btn";
             table1btn.Size = new Size(209, 137);
             table1btn.TabIndex = 29;
             table1btn.Text = "Table 1";
             table1btn.UseVisualStyleBackColor = false;
+            table1btn.Click += table1btn_Click;
             // 
             // table4btn
             // 
-            table4btn.BackColor = Color.Firebrick;
+            table4btn.BackColor = SystemColors.ActiveBorder;
+            table4btn.FlatStyle = FlatStyle.Flat;
             table4btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table4btn.ForeColor = SystemColors.Control;
             table4btn.Location = new Point(87, 254);
             table4btn.Name = "table4btn";
             table4btn.Size = new Size(209, 137);
             table4btn.TabIndex = 32;
             table4btn.Text = "Table 4";
             table4btn.UseVisualStyleBackColor = false;
+            table4btn.Click += table4btn_Click;
             // 
             // table2btn
             // 
-            table2btn.BackColor = Color.LimeGreen;
+            table2btn.BackColor = SystemColors.ActiveBorder;
+            table2btn.FlatStyle = FlatStyle.Flat;
             table2btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            table2btn.ForeColor = SystemColors.Control;
             table2btn.Location = new Point(392, 71);
             table2btn.Name = "table2btn";
             table2btn.Size = new Size(209, 137);
             table2btn.TabIndex = 30;
             table2btn.Text = "Table 2";
             table2btn.UseVisualStyleBackColor = false;
+            table2btn.Click += table2btn_Click;
             // 
             // StaffTableMap
             // 

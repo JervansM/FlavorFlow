@@ -169,6 +169,7 @@ namespace FlavorFlowIT13
                                 {
                                     if (editForm.ShowDialog() == DialogResult.OK)
                                     {
+
                                         LoadInventoryData(); 
                                     }
                                 }

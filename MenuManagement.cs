@@ -15,9 +15,12 @@ namespace FlavorFlowIT13
     {
         private int? _selectedMenuId = null;
 
+        
+
         public MenuManagement()
         {
             InitializeComponent();
+
 
 
 
@@ -77,8 +80,7 @@ namespace FlavorFlowIT13
         private void MenuManagement_Load(object sender, EventArgs e)
         {
             LoadMenuData();
-
-
+    
 
 
 
@@ -118,6 +120,7 @@ namespace FlavorFlowIT13
                 menuedititembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#B47E32");
             }
         }
+       
         public void AddMenuIngredients(int menuId, List<(int InventoryId, decimal QuantityUsed)> ingredients)
         {
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -317,7 +320,7 @@ namespace FlavorFlowIT13
             // Picture
             PictureBox pic = new PictureBox();
 
-            pic.SizeMode = PictureBoxSizeMode.Zoom;
+            pic.SizeMode = PictureBoxSizeMode.StretchImage;
             pic.MinimumSize = new Size(320, 200);
             pic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             if (reader["ImagePath"] != DBNull.Value)

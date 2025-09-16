@@ -67,7 +67,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3068, 206);
+            panel6.Location = new Point(3070, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -89,7 +89,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3068, 2421);
+            panel5.Location = new Point(3070, 2423);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -111,7 +111,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3068, 4690);
+            panel4.Location = new Point(3070, 4693);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -133,7 +133,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2394, 206);
+            dashtotalexpense.Location = new Point(2396, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -155,7 +155,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2394, 2064);
+            dashinventoryusage.Location = new Point(2396, 2066);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -177,7 +177,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2394, 3976);
+            dashnetprofit.Location = new Point(2396, 3979);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -258,12 +258,11 @@
             menuedititembtn.TabIndex = 50;
             menuedititembtn.Text = "Edit Item";
             menuedititembtn.UseVisualStyleBackColor = false;
+            menuedititembtn.Visible = false;
             menuedititembtn.Click += menuedititembtn_Click;
             // 
             // panelContent
             // 
-            panelContent.AutoScroll = true;
-            panelContent.AutoSize = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
             panelContent.Controls.Add(menumanagementrecipebtn);
@@ -311,7 +310,7 @@
             flowLayoutMenuCard.Controls.Add(menuedititembtn);
             flowLayoutMenuCard.Location = new Point(13, 13);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(1505, 2560);
+            flowLayoutMenuCard.Size = new Size(1505, 1500);
             flowLayoutMenuCard.TabIndex = 0;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
@@ -320,7 +319,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1184, 1061);
+            ClientSize = new Size(1161, 860);
             Controls.Add(panelContent);
             DoubleBuffered = true;
             Name = "MenuManagement";
@@ -345,7 +344,6 @@
             salespospanelcontents.ResumeLayout(false);
             flowLayoutMenuCard.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

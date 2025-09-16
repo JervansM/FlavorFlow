@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "WebAppMenu";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebAppMenu));
+            panel2 = new Panel();
+            SuspendLayout();
+            // 
+            // panel2
+            // 
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.BackgroundImageLayout = ImageLayout.Zoom;
+            panel2.Location = new Point(12, 12);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(168, 124);
+            panel2.TabIndex = 10;
+            // 
+            // WebAppMenu
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1370, 749);
+            Controls.Add(panel2);
+            Name = "WebAppMenu";
+            Text = "WebAppMenu";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel2;
     }
 }

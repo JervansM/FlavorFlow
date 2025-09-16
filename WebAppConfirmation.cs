@@ -16,5 +16,10 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void WebAppConfirmation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

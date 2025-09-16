@@ -236,12 +236,17 @@ namespace FlavorFlowIT13
             if (e.RowIndex >= 0)
             {
                 var row = recipeGrid.Rows[e.RowIndex];
-                int menuInventoryId = Convert.ToInt32(row.Cells[0].Value); 
-                string itemName = row.Cells[1].Value.ToString(); 
-                decimal quantityUsed = Convert.ToDecimal(row.Cells[2].Value); 
-                string unit = row.Cells[3].Value.ToString(); 
-
-                _editMenuInventoryId = menuInventoryId;
+                // Defensive: check if column exists
+                object menuInventoryIdObj = row.Cells["MenuInventoryID"].Value;
+                object itemNameObj = row.Cells["ItemName"].Value;
+                object quantityUsedObj = row.Cells["QuantityUsed"].Value;
+                object unitObj = row.Cells["Unit"].Value;
+                if (menuInventoryIdObj == null || itemNameObj == null || quantityUsedObj == null || unitObj == null)
+                    return;
+                _editMenuInventoryId = Convert.ToInt32(menuInventoryIdObj);
+                string itemName = itemNameObj.ToString();
+                decimal quantityUsed = Convert.ToDecimal(quantityUsedObj);
+                string unit = unitObj.ToString();
 
                 // Find and select the correct inventory item in ComboBox
                 foreach (DataRowView drv in inventoryitemdata.Items)
