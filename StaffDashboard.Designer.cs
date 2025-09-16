@@ -155,7 +155,6 @@
             adminicon.SizeMode = PictureBoxSizeMode.Zoom;
             adminicon.TabIndex = 19;
             adminicon.TabStop = false;
-        
             // 
             // userwelcome
             // 
@@ -194,7 +193,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1835, 80);
             panel1.TabIndex = 23;
-            panel1.Paint += panel1_Paint;
             // 
             // menubtn
             // 
@@ -206,7 +204,7 @@
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
-            menubtn.Click += menubtn_Click;
+            menubtn.Click += menubtn_Click_1;
             // 
             // onlineordersbtn
             // 
@@ -278,6 +276,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(595, 720);
             panel2.TabIndex = 24;
+            panel2.Paint += panel2_Paint;
             // 
             // textBox3
             // 
@@ -513,7 +512,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(209, 259);
             panel4.TabIndex = 27;
-            panel4.Paint += panel4_Paint;
             // 
             // btn0
             // 
@@ -639,6 +637,7 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.BackgroundImageLayout = ImageLayout.None;
             panel3.Controls.Add(essertbtn);
             panel3.Controls.Add(beveragebtn);
             panel3.Controls.Add(maincoursesbtn);
@@ -646,59 +645,69 @@
             panel3.Controls.Add(allitembtn);
             panel3.Location = new Point(630, 257);
             panel3.Name = "panel3";
-            panel3.Size = new Size(225, 442);
+            panel3.Size = new Size(237, 442);
             panel3.TabIndex = 25;
+            panel3.Paint += panel3_Paint;
             // 
             // essertbtn
             // 
+            essertbtn.BackColor = Color.Gainsboro;
             essertbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            essertbtn.Location = new Point(3, 276);
+            essertbtn.Location = new Point(9, 352);
             essertbtn.Name = "essertbtn";
-            essertbtn.Size = new Size(219, 58);
+            essertbtn.Size = new Size(219, 80);
             essertbtn.TabIndex = 4;
             essertbtn.Text = "Dessert";
-            essertbtn.UseVisualStyleBackColor = true;
+            essertbtn.UseVisualStyleBackColor = false;
+            essertbtn.Click += essertbtn_Click;
             // 
             // beveragebtn
             // 
+            beveragebtn.BackColor = Color.Gainsboro;
             beveragebtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            beveragebtn.Location = new Point(3, 212);
+            beveragebtn.Location = new Point(9, 266);
             beveragebtn.Name = "beveragebtn";
-            beveragebtn.Size = new Size(219, 58);
+            beveragebtn.Size = new Size(219, 80);
             beveragebtn.TabIndex = 3;
             beveragebtn.Text = "Beverage";
-            beveragebtn.UseVisualStyleBackColor = true;
+            beveragebtn.UseVisualStyleBackColor = false;
+            beveragebtn.Click += beveragebtn_Click;
             // 
             // maincoursesbtn
             // 
+            maincoursesbtn.BackColor = Color.Gainsboro;
             maincoursesbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            maincoursesbtn.Location = new Point(3, 148);
+            maincoursesbtn.Location = new Point(9, 180);
             maincoursesbtn.Name = "maincoursesbtn";
-            maincoursesbtn.Size = new Size(219, 58);
+            maincoursesbtn.Size = new Size(219, 80);
             maincoursesbtn.TabIndex = 2;
             maincoursesbtn.Text = "Main Courses";
-            maincoursesbtn.UseVisualStyleBackColor = true;
+            maincoursesbtn.UseVisualStyleBackColor = false;
+            maincoursesbtn.Click += maincoursesbtn_Click;
             // 
             // appetizerbtn
             // 
+            appetizerbtn.BackColor = Color.Gainsboro;
             appetizerbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            appetizerbtn.Location = new Point(3, 84);
+            appetizerbtn.Location = new Point(9, 94);
             appetizerbtn.Name = "appetizerbtn";
-            appetizerbtn.Size = new Size(219, 58);
+            appetizerbtn.Size = new Size(219, 80);
             appetizerbtn.TabIndex = 1;
             appetizerbtn.Text = "Appetizer";
-            appetizerbtn.UseVisualStyleBackColor = true;
-            appetizerbtn.Click += button2_Click;
+            appetizerbtn.UseVisualStyleBackColor = false;
+            appetizerbtn.Click += appetizerbtn_Click;
             // 
             // allitembtn
             // 
+            allitembtn.BackColor = Color.Gainsboro;
             allitembtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            allitembtn.Location = new Point(3, 20);
+            allitembtn.Location = new Point(9, 8);
             allitembtn.Name = "allitembtn";
-            allitembtn.Size = new Size(219, 58);
+            allitembtn.Size = new Size(219, 80);
             allitembtn.TabIndex = 0;
             allitembtn.Text = "All Items";
-            allitembtn.UseVisualStyleBackColor = true;
+            allitembtn.UseVisualStyleBackColor = false;
+            allitembtn.Click += allitembtn_Click;
             // 
             // panelContent
             // 
@@ -707,6 +716,7 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(990, 442);
             panelContent.TabIndex = 26;
+            panelContent.Paint += panelContent_Paint;
             // 
             // panel17
             // 
@@ -745,7 +755,6 @@
             sendtokitchenbtn.TabIndex = 10;
             sendtokitchenbtn.Text = "Send to Kitchen";
             sendtokitchenbtn.UseVisualStyleBackColor = true;
-            sendtokitchenbtn.Click += button6_Click;
             // 
             // holdorderbtn
             // 
@@ -796,7 +805,6 @@
             applydiscountbtn.TabIndex = 5;
             applydiscountbtn.Text = "Apply Discount";
             applydiscountbtn.UseVisualStyleBackColor = true;
-            applydiscountbtn.Click += button1_Click;
             // 
             // staffdashlogout
             // 
@@ -813,7 +821,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1701, 835);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
             Controls.Add(panelContent);
@@ -826,11 +834,12 @@
             Controls.Add(adminicon);
             Controls.Add(userwelcome);
             Controls.Add(fficonadmin);
+            DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StaffDashboard";
             Text = "Staff Dashboard";
             WindowState = FormWindowState.Maximized;
-            Load += StaffDashboard_Load_1;
+            Load += StaffDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();

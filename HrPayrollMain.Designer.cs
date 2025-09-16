@@ -95,7 +95,6 @@
             hrpayrollmaingeneratepayrollpsbtn.TabIndex = 76;
             hrpayrollmaingeneratepayrollpsbtn.Text = "Generate Payroll";
             hrpayrollmaingeneratepayrollpsbtn.UseVisualStyleBackColor = false;
-            hrpayrollmaingeneratepayrollpsbtn.Click += this.hrpayrollmaingeneratepayrollpsbtn_Click;
             // 
             // hrpayrollmainpayrollperiodsbtn
             // 
@@ -111,7 +110,6 @@
             hrpayrollmainpayrollperiodsbtn.TabIndex = 75;
             hrpayrollmainpayrollperiodsbtn.Text = "Payroll Periods";
             hrpayrollmainpayrollperiodsbtn.UseVisualStyleBackColor = false;
-            hrpayrollmainpayrollperiodsbtn.Click += this.hrpayrollmainpayrollperiodsbtn_Click;
             // 
             // hrpayrollmainallowanceanddeductionsbtn
             // 
@@ -127,7 +125,6 @@
             hrpayrollmainallowanceanddeductionsbtn.TabIndex = 78;
             hrpayrollmainallowanceanddeductionsbtn.Text = "Allowance and Deductions";
             hrpayrollmainallowanceanddeductionsbtn.UseVisualStyleBackColor = false;
-            hrpayrollmainallowanceanddeductionsbtn.Click += this.hrpayrollmainallowanceanddeductionsbtn_Click;
             // 
             // hrpayrollmainovertimesrecordsbtn
             // 
@@ -143,7 +140,6 @@
             hrpayrollmainovertimesrecordsbtn.TabIndex = 79;
             hrpayrollmainovertimesrecordsbtn.Text = "Overtime Records";
             hrpayrollmainovertimesrecordsbtn.UseVisualStyleBackColor = false;
-            hrpayrollmainovertimesrecordsbtn.Click += this.hrpayrollmainovertimesrecordsbtn_Click;
             // 
             // label4
             // 
@@ -328,7 +324,6 @@
             Controls.Add(hrpayrollmainpayrollperiodsbtn);
             Name = "HrPayrollMain";
             Text = "HrPayrollMain";
-            Load += this.HrPayrollMain_Load;
             systempanelcontents.ResumeLayout(false);
             systempanelcontents.PerformLayout();
             ResumeLayout(false);

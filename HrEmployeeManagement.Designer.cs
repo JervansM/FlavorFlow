@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
-            this.hremployeemanagementviewprofilebtn = new Button();
             hremployeemanagementaddemployeebtn = new Button();
             systempanelcontents = new Panel();
             systempanelheadercoral = new Panel();
@@ -75,7 +74,6 @@
             panelContent.BackgroundImageLayout = ImageLayout.None;
             panelContent.Controls.Add(label6);
             panelContent.Controls.Add(panel1);
-            panelContent.Controls.Add(this.hremployeemanagementviewprofilebtn);
             panelContent.Controls.Add(hremployeemanagementaddemployeebtn);
             panelContent.Controls.Add(systempanelcontents);
             panelContent.Controls.Add(systemsearchbarpanel);
@@ -92,18 +90,7 @@
             // 
             // hremployeemanagementviewprofilebtn
             // 
-            this.hremployeemanagementviewprofilebtn.BackColor = Color.Black;
-            this.hremployeemanagementviewprofilebtn.BackgroundImageLayout = ImageLayout.None;
-            this.hremployeemanagementviewprofilebtn.Cursor = Cursors.Hand;
-            this.hremployeemanagementviewprofilebtn.FlatStyle = FlatStyle.Flat;
-            this.hremployeemanagementviewprofilebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            this.hremployeemanagementviewprofilebtn.ForeColor = Color.White;
-            this.hremployeemanagementviewprofilebtn.Location = new Point(366, 96);
-            this.hremployeemanagementviewprofilebtn.Name = "hremployeemanagementviewprofilebtn";
-            this.hremployeemanagementviewprofilebtn.Size = new Size(309, 58);
-            this.hremployeemanagementviewprofilebtn.TabIndex = 30;
-            this.hremployeemanagementviewprofilebtn.Text = "View Profile";
-            this.hremployeemanagementviewprofilebtn.UseVisualStyleBackColor = false;
+     
             // 
             // hremployeemanagementaddemployeebtn
             // 
