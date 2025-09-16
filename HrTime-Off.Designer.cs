@@ -1,6 +1,6 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class HrLeave
+    partial class HrTime_Off
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            hrleaveaddnewtimeoffbtn = new Button();
             hrleaveviewbalancebtn = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
@@ -51,9 +52,9 @@
             label1 = new Label();
             hrleavetimeoffbtn = new Button();
             hrleaveleaverequestbtn = new Button();
-            hrleaveaddnewleavebtn = new Button();
-            panel1 = new Panel();
+            label3 = new Label();
             label10 = new Label();
+            panel1 = new Panel();
             panelContent.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -68,7 +69,7 @@
             panelContent.BackColor = Color.Silver;
             panelContent.Controls.Add(panel1);
             panelContent.Controls.Add(label10);
-            panelContent.Controls.Add(hrleaveaddnewleavebtn);
+            panelContent.Controls.Add(hrleaveaddnewtimeoffbtn);
             panelContent.Controls.Add(hrleaveviewbalancebtn);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(panel3);
@@ -81,12 +82,22 @@
             panelContent.Location = new Point(-84, -136);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1538, 1021);
-            panelContent.TabIndex = 4;
+            panelContent.TabIndex = 5;
+            // 
+            // hrleaveaddnewtimeoffbtn
+            // 
+            hrleaveaddnewtimeoffbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrleaveaddnewtimeoffbtn.Location = new Point(400, 811);
+            hrleaveaddnewtimeoffbtn.Name = "hrleaveaddnewtimeoffbtn";
+            hrleaveaddnewtimeoffbtn.Size = new Size(287, 62);
+            hrleaveaddnewtimeoffbtn.TabIndex = 52;
+            hrleaveaddnewtimeoffbtn.Text = "Add New Time-Off";
+            hrleaveaddnewtimeoffbtn.UseVisualStyleBackColor = true;
             // 
             // hrleaveviewbalancebtn
             // 
             hrleaveviewbalancebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrleaveviewbalancebtn.Location = new Point(893, 811);
+            hrleaveviewbalancebtn.Location = new Point(841, 811);
             hrleaveviewbalancebtn.Name = "hrleaveviewbalancebtn";
             hrleaveviewbalancebtn.Size = new Size(287, 62);
             hrleaveviewbalancebtn.TabIndex = 53;
@@ -121,7 +132,7 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(633, -16);
+            systemsearchbar.Location = new Point(1256, -37);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
@@ -220,12 +231,13 @@
             systempanelcontents.BackColor = Color.White;
             systempanelcontents.Location = new Point(46, 403);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 226);
+            systempanelcontents.Size = new Size(1447, 216);
             systempanelcontents.TabIndex = 46;
             // 
             // systempanelheadercoral
             // 
             systempanelheadercoral.BackColor = Color.Coral;
+            systempanelheadercoral.Controls.Add(label3);
             systempanelheadercoral.Controls.Add(label6);
             systempanelheadercoral.Controls.Add(label5);
             systempanelheadercoral.Controls.Add(label4);
@@ -240,7 +252,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label6.Location = new Point(766, 28);
+            label6.Location = new Point(679, 28);
             label6.Name = "label6";
             label6.Size = new Size(78, 32);
             label6.TabIndex = 5;
@@ -250,7 +262,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.Location = new Point(1012, 28);
+            label5.Location = new Point(1028, 28);
             label5.Name = "label5";
             label5.Size = new Size(329, 32);
             label5.TabIndex = 4;
@@ -260,7 +272,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label4.Location = new Point(237, 28);
+            label4.Location = new Point(169, 28);
             label4.Name = "label4";
             label4.Size = new Size(125, 32);
             label4.TabIndex = 3;
@@ -270,11 +282,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label2.Location = new Point(522, 28);
+            label2.Location = new Point(440, 28);
             label2.Name = "label2";
-            label2.Size = new Size(68, 32);
+            label2.Size = new Size(96, 32);
             label2.TabIndex = 1;
-            label2.Text = "Type";
+            label2.Text = "Reason";
             // 
             // label1
             // 
@@ -294,7 +306,7 @@
             hrleavetimeoffbtn.FlatStyle = FlatStyle.Flat;
             hrleavetimeoffbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrleavetimeoffbtn.ForeColor = Color.White;
-            hrleavetimeoffbtn.Location = new Point(379, 194);
+            hrleavetimeoffbtn.Location = new Point(400, 198);
             hrleavetimeoffbtn.Name = "hrleavetimeoffbtn";
             hrleavetimeoffbtn.Size = new Size(309, 58);
             hrleavetimeoffbtn.TabIndex = 43;
@@ -309,50 +321,49 @@
             hrleaveleaverequestbtn.FlatStyle = FlatStyle.Flat;
             hrleaveleaverequestbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrleaveleaverequestbtn.ForeColor = Color.White;
-            hrleaveleaverequestbtn.Location = new Point(46, 194);
+            hrleaveleaverequestbtn.Location = new Point(61, 198);
             hrleaveleaverequestbtn.Name = "hrleaveleaverequestbtn";
             hrleaveleaverequestbtn.Size = new Size(309, 58);
             hrleaveleaverequestbtn.TabIndex = 42;
             hrleaveleaverequestbtn.Text = "Leave Request";
             hrleaveleaverequestbtn.UseVisualStyleBackColor = false;
             // 
-            // hrleaveaddnewleavebtn
+            // label3
             // 
-            hrleaveaddnewleavebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrleaveaddnewleavebtn.Location = new Point(349, 811);
-            hrleaveaddnewleavebtn.Name = "hrleaveaddnewleavebtn";
-            hrleaveaddnewleavebtn.Size = new Size(287, 62);
-            hrleaveaddnewleavebtn.TabIndex = 52;
-            hrleaveaddnewleavebtn.Text = "Add New Leave";
-            hrleaveaddnewleavebtn.UseVisualStyleBackColor = true;
-            hrleaveaddnewleavebtn.Click += button1_Click;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Location = new Point(86, 679);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1369, 120);
-            panel1.TabIndex = 56;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.Location = new Point(859, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 32);
+            label3.TabIndex = 6;
+            label3.Text = "Hours";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label10.Location = new Point(86, 644);
+            label10.Location = new Point(86, 637);
             label10.Name = "label10";
-            label10.Size = new Size(173, 32);
-            label10.TabIndex = 55;
-            label10.Text = "Leave Balance";
+            label10.Size = new Size(232, 32);
+            label10.TabIndex = 7;
+            label10.Text = "Time-Off Summary";
             // 
-            // HrLeave
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Location = new Point(86, 672);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1369, 120);
+            panel1.TabIndex = 54;
+            // 
+            // HrTime_Off
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1370, 749);
             Controls.Add(panelContent);
-            Name = "HrLeave";
-            Text = "HrLeave";
+            Name = "HrTime_Off";
+            Text = "HrTime_Off";
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             systemsearchbarpanel.ResumeLayout(false);
@@ -372,10 +383,11 @@
         #endregion
 
         private Panel panelContent;
+        private Button hrleaveaddnewtimeoffbtn;
+        private Button hrleaveviewbalancebtn;
         private Panel systemsearchbarpanel;
         private PictureBox systemsearchbaricon;
         private TextBox systemsearchbar;
-        private Panel panel5;
         private Panel panel3;
         private TextBox netsalestxtbox;
         private Label label9;
@@ -387,6 +399,7 @@
         private Label label7;
         private Panel systempanelcontents;
         private Panel systempanelheadercoral;
+        private Label label3;
         private Label label6;
         private Label label5;
         private Label label4;
@@ -394,8 +407,6 @@
         private Label label1;
         private Button hrleavetimeoffbtn;
         private Button hrleaveleaverequestbtn;
-        private Button hrleaveviewbalancebtn;
-        private Button hrleaveaddnewleavebtn;
         private Panel panel1;
         private Label label10;
     }

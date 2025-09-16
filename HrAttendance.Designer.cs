@@ -46,15 +46,15 @@
             label7 = new Label();
             systempanelcontents = new Panel();
             systempanelheadercoral = new Panel();
+            label12 = new Label();
+            label11 = new Label();
+            label1 = new Label();
             label6 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             hrattendanceschedulebtn = new Button();
             hrattendancedailyttendancebtn = new Button();
-            label1 = new Label();
-            label11 = new Label();
-            label12 = new Label();
             panelContent.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -256,6 +256,36 @@
             systempanelheadercoral.Size = new Size(1447, 82);
             systempanelheadercoral.TabIndex = 38;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label12.Location = new Point(992, 28);
+            label12.Name = "label12";
+            label12.Size = new Size(56, 32);
+            label12.TabIndex = 8;
+            label12.Text = "Out";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label11.Location = new Point(442, 28);
+            label11.Name = "label11";
+            label11.Size = new Size(64, 32);
+            label11.TabIndex = 7;
+            label11.Text = "Role";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.Location = new Point(50, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 32);
+            label1.TabIndex = 6;
+            label1.Text = "EmpID";
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -325,36 +355,6 @@
             hrattendancedailyttendancebtn.TabIndex = 42;
             hrattendancedailyttendancebtn.Text = "Daily Attendance";
             hrattendancedailyttendancebtn.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.Location = new Point(50, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 32);
-            label1.TabIndex = 6;
-            label1.Text = "EmpID";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label11.Location = new Point(442, 28);
-            label11.Name = "label11";
-            label11.Size = new Size(64, 32);
-            label11.TabIndex = 7;
-            label11.Text = "Role";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label12.Location = new Point(992, 28);
-            label12.Name = "label12";
-            label12.Size = new Size(56, 32);
-            label12.TabIndex = 8;
-            label12.Text = "Out";
             // 
             // HrAttendance
             // 
