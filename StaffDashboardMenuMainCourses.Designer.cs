@@ -1,6 +1,6 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class StaffDashboardMenuForm
+    partial class StaffDashboardMenuMainCourses
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutMenuCard = new FlowLayoutPanel();
             panelContent = new Panel();
+            flowLayoutMenuCard = new FlowLayoutPanel();
             panelContent.SuspendLayout();
             SuspendLayout();
+            // 
+            // panelContent
+            // 
+            panelContent.AutoScroll = true;
+            panelContent.BackColor = Color.White;
+            panelContent.Controls.Add(flowLayoutMenuCard);
+            panelContent.Dock = DockStyle.Fill;
+            panelContent.Location = new Point(0, 0);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(946, 655);
+            panelContent.TabIndex = 29;
             // 
             // flowLayoutMenuCard
             // 
@@ -42,34 +53,22 @@
             flowLayoutMenuCard.TabIndex = 1;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
-            // panelContent
-            // 
-            panelContent.AutoScroll = true;
-            panelContent.BackColor = Color.White;
-            panelContent.Controls.Add(flowLayoutMenuCard);
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Location = new Point(0, 0);
-            panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1026, 961);
-            panelContent.TabIndex = 27;
-            panelContent.Paint += panelContent_Paint;
-            // 
-            // StaffDashboardMenuForm
+            // StaffDashboardMenuMainCourses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1026, 961);
+            ClientSize = new Size(946, 655);
             Controls.Add(panelContent);
-            Name = "StaffDashboardMenuForm";
-            Text = "StaffDashboardMenuForm";
-            Load += StaffDashboardMenuForm_Load;
+            Name = "StaffDashboardMenuMainCourses";
+            Text = "StaffDashboardMenuMainCourses";
+            Load += StaffDashboardMenuMainCourses_Load;
             panelContent.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutMenuCard;
         private Panel panelContent;
+        private FlowLayoutPanel flowLayoutMenuCard;
     }
 }

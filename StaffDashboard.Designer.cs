@@ -669,7 +669,7 @@
             beveragebtn.Name = "beveragebtn";
             beveragebtn.Size = new Size(219, 80);
             beveragebtn.TabIndex = 3;
-            beveragebtn.Text = "Beverage";
+            beveragebtn.Text = "Beverages";
             beveragebtn.UseVisualStyleBackColor = false;
             beveragebtn.Click += beveragebtn_Click;
             // 

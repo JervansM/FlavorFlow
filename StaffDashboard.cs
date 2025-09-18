@@ -219,27 +219,27 @@ namespace FlavorFlowIT13
 
         private void maincoursesbtn_Click(object sender, EventArgs e)
         {
-
+            LoadContent(new StaffDashboardMenuMainCourses());
         }
 
         private void essertbtn_Click(object sender, EventArgs e)
         {
-
+            LoadContent(new StaffDashboardDessert());
         }
 
         private void allitembtn_Click(object sender, EventArgs e)
         {
-
+            LoadContent(new StaffDashboardMenuForm());
         }
 
         private void beveragebtn_Click(object sender, EventArgs e)
         {
-
+            LoadContent(new StaffDashboardBeverages());
         }
 
         private void appetizerbtn_Click(object sender, EventArgs e)
         {
-
+            LoadContent(new StaffDashboardMenuFormAppetizer());
         }
     }
 

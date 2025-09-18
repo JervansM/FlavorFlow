@@ -11,18 +11,11 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class StaffDashboardMenuForm : Form
+    public partial class StaffDashboardBeverages : Form
     {
-        private int? _selectedMenuId = null;
-
-        public StaffDashboardMenuForm()
+        public StaffDashboardBeverages()
         {
             InitializeComponent();
-        }
-
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void flowLayoutMenuCard_Paint(object sender, PaintEventArgs e)
@@ -30,48 +23,46 @@ namespace FlavorFlowIT13
 
         }
 
-        private void StaffDashboardMenuForm_Load(object sender, EventArgs e)
+        private void StaffDashboardBeverages_Load(object sender, EventArgs e)
         {
-            LoadMenuData();
-            EnableDoubleBuffering(panelContent);
-
+            LoadMenuData(" Beverages");
         }
-        private void EnableDoubleBuffering(Panel panel)
+        private void LoadMenuData(string category = null)
         {
-            typeof(Panel).InvokeMember("DoubleBuffered",
-                System.Reflection.BindingFlags.SetProperty |
-                System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.NonPublic,
-                null, panel, new object[] { true });
-        }
-        private void LoadMenuData()
-        {
-
             flowLayoutMenuCard.Controls.Clear();
 
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name;";
+            string query = @"SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ";
 
+            if (!string.IsNullOrEmpty(category))
+            {
+                query += "WHERE Category = @Category ";
+            }
+
+            query += "ORDER BY Name;";
 
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    if (!string.IsNullOrEmpty(category))
+                    {
+                        cmd.Parameters.AddWithValue("@Category", category);
+                    }
+
                     con.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
+                        bool found = false;
                         while (reader.Read())
                         {
-                            Panel card = new Panel();
-                            card.Width = 290;
-                            card.Height = 375;
-                            card.Margin = new Padding(10);
-                            card.BackColor = Color.White;
-                            card.BorderStyle = BorderStyle.FixedSingle;
-
-
                             flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
+                            found = true;
+                        }
+                        if (!found)
+                        {
+                            MessageBox.Show($"No menu items found for category: {category}", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -93,13 +84,8 @@ namespace FlavorFlowIT13
 
             int menuId = (int)reader["MenuID"]; // capture ID for this card
 
-          
-
-
-
             // Picture
             PictureBox pic = new PictureBox();
-
             pic.SizeMode = PictureBoxSizeMode.StretchImage;
             pic.MinimumSize = new Size(320, 200);
             pic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -137,7 +123,6 @@ namespace FlavorFlowIT13
             card.Controls.Add(lblDesc);
             y += lblDesc.Height + 5;
 
-
             Label lblCategory = new Label();
             lblCategory.Text = reader["Category"].ToString();
             lblCategory.SetBounds(10, y, 220, 20);
@@ -155,8 +140,6 @@ namespace FlavorFlowIT13
             y += lblCategory.Height + 5;
             lblPrice.TextAlign = ContentAlignment.BottomRight;
 
-
-
             Label lblStatus = new Label();
             bool isAvailable = (bool)reader["IsAvailable"];
             lblStatus.Text = isAvailable ? "Available" : "Not Available";
@@ -165,13 +148,9 @@ namespace FlavorFlowIT13
             card.Controls.Add(lblStatus);
             lblStatus.TextAlign = ContentAlignment.BottomRight;
 
-
-
-
-
             return card;
-
         }
 
+      
     }
 }

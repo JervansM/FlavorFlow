@@ -254,7 +254,7 @@ namespace FlavorFlowIT13
             flowLayoutMenuCard.Controls.Clear();
 
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu";
+            string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name";
 
 
             try

@@ -11,18 +11,11 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class StaffDashboardMenuForm : Form
+    public partial class StaffDashboardMenuMainCourses : Form
     {
-        private int? _selectedMenuId = null;
-
-        public StaffDashboardMenuForm()
+        public StaffDashboardMenuMainCourses()
         {
             InitializeComponent();
-        }
-
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void flowLayoutMenuCard_Paint(object sender, PaintEventArgs e)
@@ -30,48 +23,49 @@ namespace FlavorFlowIT13
 
         }
 
-        private void StaffDashboardMenuForm_Load(object sender, EventArgs e)
+        private void StaffDashboardMenuMainCourses_Load(object sender, EventArgs e)
         {
-            LoadMenuData();
-            EnableDoubleBuffering(panelContent);
+            LoadMenuData("Main Courses");
 
         }
-        private void EnableDoubleBuffering(Panel panel)
+        private void LoadMenuData(string category = null)
         {
-            typeof(Panel).InvokeMember("DoubleBuffered",
-                System.Reflection.BindingFlags.SetProperty |
-                System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.NonPublic,
-                null, panel, new object[] { true });
-        }
-        private void LoadMenuData()
-        {
-
             flowLayoutMenuCard.Controls.Clear();
 
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name;";
+            string query = @"SELECT MenuID, Name, Description, LTRIM(RTRIM(Category)) AS Category, 
+                                    Price, IsAvailable, ImagePath 
+                             FROM Menu ";
 
+            if (!string.IsNullOrEmpty(category))
+            {
+                query += "WHERE LTRIM(RTRIM(Category)) = @Category ";
+            }
+
+            query += "ORDER BY Name;";
 
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    if (!string.IsNullOrEmpty(category))
+                    {
+                        cmd.Parameters.AddWithValue("@Category", category);
+                    }
+
                     con.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
+                        bool found = false;
                         while (reader.Read())
                         {
-                            Panel card = new Panel();
-                            card.Width = 290;
-                            card.Height = 375;
-                            card.Margin = new Padding(10);
-                            card.BackColor = Color.White;
-                            card.BorderStyle = BorderStyle.FixedSingle;
-
-
                             flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
+                            found = true;
+                        }
+                        if (!found)
+                        {
+                            MessageBox.Show($"No menu items found for category: {category}", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -91,18 +85,9 @@ namespace FlavorFlowIT13
             card.BackColor = Color.White;
             card.BorderStyle = BorderStyle.FixedSingle;
 
-            int menuId = (int)reader["MenuID"]; // capture ID for this card
-
-          
-
-
-
-            // Picture
             PictureBox pic = new PictureBox();
-
             pic.SizeMode = PictureBoxSizeMode.StretchImage;
             pic.MinimumSize = new Size(320, 200);
-            pic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             if (reader["ImagePath"] != DBNull.Value)
             {
                 try { pic.Image = Image.FromFile(reader["ImagePath"].ToString()); }
@@ -112,18 +97,9 @@ namespace FlavorFlowIT13
 
             int y = pic.Bottom + 10;
 
-            Label lblID = new Label();
-            lblID.Text = "MenuID: " + reader["MenuID"].ToString();
-            lblID.SetBounds(10, y, 220, 15);
-            lblID.ForeColor = Color.Gray;
-            lblID.Font = new Font("Segoe UI", 8, FontStyle.Regular);
-            card.Controls.Add(lblID);
-            y += lblID.Height + 5;
-
             Label lblName = new Label();
             lblName.Text = reader["Name"].ToString();
             lblName.SetBounds(10, y, 220, 29);
-            lblName.ForeColor = Color.Black;
             lblName.Font = new Font("Segoe UI", 15, FontStyle.Bold);
             card.Controls.Add(lblName);
             y += lblName.Height + 5;
@@ -137,25 +113,21 @@ namespace FlavorFlowIT13
             card.Controls.Add(lblDesc);
             y += lblDesc.Height + 5;
 
-
             Label lblCategory = new Label();
             lblCategory.Text = reader["Category"].ToString();
             lblCategory.SetBounds(10, y, 220, 20);
             lblCategory.ForeColor = ColorTranslator.FromHtml("#2823B1");
             lblCategory.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             card.Controls.Add(lblCategory);
-            y += lblDesc.Height + 5;
+            y += lblCategory.Height + 5;
 
             Label lblPrice = new Label();
             lblPrice.Text = "₱" + Convert.ToDecimal(reader["Price"]).ToString("N2");
-            lblPrice.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             lblPrice.SetBounds(10, y, 220, 27);
+            lblPrice.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             lblPrice.ForeColor = Color.Green;
             card.Controls.Add(lblPrice);
-            y += lblCategory.Height + 5;
-            lblPrice.TextAlign = ContentAlignment.BottomRight;
-
-
+            y += lblPrice.Height + 5;
 
             Label lblStatus = new Label();
             bool isAvailable = (bool)reader["IsAvailable"];
@@ -163,15 +135,8 @@ namespace FlavorFlowIT13
             lblStatus.SetBounds(10, y, 220, 23);
             lblStatus.ForeColor = isAvailable ? Color.Green : Color.Red;
             card.Controls.Add(lblStatus);
-            lblStatus.TextAlign = ContentAlignment.BottomRight;
-
-
-
-
 
             return card;
-
         }
-
     }
 }

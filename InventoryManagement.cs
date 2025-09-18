@@ -92,9 +92,12 @@ namespace FlavorFlowIT13
                 SELECT i.InventoryID, i.ItemName, i.Quantity, i.Unit, i.Cost, 
                        i.ExpiryDate, s.Name AS Supplier, 
                        CASE WHEN i.IsAvailable = 1 THEN 'Available' ELSE 'Not Available' END AS Status,
-                       i.MinStock, i.CreatedAt, i.UpdatedAt
-                FROM Inventory i
-                INNER JOIN Supplier s ON i.SupplierID = s.SupplierID";
+                       i.MinStock, i.CreatedAt, i.UpdatedAt 
+                FROM Inventory i 
+                INNER JOIN Supplier s ON i.SupplierID = s.SupplierID ORDER BY i.ItemName" ;
+
+
+                    
 
                     using (var cmd = new SqlCommand(query, conn))
                     using (var adapter = new SqlDataAdapter(cmd))

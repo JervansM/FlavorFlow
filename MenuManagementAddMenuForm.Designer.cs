@@ -131,7 +131,7 @@
             // 
             menuformcategory.Font = new Font("Segoe UI Light", 35.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuformcategory.FormattingEnabled = true;
-            menuformcategory.Items.AddRange(new object[] { " Appetizers", " Main Courses", " Beverages", " Desserts" });
+            menuformcategory.Items.AddRange(new object[] { " Appetizers", " Main Courses", " Beverages", " Dessert" });
             menuformcategory.Location = new Point(296, 363);
             menuformcategory.Name = "menuformcategory";
             menuformcategory.Size = new Size(480, 70);
