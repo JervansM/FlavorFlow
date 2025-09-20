@@ -179,6 +179,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Silver;
             ClientSize = new Size(1370, 749);
             Controls.Add(panel3);
             Controls.Add(panel1);

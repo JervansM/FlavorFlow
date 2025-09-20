@@ -30,11 +30,11 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
+            label5 = new Label();
             label3 = new Label();
             label2 = new Label();
             label4 = new Label();
             label1 = new Label();
-            label5 = new Label();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,6 +60,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1303, 53);
             panel2.TabIndex = 51;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Black;
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(228, 10);
+            label5.Name = "label5";
+            label5.Size = new Size(113, 32);
+            label5.TabIndex = 8;
+            label5.Text = "Order ID";
             // 
             // label3
             // 
@@ -108,18 +120,6 @@
             label1.Size = new Size(124, 32);
             label1.TabIndex = 5;
             label1.Text = "Customer";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Black;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(222, 10);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 32);
-            label5.TabIndex = 8;
-            label5.Text = "Order ID";
             // 
             // DeliveryDeliveries
             // 

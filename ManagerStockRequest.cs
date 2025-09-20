@@ -16,5 +16,10 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void hrstockrequestreplenishmentrequesttxt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

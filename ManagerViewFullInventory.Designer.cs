@@ -93,7 +93,7 @@
             label6.BackColor = Color.Black;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(467, 10);
+            label6.Location = new Point(461, 10);
             label6.Name = "label6";
             label6.Size = new Size(118, 32);
             label6.TabIndex = 9;

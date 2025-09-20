@@ -38,7 +38,7 @@
             label2 = new Label();
             label4 = new Label();
             label1 = new Label();
-            manageremployeesviewhistorytxt = new Button();
+            manageremployeesviewhistoryviewhistorytxt = new Button();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -96,9 +96,9 @@
             label7.ForeColor = Color.White;
             label7.Location = new Point(1155, 10);
             label7.Name = "label7";
-            label7.Size = new Size(100, 32);
+            label7.Size = new Size(116, 32);
             label7.TabIndex = 10;
-            label7.Text = "Actions";
+            label7.Text = "Manager";
             // 
             // label6
             // 
@@ -106,11 +106,11 @@
             label6.BackColor = Color.Black;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(414, 10);
+            label6.Location = new Point(466, 10);
             label6.Name = "label6";
-            label6.Size = new Size(108, 32);
+            label6.Size = new Size(67, 32);
             label6.TabIndex = 9;
-            label6.Text = "Clock-In";
+            label6.Text = "Date";
             // 
             // label5
             // 
@@ -118,7 +118,7 @@
             label5.BackColor = Color.Black;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(187, 10);
+            label5.Location = new Point(198, 10);
             label5.Name = "label5";
             label5.Size = new Size(125, 32);
             label5.TabIndex = 8;
@@ -130,11 +130,11 @@
             label2.BackColor = Color.Black;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(940, 10);
+            label2.Location = new Point(883, 10);
             label2.Name = "label2";
-            label2.Size = new Size(83, 32);
+            label2.Size = new Size(133, 32);
             label2.TabIndex = 6;
-            label2.Text = "Status";
+            label2.Text = "Old→ New";
             // 
             // label4
             // 
@@ -154,26 +154,26 @@
             label1.BackColor = Color.Black;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(649, 10);
+            label1.Location = new Point(680, 10);
             label1.Name = "label1";
-            label1.Size = new Size(127, 32);
+            label1.Size = new Size(89, 32);
             label1.TabIndex = 5;
-            label1.Text = "Clock-Out";
+            label1.Text = "Action";
             // 
-            // manageremployeesviewhistorytxt
+            // manageremployeesviewhistoryviewhistorytxt
             // 
-            manageremployeesviewhistorytxt.BackColor = Color.Black;
-            manageremployeesviewhistorytxt.BackgroundImageLayout = ImageLayout.None;
-            manageremployeesviewhistorytxt.Cursor = Cursors.Hand;
-            manageremployeesviewhistorytxt.FlatStyle = FlatStyle.Flat;
-            manageremployeesviewhistorytxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            manageremployeesviewhistorytxt.ForeColor = Color.White;
-            manageremployeesviewhistorytxt.Location = new Point(409, 25);
-            manageremployeesviewhistorytxt.Name = "manageremployeesviewhistorytxt";
-            manageremployeesviewhistorytxt.Size = new Size(309, 58);
-            manageremployeesviewhistorytxt.TabIndex = 57;
-            manageremployeesviewhistorytxt.Text = "View History";
-            manageremployeesviewhistorytxt.UseVisualStyleBackColor = false;
+            manageremployeesviewhistoryviewhistorytxt.BackColor = Color.Black;
+            manageremployeesviewhistoryviewhistorytxt.BackgroundImageLayout = ImageLayout.None;
+            manageremployeesviewhistoryviewhistorytxt.Cursor = Cursors.Hand;
+            manageremployeesviewhistoryviewhistorytxt.FlatStyle = FlatStyle.Flat;
+            manageremployeesviewhistoryviewhistorytxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            manageremployeesviewhistoryviewhistorytxt.ForeColor = Color.White;
+            manageremployeesviewhistoryviewhistorytxt.Location = new Point(409, 25);
+            manageremployeesviewhistoryviewhistorytxt.Name = "manageremployeesviewhistoryviewhistorytxt";
+            manageremployeesviewhistoryviewhistorytxt.Size = new Size(309, 58);
+            manageremployeesviewhistoryviewhistorytxt.TabIndex = 57;
+            manageremployeesviewhistoryviewhistorytxt.Text = "View History";
+            manageremployeesviewhistoryviewhistorytxt.UseVisualStyleBackColor = false;
             // 
             // MAnagerEmployessViewHistory
             // 
@@ -183,7 +183,7 @@
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Controls.Add(manageremployeesviewhistorytxt);
+            Controls.Add(manageremployeesviewhistoryviewhistorytxt);
             Name = "MAnagerEmployessViewHistory";
             Text = "MAnagerEmployessViewHistory";
             panel3.ResumeLayout(false);
@@ -205,6 +205,6 @@
         private Label label2;
         private Label label4;
         private Label label1;
-        private Button manageremployeesviewhistorytxt;
+        private Button manageremployeesviewhistoryviewhistorytxt;
     }
 }
