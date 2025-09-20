@@ -150,10 +150,31 @@ namespace FlavorFlowIT13
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvUsers.DataSource = dt;
+                StyleUserGrid();
             }
-
-
         }
+
+        private void StyleUserGrid()
+        {
+            dgvUsers.EnableHeadersVisualStyles = false;
+            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvUsers.DefaultCellStyle.BackColor = Color.White;
+            dgvUsers.DefaultCellStyle.ForeColor = Color.Black;
+            dgvUsers.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+            dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvUsers.RowHeadersVisible = false;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsers.MultiSelect = false;
+            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsers.BorderStyle = BorderStyle.FixedSingle;
+            dgvUsers.GridColor = Color.LightGray;
+            dgvUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            dgvUsers.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvUsers.BackgroundColor = Color.WhiteSmoke;
+        }
+
         private void ToggleLock(int userId, bool lockAccount)
         {
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";

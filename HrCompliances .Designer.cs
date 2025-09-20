@@ -72,7 +72,6 @@
             hrcompliancesuploadnewdocumnetbtn.TabIndex = 61;
             hrcompliancesuploadnewdocumnetbtn.Text = "Upload New Document";
             hrcompliancesuploadnewdocumnetbtn.UseVisualStyleBackColor = true;
-            hrcompliancesuploadnewdocumnetbtn.Click += this.hrcompliancesuploadnewdocumnetbtn_Click;
             // 
             // hrcompliancesrenewdocumentsbtn
             // 
@@ -92,7 +91,6 @@
             systempanelcontents.Name = "systempanelcontents";
             systempanelcontents.Size = new Size(1447, 226);
             systempanelcontents.TabIndex = 60;
-            systempanelcontents.Paint += this.systempanelcontents_Paint;
             // 
             // systempanelheadercoral
             // 
@@ -172,7 +170,6 @@
             hrcompliancespoliciesbtn.TabIndex = 59;
             hrcompliancespoliciesbtn.Text = "Policies";
             hrcompliancespoliciesbtn.UseVisualStyleBackColor = false;
-            hrcompliancespoliciesbtn.Click += this.hrcompliancespoliciesbtn_Click;
             // 
             // hrcompliancescompliancesbtn
             // 
@@ -188,7 +185,6 @@
             hrcompliancescompliancesbtn.TabIndex = 58;
             hrcompliancescompliancesbtn.Text = "Compliances";
             hrcompliancescompliancesbtn.UseVisualStyleBackColor = false;
-            hrcompliancescompliancesbtn.Click += this.hrcompliancescompliancesbtn_Click;
             // 
             // label3
             // 
@@ -216,7 +212,6 @@
             Controls.Add(hrcompliancescompliancesbtn);
             Name = "HrCompliances";
             Text = "HrCompliances";
-            Load += this.HrCompliances_Load;
             systempanelheadercoral.ResumeLayout(false);
             systempanelheadercoral.PerformLayout();
             ResumeLayout(false);
