@@ -205,6 +205,7 @@
             Controls.Add(panelContent);
             Name = "StaffManagement";
             Text = "StaffManagement";
+            Load += StaffManagement_Load;
             panelContent.ResumeLayout(false);
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();

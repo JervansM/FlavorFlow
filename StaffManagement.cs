@@ -29,5 +29,9 @@ namespace FlavorFlowIT13
             pnl.Region = new Region(path);
         }
 
+        private void StaffManagement_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

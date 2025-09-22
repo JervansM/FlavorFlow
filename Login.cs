@@ -43,65 +43,94 @@ namespace FlavorFlowIT13
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            try
             {
-                cmd.Parameters.AddWithValue("@username", usertxt.Text.Trim());
-                cmd.Parameters.AddWithValue("@password", passwordtxt.Text.Trim());
-
-                conn.Open();
-                var role = cmd.ExecuteScalar();
-
-                if (role != null)
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    string userRole = role.ToString();
+                    cmd.Parameters.AddWithValue("@username", usertxt.Text.Trim());
+                    cmd.Parameters.AddWithValue("@password", passwordtxt.Text.Trim());
 
-                    if (userRole == "Admin")
+                    conn.Open();
+                    var role = cmd.ExecuteScalar();
+
+                    if (role != null)
                     {
-                        AdminDashboard adminForm = new AdminDashboard();
-                        adminForm.Show();
-                        this.Hide();
-                        Refresh();
-                    }
-                    else if (userRole == "Manager")
-                    {
-                        ManagerDashboard managerForm = new ManagerDashboard();
-                        managerForm.Show();
-                        this.Hide();
-                    }
-                    else if (userRole == "Staff")
-                    {
-                        StaffDashboard staffForm = new StaffDashboard();
-                        staffForm.Show();
-                        this.Hide();
-                    }
-                    else if (userRole == "HR")
-                    {
-                        HrDashboard hrForm = new HrDashboard();
-                        hrForm.Show();
-                        this.Hide();
-                    }
-                    else if (userRole == "Customer")
-                    {
-                        CustomerDashboard flavlorflowcustomer = new CustomerDashboard();
-                        flavlorflowcustomer.Show();
-                        this.Hide();
+                        string userRole = role.ToString();
+
+                        if (userRole == "Admin")
+                        {
+                            AdminDashboard adminForm = new AdminDashboard();
+                            adminForm.Show();
+                            this.Hide();
+                            Refresh();
+                        }
+                        else if (userRole == "Manager")
+                        {
+                            ManagerDashboard managerForm = new ManagerDashboard();
+                            managerForm.Show();
+                            this.Hide();
+                        }
+                        else if (userRole == "Staff")
+                        {
+                            string queryStaffId = @"SELECT s.StaffID, s.Name, s.Role, u.UserID, u.Username FROM dbo.Staff s INNER JOIN dbo.[User] u ON s.UserID = u.UserID 
+                                WHERE u.Username = @Username AND u.Password = @Password;";
+
+                            int staffId = 0;
+                            using (var Staffconn = new SqlConnection(connectionString))
+                            using (var Staffcmd = new SqlCommand(queryStaffId, Staffconn))
+                            {
+                                Staffcmd.Parameters.AddWithValue("@username", usertxt.Text.Trim());
+                                Staffcmd.Parameters.AddWithValue("@password", passwordtxt.Text.Trim());
+                                Staffconn.Open();
+                                var result = Staffcmd.ExecuteScalar();
+                                if (result != null && int.TryParse(result.ToString(), out staffId))
+                                {
+                                    var dashboard = new StaffDashboard(staffId);
+                                    dashboard.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid staff credentials or role mismatch.");
+                                }
+                            }
+                        }
+                        else if (userRole == "HR")
+                        {
+                            HrDashboard hrForm = new HrDashboard();
+                            hrForm.Show();
+                            this.Hide();
+                        }
+                        else if (userRole == "Customer")
+                        {
+                            CustomerDashboard customerForm = new CustomerDashboard();
+                            customerForm.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid role assigned to user.", "Login Failed",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Please enter a valid username or password", "Login Failed",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid username or password.", "Login Failed",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while logging in: " + ex.Message, "Error",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
         private void usertxt_TextChanged(object sender, EventArgs e)

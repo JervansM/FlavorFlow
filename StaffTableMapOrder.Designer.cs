@@ -1,6 +1,6 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class StaffTableMap
+    partial class StaffTableMapOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -47,14 +47,15 @@
             panelitems.Controls.Add(table1btn);
             panelitems.Controls.Add(table4btn);
             panelitems.Controls.Add(table2btn);
-            panelitems.Location = new Point(1, 0);
+            panelitems.Location = new Point(0, 1);
             panelitems.Name = "panelitems";
             panelitems.Size = new Size(990, 442);
-            panelitems.TabIndex = 27;
+            panelitems.TabIndex = 28;
             // 
             // table6btn
             // 
             table6btn.BackColor = SystemColors.ActiveBorder;
+            table6btn.Cursor = Cursors.Hand;
             table6btn.FlatStyle = FlatStyle.Flat;
             table6btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table6btn.ForeColor = SystemColors.Control;
@@ -69,6 +70,7 @@
             // table3btn
             // 
             table3btn.BackColor = SystemColors.ActiveBorder;
+            table3btn.Cursor = Cursors.Hand;
             table3btn.FlatStyle = FlatStyle.Flat;
             table3btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table3btn.ForeColor = SystemColors.Control;
@@ -83,6 +85,7 @@
             // table5btn
             // 
             table5btn.BackColor = SystemColors.ActiveBorder;
+            table5btn.Cursor = Cursors.Hand;
             table5btn.FlatStyle = FlatStyle.Flat;
             table5btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table5btn.ForeColor = SystemColors.Control;
@@ -97,6 +100,7 @@
             // table1btn
             // 
             table1btn.BackColor = SystemColors.ActiveBorder;
+            table1btn.Cursor = Cursors.Hand;
             table1btn.FlatStyle = FlatStyle.Flat;
             table1btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table1btn.ForeColor = SystemColors.Control;
@@ -111,6 +115,7 @@
             // table4btn
             // 
             table4btn.BackColor = SystemColors.ActiveBorder;
+            table4btn.Cursor = Cursors.Hand;
             table4btn.FlatStyle = FlatStyle.Flat;
             table4btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table4btn.ForeColor = SystemColors.Control;
@@ -125,6 +130,7 @@
             // table2btn
             // 
             table2btn.BackColor = SystemColors.ActiveBorder;
+            table2btn.Cursor = Cursors.Hand;
             table2btn.FlatStyle = FlatStyle.Flat;
             table2btn.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             table2btn.ForeColor = SystemColors.Control;
@@ -136,17 +142,15 @@
             table2btn.UseVisualStyleBackColor = false;
             table2btn.Click += table2btn_Click;
             // 
-            // StaffTableMap
+            // StaffTableMapOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Bisque;
-            ClientSize = new Size(1924, 1061);
+            ClientSize = new Size(978, 634);
             Controls.Add(panelitems);
-            ForeColor = Color.White;
-            Name = "StaffTableMap";
-            Text = "StaffTableMap";
-            Load += StaffTableMap_Load;
+            Name = "StaffTableMapOrder";
+            Text = "StaffTableMapOrder";
+            Load += StaffTableMapOrder_Load;
             panelitems.ResumeLayout(false);
             ResumeLayout(false);
         }

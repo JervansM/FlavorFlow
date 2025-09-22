@@ -11,48 +11,37 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class StaffTableMap : Form
+    public partial class StaffTableMapOrder : Form
     {
-        public StaffTableMap()
+        public event Action<string> TableSelected; // event to notify StaffDashboard
+
+
+        public StaffTableMapOrder()
         {
             InitializeComponent();
-        }
-        private void RoundButton(Button button, int radius)
-        {
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
-            path.CloseAllFigures();
-            button.Region = new System.Drawing.Region(path);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
 
         }
 
-       
-
-        private void StaffTableMap_Load(object sender, EventArgs e)
+        private void StaffTableMapOrder_Load(object sender, EventArgs e)
         {
+
             LoadTableStatuses();
 
-            RoundButton(table1btn , 30);
-            RoundButton(table2btn , 30);
-            RoundButton(table3btn , 30);
-            RoundButton(table4btn , 30);
-            RoundButton(table5btn , 30);
-            RoundButton(table6btn , 30);
+
+
+
+
+            RoundButton(table1btn, 30);
+            RoundButton(table2btn, 30);
+            RoundButton(table3btn, 30);
+            RoundButton(table4btn, 30);
+            RoundButton(table5btn, 30);
+            RoundButton(table6btn, 30);
 
             table1btn.UseVisualStyleBackColor = false;
             table1btn.FlatStyle = FlatStyle.Flat;
             table1btn.FlatAppearance.BorderSize = 0;
+            table1btn.UseVisualStyleBackColor = false;
 
             table2btn.FlatStyle = FlatStyle.Flat;
             table2btn.FlatAppearance.BorderSize = 0;
@@ -69,41 +58,40 @@ namespace FlavorFlowIT13
             table5btn.FlatStyle = FlatStyle.Flat;
             table5btn.FlatAppearance.BorderSize = 0;
             table5btn.UseVisualStyleBackColor = false;
-          
+
 
 
             table6btn.UseVisualStyleBackColor = false;
             table6btn.FlatStyle = FlatStyle.Flat;
             table6btn.FlatAppearance.BorderSize = 0;
         }
-
-        private void table1btn_Click(object sender, EventArgs e)
+        private void RoundButton(Button button, int radius)
         {
-
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
         }
-
-        private void table2btn_Click(object sender, EventArgs e)
+        private void LoadContent(Form form)
         {
+            foreach (Control ctrl in panelitems.Controls)
+            {
+                ctrl.Dispose();
+            }
 
-        }
+            panelitems.Controls.Clear();
 
-        private void table3btn_Click(object sender, EventArgs e)
-        {
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
 
-        }
-
-        private void table4btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void table5btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void table6btn_Click(object sender, EventArgs e)
-        {
+            // Add to panel
+            panelitems.Controls.Add(form);
+            form.Show();
 
         }
         private DataTable GetTableStatusesFromDB()
@@ -163,7 +151,7 @@ namespace FlavorFlowIT13
                             tableBtn.BackColor = Color.Silver;
                             tableBtn.ForeColor = Color.Black;
                             break;
-                        default:  
+                        default:
                             tableBtn.BackColor = Color.Silver;
                             tableBtn.ForeColor = Color.Black;
 
@@ -179,6 +167,37 @@ namespace FlavorFlowIT13
             LoadTableStatuses();
         }
 
+        private void table1btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 1");
+        }
+
+        private void table2btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 2");
+        }
+
+        private void table3btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 3");
+        }
+
+        private void table4btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 4");
+        }
+        private void table5btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 5");
+        }
+
+
+        private void table6btn_Click(object sender, EventArgs e)
+        {
+            TableSelected?.Invoke("Table 6");
+
+        }
+
+        
     }
 }
-    

@@ -19,7 +19,7 @@ namespace FlavorFlowIT13
 
         private void menubtn_Click(object sender, EventArgs e)
         {
-            LoadContent(new StaffDashboard());
+            LoadContent(new StaffDashboard(1));
         }
 
         private void tablemapbtn_Click(object sender, EventArgs e)

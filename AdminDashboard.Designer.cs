@@ -660,6 +660,7 @@
             ClientSize = new Size(1924, 1061);
             Controls.Add(panelTop);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";

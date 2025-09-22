@@ -42,16 +42,21 @@
             takeoutbtn = new Button();
             tablemapbtn = new Button();
             panel2 = new Panel();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            netamounttxt = new Label();
+            taxtxt = new Label();
+            totaltxt = new Label();
+            qtytxt = new Label();
+            orderDataGridView = new DataGridView();
+            discounttxt = new TextBox();
+            fixedamounttxt = new TextBox();
             label8 = new Label();
             label3 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            button2 = new Button();
-            button1 = new Button();
+            netamountlbl = new Label();
+            taxlbl = new Label();
+            totallbl = new Label();
+            qtylbl = new Label();
+            takeoutbtn2 = new Button();
+            dineinbtn = new Button();
             ordersummarylabelstaff = new Label();
             panel5 = new Panel();
             biilingamounttxt = new TextBox();
@@ -59,10 +64,9 @@
             gcashbtn = new Button();
             cardbtn = new Button();
             cashbtn = new Button();
-            textBox1 = new TextBox();
+            changetxt = new TextBox();
             label1 = new Label();
-            checkoutbtn = new Button();
-            closebtn = new Button();
+            okbtn = new Button();
             panel4 = new Panel();
             btn0 = new Button();
             btn8 = new Button();
@@ -85,7 +89,6 @@
             panel17 = new Panel();
             printbillbtn = new Button();
             sendtokitchenbtn = new Button();
-            holdorderbtn = new Button();
             saveorderbtn = new Button();
             voidbtn = new Button();
             addorderbtn = new Button();
@@ -96,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)orderDataGridView).BeginInit();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -183,22 +187,23 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Silver;
+            panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(menubtn);
             panel1.Controls.Add(onlineordersbtn);
             panel1.Controls.Add(deliverybtn);
             panel1.Controls.Add(takeoutbtn);
             panel1.Controls.Add(tablemapbtn);
-            panel1.Location = new Point(29, 143);
+            panel1.Location = new Point(29, 146);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1835, 80);
+            panel1.Size = new Size(1835, 94);
             panel1.TabIndex = 23;
             // 
             // menubtn
             // 
             menubtn.BackColor = Color.White;
             menubtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            menubtn.Location = new Point(844, 3);
+            menubtn.ForeColor = Color.White;
+            menubtn.Location = new Point(844, 12);
             menubtn.Name = "menubtn";
             menubtn.Size = new Size(969, 70);
             menubtn.TabIndex = 4;
@@ -209,7 +214,8 @@
             // onlineordersbtn
             // 
             onlineordersbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            onlineordersbtn.Location = new Point(411, 7);
+            onlineordersbtn.ForeColor = Color.White;
+            onlineordersbtn.Location = new Point(411, 12);
             onlineordersbtn.Name = "onlineordersbtn";
             onlineordersbtn.Size = new Size(196, 70);
             onlineordersbtn.TabIndex = 3;
@@ -220,7 +226,8 @@
             // deliverybtn
             // 
             deliverybtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            deliverybtn.Location = new Point(613, 7);
+            deliverybtn.ForeColor = Color.White;
+            deliverybtn.Location = new Point(613, 12);
             deliverybtn.Name = "deliverybtn";
             deliverybtn.Size = new Size(196, 70);
             deliverybtn.TabIndex = 2;
@@ -231,17 +238,21 @@
             // takeoutbtn
             // 
             takeoutbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            takeoutbtn.Location = new Point(209, 7);
+            takeoutbtn.ForeColor = Color.White;
+            takeoutbtn.Location = new Point(209, 12);
             takeoutbtn.Name = "takeoutbtn";
             takeoutbtn.Size = new Size(196, 70);
             takeoutbtn.TabIndex = 1;
             takeoutbtn.Text = "Take-out";
             takeoutbtn.UseVisualStyleBackColor = true;
+            takeoutbtn.Click += takeoutbtn_Click;
             // 
             // tablemapbtn
             // 
+            tablemapbtn.Cursor = Cursors.Hand;
             tablemapbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            tablemapbtn.Location = new Point(7, 7);
+            tablemapbtn.ForeColor = Color.White;
+            tablemapbtn.Location = new Point(7, 12);
             tablemapbtn.Name = "tablemapbtn";
             tablemapbtn.Size = new Size(196, 70);
             tablemapbtn.TabIndex = 0;
@@ -251,26 +262,30 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(textBox3);
-            panel2.Controls.Add(textBox2);
+            panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(netamounttxt);
+            panel2.Controls.Add(taxtxt);
+            panel2.Controls.Add(totaltxt);
+            panel2.Controls.Add(qtytxt);
+            panel2.Controls.Add(orderDataGridView);
+            panel2.Controls.Add(discounttxt);
+            panel2.Controls.Add(fixedamounttxt);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(netamountlbl);
+            panel2.Controls.Add(taxlbl);
+            panel2.Controls.Add(totallbl);
+            panel2.Controls.Add(qtylbl);
+            panel2.Controls.Add(takeoutbtn2);
+            panel2.Controls.Add(dineinbtn);
             panel2.Controls.Add(ordersummarylabelstaff);
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(gcashbtn);
             panel2.Controls.Add(cardbtn);
             panel2.Controls.Add(cashbtn);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(changetxt);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(checkoutbtn);
-            panel2.Controls.Add(closebtn);
+            panel2.Controls.Add(okbtn);
             panel2.Controls.Add(panel4);
             panel2.Location = new Point(29, 257);
             panel2.Name = "panel2";
@@ -278,25 +293,79 @@
             panel2.TabIndex = 24;
             panel2.Paint += panel2_Paint;
             // 
-            // textBox3
+            // netamounttxt
             // 
-            textBox3.BackColor = Color.Silver;
-            textBox3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox3.Location = new Point(105, 344);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(167, 37);
-            textBox3.TabIndex = 46;
+            netamounttxt.AutoSize = true;
+            netamounttxt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            netamounttxt.Location = new Point(428, 316);
+            netamounttxt.Name = "netamounttxt";
+            netamounttxt.Size = new Size(36, 20);
+            netamounttxt.TabIndex = 51;
+            netamounttxt.Text = "0.00";
+            netamounttxt.Click += netamounttxt_Click;
             // 
-            // textBox2
+            // taxtxt
             // 
-            textBox2.BackColor = Color.Silver;
-            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox2.Location = new Point(411, 344);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(167, 37);
-            textBox2.TabIndex = 45;
+            taxtxt.AutoSize = true;
+            taxtxt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            taxtxt.Location = new Point(315, 316);
+            taxtxt.Name = "taxtxt";
+            taxtxt.Size = new Size(29, 20);
+            taxtxt.TabIndex = 50;
+            taxtxt.Text = "0%";
+            taxtxt.Click += taxtxt_Click;
+            // 
+            // totaltxt
+            // 
+            totaltxt.AutoSize = true;
+            totaltxt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totaltxt.Location = new Point(232, 316);
+            totaltxt.Name = "totaltxt";
+            totaltxt.Size = new Size(36, 20);
+            totaltxt.TabIndex = 49;
+            totaltxt.Text = "0.00";
+            totaltxt.Click += totaltxt_Click;
+            // 
+            // qtytxt
+            // 
+            qtytxt.AutoSize = true;
+            qtytxt.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            qtytxt.Location = new Point(153, 316);
+            qtytxt.Name = "qtytxt";
+            qtytxt.Size = new Size(17, 20);
+            qtytxt.TabIndex = 48;
+            qtytxt.Text = "0";
+            qtytxt.Click += qtytxt_Click;
+            // 
+            // orderDataGridView
+            // 
+            orderDataGridView.BackgroundColor = SystemColors.Control;
+            orderDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            orderDataGridView.Location = new Point(7, 18);
+            orderDataGridView.Name = "orderDataGridView";
+            orderDataGridView.Size = new Size(581, 213);
+            orderDataGridView.TabIndex = 47;
+            orderDataGridView.CellContentClick += orderDataGridView_CellContentClick;
+            // 
+            // discounttxt
+            // 
+            discounttxt.BackColor = Color.White;
+            discounttxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            discounttxt.Location = new Point(105, 344);
+            discounttxt.Multiline = true;
+            discounttxt.Name = "discounttxt";
+            discounttxt.Size = new Size(167, 37);
+            discounttxt.TabIndex = 46;
+            // 
+            // fixedamounttxt
+            // 
+            fixedamounttxt.BackColor = Color.White;
+            fixedamounttxt.Font = new Font("Segoe UI", 15.75F);
+            fixedamounttxt.Location = new Point(411, 344);
+            fixedamounttxt.Multiline = true;
+            fixedamounttxt.Name = "fixedamounttxt";
+            fixedamounttxt.Size = new Size(167, 37);
+            fixedamounttxt.TabIndex = 45;
             // 
             // label8
             // 
@@ -318,67 +387,72 @@
             label3.TabIndex = 43;
             label3.Text = "Discount:";
             // 
-            // label7
+            // netamountlbl
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(328, 308);
-            label7.Name = "label7";
-            label7.Size = new Size(90, 20);
-            label7.TabIndex = 42;
-            label7.Text = "Net Amount";
+            netamountlbl.AutoSize = true;
+            netamountlbl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            netamountlbl.Location = new Point(400, 288);
+            netamountlbl.Name = "netamountlbl";
+            netamountlbl.Size = new Size(90, 20);
+            netamountlbl.TabIndex = 42;
+            netamountlbl.Text = "Net Amount";
             // 
-            // label6
+            // taxlbl
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(242, 308);
-            label6.Name = "label6";
-            label6.Size = new Size(30, 20);
-            label6.TabIndex = 41;
-            label6.Text = "Tax";
+            taxlbl.AutoSize = true;
+            taxlbl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            taxlbl.Location = new Point(314, 288);
+            taxlbl.Name = "taxlbl";
+            taxlbl.Size = new Size(30, 20);
+            taxlbl.TabIndex = 41;
+            taxlbl.Text = "Tax";
             // 
-            // label5
+            // totallbl
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(154, 308);
-            label5.Name = "label5";
-            label5.Size = new Size(42, 20);
-            label5.TabIndex = 40;
-            label5.Text = "Total";
+            totallbl.AutoSize = true;
+            totallbl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totallbl.Location = new Point(226, 288);
+            totallbl.Name = "totallbl";
+            totallbl.Size = new Size(42, 20);
+            totallbl.TabIndex = 40;
+            totallbl.Text = "Total";
             // 
-            // label4
+            // qtylbl
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(75, 308);
-            label4.Name = "label4";
-            label4.Size = new Size(32, 20);
-            label4.TabIndex = 39;
-            label4.Text = "Qty";
+            qtylbl.AutoSize = true;
+            qtylbl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            qtylbl.Location = new Point(147, 288);
+            qtylbl.Name = "qtylbl";
+            qtylbl.Size = new Size(32, 20);
+            qtylbl.TabIndex = 39;
+            qtylbl.Text = "Qty";
             // 
-            // button2
+            // takeoutbtn2
             // 
-            button2.BackColor = Color.White;
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            button2.Location = new Point(366, 247);
-            button2.Name = "button2";
-            button2.Size = new Size(118, 45);
-            button2.TabIndex = 38;
-            button2.Text = "Takeout";
-            button2.UseVisualStyleBackColor = false;
+            takeoutbtn2.BackColor = Color.Black;
+            takeoutbtn2.Cursor = Cursors.Hand;
+            takeoutbtn2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            takeoutbtn2.ForeColor = Color.White;
+            takeoutbtn2.Location = new Point(386, 237);
+            takeoutbtn2.Name = "takeoutbtn2";
+            takeoutbtn2.Size = new Size(118, 45);
+            takeoutbtn2.TabIndex = 38;
+            takeoutbtn2.Text = "Takeout";
+            takeoutbtn2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // dineinbtn
             // 
-            button1.BackColor = Color.White;
-            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            button1.Location = new Point(81, 247);
-            button1.Name = "button1";
-            button1.Size = new Size(118, 45);
-            button1.TabIndex = 37;
-            button1.Text = "Dine in";
-            button1.UseVisualStyleBackColor = false;
+            dineinbtn.BackColor = Color.Black;
+            dineinbtn.Cursor = Cursors.Hand;
+            dineinbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            dineinbtn.ForeColor = Color.White;
+            dineinbtn.Location = new Point(97, 237);
+            dineinbtn.Name = "dineinbtn";
+            dineinbtn.Size = new Size(118, 45);
+            dineinbtn.TabIndex = 37;
+            dineinbtn.Text = "Dine in";
+            dineinbtn.UseVisualStyleBackColor = false;
+            dineinbtn.Click += dineinbtn_Click;
             // 
             // ordersummarylabelstaff
             // 
@@ -403,11 +477,13 @@
             // 
             // biilingamounttxt
             // 
-            biilingamounttxt.Location = new Point(348, 5);
+            biilingamounttxt.Font = new Font("Segoe UI", 20F);
+            biilingamounttxt.Location = new Point(215, 5);
             biilingamounttxt.Multiline = true;
             biilingamounttxt.Name = "biilingamounttxt";
-            biilingamounttxt.Size = new Size(231, 41);
+            biilingamounttxt.Size = new Size(364, 41);
             biilingamounttxt.TabIndex = 35;
+            biilingamounttxt.TextChanged += biilingamounttxt_TextChanged;
             // 
             // label2
             // 
@@ -415,84 +491,87 @@
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             label2.Location = new Point(10, 9);
             label2.Name = "label2";
-            label2.Size = new Size(169, 30);
+            label2.Size = new Size(198, 30);
             label2.TabIndex = 34;
-            label2.Text = "Billing Amount:";
+            label2.Text = "Amount Received :";
             // 
             // gcashbtn
             // 
-            gcashbtn.BackColor = Color.White;
+            gcashbtn.BackColor = Color.Blue;
+            gcashbtn.Cursor = Cursors.Hand;
             gcashbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            gcashbtn.ForeColor = Color.White;
             gcashbtn.Location = new Point(346, 458);
             gcashbtn.Name = "gcashbtn";
             gcashbtn.Size = new Size(118, 45);
             gcashbtn.TabIndex = 33;
             gcashbtn.Text = "Gcash";
             gcashbtn.UseVisualStyleBackColor = false;
+            gcashbtn.Click += gcashbtn_Click;
             // 
             // cardbtn
             // 
-            cardbtn.BackColor = Color.White;
+            cardbtn.BackColor = Color.Coral;
+            cardbtn.Cursor = Cursors.Hand;
             cardbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            cardbtn.ForeColor = Color.White;
             cardbtn.Location = new Point(471, 458);
             cardbtn.Name = "cardbtn";
             cardbtn.Size = new Size(118, 45);
             cardbtn.TabIndex = 32;
             cardbtn.Text = "Card";
             cardbtn.UseVisualStyleBackColor = false;
+            cardbtn.Click += cardbtn_Click;
             // 
             // cashbtn
             // 
-            cashbtn.BackColor = Color.White;
+            cashbtn.BackColor = Color.Green;
+            cashbtn.Cursor = Cursors.Hand;
             cashbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            cashbtn.ForeColor = Color.White;
             cashbtn.Location = new Point(222, 458);
             cashbtn.Name = "cashbtn";
             cashbtn.Size = new Size(118, 45);
             cashbtn.TabIndex = 31;
             cashbtn.Text = "Cash";
             cashbtn.UseVisualStyleBackColor = false;
+            cashbtn.Click += cashbtn_Click;
             // 
-            // textBox1
+            // changetxt
             // 
-            textBox1.BackColor = Color.Silver;
-            textBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            textBox1.Location = new Point(366, 541);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(188, 37);
-            textBox1.TabIndex = 30;
+            changetxt.BackColor = Color.White;
+            changetxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            changetxt.ForeColor = SystemColors.WindowText;
+            changetxt.Location = new Point(366, 554);
+            changetxt.Multiline = true;
+            changetxt.Name = "changetxt";
+            changetxt.ReadOnly = true;
+            changetxt.Size = new Size(212, 54);
+            changetxt.TabIndex = 30;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label1.Location = new Point(267, 548);
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(242, 563);
             label1.Name = "label1";
-            label1.Size = new Size(93, 30);
+            label1.Size = new Size(120, 37);
             label1.TabIndex = 29;
             label1.Text = "Change:";
             // 
-            // checkoutbtn
+            // okbtn
             // 
-            checkoutbtn.BackColor = Color.White;
-            checkoutbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            checkoutbtn.Location = new Point(426, 650);
-            checkoutbtn.Name = "checkoutbtn";
-            checkoutbtn.Size = new Size(117, 45);
-            checkoutbtn.TabIndex = 28;
-            checkoutbtn.Text = "Checkout";
-            checkoutbtn.UseVisualStyleBackColor = false;
-            // 
-            // closebtn
-            // 
-            closebtn.BackColor = Color.Silver;
-            closebtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            closebtn.Location = new Point(242, 650);
-            closebtn.Name = "closebtn";
-            closebtn.Size = new Size(118, 45);
-            closebtn.TabIndex = 14;
-            closebtn.Text = "Close";
-            closebtn.UseVisualStyleBackColor = false;
+            okbtn.BackColor = Color.Black;
+            okbtn.Cursor = Cursors.Hand;
+            okbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            okbtn.ForeColor = Color.White;
+            okbtn.Location = new Point(460, 638);
+            okbtn.Name = "okbtn";
+            okbtn.Size = new Size(118, 50);
+            okbtn.TabIndex = 14;
+            okbtn.Text = "OK";
+            okbtn.UseVisualStyleBackColor = false;
+            okbtn.Click += okbtn_Click;
             // 
             // panel4
             // 
@@ -636,7 +715,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.White;
+            panel3.BackColor = SystemColors.Control;
             panel3.BackgroundImageLayout = ImageLayout.None;
             panel3.Controls.Add(essertbtn);
             panel3.Controls.Add(beveragebtn);
@@ -651,8 +730,10 @@
             // 
             // essertbtn
             // 
-            essertbtn.BackColor = Color.Gainsboro;
+            essertbtn.BackColor = Color.Black;
+            essertbtn.Cursor = Cursors.Hand;
             essertbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            essertbtn.ForeColor = Color.White;
             essertbtn.Location = new Point(9, 352);
             essertbtn.Name = "essertbtn";
             essertbtn.Size = new Size(219, 80);
@@ -663,8 +744,10 @@
             // 
             // beveragebtn
             // 
-            beveragebtn.BackColor = Color.Gainsboro;
+            beveragebtn.BackColor = Color.Black;
+            beveragebtn.Cursor = Cursors.Hand;
             beveragebtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            beveragebtn.ForeColor = Color.White;
             beveragebtn.Location = new Point(9, 266);
             beveragebtn.Name = "beveragebtn";
             beveragebtn.Size = new Size(219, 80);
@@ -675,8 +758,10 @@
             // 
             // maincoursesbtn
             // 
-            maincoursesbtn.BackColor = Color.Gainsboro;
+            maincoursesbtn.BackColor = Color.Black;
+            maincoursesbtn.Cursor = Cursors.Hand;
             maincoursesbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            maincoursesbtn.ForeColor = Color.White;
             maincoursesbtn.Location = new Point(9, 180);
             maincoursesbtn.Name = "maincoursesbtn";
             maincoursesbtn.Size = new Size(219, 80);
@@ -687,20 +772,24 @@
             // 
             // appetizerbtn
             // 
-            appetizerbtn.BackColor = Color.Gainsboro;
+            appetizerbtn.BackColor = Color.Black;
+            appetizerbtn.Cursor = Cursors.Hand;
             appetizerbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            appetizerbtn.ForeColor = Color.White;
             appetizerbtn.Location = new Point(9, 94);
             appetizerbtn.Name = "appetizerbtn";
             appetizerbtn.Size = new Size(219, 80);
             appetizerbtn.TabIndex = 1;
-            appetizerbtn.Text = "Appetizer";
+            appetizerbtn.Text = "Appetizers";
             appetizerbtn.UseVisualStyleBackColor = false;
             appetizerbtn.Click += appetizerbtn_Click;
             // 
             // allitembtn
             // 
-            allitembtn.BackColor = Color.Gainsboro;
+            allitembtn.BackColor = Color.Black;
+            allitembtn.Cursor = Cursors.Hand;
             allitembtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            allitembtn.ForeColor = Color.White;
             allitembtn.Location = new Point(9, 8);
             allitembtn.Name = "allitembtn";
             allitembtn.Size = new Size(219, 80);
@@ -711,7 +800,7 @@
             // 
             // panelContent
             // 
-            panelContent.BackColor = Color.White;
+            panelContent.BackColor = SystemColors.Control;
             panelContent.Location = new Point(873, 255);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(990, 442);
@@ -720,10 +809,9 @@
             // 
             // panel17
             // 
-            panel17.BackColor = Color.White;
+            panel17.BackColor = SystemColors.Control;
             panel17.Controls.Add(printbillbtn);
             panel17.Controls.Add(sendtokitchenbtn);
-            panel17.Controls.Add(holdorderbtn);
             panel17.Controls.Add(saveorderbtn);
             panel17.Controls.Add(voidbtn);
             panel17.Controls.Add(addorderbtn);
@@ -737,74 +825,82 @@
             // printbillbtn
             // 
             printbillbtn.BackColor = Color.DarkRed;
+            printbillbtn.Cursor = Cursors.Hand;
             printbillbtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             printbillbtn.ForeColor = Color.White;
-            printbillbtn.Location = new Point(996, 65);
+            printbillbtn.Location = new Point(860, 58);
             printbillbtn.Name = "printbillbtn";
             printbillbtn.Size = new Size(199, 111);
             printbillbtn.TabIndex = 11;
             printbillbtn.Text = "Print Bill";
             printbillbtn.UseVisualStyleBackColor = false;
+            printbillbtn.Click += printbillbtn_Click;
             // 
             // sendtokitchenbtn
             // 
+            sendtokitchenbtn.BackColor = Color.Black;
+            sendtokitchenbtn.Cursor = Cursors.Hand;
             sendtokitchenbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sendtokitchenbtn.Location = new Point(396, 125);
+            sendtokitchenbtn.ForeColor = Color.White;
+            sendtokitchenbtn.Location = new Point(382, 125);
             sendtokitchenbtn.Name = "sendtokitchenbtn";
-            sendtokitchenbtn.Size = new Size(366, 80);
+            sendtokitchenbtn.Size = new Size(331, 80);
             sendtokitchenbtn.TabIndex = 10;
             sendtokitchenbtn.Text = "Send to Kitchen";
-            sendtokitchenbtn.UseVisualStyleBackColor = true;
-            // 
-            // holdorderbtn
-            // 
-            holdorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            holdorderbtn.Location = new Point(14, 124);
-            holdorderbtn.Name = "holdorderbtn";
-            holdorderbtn.Size = new Size(360, 80);
-            holdorderbtn.TabIndex = 9;
-            holdorderbtn.Text = "Hold Order";
-            holdorderbtn.UseVisualStyleBackColor = true;
+            sendtokitchenbtn.UseVisualStyleBackColor = false;
             // 
             // saveorderbtn
             // 
+            saveorderbtn.BackColor = Color.Black;
+            saveorderbtn.Cursor = Cursors.Hand;
             saveorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            saveorderbtn.Location = new Point(243, 21);
+            saveorderbtn.ForeColor = Color.White;
+            saveorderbtn.Location = new Point(260, 22);
             saveorderbtn.Name = "saveorderbtn";
             saveorderbtn.Size = new Size(219, 80);
             saveorderbtn.TabIndex = 8;
             saveorderbtn.Text = "Save Order";
-            saveorderbtn.UseVisualStyleBackColor = true;
+            saveorderbtn.UseVisualStyleBackColor = false;
             // 
             // voidbtn
             // 
+            voidbtn.BackColor = Color.Black;
+            voidbtn.Cursor = Cursors.Hand;
             voidbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            voidbtn.Location = new Point(468, 21);
+            voidbtn.ForeColor = Color.White;
+            voidbtn.Location = new Point(508, 21);
             voidbtn.Name = "voidbtn";
             voidbtn.Size = new Size(219, 80);
             voidbtn.TabIndex = 7;
             voidbtn.Text = "Void";
-            voidbtn.UseVisualStyleBackColor = true;
+            voidbtn.UseVisualStyleBackColor = false;
             // 
             // addorderbtn
             // 
+            addorderbtn.BackColor = Color.Black;
+            addorderbtn.Cursor = Cursors.Hand;
             addorderbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addorderbtn.Location = new Point(693, 21);
+            addorderbtn.ForeColor = Color.White;
+            addorderbtn.Location = new Point(34, 125);
             addorderbtn.Name = "addorderbtn";
-            addorderbtn.Size = new Size(219, 80);
+            addorderbtn.Size = new Size(306, 80);
             addorderbtn.TabIndex = 6;
             addorderbtn.Text = "Add Order";
-            addorderbtn.UseVisualStyleBackColor = true;
+            addorderbtn.UseVisualStyleBackColor = false;
             // 
             // applydiscountbtn
             // 
+            applydiscountbtn.BackColor = Color.Black;
+            applydiscountbtn.Cursor = Cursors.Hand;
             applydiscountbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            applydiscountbtn.ForeColor = Color.White;
             applydiscountbtn.Location = new Point(14, 21);
             applydiscountbtn.Name = "applydiscountbtn";
             applydiscountbtn.Size = new Size(219, 80);
             applydiscountbtn.TabIndex = 5;
             applydiscountbtn.Text = "Apply Discount";
-            applydiscountbtn.UseVisualStyleBackColor = true;
+            applydiscountbtn.UseVisualStyleBackColor = false;
+            applydiscountbtn.Click += applydiscountbtn_Click;
             // 
             // staffdashlogout
             // 
@@ -821,7 +917,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
-            ClientSize = new Size(1701, 835);
+            ClientSize = new Size(1701, 1061);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
             Controls.Add(panelContent);
@@ -835,7 +931,10 @@
             Controls.Add(userwelcome);
             Controls.Add(fficonadmin);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimumSize = new Size(1717, 991);
             Name = "StaffDashboard";
             Text = "Staff Dashboard";
             WindowState = FormWindowState.Maximized;
@@ -846,6 +945,7 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)orderDataGridView).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -879,7 +979,6 @@
         private Button voidbtn;
         private Button addorderbtn;
         private Button sendtokitchenbtn;
-        private Button holdorderbtn;
         private Button printbillbtn;
         private Button tablemapbtn;
         private Button takeoutbtn;
@@ -887,7 +986,7 @@
         private Button onlineordersbtn;
         private Button deliverybtn;
         private Button btn7;
-        private Button closebtn;
+        private Button okbtn;
         private Button btn0;
         private Button btn8;
         private Button btn5;
@@ -899,25 +998,29 @@
         private Button btn3;
         private Button btnc;
         private Label label1;
-        private Button checkoutbtn;
-        private TextBox textBox1;
+        private TextBox changetxt;
         private Panel panel5;
         private TextBox biilingamounttxt;
         private Label label2;
         private Button gcashbtn;
         private Button cardbtn;
         private Button cashbtn;
-        private Label label4;
-        private Button button2;
-        private Button button1;
+        private Label qtylbl;
+        private Button takeoutbtn2;
+        private Button dineinbtn;
         private Label ordersummarylabelstaff;
-        private Label label7;
-        private Label label6;
-        private Label label5;
+        private Label netamountlbl;
+        private Label taxlbl;
+        private Label totallbl;
         private Button staffdashlogout;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox discounttxt;
+        private TextBox fixedamounttxt;
         private Label label8;
         private Label label3;
+        private DataGridView orderDataGridView;
+        private Label qtytxt;
+        private Label taxtxt;
+        private Label totaltxt;
+        private Label netamounttxt;
     }
 }
