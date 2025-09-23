@@ -107,8 +107,11 @@
             // 
             // inventoryitemdata
             // 
+            inventoryitemdata.DropDownHeight = 250;
+            inventoryitemdata.DropDownWidth = 250;
             inventoryitemdata.Font = new Font("Segoe UI Light", 35.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             inventoryitemdata.FormattingEnabled = true;
+            inventoryitemdata.IntegralHeight = false;
             inventoryitemdata.Location = new Point(430, 229);
             inventoryitemdata.Name = "inventoryitemdata";
             inventoryitemdata.Size = new Size(545, 70);
@@ -154,8 +157,11 @@
             // 
             // menuitemsdata
             // 
+            menuitemsdata.DropDownHeight = 250;
+            menuitemsdata.DropDownWidth = 250;
             menuitemsdata.Font = new Font("Segoe UI Light", 35.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuitemsdata.FormattingEnabled = true;
+            menuitemsdata.IntegralHeight = false;
             menuitemsdata.Location = new Point(430, 105);
             menuitemsdata.Name = "menuitemsdata";
             menuitemsdata.Size = new Size(545, 70);
@@ -202,6 +208,7 @@
             inventoryitemlbl.Size = new Size(340, 54);
             inventoryitemlbl.TabIndex = 33;
             inventoryitemlbl.Text = "Inventory Item : ";
+            inventoryitemlbl.Click += inventoryitemlbl_Click;
             // 
             // quantitylbl
             // 

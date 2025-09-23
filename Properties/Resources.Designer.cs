@@ -73,6 +73,36 @@ namespace FlavorFlowIT13.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blocked_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("blocked-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("check-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inactive_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("inactive-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loginback {
             get {
                 object obj = ResourceManager.GetObject("loginback", resourceCulture);
@@ -177,6 +207,16 @@ namespace FlavorFlowIT13.Properties {
         internal static System.Drawing.Bitmap toggleon_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("toggleon-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("x-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

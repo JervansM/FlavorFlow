@@ -30,35 +30,35 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffDashboardDiscountFormAdd));
             panelForm = new Panel();
-            label1 = new Label();
+            discountcardstatus = new CheckBox();
             discountclosebtn = new Button();
             discountmiddlenametxt = new TextBox();
-            discountmiddlenamelbl = new Label();
             discountfirstnametxt = new TextBox();
-            discountfirstnamelbl = new Label();
             discountlastnametxt = new TextBox();
-            discountlastnamelbl = new Label();
-            menuformsavebtn = new Button();
-            menuformcategory = new ComboBox();
+            discountreregistercardbtn = new Button();
+            cardtypetxt = new ComboBox();
             discountcardnumbertxt = new TextBox();
+            cardtypelbl = new Label();
+            discountmiddlenamelbl = new Label();
+            discountfirstnamelbl = new Label();
+            discountlastnamelbl = new Label();
             discountcardnumberlbl = new Label();
-            discountcardstatus = new CheckBox();
             panelForm.SuspendLayout();
             SuspendLayout();
             // 
             // panelForm
             // 
-            panelForm.BackColor = Color.White;
+            panelForm.BackColor = Color.Transparent;
             panelForm.BackgroundImageLayout = ImageLayout.Zoom;
             panelForm.Controls.Add(discountcardstatus);
             panelForm.Controls.Add(discountclosebtn);
             panelForm.Controls.Add(discountmiddlenametxt);
             panelForm.Controls.Add(discountfirstnametxt);
             panelForm.Controls.Add(discountlastnametxt);
-            panelForm.Controls.Add(menuformsavebtn);
-            panelForm.Controls.Add(menuformcategory);
+            panelForm.Controls.Add(discountreregistercardbtn);
+            panelForm.Controls.Add(cardtypetxt);
             panelForm.Controls.Add(discountcardnumbertxt);
-            panelForm.Controls.Add(label1);
+            panelForm.Controls.Add(cardtypelbl);
             panelForm.Controls.Add(discountmiddlenamelbl);
             panelForm.Controls.Add(discountfirstnamelbl);
             panelForm.Controls.Add(discountlastnamelbl);
@@ -69,22 +69,24 @@
             panelForm.Size = new Size(1117, 913);
             panelForm.TabIndex = 2;
             // 
-            // label1
+            // discountcardstatus
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(150, 73);
-            label1.Name = "label1";
-            label1.Size = new Size(234, 54);
-            label1.TabIndex = 40;
-            label1.Text = "Card Type :";
+            discountcardstatus.AutoSize = true;
+            discountcardstatus.Cursor = Cursors.Hand;
+            discountcardstatus.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            discountcardstatus.ForeColor = Color.LimeGreen;
+            discountcardstatus.Location = new Point(386, 634);
+            discountcardstatus.Name = "discountcardstatus";
+            discountcardstatus.Size = new Size(117, 41);
+            discountcardstatus.TabIndex = 41;
+            discountcardstatus.Text = "Active";
+            discountcardstatus.UseVisualStyleBackColor = true;
+            discountcardstatus.CheckedChanged += discountcardstatus_CheckedChanged;
             // 
             // discountclosebtn
             // 
             discountclosebtn.BackColor = Color.Silver;
+            discountclosebtn.Cursor = Cursors.Hand;
             discountclosebtn.FlatStyle = FlatStyle.Flat;
             discountclosebtn.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             discountclosebtn.ForeColor = Color.White;
@@ -101,13 +103,95 @@
             discountmiddlenametxt.Anchor = AnchorStyles.None;
             discountmiddlenametxt.BackColor = Color.White;
             discountmiddlenametxt.Cursor = Cursors.IBeam;
-            discountmiddlenametxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            discountmiddlenametxt.Font = new Font("Segoe UI", 42F);
             discountmiddlenametxt.Location = new Point(386, 536);
             discountmiddlenametxt.Multiline = true;
             discountmiddlenametxt.Name = "discountmiddlenametxt";
             discountmiddlenametxt.Size = new Size(480, 81);
             discountmiddlenametxt.TabIndex = 38;
             discountmiddlenametxt.WordWrap = false;
+            discountmiddlenametxt.TextChanged += discountmiddlenametxt_TextChanged;
+            // 
+            // discountfirstnametxt
+            // 
+            discountfirstnametxt.Anchor = AnchorStyles.None;
+            discountfirstnametxt.BackColor = Color.White;
+            discountfirstnametxt.Cursor = Cursors.IBeam;
+            discountfirstnametxt.Font = new Font("Segoe UI", 42F);
+            discountfirstnametxt.Location = new Point(386, 419);
+            discountfirstnametxt.Multiline = true;
+            discountfirstnametxt.Name = "discountfirstnametxt";
+            discountfirstnametxt.Size = new Size(480, 81);
+            discountfirstnametxt.TabIndex = 36;
+            discountfirstnametxt.WordWrap = false;
+            discountfirstnametxt.TextChanged += discountfirstnametxt_TextChanged;
+            // 
+            // discountlastnametxt
+            // 
+            discountlastnametxt.Anchor = AnchorStyles.None;
+            discountlastnametxt.BackColor = Color.White;
+            discountlastnametxt.Cursor = Cursors.IBeam;
+            discountlastnametxt.Font = new Font("Segoe UI", 42F);
+            discountlastnametxt.Location = new Point(386, 296);
+            discountlastnametxt.Multiline = true;
+            discountlastnametxt.Name = "discountlastnametxt";
+            discountlastnametxt.Size = new Size(480, 81);
+            discountlastnametxt.TabIndex = 34;
+            discountlastnametxt.WordWrap = false;
+            discountlastnametxt.TextChanged += discountlastnametxt_TextChanged;
+            // 
+            // discountreregistercardbtn
+            // 
+            discountreregistercardbtn.BackColor = Color.LimeGreen;
+            discountreregistercardbtn.Cursor = Cursors.Hand;
+            discountreregistercardbtn.FlatStyle = FlatStyle.Flat;
+            discountreregistercardbtn.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            discountreregistercardbtn.ForeColor = Color.White;
+            discountreregistercardbtn.Location = new Point(386, 753);
+            discountreregistercardbtn.Name = "discountreregistercardbtn";
+            discountreregistercardbtn.Size = new Size(480, 57);
+            discountreregistercardbtn.TabIndex = 32;
+            discountreregistercardbtn.Text = "SAVE";
+            discountreregistercardbtn.UseVisualStyleBackColor = false;
+            discountreregistercardbtn.Click += discountreregistercardbtn_Click;
+            // 
+            // cardtypetxt
+            // 
+            cardtypetxt.Font = new Font("Segoe UI", 42F);
+            cardtypetxt.FormattingEnabled = true;
+            cardtypetxt.Items.AddRange(new object[] { "PWD", "SENIOR", "PREGNANT" });
+            cardtypetxt.Location = new Point(386, 57);
+            cardtypetxt.Name = "cardtypetxt";
+            cardtypetxt.Size = new Size(480, 82);
+            cardtypetxt.TabIndex = 30;
+            cardtypetxt.SelectedIndexChanged += cardtypetxt_SelectedIndexChanged;
+            // 
+            // discountcardnumbertxt
+            // 
+            discountcardnumbertxt.Anchor = AnchorStyles.None;
+            discountcardnumbertxt.BackColor = Color.White;
+            discountcardnumbertxt.Cursor = Cursors.IBeam;
+            discountcardnumbertxt.Font = new Font("Segoe UI", 42F);
+            discountcardnumbertxt.Location = new Point(386, 172);
+            discountcardnumbertxt.Multiline = true;
+            discountcardnumbertxt.Name = "discountcardnumbertxt";
+            discountcardnumbertxt.Size = new Size(480, 81);
+            discountcardnumbertxt.TabIndex = 27;
+            discountcardnumbertxt.WordWrap = false;
+            discountcardnumbertxt.TextChanged += discountcardnumbertxt_TextChanged;
+            // 
+            // cardtypelbl
+            // 
+            cardtypelbl.AutoSize = true;
+            cardtypelbl.BackColor = Color.Transparent;
+            cardtypelbl.FlatStyle = FlatStyle.Flat;
+            cardtypelbl.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
+            cardtypelbl.ForeColor = Color.DimGray;
+            cardtypelbl.Location = new Point(150, 73);
+            cardtypelbl.Name = "cardtypelbl";
+            cardtypelbl.Size = new Size(234, 54);
+            cardtypelbl.TabIndex = 40;
+            cardtypelbl.Text = "Card Type :";
             // 
             // discountmiddlenamelbl
             // 
@@ -123,19 +207,6 @@
             discountmiddlenamelbl.Text = "MiddleName : ";
             discountmiddlenamelbl.Click += discountmiddlenamelbl_Click;
             // 
-            // discountfirstnametxt
-            // 
-            discountfirstnametxt.Anchor = AnchorStyles.None;
-            discountfirstnametxt.BackColor = Color.White;
-            discountfirstnametxt.Cursor = Cursors.IBeam;
-            discountfirstnametxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            discountfirstnametxt.Location = new Point(386, 419);
-            discountfirstnametxt.Multiline = true;
-            discountfirstnametxt.Name = "discountfirstnametxt";
-            discountfirstnametxt.Size = new Size(480, 81);
-            discountfirstnametxt.TabIndex = 36;
-            discountfirstnametxt.WordWrap = false;
-            // 
             // discountfirstnamelbl
             // 
             discountfirstnamelbl.AutoSize = true;
@@ -148,19 +219,6 @@
             discountfirstnamelbl.Size = new Size(251, 54);
             discountfirstnamelbl.TabIndex = 35;
             discountfirstnamelbl.Text = "FirstName : ";
-            // 
-            // discountlastnametxt
-            // 
-            discountlastnametxt.Anchor = AnchorStyles.None;
-            discountlastnametxt.BackColor = Color.White;
-            discountlastnametxt.Cursor = Cursors.IBeam;
-            discountlastnametxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            discountlastnametxt.Location = new Point(386, 296);
-            discountlastnametxt.Multiline = true;
-            discountlastnametxt.Name = "discountlastnametxt";
-            discountlastnametxt.Size = new Size(480, 81);
-            discountlastnametxt.TabIndex = 34;
-            discountlastnametxt.WordWrap = false;
             // 
             // discountlastnamelbl
             // 
@@ -175,42 +233,6 @@
             discountlastnamelbl.TabIndex = 33;
             discountlastnamelbl.Text = "LastName : ";
             // 
-            // menuformsavebtn
-            // 
-            menuformsavebtn.BackColor = Color.LimeGreen;
-            menuformsavebtn.FlatStyle = FlatStyle.Flat;
-            menuformsavebtn.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuformsavebtn.ForeColor = Color.White;
-            menuformsavebtn.Location = new Point(386, 753);
-            menuformsavebtn.Name = "menuformsavebtn";
-            menuformsavebtn.Size = new Size(480, 57);
-            menuformsavebtn.TabIndex = 32;
-            menuformsavebtn.Text = "REGISTER";
-            menuformsavebtn.UseVisualStyleBackColor = false;
-            // 
-            // menuformcategory
-            // 
-            menuformcategory.Font = new Font("Segoe UI Light", 35.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuformcategory.FormattingEnabled = true;
-            menuformcategory.Items.AddRange(new object[] { "PWD", "SENIOR", "PREGNANT" });
-            menuformcategory.Location = new Point(386, 57);
-            menuformcategory.Name = "menuformcategory";
-            menuformcategory.Size = new Size(480, 70);
-            menuformcategory.TabIndex = 30;
-            // 
-            // discountcardnumbertxt
-            // 
-            discountcardnumbertxt.Anchor = AnchorStyles.None;
-            discountcardnumbertxt.BackColor = Color.White;
-            discountcardnumbertxt.Cursor = Cursors.IBeam;
-            discountcardnumbertxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            discountcardnumbertxt.Location = new Point(386, 172);
-            discountcardnumbertxt.Multiline = true;
-            discountcardnumbertxt.Name = "discountcardnumbertxt";
-            discountcardnumbertxt.Size = new Size(480, 81);
-            discountcardnumbertxt.TabIndex = 27;
-            discountcardnumbertxt.WordWrap = false;
-            // 
             // discountcardnumberlbl
             // 
             discountcardnumberlbl.AutoSize = true;
@@ -224,28 +246,18 @@
             discountcardnumberlbl.TabIndex = 20;
             discountcardnumberlbl.Text = "Card Number : ";
             // 
-            // discountcardstatus
-            // 
-            discountcardstatus.AutoSize = true;
-            discountcardstatus.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            discountcardstatus.ForeColor = Color.LimeGreen;
-            discountcardstatus.Location = new Point(386, 634);
-            discountcardstatus.Name = "discountcardstatus";
-            discountcardstatus.Size = new Size(117, 41);
-            discountcardstatus.TabIndex = 41;
-            discountcardstatus.Text = "Active";
-            discountcardstatus.UseVisualStyleBackColor = true;
-            // 
             // StaffDashboardDiscountFormAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1117, 913);
             Controls.Add(panelForm);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Location = new Point(800, 0);
             MaximizeBox = false;
             Name = "StaffDashboardDiscountFormAdd";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "StaffDashboardDiscountFormAdd";
             Load += StaffDashboardDiscountFormAdd_Load;
             panelForm.ResumeLayout(false);
@@ -262,12 +274,12 @@
         private Label discountfirstnamelbl;
         private TextBox discountlastnametxt;
         private Label discountlastnamelbl;
-        private Button menuformsavebtn;
-        private ComboBox menuformcategory;
+        private Button discountreregistercardbtn;
+        private ComboBox cardtypetxt;
         private TextBox discountcardnumbertxt;
         private Label discountcardnumberlbl;
         private Button discountclosebtn;
-        private Label label1;
+        private Label cardtypelbl;
         private CheckBox discountcardstatus;
     }
 }

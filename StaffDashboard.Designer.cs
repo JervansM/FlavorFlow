@@ -343,6 +343,7 @@
             orderDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             orderDataGridView.Location = new Point(7, 18);
             orderDataGridView.Name = "orderDataGridView";
+            orderDataGridView.ReadOnly = true;
             orderDataGridView.Size = new Size(581, 213);
             orderDataGridView.TabIndex = 47;
             orderDataGridView.CellContentClick += orderDataGridView_CellContentClick;
@@ -356,6 +357,7 @@
             discounttxt.Name = "discounttxt";
             discounttxt.Size = new Size(167, 37);
             discounttxt.TabIndex = 46;
+            discounttxt.TextChanged += discounttxt_TextChanged;
             // 
             // fixedamounttxt
             // 
@@ -364,8 +366,10 @@
             fixedamounttxt.Location = new Point(411, 344);
             fixedamounttxt.Multiline = true;
             fixedamounttxt.Name = "fixedamounttxt";
+            fixedamounttxt.ReadOnly = true;
             fixedamounttxt.Size = new Size(167, 37);
             fixedamounttxt.TabIndex = 45;
+            fixedamounttxt.TextChanged += fixedamounttxt_TextChanged;
             // 
             // label8
             // 
@@ -478,6 +482,7 @@
             // biilingamounttxt
             // 
             biilingamounttxt.Font = new Font("Segoe UI", 20F);
+            biilingamounttxt.ForeColor = Color.Green;
             biilingamounttxt.Location = new Point(215, 5);
             biilingamounttxt.Multiline = true;
             biilingamounttxt.Name = "biilingamounttxt";
@@ -541,13 +546,14 @@
             // 
             changetxt.BackColor = Color.White;
             changetxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            changetxt.ForeColor = SystemColors.WindowText;
+            changetxt.ForeColor = Color.Green;
             changetxt.Location = new Point(366, 554);
             changetxt.Multiline = true;
             changetxt.Name = "changetxt";
             changetxt.ReadOnly = true;
             changetxt.Size = new Size(212, 54);
             changetxt.TabIndex = 30;
+            changetxt.TextChanged += changetxt_TextChanged;
             // 
             // label1
             // 
@@ -874,6 +880,7 @@
             voidbtn.TabIndex = 7;
             voidbtn.Text = "Void";
             voidbtn.UseVisualStyleBackColor = false;
+            voidbtn.Click += voidbtn_Click;
             // 
             // addorderbtn
             // 

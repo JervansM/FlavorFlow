@@ -53,7 +53,7 @@ namespace FlavorFlowIT13
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                string query = "SELECT MenuID, Name FROM Menu";
+                string query = "SELECT MenuID, Name FROM Menu ORDER BY Name;";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -70,7 +70,7 @@ namespace FlavorFlowIT13
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                string query = "SELECT InventoryID, ItemName FROM Inventory";
+                string query = "SELECT InventoryID, ItemName FROM Inventory ORDER BY ItemName;";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -109,7 +109,7 @@ namespace FlavorFlowIT13
                          FROM MenuInventory mi
                          INNER JOIN Inventory i ON mi.InventoryID = i.InventoryID
                          INNER JOIN Menu m ON mi.MenuID = m.MenuID
-                         ORDER BY m.Name"; 
+                         ORDER BY m.Name";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
@@ -119,7 +119,7 @@ namespace FlavorFlowIT13
                 StyleRecipeGrid();
             }
         }
-    
+
         private void LoadRecipe(int menuId)
         {
             string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
@@ -282,6 +282,11 @@ namespace FlavorFlowIT13
             recipeGrid.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
             recipeGrid.DefaultCellStyle.SelectionForeColor = Color.Black;
             recipeGrid.BackgroundColor = Color.WhiteSmoke;
+        }
+
+        private void inventoryitemlbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

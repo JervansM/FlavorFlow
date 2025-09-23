@@ -18,7 +18,6 @@ namespace FlavorFlowIT13
     {
         public DataGridView OrderGrid => orderDataGridView;
         private string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
         private int currentStaffId;
 
         // Add this field to store the current order before saving
@@ -212,10 +211,13 @@ namespace FlavorFlowIT13
             cardbtn.FlatAppearance.BorderSize = 0;
             cardbtn.UseVisualStyleBackColor = false;
 
-            UpdateTotals();
+
 
             discounttxt.TextChanged += discounttxt_TextChanged;
             orderDataGridView.CellValueChanged += orderDataGridView_CellValueChanged;
+            biilingamounttxt.Text = "₱0.00";
+
+            UpdateTotals();
         }
 
         private void StyleUserGrid()
@@ -225,8 +227,8 @@ namespace FlavorFlowIT13
             orderDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             orderDataGridView.DefaultCellStyle.BackColor = Color.White;
             orderDataGridView.DefaultCellStyle.ForeColor = Color.Black;
-            orderDataGridView.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            orderDataGridView.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            orderDataGridView.DefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
+            orderDataGridView.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
             orderDataGridView.RowHeadersVisible = false;
             orderDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             orderDataGridView.MultiSelect = false;
@@ -441,10 +443,7 @@ namespace FlavorFlowIT13
 
         }
 
-        private void checkoutbtn_Click(object sender, EventArgs e)
-        {
 
-        }
 
         // Calculate subtotal, discount, total
         private void UpdateTotals()
@@ -474,10 +473,27 @@ namespace FlavorFlowIT13
             taxtxt.Text = tax.ToString("12%");
             netamounttxt.Text = netAmount.ToString("0.00");
             fixedamounttxt.Text = fixedAmount.ToString("0.00");
+
         }
 
         // When discount changes
         private void discounttxt_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+
+            // REMOVE NON-NUMERIC
+            string clean = new string(tb.Text.Where(c => char.IsDigit(c) || c == '.').ToArray());
+
+            if (tb.Text != clean)
+            {
+                int selStart = tb.SelectionStart - (tb.Text.Length - clean.Length);
+                tb.Text = clean;
+                tb.SelectionStart = Math.Max(0, selStart);
+            }
+
+            UpdateTotals();
+        }
+        private void discounttxt_Clicked(object sender, EventArgs e)
         {
             UpdateTotals();
         }
@@ -485,10 +501,19 @@ namespace FlavorFlowIT13
         private void okbtn_Click(object sender, EventArgs e)
         {
             decimal total = 0;
-            decimal.TryParse(fixedamounttxt.Text, out total);
             decimal billing = 0;
-            decimal.TryParse(biilingamounttxt.Text, out billing);
-            changetxt.Text = (billing - total).ToString("0.00");
+
+
+            decimal.TryParse(fixedamounttxt.Text.Replace("₱", "").Trim(), out total);
+            decimal.TryParse(biilingamounttxt.Text.Replace("₱", "").Trim(), out billing);
+
+            decimal change = billing - total;
+
+
+            if (change < 0)
+                changetxt.Text = "₱0.00";
+            else
+                changetxt.Text = "₱" + change.ToString("0.00");
         }
 
         private void cashbtn_Click(object sender, EventArgs e)
@@ -604,10 +629,12 @@ namespace FlavorFlowIT13
         private void RefreshOrderSummary(int orderId)
         {
             StyleUserGrid();
-            string query = @"SELECT oi.OrderItemID, m.Name AS MenuName, oi.Qty, oi.Price, oi.Subtotal
-                     FROM OrderItems oi
-                     INNER JOIN Menu m ON oi.MenuID = m.MenuID
-                     WHERE oi.OrderID = @OrderID";
+            string query = @"
+        SELECT o.TableID AS TableName, oi.OrderItemID,  m.Name AS MenuName,  oi.Qty,   oi.Price,  oi.Subtotal
+        FROM OrderItems oi
+        INNER JOIN Menu m ON oi.MenuID = m.MenuID
+        INNER JOIN Orders o ON oi.OrderID = o.OrderID
+        WHERE oi.OrderID = @OrderID";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, con))
@@ -620,6 +647,14 @@ namespace FlavorFlowIT13
                 {
                     da.Fill(dt);
                     orderDataGridView.DataSource = dt;
+
+                    orderDataGridView.Columns["TableName"].HeaderText = "Table";
+                    orderDataGridView.Columns["OrderItemID"].HeaderText = "OrderItem ID";
+                    orderDataGridView.Columns["MenuName"].HeaderText = "Menu Item";
+                    orderDataGridView.Columns["Qty"].HeaderText = "Quantity";
+                    orderDataGridView.Columns["Price"].HeaderText = "Price";
+                    orderDataGridView.Columns["Subtotal"].HeaderText = "Subtotal";
+
                     UpdateTotals();
                 }
             }
@@ -627,35 +662,49 @@ namespace FlavorFlowIT13
 
         private void OnTableSelected(string tableIdStr)
         {
-            // Extract the number from "Table 1", "Table 2", etc.
+            // Extract number from "Table 1", "Table 2", etc.
             var match = System.Text.RegularExpressions.Regex.Match(tableIdStr, @"\d+");
-            if (match.Success && int.TryParse(match.Value, out int tableId))
-            {
-                int orderId = GetOrCreateOrderIdForTable(tableId);
-                var menuForm = new StaffDashboardMenuFormOrder(tableIdStr);
-                menuForm.MenuItemClicked += (item) =>
-                {
-                    string qtyStr = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {item.Name}:", "Quantity", "1");
-                    if (int.TryParse(qtyStr, out int qty) && qty > 0)
-                    {
-                        item.Qty = qty;
-                        PlaceOrder(orderId, item.MenuId, item.Qty);
-                        RefreshOrderSummary(orderId);
-                        UpdateTotals();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid quantity.");
-                    }
-                };
-                LoadContent(menuForm);
-                RefreshOrderSummary(orderId);
-            }
-            else
+            if (!match.Success || !int.TryParse(match.Value, out int tableId))
             {
                 MessageBox.Show("Invalid table ID.");
+                return;
             }
 
+            int orderId = GetOrCreateOrderIdForTable(tableId);
+
+            var menuForm = new StaffDashboardMenuFormOrder(tableIdStr);
+            menuForm.MenuItemClicked += (item) =>
+            {
+                string qtyStr = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {item.Name}:", "Quantity", "1");
+                if (int.TryParse(qtyStr, out int qty) && qty > 0)
+                {
+                    item.Qty = qty;
+
+                    // 1️⃣ Place the order in DB
+                    PlaceOrder(orderId, item.MenuId, item.Qty);
+
+                    // 2️⃣ Add item to DataGridView including table name
+                    AddItemToOrderSummary(new OrderItem
+                    {
+                        Table = tableIdStr,
+                        MenuId = item.MenuId,
+                        Name = item.Name,
+                        Qty = item.Qty,
+                        Price = item.Price,
+                        Subtotal = item.Qty * item.Price
+                    });
+
+                    // 3️⃣ Refresh the summary from DB (optional)
+                    RefreshOrderSummary(orderId);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid quantity.");
+                }
+            };
+
+            LoadContent(menuForm);
+            RefreshOrderSummary(orderId); // ensure table name shows immediately
         }
         private int GetOrCreateOrderIdForTable(int tableId)
         {
@@ -690,7 +739,7 @@ namespace FlavorFlowIT13
         private void AddItemToOrderSummary(OrderItem item)
         {
             // Check if item already exists
-            var existing = currentOrderItems.FirstOrDefault(x => x.MenuId == item.MenuId);
+            var existing = currentOrderItems.FirstOrDefault(x => x.MenuId == item.MenuId && x.Table == item.Table);
             if (existing != null)
             {
                 existing.Qty += item.Qty;
@@ -702,26 +751,55 @@ namespace FlavorFlowIT13
                 currentOrderItems.Add(item);
             }
 
-            // Bind to DataGridView
             orderDataGridView.DataSource = null;
             orderDataGridView.DataSource = currentOrderItems;
-
-            // Update summary totals immediately
             UpdateTotals();
-
         }
+
 
         private void biilingamounttxt_TextChanged(object sender, EventArgs e)
         {
-            decimal billing = 0;
-            decimal fixedAmount = 0;
+            // TEMP UNSCRUBSCRIBE
+            biilingamounttxt.TextChanged -= biilingamounttxt_TextChanged;
 
-            decimal.TryParse(biilingamounttxt.Text, out billing);
-            decimal.TryParse(fixedamounttxt.Text, out fixedAmount);
+            string raw = biilingamounttxt.Text.Replace("₱", "").Trim();
 
-            changetxt.Text = (billing - fixedAmount).ToString("0.00");
+            if (decimal.TryParse(raw, out decimal billing))
+            {
+                // UPDATE CHANGE
+                if (decimal.TryParse(fixedamounttxt.Text.Replace("₱", "").Trim(), out decimal fixedAmount))
+                {
+                    changetxt.Text = "₱" + (billing - fixedAmount).ToString("0.00");
+                }
+
+                // PESO
+                biilingamounttxt.Text = "₱" + raw;
+                biilingamounttxt.SelectionStart = biilingamounttxt.Text.Length;
+            }
+            else
+            {
+                // PESO
+                biilingamounttxt.Text = "₱";
+                biilingamounttxt.SelectionStart = biilingamounttxt.Text.Length;
+                changetxt.Text = "₱0.00";
+            }
+
+            // RESUBSCRIBE
+            biilingamounttxt.TextChanged += biilingamounttxt_TextChanged;
         }
 
+        private void biilingamounttxt_Leave(object sender, EventArgs e)
+        {
+            string raw = biilingamounttxt.Text.Replace("₱", "").Trim();
+            if (decimal.TryParse(raw, out decimal value))
+            {
+                biilingamounttxt.Text = "₱" + value.ToString("0.00");
+            }
+            else
+            {
+                biilingamounttxt.Text = "₱0.00";
+            }
+        }
         private void qtytxt_Click(object sender, EventArgs e)
         {
 
@@ -741,7 +819,6 @@ namespace FlavorFlowIT13
         {
 
         }
-        // Add this method inside the StaffDashboard class to handle the CellValueChanged event
         private void orderDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             UpdateTotals();
@@ -756,10 +833,45 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void changetxt_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void voidbtn_Click(object sender, EventArgs e)
+        {
+            if (orderDataGridView.DataSource is DataTable dt)
+            {
+                dt.Clear();
+                orderDataGridView.DataSource = null; 
+            }
+            else
+            {
+                orderDataGridView.Rows.Clear();
+            }
+
+            currentOrderItems.Clear();
+
+            fixedamounttxt.Text = "0.00";
+            biilingamounttxt.Text = "₱0.00";
+            discounttxt.Clear();
+            qtytxt.Text = "0";
+            totaltxt.Text = "0.00";
+            taxtxt.Text = "0.00";
+            netamounttxt.Text = "0.00";
+            changetxt.Text = "₱0.00";
+
+            UpdateTotals();
+        }
+
+        private void fixedamounttxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-    // Add this class definition to your code, ideally above or below your StaffDashboard class
     public class OrderItem
     {
+        public string Table { get; set; }
         public int MenuId { get; set; }
         public string Name { get; set; }
         public int Qty { get; set; }

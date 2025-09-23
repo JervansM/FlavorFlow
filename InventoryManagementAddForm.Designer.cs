@@ -238,7 +238,7 @@
             // 
             inventoryformunitbox.Font = new Font("Segoe UI Light", 35.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             inventoryformunitbox.FormattingEnabled = true;
-            inventoryformunitbox.Items.AddRange(new object[] { "kg", "grams", "pcs", "liters" });
+            inventoryformunitbox.Items.AddRange(new object[] { "kg", "grams", "pcs", "liters", "ml" });
             inventoryformunitbox.Location = new Point(335, 305);
             inventoryformunitbox.Name = "inventoryformunitbox";
             inventoryformunitbox.Size = new Size(480, 70);
