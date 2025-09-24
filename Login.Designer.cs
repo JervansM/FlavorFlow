@@ -65,7 +65,6 @@
             passwordtxt.Size = new Size(415, 81);
             passwordtxt.TabIndex = 3;
             passwordtxt.WordWrap = false;
-            passwordtxt.TextChanged += passwordtxt_TextChanged;
             // 
             // userlbl
             // 
@@ -80,7 +79,6 @@
             userlbl.TabIndex = 0;
             userlbl.Text = "Username :";
             userlbl.TextAlign = ContentAlignment.MiddleRight;
-            userlbl.Click += label1_Click;
             // 
             // loginbtn
             // 
@@ -112,7 +110,6 @@
             usertxt.Size = new Size(415, 81);
             usertxt.TabIndex = 2;
             usertxt.WordWrap = false;
-            usertxt.TextChanged += usertxt_TextChanged;
             // 
             // loginsignupbtn
             // 
@@ -129,7 +126,6 @@
             loginsignupbtn.TabIndex = 5;
             loginsignupbtn.Text = "Sign up";
             loginsignupbtn.UseVisualStyleBackColor = false;
-            loginsignupbtn.Click += loginsignupbtn_Click;
             // 
             // Login
             // 
@@ -151,7 +147,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             WindowState = FormWindowState.Maximized;
-            Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }

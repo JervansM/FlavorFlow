@@ -1,54 +1,75 @@
-using Microsoft.Data.SqlClient; 
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
-using System.Data.SqlClient; 
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FlavorFlowIT13
 {
     public partial class Login : Form
     {
+        private readonly string cloudConnectionString = "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
+        private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        private string activeConnectionString;
+
         public Login()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.UserPaint, true);
+
+            activeConnectionString = GetAvailableConnection();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private string GetAvailableConnection()
         {
-
-
-
-
-            loginbtn.FlatStyle = FlatStyle.Flat;
-            loginbtn.UseVisualStyleBackColor = false;
-            loginbtn.FlatAppearance.BorderSize = 0;
-
-            loginbtn.BackColor = ColorTranslator.FromHtml("Coral");
-
-            loginbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
-            loginbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");
-
-
+            if (TestConnection(cloudConnectionString))
+            {
+                return cloudConnectionString;
+            }
+            else if (TestConnection(localConnectionString))
+            {
+                return localConnectionString;
+            }
+            else
+            {
+                MessageBox.Show("No available database connection.", "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private bool TestConnection(string connectionString)
         {
-
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false; // Connection failed
+            }
         }
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            if (string.IsNullOrEmpty(activeConnectionString))
+            {
+                MessageBox.Show("No database connection available.", "Login Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", usertxt.Text.Trim());
@@ -61,60 +82,36 @@ namespace FlavorFlowIT13
                     {
                         string userRole = role.ToString();
 
-                        if (userRole == "Admin")
+                        switch (userRole)
                         {
-                            AdminDashboard adminForm = new AdminDashboard();
-                            adminForm.Show();
-                            this.Hide();
-                            Refresh();
-                        }
-                        else if (userRole == "Manager")
-                        {
-                            ManagerDashboard managerForm = new ManagerDashboard();
-                            managerForm.Show();
-                            this.Hide();
-                        }
-                        else if (userRole == "Staff")
-                        {
-                            string queryStaffId = @"SELECT s.StaffID, s.Name, s.Role, u.UserID, u.Username FROM dbo.Staff s INNER JOIN dbo.[User] u ON s.UserID = u.UserID 
-                                WHERE u.Username = @Username AND u.Password = @Password;";
+                            case "Admin":
+                                new AdminDashboard().Show();
+                                this.Hide();
+                                break;
 
-                            int staffId = 0;
-                            using (var Staffconn = new SqlConnection(connectionString))
-                            using (var Staffcmd = new SqlCommand(queryStaffId, Staffconn))
-                            {
-                                Staffcmd.Parameters.AddWithValue("@username", usertxt.Text.Trim());
-                                Staffcmd.Parameters.AddWithValue("@password", passwordtxt.Text.Trim());
-                                Staffconn.Open();
-                                var result = Staffcmd.ExecuteScalar();
-                                if (result != null && int.TryParse(result.ToString(), out staffId))
-                                {
-                                    var dashboard = new StaffDashboard(staffId);
-                                    dashboard.Show();
-                                    this.Hide();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Invalid staff credentials or role mismatch.");
-                                }
-                            }
-                        }
-                        else if (userRole == "HR")
-                        {
-                            HrDashboard hrForm = new HrDashboard();
-                            hrForm.Show();
-                            this.Hide();
-                        }
-                        else if (userRole == "Customer")
-                        {
-                            CustomerDashboard customerForm = new CustomerDashboard();
-                            customerForm.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid role assigned to user.", "Login Failed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            case "Manager":
+                                new ManagerDashboard().Show();
+                                this.Hide();
+                                break;
+
+                            case "Staff":
+                                HandleStaffLogin(usertxt.Text.Trim(), passwordtxt.Text.Trim());
+                                break;
+
+                            case "HR":
+                                new HrDashboard().Show();
+                                this.Hide();
+                                break;
+
+                            case "Customer":
+                                new CustomerDashboard().Show();
+                                this.Hide();
+                                break;
+
+                            default:
+                                MessageBox.Show("Invalid role assigned to user.", "Login Failed",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
                         }
                     }
                     else
@@ -131,28 +128,42 @@ namespace FlavorFlowIT13
             }
         }
 
-
-
-        private void usertxt_TextChanged(object sender, EventArgs e)
+        private void HandleStaffLogin(string username, string password)
         {
+            string queryStaffId = @"
+                SELECT s.StaffID 
+                FROM dbo.Staff s 
+                INNER JOIN dbo.[User] u ON s.UserID = u.UserID 
+                WHERE u.Username = @username AND u.Password = @password;";
 
-        }
+            try
+            {
+                using (var Staffconn = new SqlConnection(activeConnectionString))
+                using (var Staffcmd = new SqlCommand(queryStaffId, Staffconn))
+                {
+                    Staffcmd.Parameters.AddWithValue("@username", username);
+                    Staffcmd.Parameters.AddWithValue("@password", password);
 
-        private void passwordtxt_TextChanged(object sender, EventArgs e)
-        {
+                    Staffconn.Open();
+                    var result = Staffcmd.ExecuteScalar();
 
-        }
-
-        private void loginpanelinput_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void loginsignupbtn_Click(object sender, EventArgs e)
-        {
-            WebAppSignUp webAppSignUp = new WebAppSignUp();
-            webAppSignUp.Show();
-            this.Hide();
+                    if (result != null && int.TryParse(result.ToString(), out int staffId))
+                    {
+                        var dashboard = new StaffDashboard(staffId);
+                        dashboard.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid staff credentials or role mismatch.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in Staff Login: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

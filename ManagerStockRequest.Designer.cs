@@ -61,7 +61,6 @@
             managerstockrequestlogwastetxt.TabIndex = 47;
             managerstockrequestlogwastetxt.Text = "Log Waste";
             managerstockrequestlogwastetxt.UseVisualStyleBackColor = false;
-            managerstockrequestlogwastetxt.Click += this.hrstockrequestlogwastetxt_Click;
             // 
             // managerstockrequeststockrequesttxt
             // 
@@ -77,7 +76,6 @@
             managerstockrequeststockrequesttxt.TabIndex = 46;
             managerstockrequeststockrequesttxt.Text = " Stock Request";
             managerstockrequeststockrequesttxt.UseVisualStyleBackColor = false;
-            managerstockrequeststockrequesttxt.Click += this.hrstockrequeststockrequesttxt_Click;
             // 
             // managerstockrequestreplenishmentrequesttxt
             // 
@@ -109,7 +107,6 @@
             managerstockrequestaddnewstockrequesttxt.TabIndex = 48;
             managerstockrequestaddnewstockrequesttxt.Text = "Add new stock request";
             managerstockrequestaddnewstockrequesttxt.UseVisualStyleBackColor = false;
-            managerstockrequestaddnewstockrequesttxt.Click += this.hrstockrequestaddnewstockrequesttxt_Click;
             // 
             // panel1
             // 
@@ -228,7 +225,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(312, 58);
             panel3.TabIndex = 52;
-            panel3.Paint += this.panel3_Paint;
             // 
             // label8
             // 
@@ -257,7 +253,6 @@
             Controls.Add(managerstockrequeststockrequesttxt);
             Name = "ManagerStockRequest";
             Text = "ManagerStockRequest";
-            Load += this.ManagerStockRequest_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
