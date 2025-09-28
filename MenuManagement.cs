@@ -13,6 +13,9 @@ namespace FlavorFlowIT13
 {
     public partial class MenuManagement : Form
     {
+        private readonly string cloudConn = "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User ID=your_user;Password=your_password;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string localConn = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;";
+
         private int? _selectedMenuId = null;
 
         
@@ -24,6 +27,21 @@ namespace FlavorFlowIT13
 
 
 
+        }
+        private SqlConnection GetConnection()
+        {
+            try
+            {
+                var conn = new SqlConnection(cloudConn);
+                conn.Open();
+                return conn; // Cloud works
+            }
+            catch
+            {
+                var conn = new SqlConnection(localConn);
+                conn.Open();
+                return conn; // Fallback to local
+            }
         }
         private void RoundPanel(Panel pnl, int radius)
         {
@@ -123,10 +141,9 @@ namespace FlavorFlowIT13
        
         public void AddMenuIngredients(int menuId, List<(int InventoryId, decimal QuantityUsed)> ingredients)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
 
-            using (var conn = new SqlConnection(connectionString))
+            using (var conn = GetConnection())
             {
                 conn.Open();
                 foreach (var item in ingredients)
@@ -144,9 +161,8 @@ namespace FlavorFlowIT13
         }
         public DataTable GetMenuIngredients(int menuId)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-            using (var conn = new SqlConnection(connectionString))
+            using (var conn = GetConnection())
             {
                 conn.Open();
                 var cmd = new SqlCommand(@"
@@ -163,66 +179,62 @@ namespace FlavorFlowIT13
         }
         public bool PlaceOrder(int menuId, int quantity)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-            using (var conn = new SqlConnection(connectionString))
+            using (var conn = GetConnection())
+            using (var transaction = conn.BeginTransaction())
             {
-                conn.Open();
-                using (var transaction = conn.BeginTransaction())
+                try
                 {
-                    try
+                    // 1. Get ingredients for this menu
+                    var cmd = new SqlCommand(@"
+                        SELECT InventoryID, QuantityUsed
+                        FROM MenuInventory
+                        WHERE MenuID = @MenuID", conn, transaction);
+                    cmd.Parameters.AddWithValue("@MenuID", menuId);
+
+                    var reader = cmd.ExecuteReader();
+                    var ingredients = new List<(int InventoryId, decimal QuantityUsed)>();
+                    while (reader.Read())
                     {
-                        // 1. Get ingredients for this menu
-                        var cmd = new SqlCommand(@"
-                    SELECT InventoryID, QuantityUsed
-                    FROM MenuInventory
-                    WHERE MenuID = @MenuID", conn, transaction);
-                        cmd.Parameters.AddWithValue("@MenuID", menuId);
-
-                        var reader = cmd.ExecuteReader();
-                        var ingredients = new List<(int InventoryId, decimal QuantityUsed)>();
-                        while (reader.Read())
-                        {
-                            ingredients.Add((reader.GetInt32(0), reader.GetDecimal(1)));
-                        }
-                        reader.Close();
-
-                        // 2. Check stock
-                        foreach (var item in ingredients)
-                        {
-                            var checkCmd = new SqlCommand(
-                                "SELECT Quantity FROM Inventory WHERE InventoryID=@InventoryID", conn, transaction);
-                            checkCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
-                            decimal stock = (decimal)checkCmd.ExecuteScalar();
-
-                            if (stock < item.QuantityUsed * quantity)
-                                throw new Exception($"Out of stock: InventoryID {item.InventoryId}");
-                        }
-
-                        // 3. Deduct stock
-                        foreach (var item in ingredients)
-                        {
-                            var updateCmd = new SqlCommand(@"
-                        UPDATE Inventory
-                        SET Quantity = Quantity - @Qty,
-                            UpdatedAt = GETDATE()
-                        WHERE InventoryID=@InventoryID", conn, transaction);
-                            updateCmd.Parameters.AddWithValue("@Qty", item.QuantityUsed * quantity);
-                            updateCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
-                            updateCmd.ExecuteNonQuery();
-                        }
-
-                        transaction.Commit();
-                        return true;
+                        ingredients.Add((reader.GetInt32(0), reader.GetDecimal(1)));
                     }
-                    catch
+                    reader.Close();
+
+                    // 2. Check stock
+                    foreach (var item in ingredients)
                     {
-                        transaction.Rollback();
-                        return false;
+                        var checkCmd = new SqlCommand(
+                            "SELECT Quantity FROM Inventory WHERE InventoryID=@InventoryID", conn, transaction);
+                        checkCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
+                        decimal stock = Convert.ToDecimal(checkCmd.ExecuteScalar());
+
+                        if (stock < item.QuantityUsed * quantity)
+                            throw new Exception($"Out of stock: InventoryID {item.InventoryId}");
                     }
+
+                    // 3. Deduct stock
+                    foreach (var item in ingredients)
+                    {
+                        var updateCmd = new SqlCommand(@"
+                            UPDATE Inventory
+                            SET Quantity = Quantity - @Qty,
+                                UpdatedAt = GETDATE()
+                            WHERE InventoryID=@InventoryID", conn, transaction);
+                        updateCmd.Parameters.AddWithValue("@Qty", item.QuantityUsed * quantity);
+                        updateCmd.Parameters.AddWithValue("@InventoryID", item.InventoryId);
+                        updateCmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    return false;
                 }
             }
         }
+        
 
 
 
@@ -253,31 +265,23 @@ namespace FlavorFlowIT13
 
             flowLayoutMenuCard.Controls.Clear();
 
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
             string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name";
 
 
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (var con = GetConnection())
+                using (var cmd = new SqlCommand(query, con))
+                using (var reader = cmd.ExecuteReader())
                 {
-                    con.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                   
                     {
                         while (reader.Read())
                         {
-                            Panel card = new Panel();
-                            card.Width = 290;
-                            card.Height = 375;
-                            card.Margin = new Padding(10);
-                            card.BackColor = Color.White;
-                            card.BorderStyle = BorderStyle.FixedSingle;
-
-
                             flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
                         }
                     }
+
                 }
             }
             catch (Exception ex)

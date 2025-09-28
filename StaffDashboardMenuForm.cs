@@ -13,11 +13,47 @@ namespace FlavorFlowIT13
 {
     public partial class StaffDashboardMenuForm : Form
     {
+        private readonly string localConnectionString =
+          "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        // ✅ Cloud connection
+        private readonly string cloudConnectionString =
+            "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=YourPasswordHere;Encrypt=True;TrustServerCertificate=True;";
+
+        private string connectionString;
+
         private int? _selectedMenuId = null;
 
         public StaffDashboardMenuForm()
         {
             InitializeComponent();
+
+            if (CanConnect(cloudConnectionString))
+            {
+                connectionString = cloudConnectionString;
+                Console.WriteLine("✅ Using Cloud Database");
+            }
+            else
+            {
+                connectionString = localConnectionString;
+                Console.WriteLine("⚡ Using Local Database (cloud not reachable)");
+            }
+
+        }
+        private bool CanConnect(string connStr)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connStr))
+                {
+                    con.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void panelContent_Paint(object sender, PaintEventArgs e)
@@ -49,7 +85,7 @@ namespace FlavorFlowIT13
 
             flowLayoutMenuCard.Controls.Clear();
 
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            
             string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name;";
 
 

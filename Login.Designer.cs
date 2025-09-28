@@ -147,6 +147,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             WindowState = FormWindowState.Maximized;
+            Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }

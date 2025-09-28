@@ -52,11 +52,12 @@ namespace FlavorFlowIT13
             {
                 string query = "SELECT * FROM Menu WHERE MenuID = @MenuID";
 
-                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlConnection con = new SqlConnection(ConnectionHelper.GetConnectionString()))
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
                     con.Open();
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -67,7 +68,6 @@ namespace FlavorFlowIT13
                             menuformpricetxt.Text = reader["Price"].ToString();
                             menuformstatuscheckbox.Checked = (bool)reader["IsAvailable"];
 
-                            // Load image
                             if (reader["ImagePath"] != DBNull.Value)
                             {
                                 string path = reader["ImagePath"].ToString();
@@ -85,9 +85,33 @@ namespace FlavorFlowIT13
                             }
                         }
 
-                        this.Text = "Edit Menu Item"; // change title for clarity
+                        this.Text = "Edit Menu Item";
                         menuformsavebtn.Text = "Update";
                     }
+                }
+            }
+        }
+        public static class ConnectionHelper
+        {
+            private static string localConnection =
+                "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+            private static string cloudConnection =
+                "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=ChangeThisPassword!;Encrypt=True;TrustServerCertificate=True;";
+
+            public static string GetConnectionString()
+            {
+                try
+                {
+                    using (var con = new SqlConnection(cloudConnection))
+                    {
+                        con.Open();
+                        return cloudConnection;
+                    }
+                }
+                catch
+                {
+                    return localConnection;
                 }
             }
         }
@@ -202,25 +226,24 @@ namespace FlavorFlowIT13
 
             try
             {
-                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlConnection con = new SqlConnection(ConnectionHelper.GetConnectionString()))
                 {
                     con.Open();
                     SqlCommand cmd;
 
                     if (_isEditMode)
                     {
-                        // UPDATE
                         cmd = new SqlCommand(@"UPDATE Menu 
-                           SET Name=@Name, Description=@Description, Category=@Category, 
-                               Price=@Price, IsAvailable=@IsAvailable, ImagePath=@ImagePath 
-                           WHERE MenuID=@MenuID", con);
+                            SET Name=@Name, Description=@Description, Category=@Category, 
+                                Price=@Price, IsAvailable=@IsAvailable, ImagePath=@ImagePath 
+                            WHERE MenuID=@MenuID", con);
                         cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
                     }
                     else
                     {
-                        // INSERT
-                        cmd = new SqlCommand(@"INSERT INTO Menu (Name, Description, Category, Price, IsAvailable, ImagePath) 
-                           VALUES (@Name, @Description, @Category, @Price, @IsAvailable, @ImagePath)", con);
+                        cmd = new SqlCommand(@"INSERT INTO Menu 
+                            (Name, Description, Category, Price, IsAvailable, ImagePath) 
+                            VALUES (@Name, @Description, @Category, @Price, @IsAvailable, @ImagePath)", con);
                     }
 
                     cmd.Parameters.AddWithValue("@Name", menunametxt.Text);
