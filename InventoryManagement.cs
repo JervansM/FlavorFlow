@@ -83,7 +83,7 @@ namespace FlavorFlowIT13
         {
             try
             {
-                string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+                string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
                 using (var conn = new SqlConnection(connectionString))
                 {

@@ -48,7 +48,7 @@ namespace FlavorFlowIT13
 
         private void LoadMenus()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -65,7 +65,7 @@ namespace FlavorFlowIT13
         }
         private void LoadInventoryItems()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -100,7 +100,7 @@ namespace FlavorFlowIT13
         }
         private void LoadAllRecipes()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -122,7 +122,7 @@ namespace FlavorFlowIT13
 
         private void LoadRecipe(int menuId)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -175,7 +175,7 @@ namespace FlavorFlowIT13
             decimal qty = Convert.ToDecimal(quantitydata.Text);
             string unit = manageunitrecipetxt.Text;
 
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();

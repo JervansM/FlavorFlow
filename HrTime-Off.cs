@@ -16,5 +16,30 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void LoadContent(Form form)
+        {
+            foreach (Control ctrl in panelContent.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panelContent.Controls.Clear();
+
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            // Add to panel
+            panelContent.Controls.Add(form);
+            form.Show();
+
+        }
+
+        private void hrleavetimeoffbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new HrTime_Off());
+        }
     }
 }

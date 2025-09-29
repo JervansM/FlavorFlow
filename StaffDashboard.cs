@@ -17,7 +17,7 @@ namespace FlavorFlowIT13
     public partial class StaffDashboard : Form
     {
         public DataGridView OrderGrid => orderDataGridView;
-        private string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlowDB;Integrated Security=True;Trust Server Certificate=True";
         private int currentStaffId;
 
         // Add this field to store the current order before saving

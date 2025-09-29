@@ -15,7 +15,7 @@ namespace FlavorFlowIT13
     {
         private int? _selectedMenuId = null;
 
-        
+
 
         public MenuManagement()
         {
@@ -80,7 +80,7 @@ namespace FlavorFlowIT13
         private void MenuManagement_Load(object sender, EventArgs e)
         {
             LoadMenuData();
-    
+
 
 
 
@@ -93,7 +93,7 @@ namespace FlavorFlowIT13
                 RoundButton(menumanagementrecipebtn, 20);
                 RoundButton(menuedititembtn, 20);
 
-                
+
 
                 menumanagementrecipebtn.UseVisualStyleBackColor = false;
                 menumanagementrecipebtn.FlatStyle = FlatStyle.Flat;
@@ -120,10 +120,10 @@ namespace FlavorFlowIT13
                 menuedititembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#B47E32");
             }
         }
-       
+
         public void AddMenuIngredients(int menuId, List<(int InventoryId, decimal QuantityUsed)> ingredients)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
 
             using (var conn = new SqlConnection(connectionString))
@@ -144,7 +144,7 @@ namespace FlavorFlowIT13
         }
         public DataTable GetMenuIngredients(int menuId)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             using (var conn = new SqlConnection(connectionString))
             {
@@ -163,7 +163,7 @@ namespace FlavorFlowIT13
         }
         public bool PlaceOrder(int menuId, int quantity)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             using (var conn = new SqlConnection(connectionString))
             {
@@ -253,7 +253,7 @@ namespace FlavorFlowIT13
 
             flowLayoutMenuCard.Controls.Clear();
 
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
             string query = "SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath FROM Menu ORDER BY Name";
 
 
@@ -406,6 +406,11 @@ namespace FlavorFlowIT13
         {
             MenuRecipeForm recipeForm = new MenuRecipeForm();
             recipeForm.Show();
+
+        }
+
+        private void panelContent_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

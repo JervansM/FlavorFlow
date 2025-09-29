@@ -49,9 +49,10 @@
             hrpayrollperiodspayrollperiodstxt.FlatStyle = FlatStyle.Flat;
             hrpayrollperiodspayrollperiodstxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollperiodspayrollperiodstxt.ForeColor = Color.White;
-            hrpayrollperiodspayrollperiodstxt.Location = new Point(35, 35);
+            hrpayrollperiodspayrollperiodstxt.Location = new Point(40, 47);
+            hrpayrollperiodspayrollperiodstxt.Margin = new Padding(3, 4, 3, 4);
             hrpayrollperiodspayrollperiodstxt.Name = "hrpayrollperiodspayrollperiodstxt";
-            hrpayrollperiodspayrollperiodstxt.Size = new Size(309, 58);
+            hrpayrollperiodspayrollperiodstxt.Size = new Size(353, 77);
             hrpayrollperiodspayrollperiodstxt.TabIndex = 44;
             hrpayrollperiodspayrollperiodstxt.Text = "Payroll Periods";
             hrpayrollperiodspayrollperiodstxt.UseVisualStyleBackColor = false;
@@ -64,9 +65,10 @@
             hrpayrollperiodsgeneratepayrolltxt.FlatStyle = FlatStyle.Flat;
             hrpayrollperiodsgeneratepayrolltxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollperiodsgeneratepayrolltxt.ForeColor = Color.White;
-            hrpayrollperiodsgeneratepayrolltxt.Location = new Point(369, 35);
+            hrpayrollperiodsgeneratepayrolltxt.Location = new Point(422, 47);
+            hrpayrollperiodsgeneratepayrolltxt.Margin = new Padding(3, 4, 3, 4);
             hrpayrollperiodsgeneratepayrolltxt.Name = "hrpayrollperiodsgeneratepayrolltxt";
-            hrpayrollperiodsgeneratepayrolltxt.Size = new Size(309, 58);
+            hrpayrollperiodsgeneratepayrolltxt.Size = new Size(353, 77);
             hrpayrollperiodsgeneratepayrolltxt.TabIndex = 45;
             hrpayrollperiodsgeneratepayrolltxt.Text = "Generate Payroll";
             hrpayrollperiodsgeneratepayrolltxt.UseVisualStyleBackColor = false;
@@ -79,9 +81,10 @@
             hrpayrollperiodsallowanceanddeductionstxt.FlatStyle = FlatStyle.Flat;
             hrpayrollperiodsallowanceanddeductionstxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollperiodsallowanceanddeductionstxt.ForeColor = Color.White;
-            hrpayrollperiodsallowanceanddeductionstxt.Location = new Point(698, 35);
+            hrpayrollperiodsallowanceanddeductionstxt.Location = new Point(798, 47);
+            hrpayrollperiodsallowanceanddeductionstxt.Margin = new Padding(3, 4, 3, 4);
             hrpayrollperiodsallowanceanddeductionstxt.Name = "hrpayrollperiodsallowanceanddeductionstxt";
-            hrpayrollperiodsallowanceanddeductionstxt.Size = new Size(309, 58);
+            hrpayrollperiodsallowanceanddeductionstxt.Size = new Size(353, 77);
             hrpayrollperiodsallowanceanddeductionstxt.TabIndex = 46;
             hrpayrollperiodsallowanceanddeductionstxt.Text = "Allowance & Deductions";
             hrpayrollperiodsallowanceanddeductionstxt.UseVisualStyleBackColor = false;
@@ -94,9 +97,10 @@
             hrpayrollperiodsovertimerecordstxt.FlatStyle = FlatStyle.Flat;
             hrpayrollperiodsovertimerecordstxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollperiodsovertimerecordstxt.ForeColor = Color.White;
-            hrpayrollperiodsovertimerecordstxt.Location = new Point(1027, 35);
+            hrpayrollperiodsovertimerecordstxt.Location = new Point(1174, 47);
+            hrpayrollperiodsovertimerecordstxt.Margin = new Padding(3, 4, 3, 4);
             hrpayrollperiodsovertimerecordstxt.Name = "hrpayrollperiodsovertimerecordstxt";
-            hrpayrollperiodsovertimerecordstxt.Size = new Size(309, 58);
+            hrpayrollperiodsovertimerecordstxt.Size = new Size(353, 77);
             hrpayrollperiodsovertimerecordstxt.TabIndex = 47;
             hrpayrollperiodsovertimerecordstxt.Text = "Overtime Records";
             hrpayrollperiodsovertimerecordstxt.UseVisualStyleBackColor = false;
@@ -105,10 +109,12 @@
             // 
             panel1.BackColor = Color.White;
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(33, 183);
+            panel1.Location = new Point(38, 244);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1303, 535);
+            panel1.Size = new Size(1489, 713);
             panel1.TabIndex = 48;
+            panel1.Paint += panel1_Paint;
             // 
             // label4
             // 
@@ -116,9 +122,9 @@
             label4.BackColor = Color.Black;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(56, 10);
+            label4.Location = new Point(64, 13);
             label4.Name = "label4";
-            label4.Size = new Size(88, 32);
+            label4.Size = new Size(109, 41);
             label4.TabIndex = 4;
             label4.Text = "Period";
             // 
@@ -128,9 +134,9 @@
             label1.BackColor = Color.Black;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(399, 10);
+            label1.Location = new Point(456, 13);
             label1.Name = "label1";
-            label1.Size = new Size(128, 32);
+            label1.Size = new Size(161, 41);
             label1.TabIndex = 5;
             label1.Text = "Start Date";
             // 
@@ -140,9 +146,9 @@
             label2.BackColor = Color.Black;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(1078, 10);
+            label2.Location = new Point(1232, 13);
             label2.Name = "label2";
-            label2.Size = new Size(83, 32);
+            label2.Size = new Size(105, 41);
             label2.TabIndex = 6;
             label2.Text = "Status";
             // 
@@ -152,9 +158,9 @@
             label3.BackColor = Color.Black;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(737, 10);
+            label3.Location = new Point(842, 13);
             label3.Name = "label3";
-            label3.Size = new Size(117, 32);
+            label3.Size = new Size(145, 41);
             label3.TabIndex = 7;
             label3.Text = "End Date";
             // 
@@ -166,25 +172,29 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label1);
             panel2.ForeColor = Color.White;
-            panel2.Location = new Point(33, 129);
+            panel2.Location = new Point(38, 172);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1303, 53);
+            panel2.Size = new Size(1489, 71);
             panel2.TabIndex = 49;
+            panel2.Paint += panel2_Paint;
             // 
             // HrPayrollPeriods
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1566, 999);
             Controls.Add(panel1);
             Controls.Add(hrpayrollperiodsovertimerecordstxt);
             Controls.Add(hrpayrollperiodsallowanceanddeductionstxt);
             Controls.Add(hrpayrollperiodsgeneratepayrolltxt);
             Controls.Add(hrpayrollperiodspayrollperiodstxt);
             Controls.Add(panel2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "HrPayrollPeriods";
             Text = "HrPayrollPeriods";
+            Load += HrPayrollPeriods_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);

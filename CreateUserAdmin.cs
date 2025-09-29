@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using System.Data.SqlClient;
 
 namespace FlavorFlowIT13
 {
     public partial class CreateUserAdmin : Form
     {
-        string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
 
         public CreateUserAdmin()
         {
@@ -44,7 +43,7 @@ namespace FlavorFlowIT13
                 MessageBox.Show("⚠️ Please fill up the form.");
                 return;
             }
-            connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
             string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @Password, @Role)";
 
 

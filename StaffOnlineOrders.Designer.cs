@@ -49,6 +49,13 @@
             button7 = new Button();
             panel3 = new Panel();
             panel4 = new Panel();
+            panel7 = new Panel();
+            phonenotxt = new TextBox();
+            addresstxt = new TextBox();
+            customernametxt = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
             staffonlineorderscompleteorderbtn = new Button();
             satffonlineordersviewdeliverybtn = new Button();
             ordersummarylabelstaff = new Label();
@@ -74,21 +81,14 @@
             btn3 = new Button();
             btnc = new Button();
             btn7 = new Button();
-            panel7 = new Panel();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            customernametxt = new TextBox();
-            addresstxt = new TextBox();
-            phonenotxt = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            panel7.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
-            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -99,18 +99,20 @@
             panel1.Controls.Add(deliverybtn);
             panel1.Controls.Add(takeoutbtn);
             panel1.Controls.Add(tablemapbtn);
-            panel1.Location = new Point(34, 186);
+            panel1.Location = new Point(39, 248);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1835, 80);
+            panel1.Size = new Size(2097, 107);
             panel1.TabIndex = 27;
             // 
             // menubtn
             // 
             menubtn.BackColor = Color.White;
             menubtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            menubtn.Location = new Point(815, 7);
+            menubtn.Location = new Point(931, 9);
+            menubtn.Margin = new Padding(3, 4, 3, 4);
             menubtn.Name = "menubtn";
-            menubtn.Size = new Size(1003, 70);
+            menubtn.Size = new Size(1146, 93);
             menubtn.TabIndex = 4;
             menubtn.Text = "Menu";
             menubtn.UseVisualStyleBackColor = false;
@@ -119,9 +121,10 @@
             // onlineordersbtn
             // 
             onlineordersbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            onlineordersbtn.Location = new Point(411, 7);
+            onlineordersbtn.Location = new Point(470, 9);
+            onlineordersbtn.Margin = new Padding(3, 4, 3, 4);
             onlineordersbtn.Name = "onlineordersbtn";
-            onlineordersbtn.Size = new Size(196, 70);
+            onlineordersbtn.Size = new Size(224, 93);
             onlineordersbtn.TabIndex = 3;
             onlineordersbtn.Text = "Online orders";
             onlineordersbtn.UseVisualStyleBackColor = true;
@@ -129,9 +132,10 @@
             // deliverybtn
             // 
             deliverybtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            deliverybtn.Location = new Point(613, 7);
+            deliverybtn.Location = new Point(701, 9);
+            deliverybtn.Margin = new Padding(3, 4, 3, 4);
             deliverybtn.Name = "deliverybtn";
-            deliverybtn.Size = new Size(196, 70);
+            deliverybtn.Size = new Size(224, 93);
             deliverybtn.TabIndex = 2;
             deliverybtn.Text = "Delivery";
             deliverybtn.UseVisualStyleBackColor = true;
@@ -140,9 +144,10 @@
             // takeoutbtn
             // 
             takeoutbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            takeoutbtn.Location = new Point(209, 7);
+            takeoutbtn.Location = new Point(239, 9);
+            takeoutbtn.Margin = new Padding(3, 4, 3, 4);
             takeoutbtn.Name = "takeoutbtn";
-            takeoutbtn.Size = new Size(196, 70);
+            takeoutbtn.Size = new Size(224, 93);
             takeoutbtn.TabIndex = 1;
             takeoutbtn.Text = "Take-out";
             takeoutbtn.UseVisualStyleBackColor = true;
@@ -151,9 +156,10 @@
             // tablemapbtn
             // 
             tablemapbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            tablemapbtn.Location = new Point(7, 7);
+            tablemapbtn.Location = new Point(8, 9);
+            tablemapbtn.Margin = new Padding(3, 4, 3, 4);
             tablemapbtn.Name = "tablemapbtn";
-            tablemapbtn.Size = new Size(196, 70);
+            tablemapbtn.Size = new Size(224, 93);
             tablemapbtn.TabIndex = 0;
             tablemapbtn.Text = "Table Map";
             tablemapbtn.UseVisualStyleBackColor = true;
@@ -166,9 +172,9 @@
             dashaddate.FlatStyle = FlatStyle.Flat;
             dashaddate.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold);
             dashaddate.ForeColor = Color.Coral;
-            dashaddate.Location = new Point(997, 72);
+            dashaddate.Location = new Point(1139, 96);
             dashaddate.Name = "dashaddate";
-            dashaddate.Size = new Size(142, 68);
+            dashaddate.Size = new Size(178, 86);
             dashaddate.TabIndex = 26;
             dashaddate.Text = "Date";
             // 
@@ -179,9 +185,9 @@
             userwelcome.FlatStyle = FlatStyle.Flat;
             userwelcome.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             userwelcome.ForeColor = Color.Coral;
-            userwelcome.Location = new Point(218, 72);
+            userwelcome.Location = new Point(249, 96);
             userwelcome.Name = "userwelcome";
-            userwelcome.Size = new Size(394, 68);
+            userwelcome.Size = new Size(494, 86);
             userwelcome.TabIndex = 25;
             userwelcome.Text = "Welcome, Staff";
             // 
@@ -190,9 +196,10 @@
             fficonadmin.BackColor = Color.Transparent;
             fficonadmin.BackgroundImageLayout = ImageLayout.None;
             fficonadmin.Image = (Image)resources.GetObject("fficonadmin.Image");
-            fficonadmin.Location = new Point(-28, -71);
+            fficonadmin.Location = new Point(-32, -95);
+            fficonadmin.Margin = new Padding(3, 4, 3, 4);
             fficonadmin.Name = "fficonadmin";
-            fficonadmin.Size = new Size(324, 324);
+            fficonadmin.Size = new Size(370, 432);
             fficonadmin.SizeMode = PictureBoxSizeMode.Zoom;
             fficonadmin.TabIndex = 24;
             fficonadmin.TabStop = false;
@@ -203,9 +210,10 @@
             dashadrefreshicon.BackgroundImageLayout = ImageLayout.None;
             dashadrefreshicon.Cursor = Cursors.Hand;
             dashadrefreshicon.Image = (Image)resources.GetObject("dashadrefreshicon.Image");
-            dashadrefreshicon.Location = new Point(1697, 92);
+            dashadrefreshicon.Location = new Point(1939, 123);
+            dashadrefreshicon.Margin = new Padding(3, 4, 3, 4);
             dashadrefreshicon.Name = "dashadrefreshicon";
-            dashadrefreshicon.Size = new Size(118, 48);
+            dashadrefreshicon.Size = new Size(135, 64);
             dashadrefreshicon.SizeMode = PictureBoxSizeMode.Zoom;
             dashadrefreshicon.TabIndex = 28;
             dashadrefreshicon.TabStop = false;
@@ -217,9 +225,9 @@
             dashadtime.FlatStyle = FlatStyle.Flat;
             dashadtime.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold);
             dashadtime.ForeColor = Color.Coral;
-            dashadtime.Location = new Point(1414, 73);
+            dashadtime.Location = new Point(1616, 97);
             dashadtime.Name = "dashadtime";
-            dashadtime.Size = new Size(148, 68);
+            dashadtime.Size = new Size(187, 86);
             dashadtime.TabIndex = 29;
             dashadtime.Text = "Time";
             // 
@@ -232,9 +240,10 @@
             panel2.Controls.Add(button5);
             panel2.Controls.Add(button6);
             panel2.Controls.Add(button7);
-            panel2.Location = new Point(874, 784);
+            panel2.Location = new Point(999, 1045);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(995, 228);
+            panel2.Size = new Size(1137, 304);
             panel2.TabIndex = 34;
             // 
             // button1
@@ -242,9 +251,10 @@
             button1.BackColor = Color.DarkRed;
             button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(797, 63);
+            button1.Location = new Point(911, 84);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(182, 105);
+            button1.Size = new Size(208, 140);
             button1.TabIndex = 11;
             button1.Text = "Print Bill";
             button1.UseVisualStyleBackColor = false;
@@ -252,9 +262,10 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(290, 126);
+            button2.Location = new Point(331, 168);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(319, 79);
+            button2.Size = new Size(365, 105);
             button2.TabIndex = 10;
             button2.Text = "Send to Kitchen";
             button2.UseVisualStyleBackColor = true;
@@ -262,9 +273,10 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(252, 21);
+            button4.Location = new Point(288, 28);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(175, 80);
+            button4.Size = new Size(200, 107);
             button4.TabIndex = 8;
             button4.Text = "Save Order";
             button4.UseVisualStyleBackColor = true;
@@ -272,9 +284,10 @@
             // button5
             // 
             button5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(82, 125);
+            button5.Location = new Point(94, 167);
+            button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
-            button5.Size = new Size(167, 80);
+            button5.Size = new Size(191, 107);
             button5.TabIndex = 7;
             button5.Text = "Void";
             button5.UseVisualStyleBackColor = true;
@@ -282,9 +295,10 @@
             // button6
             // 
             button6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.Location = new Point(481, 21);
+            button6.Location = new Point(550, 28);
+            button6.Margin = new Padding(3, 4, 3, 4);
             button6.Name = "button6";
-            button6.Size = new Size(176, 80);
+            button6.Size = new Size(201, 107);
             button6.TabIndex = 6;
             button6.Text = "Add Order";
             button6.UseVisualStyleBackColor = true;
@@ -292,9 +306,10 @@
             // button7
             // 
             button7.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.Location = new Point(14, 21);
+            button7.Location = new Point(16, 28);
+            button7.Margin = new Padding(3, 4, 3, 4);
             button7.Name = "button7";
-            button7.Size = new Size(187, 80);
+            button7.Size = new Size(214, 107);
             button7.TabIndex = 5;
             button7.Text = "Apply Discount";
             button7.UseVisualStyleBackColor = true;
@@ -302,9 +317,10 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
-            panel3.Location = new Point(869, 295);
+            panel3.Location = new Point(993, 393);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1000, 458);
+            panel3.Size = new Size(1143, 611);
             panel3.TabIndex = 35;
             // 
             // panel4
@@ -327,6 +343,79 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(765, 754);
             panel4.TabIndex = 36;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(phonenotxt);
+            panel7.Controls.Add(addresstxt);
+            panel7.Controls.Add(customernametxt);
+            panel7.Controls.Add(label5);
+            panel7.Controls.Add(label4);
+            panel7.Controls.Add(label3);
+            panel7.Location = new Point(8, 311);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(733, 108);
+            panel7.TabIndex = 39;
+            // 
+            // phonenotxt
+            // 
+            phonenotxt.BackColor = Color.Silver;
+            phonenotxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            phonenotxt.Location = new Point(522, 9);
+            phonenotxt.Multiline = true;
+            phonenotxt.Name = "phonenotxt";
+            phonenotxt.Size = new Size(202, 37);
+            phonenotxt.TabIndex = 44;
+            // 
+            // addresstxt
+            // 
+            addresstxt.BackColor = Color.Silver;
+            addresstxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            addresstxt.Location = new Point(112, 61);
+            addresstxt.Multiline = true;
+            addresstxt.Name = "addresstxt";
+            addresstxt.Size = new Size(244, 37);
+            addresstxt.TabIndex = 43;
+            // 
+            // customernametxt
+            // 
+            customernametxt.BackColor = Color.Silver;
+            customernametxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            customernametxt.Location = new Point(129, 13);
+            customernametxt.Multiline = true;
+            customernametxt.Name = "customernametxt";
+            customernametxt.Size = new Size(244, 37);
+            customernametxt.TabIndex = 40;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label5.Location = new Point(402, 16);
+            label5.Name = "label5";
+            label5.Size = new Size(145, 37);
+            label5.TabIndex = 42;
+            label5.Text = "Phone no:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label4.Location = new Point(9, 61);
+            label4.Name = "label4";
+            label4.Size = new Size(127, 37);
+            label4.TabIndex = 41;
+            label4.Text = "Address:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label3.Location = new Point(9, 16);
+            label3.Name = "label3";
+            label3.Size = new Size(149, 37);
+            label3.TabIndex = 40;
+            label3.Text = "Customer:";
             // 
             // staffonlineorderscompleteorderbtn
             // 
@@ -357,7 +446,7 @@
             ordersummarylabelstaff.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ordersummarylabelstaff.Location = new Point(0, 0);
             ordersummarylabelstaff.Name = "ordersummarylabelstaff";
-            ordersummarylabelstaff.Size = new Size(96, 15);
+            ordersummarylabelstaff.Size = new Size(121, 20);
             ordersummarylabelstaff.TabIndex = 36;
             ordersummarylabelstaff.Text = "Order Summary";
             // 
@@ -385,7 +474,7 @@
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             label2.Location = new Point(10, 9);
             label2.Name = "label2";
-            label2.Size = new Size(169, 30);
+            label2.Size = new Size(217, 37);
             label2.TabIndex = 34;
             label2.Text = "Billing Amount:";
             // 
@@ -438,7 +527,7 @@
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             label1.Location = new Point(325, 616);
             label1.Name = "label1";
-            label1.Size = new Size(93, 30);
+            label1.Size = new Size(120, 37);
             label1.TabIndex = 29;
             label1.Text = "Change:";
             // 
@@ -604,85 +693,12 @@
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
             // 
-            // panel7
-            // 
-            panel7.Controls.Add(phonenotxt);
-            panel7.Controls.Add(addresstxt);
-            panel7.Controls.Add(customernametxt);
-            panel7.Controls.Add(label5);
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(label3);
-            panel7.Location = new Point(8, 311);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(733, 108);
-            panel7.TabIndex = 39;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label3.Location = new Point(9, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(114, 30);
-            label3.TabIndex = 40;
-            label3.Text = "Customer:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label4.Location = new Point(9, 61);
-            label4.Name = "label4";
-            label4.Size = new Size(97, 30);
-            label4.TabIndex = 41;
-            label4.Text = "Address:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label5.Location = new Point(402, 16);
-            label5.Name = "label5";
-            label5.Size = new Size(114, 30);
-            label5.TabIndex = 42;
-            label5.Text = "Phone no:";
-            // 
-            // customernametxt
-            // 
-            customernametxt.BackColor = Color.Silver;
-            customernametxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            customernametxt.Location = new Point(129, 13);
-            customernametxt.Multiline = true;
-            customernametxt.Name = "customernametxt";
-            customernametxt.Size = new Size(244, 37);
-            customernametxt.TabIndex = 40;
-            // 
-            // addresstxt
-            // 
-            addresstxt.BackColor = Color.Silver;
-            addresstxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            addresstxt.Location = new Point(112, 61);
-            addresstxt.Multiline = true;
-            addresstxt.Name = "addresstxt";
-            addresstxt.Size = new Size(244, 37);
-            addresstxt.TabIndex = 43;
-            // 
-            // phonenotxt
-            // 
-            phonenotxt.BackColor = Color.Silver;
-            phonenotxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            phonenotxt.Location = new Point(522, 9);
-            phonenotxt.Multiline = true;
-            phonenotxt.Name = "phonenotxt";
-            phonenotxt.Size = new Size(202, 37);
-            phonenotxt.TabIndex = 44;
-            // 
             // StaffOnlineOrders
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-
+            ClientSize = new Size(1762, 583);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(dashadrefreshicon);
@@ -691,6 +707,7 @@
             Controls.Add(dashaddate);
             Controls.Add(userwelcome);
             Controls.Add(fficonadmin);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "StaffOnlineOrders";
             Text = "StaffOnlineOrders";
             panel1.ResumeLayout(false);
@@ -699,11 +716,11 @@
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
