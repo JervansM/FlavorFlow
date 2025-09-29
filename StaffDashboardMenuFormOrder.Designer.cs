@@ -91,7 +91,6 @@
             // 
             // flowLayoutMenuCard
             // 
-            flowLayoutMenuCard.AutoScroll = true;
             flowLayoutMenuCard.Location = new Point(35, 80);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
             flowLayoutMenuCard.Size = new Size(936, 1500);
