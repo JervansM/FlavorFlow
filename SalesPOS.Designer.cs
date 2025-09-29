@@ -76,26 +76,28 @@
             salespospanelcontents.Controls.Add(salestrendchart);
             salespospanelcontents.Location = new Point(13, 368);
             salespospanelcontents.Name = "salespospanelcontents";
-            salespospanelcontents.Size = new Size(1507, 641);
+            salespospanelcontents.Size = new Size(1507, 690);
             salespospanelcontents.TabIndex = 46;
             salespospanelcontents.Paint += salespospanelcontents_Paint;
             // 
             // salestrendchart
             // 
             salestrendchart.BackColor = Color.Transparent;
+            salestrendchart.BackgroundImageLayout = ImageLayout.None;
+            salestrendchart.BackSecondaryColor = Color.Transparent;
             salestrendchart.BorderlineColor = Color.Transparent;
             chartArea1.Name = "ChartArea1";
             salestrendchart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             salestrendchart.Legends.Add(legend1);
-            salestrendchart.Location = new Point(132, 64);
+            salestrendchart.Location = new Point(137, 26);
             salestrendchart.Name = "salestrendchart";
             salestrendchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Sales Trend";
             salestrendchart.Series.Add(series1);
-            salestrendchart.Size = new Size(1192, 541);
+            salestrendchart.Size = new Size(1239, 607);
             salestrendchart.TabIndex = 0;
             salestrendchart.Text = "Sales Trend";
             title1.Name = "Sales";
@@ -139,7 +141,7 @@
             salesposaverageordervaluetxt.Controls.Add(salespospanelcontents);
             salesposaverageordervaluetxt.Location = new Point(0, 0);
             salesposaverageordervaluetxt.Name = "salesposaverageordervaluetxt";
-            salesposaverageordervaluetxt.Size = new Size(1528, 1021);
+            salesposaverageordervaluetxt.Size = new Size(1528, 1090);
             salesposaverageordervaluetxt.TabIndex = 2;
             salesposaverageordervaluetxt.Paint += panelContent_Paint_1;
             // 

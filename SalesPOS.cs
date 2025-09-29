@@ -412,14 +412,23 @@ namespace FlavorFlowIT13
             chartArea.BackColor = ColorTranslator.FromHtml("#1E1E1E");
             chartArea.AxisX.LabelStyle.ForeColor = Color.White;
             chartArea.AxisY.LabelStyle.ForeColor = Color.White;
+            chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
+            chartArea.AxisY.LabelStyle.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
+
+            chartArea.AxisX.Title = "Date";
+            chartArea.AxisX.TitleFont = new Font("Segoe UI", 14F, FontStyle.Bold);
+            chartArea.AxisX.TitleForeColor = Color.White;
+            chartArea.AxisY.Title = "Net Sales (₱)";
+            chartArea.AxisY.TitleFont = new Font("Segoe UI", 14F, FontStyle.Bold);
+            chartArea.AxisY.TitleForeColor = Color.White;
             chartArea.AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#FFFFFF");
             chartArea.AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#FFFFFF");
             chartArea.AxisX.LabelStyle.Format = "MMM dd";
             chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
             chartArea.AxisY.IsStartedFromZero = true;
             chartArea.AxisY.IntervalAutoMode = IntervalAutoMode.VariableCount;
-            chartArea.AxisY.LabelStyle.Format = "#,0";
-            chartArea.AxisX.MajorGrid.Enabled = true;
+            chartArea.AxisY.LabelStyle.Format = "₱#,0";
+            chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = true;
             salesTrendChart.ChartAreas.Add(chartArea);
 
@@ -428,6 +437,7 @@ namespace FlavorFlowIT13
                 Docking = Docking.Top,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
+                Font = new Font("Segoe UI", 14F, FontStyle.Bold)
             };
             salesTrendChart.Legends.Add(legend);
 
@@ -435,7 +445,7 @@ namespace FlavorFlowIT13
             salesTrendChart.Titles.Add(new Title("Sales Trend")
             {
                 ForeColor = Color.White,
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 17F, FontStyle.Bold)
             });
 
             Series series = new Series("Net Sales")
@@ -444,6 +454,7 @@ namespace FlavorFlowIT13
                 Color = ColorTranslator.FromHtml("#5FBE6A"),
                 IsValueShownAsLabel = true,
                 LabelForeColor = Color.White,
+                Font = new Font("Segoe UI", 19F, FontStyle.Bold),
                 XValueType = ChartValueType.DateTime,
                 YValueType = ChartValueType.Double,
                 IsXValueIndexed = true,
