@@ -1,6 +1,7 @@
-﻿namespace FlavorFlowIT13
+﻿
+namespace FlavorFlowIT13
 {
-    partial class WebAppCheckout
+    partial class WebAppCheckOuts
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebAppCheckout));
             label2 = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -89,7 +89,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.WhiteSmoke;
             panel1.Controls.Add(webappcardbtn);
             panel1.Controls.Add(webappgcashbtn);
             panel1.Controls.Add(webappcashbtn);
@@ -196,9 +196,11 @@
             webappproceedcheckoutbtn.TabIndex = 16;
             webappproceedcheckoutbtn.Text = "Proceed Checkout";
             webappproceedcheckoutbtn.UseVisualStyleBackColor = true;
+            webappproceedcheckoutbtn.Click += webappproceedcheckoutbtn_Click;
             // 
             // webappconfirmationorderitemspanel
             // 
+            webappconfirmationorderitemspanel.BackColor = Color.Silver;
             webappconfirmationorderitemspanel.Controls.Add(textBox7);
             webappconfirmationorderitemspanel.Controls.Add(textBox6);
             webappconfirmationorderitemspanel.Controls.Add(textBox5);
@@ -415,14 +417,13 @@
             // 
             // panel2
             // 
-            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Zoom;
             panel2.Location = new Point(21, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(168, 124);
             panel2.TabIndex = 9;
             // 
-            // WebAppCheckout
+            // WebAppCheckOuts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -431,15 +432,20 @@
             Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Name = "WebAppCheckout";
+            Name = "WebAppCheckOuts";
             Text = "WebAppCheckout";
-            Load += WebAppCheckout_Load;
+            Load += WebAppCheckOuts_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             webappconfirmationorderitemspanel.ResumeLayout(false);
             webappconfirmationorderitemspanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void WebAppCheckOuts_Load(object sender, EventArgs e)
+        {
+     
         }
 
         #endregion

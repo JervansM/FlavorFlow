@@ -1,6 +1,6 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class DashboardContentForm
+    partial class WebAppCheckout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardContentForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebAppCheckout));
             panel1 = new Panel();
             label3 = new Label();
             panel2 = new Panel();

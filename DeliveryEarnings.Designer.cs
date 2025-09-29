@@ -38,6 +38,7 @@
             label1 = new Label();
             panel4 = new Panel();
             label2 = new Label();
+            totalthisweektxt = new TextBox();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -137,10 +138,11 @@
             // panel4
             // 
             panel4.BackColor = Color.Black;
+            panel4.Controls.Add(totalthisweektxt);
             panel4.Controls.Add(label2);
             panel4.Location = new Point(439, 35);
             panel4.Name = "panel4";
-            panel4.Size = new Size(369, 86);
+            panel4.Size = new Size(451, 58);
             panel4.TabIndex = 56;
             // 
             // label2
@@ -154,6 +156,14 @@
             label2.Size = new Size(200, 32);
             label2.TabIndex = 11;
             label2.Text = "Total This Week:";
+            // 
+            // totalthisweektxt
+            // 
+            totalthisweektxt.Location = new Point(221, 7);
+            totalthisweektxt.Multiline = true;
+            totalthisweektxt.Name = "totalthisweektxt";
+            totalthisweektxt.Size = new Size(224, 48);
+            totalthisweektxt.TabIndex = 12;
             // 
             // DeliveryEarnings
             // 
@@ -188,5 +198,6 @@
         private Label label1;
         private Panel panel4;
         private Label label2;
+        private TextBox totalthisweektxt;
     }
 }

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class DashboardContentForm : Form
+    public partial class WebAppCheckout : Form
     {
-        public DashboardContentForm()
+        public WebAppCheckout()
         {
             InitializeComponent();
 
