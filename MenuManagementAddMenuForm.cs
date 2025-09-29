@@ -52,7 +52,7 @@ namespace FlavorFlowIT13
             {
                 string query = "SELECT * FROM Menu WHERE MenuID = @MenuID";
 
-                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True"))
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
@@ -202,7 +202,7 @@ namespace FlavorFlowIT13
 
             try
             {
-                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"))
+                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True"))
                 {
                     con.Open();
                     SqlCommand cmd;

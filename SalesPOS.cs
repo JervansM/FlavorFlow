@@ -155,5 +155,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void dashsalestxsalespostotalsalessummarytxt2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

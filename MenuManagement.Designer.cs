@@ -67,9 +67,10 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3070, 206);
+            panel6.Location = new Point(3509, 275);
+            panel6.Margin = new Padding(3, 4, 3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(468, 170);
+            panel6.Size = new Size(535, 227);
             panel6.TabIndex = 3;
             // 
             // label9
@@ -78,9 +79,9 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(28, 0);
+            label9.Location = new Point(32, 0);
             label9.Name = "label9";
-            label9.Size = new Size(225, 45);
+            label9.Size = new Size(280, 54);
             label9.TabIndex = 3;
             label9.Text = "Total Expense";
             // 
@@ -89,9 +90,10 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3070, 2423);
+            panel5.Location = new Point(3509, 3231);
+            panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(468, 226);
+            panel5.Size = new Size(535, 301);
             panel5.TabIndex = 3;
             // 
             // label8
@@ -100,9 +102,9 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(28, 0);
+            label8.Location = new Point(32, 0);
             label8.Name = "label8";
-            label8.Size = new Size(265, 45);
+            label8.Size = new Size(335, 54);
             label8.TabIndex = 4;
             label8.Text = "Inventory Usage";
             // 
@@ -111,9 +113,10 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3070, 4693);
+            panel4.Location = new Point(3509, 6257);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(468, 169);
+            panel4.Size = new Size(535, 225);
             panel4.TabIndex = 4;
             // 
             // label7
@@ -122,9 +125,9 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(28, 0);
+            label7.Location = new Point(32, 0);
             label7.Name = "label7";
-            label7.Size = new Size(321, 45);
+            label7.Size = new Size(403, 54);
             label7.TabIndex = 5;
             label7.Text = "Net Profit Summary";
             // 
@@ -133,9 +136,10 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2396, 206);
+            dashtotalexpense.Location = new Point(2738, 275);
+            dashtotalexpense.Margin = new Padding(3, 4, 3, 4);
             dashtotalexpense.Name = "dashtotalexpense";
-            dashtotalexpense.Size = new Size(468, 170);
+            dashtotalexpense.Size = new Size(535, 227);
             dashtotalexpense.TabIndex = 19;
             // 
             // dashtotalexptxt
@@ -144,9 +148,9 @@
             dashtotalexptxt.BackColor = Color.Transparent;
             dashtotalexptxt.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             dashtotalexptxt.ForeColor = Color.White;
-            dashtotalexptxt.Location = new Point(28, 0);
+            dashtotalexptxt.Location = new Point(32, 0);
             dashtotalexptxt.Name = "dashtotalexptxt";
-            dashtotalexptxt.Size = new Size(225, 45);
+            dashtotalexptxt.Size = new Size(280, 54);
             dashtotalexptxt.TabIndex = 3;
             dashtotalexptxt.Text = "Total Expense";
             // 
@@ -155,9 +159,10 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2396, 2066);
+            dashinventoryusage.Location = new Point(2738, 2755);
+            dashinventoryusage.Margin = new Padding(3, 4, 3, 4);
             dashinventoryusage.Name = "dashinventoryusage";
-            dashinventoryusage.Size = new Size(468, 226);
+            dashinventoryusage.Size = new Size(535, 301);
             dashinventoryusage.TabIndex = 18;
             // 
             // label2
@@ -166,9 +171,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(28, 0);
+            label2.Location = new Point(32, 0);
             label2.Name = "label2";
-            label2.Size = new Size(265, 45);
+            label2.Size = new Size(335, 54);
             label2.TabIndex = 4;
             label2.Text = "Inventory Usage";
             // 
@@ -177,9 +182,10 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2396, 3979);
+            dashnetprofit.Location = new Point(2738, 5305);
+            dashnetprofit.Margin = new Padding(3, 4, 3, 4);
             dashnetprofit.Name = "dashnetprofit";
-            dashnetprofit.Size = new Size(468, 169);
+            dashnetprofit.Size = new Size(535, 225);
             dashnetprofit.TabIndex = 20;
             // 
             // dashnetprofittxt
@@ -188,9 +194,9 @@
             dashnetprofittxt.BackColor = Color.Transparent;
             dashnetprofittxt.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashnetprofittxt.ForeColor = Color.White;
-            dashnetprofittxt.Location = new Point(28, 0);
+            dashnetprofittxt.Location = new Point(32, 0);
             dashnetprofittxt.Name = "dashnetprofittxt";
-            dashnetprofittxt.Size = new Size(321, 45);
+            dashnetprofittxt.Size = new Size(403, 54);
             dashnetprofittxt.TabIndex = 5;
             dashnetprofittxt.Text = "Net Profit Summary";
             // 
@@ -199,9 +205,10 @@
             systemsearchbarpanel.BackColor = Color.White;
             systemsearchbarpanel.Controls.Add(systemsearchbaricon);
             systemsearchbarpanel.Controls.Add(systemsearchbar);
-            systemsearchbarpanel.Location = new Point(12, 17);
+            systemsearchbarpanel.Location = new Point(14, 23);
+            systemsearchbarpanel.Margin = new Padding(3, 4, 3, 4);
             systemsearchbarpanel.Name = "systemsearchbarpanel";
-            systemsearchbarpanel.Size = new Size(1521, 59);
+            systemsearchbarpanel.Size = new Size(1738, 79);
             systemsearchbarpanel.TabIndex = 23;
             // 
             // systemsearchbaricon
@@ -209,9 +216,10 @@
             systemsearchbaricon.BackColor = Color.Transparent;
             systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
             systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
-            systemsearchbaricon.Location = new Point(1426, 6);
+            systemsearchbaricon.Location = new Point(1630, 8);
+            systemsearchbaricon.Margin = new Padding(3, 4, 3, 4);
             systemsearchbaricon.Name = "systemsearchbaricon";
-            systemsearchbaricon.Size = new Size(81, 46);
+            systemsearchbaricon.Size = new Size(93, 61);
             systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
             systemsearchbaricon.TabIndex = 23;
             systemsearchbaricon.TabStop = false;
@@ -222,11 +230,12 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(13, 5);
+            systemsearchbar.Location = new Point(15, 7);
+            systemsearchbar.Margin = new Padding(3, 4, 3, 4);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(961, 47);
+            systemsearchbar.Size = new Size(1098, 63);
             systemsearchbar.TabIndex = 22;
             // 
             // addmenuitembtn
@@ -236,9 +245,10 @@
             addmenuitembtn.FlatStyle = FlatStyle.Popup;
             addmenuitembtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             addmenuitembtn.ForeColor = Color.Honeydew;
-            addmenuitembtn.Location = new Point(12, 91);
+            addmenuitembtn.Location = new Point(14, 121);
+            addmenuitembtn.Margin = new Padding(3, 4, 3, 4);
             addmenuitembtn.Name = "addmenuitembtn";
-            addmenuitembtn.Size = new Size(243, 62);
+            addmenuitembtn.Size = new Size(278, 83);
             addmenuitembtn.TabIndex = 49;
             addmenuitembtn.Text = "Add Menu Item";
             addmenuitembtn.UseVisualStyleBackColor = false;
@@ -252,9 +262,10 @@
             menuedititembtn.FlatStyle = FlatStyle.Popup;
             menuedititembtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             menuedititembtn.ForeColor = Color.Honeydew;
-            menuedititembtn.Location = new Point(3, 3);
+            menuedititembtn.Location = new Point(3, 4);
+            menuedititembtn.Margin = new Padding(3, 4, 3, 4);
             menuedititembtn.Name = "menuedititembtn";
-            menuedititembtn.Size = new Size(514, 49);
+            menuedititembtn.Size = new Size(587, 65);
             menuedititembtn.TabIndex = 50;
             menuedititembtn.Text = "Edit Item";
             menuedititembtn.UseVisualStyleBackColor = false;
@@ -276,9 +287,11 @@
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
+            panelContent.Margin = new Padding(3, 4, 3, 4);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1536, 2732);
+            panelContent.Size = new Size(1755, 3643);
             panelContent.TabIndex = 17;
+            panelContent.Paint += panelContent_Paint;
             // 
             // menumanagementrecipebtn
             // 
@@ -287,9 +300,10 @@
             menumanagementrecipebtn.FlatStyle = FlatStyle.Popup;
             menumanagementrecipebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             menumanagementrecipebtn.ForeColor = Color.Honeydew;
-            menumanagementrecipebtn.Location = new Point(274, 91);
+            menumanagementrecipebtn.Location = new Point(313, 121);
+            menumanagementrecipebtn.Margin = new Padding(3, 4, 3, 4);
             menumanagementrecipebtn.Name = "menumanagementrecipebtn";
-            menumanagementrecipebtn.Size = new Size(243, 62);
+            menumanagementrecipebtn.Size = new Size(278, 83);
             menumanagementrecipebtn.TabIndex = 51;
             menumanagementrecipebtn.Text = "Manage Recipe";
             menumanagementrecipebtn.UseVisualStyleBackColor = false;
@@ -299,29 +313,32 @@
             // 
             salespospanelcontents.BackColor = Color.White;
             salespospanelcontents.Controls.Add(flowLayoutMenuCard);
-            salespospanelcontents.Location = new Point(12, 169);
+            salespospanelcontents.Location = new Point(14, 225);
+            salespospanelcontents.Margin = new Padding(3, 4, 3, 4);
             salespospanelcontents.Name = "salespospanelcontents";
-            salespospanelcontents.Size = new Size(1521, 2560);
+            salespospanelcontents.Size = new Size(1738, 3413);
             salespospanelcontents.TabIndex = 48;
             salespospanelcontents.Paint += salespospanelcontents_Paint;
             // 
             // flowLayoutMenuCard
             // 
             flowLayoutMenuCard.Controls.Add(menuedititembtn);
-            flowLayoutMenuCard.Location = new Point(13, 13);
+            flowLayoutMenuCard.Location = new Point(15, 17);
+            flowLayoutMenuCard.Margin = new Padding(3, 4, 3, 4);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(1505, 1500);
+            flowLayoutMenuCard.Size = new Size(1720, 2000);
             flowLayoutMenuCard.TabIndex = 0;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
             // MenuManagement
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1161, 860);
+            ClientSize = new Size(1327, 1055);
             Controls.Add(panelContent);
             DoubleBuffered = true;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MenuManagement";
             Text = "MenuManagement";
             Load += MenuManagement_Load;
