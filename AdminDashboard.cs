@@ -67,11 +67,7 @@ namespace FlavorFlowIT13
             dashaddate.Text = DateTime.Now.ToString("d");
             dashadtime.Text = DateTime.Now.ToString("t");
 
-            
-
-
-
-
+           
 
 
             RoundButton(dashbtn, 19);
@@ -247,8 +243,6 @@ namespace FlavorFlowIT13
 
         private void dashbtn_Click(object sender, EventArgs e)
         {
-          
-           LoadContent(new DashboardContentForm());
           
         }
 

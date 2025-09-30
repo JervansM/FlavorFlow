@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebAppMyOrdersPending));
             panel1 = new Panel();
             webapppendingpanel = new Panel();
+            panel3 = new Panel();
             panel2 = new Panel();
             webapppastordersbtn = new Button();
             webappcompletebtn = new Button();
@@ -45,86 +46,100 @@
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Zoom;
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(168, 124);
+            panel1.Size = new Size(199, 155);
             panel1.TabIndex = 5;
             // 
             // webapppendingpanel
             // 
             webapppendingpanel.BackColor = Color.White;
+            webapppendingpanel.Controls.Add(panel3);
+            webapppendingpanel.Controls.Add(panel1);
             webapppendingpanel.Controls.Add(panel2);
             webapppendingpanel.Controls.Add(label1);
             webapppendingpanel.ForeColor = Color.White;
-            webapppendingpanel.Location = new Point(12, 144);
+            webapppendingpanel.Location = new Point(-2, 0);
             webapppendingpanel.Name = "webapppendingpanel";
-            webapppendingpanel.Size = new Size(1346, 593);
+            webapppendingpanel.Size = new Size(1926, 1055);
             webapppendingpanel.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Silver;
+            panel3.Location = new Point(52, 290);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1797, 701);
+            panel3.TabIndex = 6;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.SandyBrown;
+            panel2.BackColor = Color.FromArgb(255, 192, 128);
             panel2.Controls.Add(webapppastordersbtn);
             panel2.Controls.Add(webappcompletebtn);
             panel2.Controls.Add(webappoutfordeliverybtn);
             panel2.Controls.Add(webapppendingbtn);
-            panel2.Location = new Point(16, 72);
+            panel2.Location = new Point(51, 164);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1318, 70);
+            panel2.Size = new Size(1798, 101);
             panel2.TabIndex = 4;
             // 
             // webapppastordersbtn
             // 
-            webapppastordersbtn.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            webapppastordersbtn.Font = new Font("Lucida Bright", 21.75F, FontStyle.Bold);
             webapppastordersbtn.ForeColor = Color.Black;
-            webapppastordersbtn.Location = new Point(1006, 3);
+            webapppastordersbtn.Location = new Point(1376, 20);
             webapppastordersbtn.Name = "webapppastordersbtn";
-            webapppastordersbtn.Size = new Size(280, 64);
+            webapppastordersbtn.Size = new Size(345, 72);
             webapppastordersbtn.TabIndex = 3;
             webapppastordersbtn.Text = "Past Orders";
             webapppastordersbtn.UseVisualStyleBackColor = true;
+            webapppastordersbtn.Click += webapppastordersbtn_Click;
             // 
             // webappcompletebtn
             // 
-            webappcompletebtn.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            webappcompletebtn.Font = new Font("Lucida Bright", 21.75F, FontStyle.Bold);
             webappcompletebtn.ForeColor = Color.Black;
-            webappcompletebtn.Location = new Point(670, 3);
+            webappcompletebtn.Location = new Point(956, 20);
             webappcompletebtn.Name = "webappcompletebtn";
-            webappcompletebtn.Size = new Size(285, 64);
+            webappcompletebtn.Size = new Size(345, 72);
             webappcompletebtn.TabIndex = 2;
             webappcompletebtn.Text = "Complete";
             webappcompletebtn.UseVisualStyleBackColor = true;
+            webappcompletebtn.Click += webappcompletebtn_Click;
             // 
             // webappoutfordeliverybtn
             // 
-            webappoutfordeliverybtn.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            webappoutfordeliverybtn.Font = new Font("Lucida Bright", 21.75F, FontStyle.Bold);
             webappoutfordeliverybtn.ForeColor = Color.Black;
-            webappoutfordeliverybtn.Location = new Point(345, 3);
+            webappoutfordeliverybtn.Location = new Point(522, 20);
             webappoutfordeliverybtn.Name = "webappoutfordeliverybtn";
-            webappoutfordeliverybtn.Size = new Size(276, 64);
+            webappoutfordeliverybtn.Size = new Size(345, 72);
             webappoutfordeliverybtn.TabIndex = 1;
             webappoutfordeliverybtn.Text = "Out for Delivery";
             webappoutfordeliverybtn.UseVisualStyleBackColor = true;
+            webappoutfordeliverybtn.Click += webappoutfordeliverybtn_Click;
             // 
             // webapppendingbtn
             // 
-            webapppendingbtn.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            webapppendingbtn.Font = new Font("Lucida Bright", 21.75F, FontStyle.Bold);
             webapppendingbtn.ForeColor = Color.Black;
-            webapppendingbtn.Location = new Point(37, 3);
+            webapppendingbtn.Location = new Point(60, 20);
             webapppendingbtn.Name = "webapppendingbtn";
-            webapppendingbtn.Size = new Size(259, 64);
+            webapppendingbtn.Size = new Size(345, 72);
             webapppendingbtn.TabIndex = 0;
             webapppendingbtn.Text = "Pending";
             webapppendingbtn.UseVisualStyleBackColor = true;
+            webapppendingbtn.Click += webapppendingbtn_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(36, 16);
+            label1.Location = new Point(769, 19);
             label1.Name = "label1";
-            label1.Size = new Size(147, 36);
+            label1.Size = new Size(352, 86);
             label1.TabIndex = 3;
             label1.Text = "My Orders";
             // 
@@ -132,8 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 749);
-            Controls.Add(panel1);
+            ClientSize = new Size(1924, 1061);
             Controls.Add(webapppendingpanel);
             Name = "WebAppMyOrdersPending";
             Text = "WebAppMyOrdersPending";
@@ -153,5 +167,6 @@
         private Button webappoutfordeliverybtn;
         private Button webapppendingbtn;
         private Label label1;
+        private Panel panel3;
     }
 }

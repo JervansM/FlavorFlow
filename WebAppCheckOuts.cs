@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class WebAppConfirmation : Form
+    public partial class WebAppCheckOuts : Form
     {
-        public WebAppConfirmation()
+        public WebAppCheckOuts()
         {
             InitializeComponent();
         }
@@ -34,19 +27,24 @@ namespace FlavorFlowIT13
             form.Show();
         }
 
-        private void WebAppConfirmation_Load(object sender, EventArgs e)
+        private void webappproceedcheckoutbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new WebAppConfirmation());
+        }
+
+        private void webappbackbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new WebAppMenu());
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void webappconfirmationconfimorderbtn_Click(object sender, EventArgs e)
+        private void webappbackbtn_Click_1(object sender, EventArgs e)
         {
-            LoadContent(new WebAppThankYou());
-        }
-
-        private void webappconfirmationeditorderbtn_Click(object sender, EventArgs e)
-        {
-            LoadContent(new WebAppCheckOuts());
+            LoadContent(new WebAppMenu());
         }
     }
 }

@@ -66,7 +66,10 @@ namespace FlavorFlowIT13
                 return;
             }
 
-            string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
+        string localConnectionString = "Data Source=DESKTOP-2ER6RLE;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
+
+        string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
+
 
             try
             {
@@ -105,9 +108,15 @@ namespace FlavorFlowIT13
                                 break;
 
                             case "Customer":
-                                new CustomerDashboard().Show();
+                                new WebAppMenu().Show();
                                 this.Hide();
                                 break;
+
+                            case "Delivery":
+                                new DeliveryDashboard().Show();
+                                this.Hide();
+                                break;
+
 
                             default:
                                 MessageBox.Show("Invalid role assigned to user.", "Login Failed",
@@ -131,26 +140,25 @@ namespace FlavorFlowIT13
 
         private void HandleStaffLogin(string username, string password)
         {
-            string queryStaffId = @"
-                SELECT s.StaffID 
-                FROM dbo.Staff s 
-                INNER JOIN dbo.[User] u ON s.UserID = u.UserID 
-                WHERE u.Username = @username AND u.Password = @password;";
+            string queryUserId = @"
+        SELECT UserID
+        FROM dbo.[User]
+        WHERE Username = @username AND Password = @password AND Role = 'Staff';";
 
             try
             {
-                using (var Staffconn = new SqlConnection(activeConnectionString))
-                using (var Staffcmd = new SqlCommand(queryStaffId, Staffconn))
+                using (var conn = new SqlConnection(activeConnectionString))
+                using (var cmd = new SqlCommand(queryUserId, conn))
                 {
-                    Staffcmd.Parameters.AddWithValue("@username", username);
-                    Staffcmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
 
-                    Staffconn.Open();
-                    var result = Staffcmd.ExecuteScalar();
+                    conn.Open();
+                    var result = cmd.ExecuteScalar();
 
-                    if (result != null && int.TryParse(result.ToString(), out int staffId))
+                    if (result != null && int.TryParse(result.ToString(), out int userId))
                     {
-                        var dashboard = new StaffDashboard(staffId);
+                        var dashboard = new StaffDashboard(userId); // Pass UserID to Staff dashboard
                         dashboard.Show();
                         this.Hide();
                     }
