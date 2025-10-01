@@ -11,6 +11,8 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+
   <ItemGroup>
     <None Remove="Resources\refreshicon.png" />
   </ItemGroup>

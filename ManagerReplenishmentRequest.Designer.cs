@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel3 = new Panel();
-            label8 = new Label();
             managerreplenishmentrequestreplenishmentrequesttxt = new Button();
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt = new Button();
             managerreplenishmentrequestlogwastetxt = new Button();
@@ -42,30 +40,9 @@
             label3 = new Label();
             label4 = new Label();
             label1 = new Label();
-            panel3.SuspendLayout();
+            dateTimePicker1 = new DateTimePicker();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Black;
-            panel3.Controls.Add(label8);
-            panel3.Location = new Point(38, 118);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(312, 58);
-            panel3.TabIndex = 63;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Black;
-            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 13);
-            label8.Name = "label8";
-            label8.Size = new Size(74, 32);
-            label8.TabIndex = 11;
-            label8.Text = "Date:";
             // 
             // managerreplenishmentrequestreplenishmentrequesttxt
             // 
@@ -90,7 +67,7 @@
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.FlatStyle = FlatStyle.Flat;
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.ForeColor = Color.White;
-            managerreplenishmentrequestaddnewrepleneshmentrequeststxt.Location = new Point(394, 118);
+            managerreplenishmentrequestaddnewrepleneshmentrequeststxt.Location = new Point(465, 118);
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.Name = "managerreplenishmentrequestaddnewrepleneshmentrequeststxt";
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.Size = new Size(421, 58);
             managerreplenishmentrequestaddnewrepleneshmentrequeststxt.TabIndex = 61;
@@ -223,32 +200,35 @@
             label1.TabIndex = 5;
             label1.Text = "Status";
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            dateTimePicker1.Location = new Point(38, 137);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(394, 39);
+            dateTimePicker1.TabIndex = 66;
+            // 
             // ManagerReplenishmentRequest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(1370, 749);
+            Controls.Add(dateTimePicker1);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Controls.Add(panel3);
             Controls.Add(managerreplenishmentrequestreplenishmentrequesttxt);
             Controls.Add(managerreplenishmentrequestaddnewrepleneshmentrequeststxt);
             Controls.Add(managerreplenishmentrequestlogwastetxt);
             Controls.Add(managereplenishmentrequeststockrequesttxt);
             Name = "ManagerReplenishmentRequest";
             Text = "ManagerReplenishmentRequest";
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel3;
-        private Label label8;
         private Button managerreplenishmentrequestreplenishmentrequesttxt;
         private Button managerreplenishmentrequestaddnewrepleneshmentrequeststxt;
         private Button managerreplenishmentrequestlogwastetxt;
@@ -261,5 +241,6 @@
         private Label label3;
         private Label label4;
         private Label label1;
+        private DateTimePicker dateTimePicker1;
     }
 }

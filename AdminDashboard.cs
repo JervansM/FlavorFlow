@@ -243,7 +243,7 @@ namespace FlavorFlowIT13
 
         private void dashbtn_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void panelNav_Paint(object sender, PaintEventArgs e)
