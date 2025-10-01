@@ -33,5 +33,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void Purchaseorders_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

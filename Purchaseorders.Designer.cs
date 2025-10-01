@@ -41,6 +41,10 @@
             label8 = new Label();
             panel6 = new Panel();
             label9 = new Label();
+            panel1 = new Panel();
+            receivedordersbtn = new Button();
+            viewpendingorderbtn = new Button();
+            createneworderbtn = new Button();
             panelContent.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
@@ -48,12 +52,14 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panelContent
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(panel1);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
             panelContent.Controls.Add(dashtotalexpense);
@@ -198,6 +204,59 @@
             label9.TabIndex = 3;
             label9.Text = "Total Expense";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(viewpendingorderbtn);
+            panel1.Controls.Add(createneworderbtn);
+            panel1.Controls.Add(receivedordersbtn);
+            panel1.Location = new Point(31, 37);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1567, 932);
+            panel1.TabIndex = 18;
+            // 
+            // receivedordersbtn
+            // 
+            receivedordersbtn.BackColor = Color.Black;
+            receivedordersbtn.Cursor = Cursors.Hand;
+            receivedordersbtn.FlatStyle = FlatStyle.Popup;
+            receivedordersbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            receivedordersbtn.ForeColor = Color.Honeydew;
+            receivedordersbtn.Location = new Point(715, 36);
+            receivedordersbtn.Name = "receivedordersbtn";
+            receivedordersbtn.Size = new Size(270, 62);
+            receivedordersbtn.TabIndex = 53;
+            receivedordersbtn.Text = "Received Orders";
+            receivedordersbtn.UseVisualStyleBackColor = false;
+            // 
+            // viewpendingorderbtn
+            // 
+            viewpendingorderbtn.BackColor = Color.Black;
+            viewpendingorderbtn.Cursor = Cursors.Hand;
+            viewpendingorderbtn.FlatStyle = FlatStyle.Popup;
+            viewpendingorderbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            viewpendingorderbtn.ForeColor = Color.Honeydew;
+            viewpendingorderbtn.Location = new Point(385, 36);
+            viewpendingorderbtn.Name = "viewpendingorderbtn";
+            viewpendingorderbtn.Size = new Size(270, 62);
+            viewpendingorderbtn.TabIndex = 53;
+            viewpendingorderbtn.Text = "View Pending Order";
+            viewpendingorderbtn.UseVisualStyleBackColor = false;
+            // 
+            // createneworderbtn
+            // 
+            createneworderbtn.BackColor = Color.Black;
+            createneworderbtn.Cursor = Cursors.Hand;
+            createneworderbtn.FlatStyle = FlatStyle.Popup;
+            createneworderbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            createneworderbtn.ForeColor = Color.Honeydew;
+            createneworderbtn.Location = new Point(55, 36);
+            createneworderbtn.Name = "createneworderbtn";
+            createneworderbtn.Size = new Size(270, 62);
+            createneworderbtn.TabIndex = 54;
+            createneworderbtn.Text = "Create New Order";
+            createneworderbtn.UseVisualStyleBackColor = false;
+            // 
             // Purchaseorders
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -206,6 +265,7 @@
             Controls.Add(panelContent);
             Name = "Purchaseorders";
             Text = "Purchaseorders";
+            Load += Purchaseorders_Load;
             panelContent.ResumeLayout(false);
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
@@ -219,6 +279,7 @@
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -237,5 +298,9 @@
         private Label label8;
         private Panel panel6;
         private Label label9;
+        private Panel panel1;
+        private Button receivedordersbtn;
+        private Button viewpendingorderbtn;
+        private Button createneworderbtn;
     }
 }

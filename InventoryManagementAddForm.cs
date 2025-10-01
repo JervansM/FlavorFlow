@@ -13,7 +13,7 @@ namespace FlavorFlowIT13
 {
     public partial class InventoryManagementAddForm : Form
     {
-        private readonly string cloudConn = "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User ID=your_user;Password=your_password;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string cloudConn = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
         private readonly string localConn = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;";
 
         private int? _inventoryId = null;
@@ -98,7 +98,6 @@ namespace FlavorFlowIT13
 
                 using (var conn = GetConnection())
                 {
-                    conn.Open();
                     if (_inventoryId.HasValue)
                     {
                         // Update existing inventory item
@@ -182,7 +181,6 @@ namespace FlavorFlowIT13
 
                 using (var conn = GetConnection())
                 {
-                    conn.Open();
                     string query = @"
                 SELECT InventoryID, ItemName, Quantity, Unit, Cost, ExpiryDate, SupplierID, IsAvailable, MinStock
                 FROM Inventory
