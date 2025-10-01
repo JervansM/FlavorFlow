@@ -36,15 +36,15 @@ namespace FlavorFlowIT13
             RoundPanel(salesposdiscountappliedpanel, 25);
             RoundPanel(salespostotalsalespanel, 25);
 
-            averageordervaluepanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
+            averageordervaluepanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
             salespostotalsalessummarytxt.BackColor = ColorTranslator.FromHtml("#2823B1");
-            salespospanelcontents.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            salespostotalsalesdatapanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            averageordervaluepanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            salesposgrossrevenuepanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            salesposdiscountappliedpanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            salespostotalsalespanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            salespostotalordersdatapanel.BackColor = ColorTranslator.FromHtml("#1e1e1e");
+            salespospanelcontents.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            salespostotalsalesdatapanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            averageordervaluepanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            salesposgrossrevenuepanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            salesposdiscountappliedpanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            salespostotalsalespanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            salespostotalordersdatapanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
 
             EnsureUiDefaults();
 
@@ -131,8 +131,8 @@ namespace FlavorFlowIT13
             }
             if (period.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
             {
-                DateTime start = new DateTime(anchorDate.Year, 1, 1);   // Jan 1 of the year
-                DateTime end = start.AddYears(1);                      // Jan 1 of next year
+                DateTime start = new DateTime(anchorDate.Year, 1, 1);  // Start of the year
+                DateTime end = start.AddYears(1);                     // End of the year
                 return (start, end);
             }
             if (period.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
@@ -146,6 +146,7 @@ namespace FlavorFlowIT13
 
         private void LoadSalesMetrics()
         {
+            decimal netSales = 0m;
             string period = (salesposreporttype.SelectedItem as string) ?? "Daily";
             DateTime anchor = calendardatepicker.Value;
             var range = GetDateRange(anchor, period);
@@ -194,6 +195,7 @@ namespace FlavorFlowIT13
                             totalDiscount = rdr.IsDBNull(1) ? 0m : rdr.GetDecimal(1);
                             totalOrders = rdr.IsDBNull(2) ? 0 : rdr.GetInt32(2);
                             grossRevenue = rdr.IsDBNull(3) ? 0m : rdr.GetDecimal(3);
+                            netSales = rdr.IsDBNull(4) ? 0m : rdr.GetDecimal(4);
                         }
                     }
                 }
@@ -209,11 +211,11 @@ namespace FlavorFlowIT13
             }
             decimal averageOrderValue = totalOrders > 0 ? grossRevenue / totalOrders : 0m;
 
-            UpdateSalesUi(grossRevenue, totalSales, totalDiscount, totalOrders, averageOrderValue);
+            UpdateSalesUi(grossRevenue, totalSales, totalDiscount, totalOrders, averageOrderValue, netSales);
         }
 
 
-        private void UpdateSalesUi(decimal grossRevenue, decimal totalSales, decimal totalDiscount, int totalOrders, decimal averageOrderValue)
+        private void UpdateSalesUi(decimal grossRevenue, decimal totalSales, decimal totalDiscount, int totalOrders, decimal averageOrderValue, decimal netSales)
         {
             if (salesposgrossrevenuedata != null)
                 salesposgrossrevenuedata.Text = "₱" + grossRevenue.ToString("N2");
@@ -226,7 +228,7 @@ namespace FlavorFlowIT13
             if (salesposaverageordervaluetxtdata != null)
                 salesposaverageordervaluetxtdata.Text = "₱" + averageOrderValue.ToString("N2");
             if (salespostotalnetsalestxtdata != null)
-                salespostotalnetsalestxtdata.Text = "₱" + grossRevenue.ToString("N2");
+                salespostotalnetsalestxtdata.Text = "₱" + netSales.ToString("N2");
         }
 
         private void RoundPanel(Panel pnl, int radius)
@@ -396,7 +398,8 @@ namespace FlavorFlowIT13
             {
                 salesTrendChart = new Chart
                 {
-                    BackColor = ColorTranslator.FromHtml("#FFFFFF")
+                    BackColor = ColorTranslator.FromHtml("#2f2f2f"),
+                    Dock = DockStyle.Fill
                 };
                 salespospanelcontents.Controls.Add(salesTrendChart);
             }
@@ -405,33 +408,56 @@ namespace FlavorFlowIT13
             salesTrendChart.Series.Clear();
             salesTrendChart.ChartAreas.Clear();
             salesTrendChart.Legends.Clear();
-        
+
             // Smooth rendering
             salesTrendChart.AntiAliasing = AntiAliasingStyles.All;
             salesTrendChart.TextAntiAliasingQuality = TextAntiAliasingQuality.High;
 
-            ChartArea chartArea = new ChartArea("Main");
-            chartArea.BackColor = ColorTranslator.FromHtml("#1E1E1E");
-            chartArea.AxisX.LabelStyle.ForeColor = Color.White;
-            chartArea.AxisY.LabelStyle.ForeColor = Color.White;
-            chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            chartArea.AxisY.LabelStyle.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
+            ChartArea chartArea = new ChartArea("Main")
+            {
+                BackColor = ColorTranslator.FromHtml("#2f2f2f"),
+                BorderColor = ColorTranslator.FromHtml("#555555"),
+                BorderWidth = 1
+            };
 
+            // Configure X-axis
             chartArea.AxisX.Title = "Date";
-            chartArea.AxisX.TitleFont = new Font("Segoe UI", 14F, FontStyle.Bold);
             chartArea.AxisX.TitleForeColor = Color.White;
-            chartArea.AxisY.Title = "Net Sales (₱)";
-            chartArea.AxisY.TitleFont = new Font("Segoe UI", 14F, FontStyle.Bold);
-            chartArea.AxisY.TitleForeColor = Color.White;
-            chartArea.AxisX.MajorGrid.LineColor = ColorTranslator.FromHtml("#FFFFFF");
-            chartArea.AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#FFFFFF");
+            chartArea.AxisX.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            chartArea.AxisX.LabelStyle.ForeColor = Color.White;
+            chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
             chartArea.AxisX.LabelStyle.Format = "MMM dd";
-            chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
-            chartArea.AxisY.IsStartedFromZero = true;
-            chartArea.AxisY.IntervalAutoMode = IntervalAutoMode.VariableCount;
-            chartArea.AxisY.LabelStyle.Format = "₱#,0";
             chartArea.AxisX.MajorGrid.Enabled = false;
-            chartArea.AxisY.MajorGrid.Enabled = true;
+            chartArea.AxisX.MajorTickMark.Enabled = true;
+            chartArea.AxisX.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
+            chartArea.AxisX.MinorTickMark.Enabled = false;
+            chartArea.AxisX.LineColor = ColorTranslator.FromHtml("#666666");
+
+            // Configure Y-axis
+            chartArea.AxisY.Title = "Net Sales (₱)";
+            chartArea.AxisY.TitleForeColor = Color.White;
+            chartArea.AxisY.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            chartArea.AxisY.LabelStyle.ForeColor = Color.White;
+            chartArea.AxisY.LabelStyle.Font = new Font("Segoe UI", 10F);
+            chartArea.AxisY.LabelStyle.Format = "₱#,0";
+            chartArea.AxisY.IsStartedFromZero = true;
+            chartArea.AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#444444");
+            chartArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+            chartArea.AxisY.MajorTickMark.Enabled = true;
+            chartArea.AxisY.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
+            chartArea.AxisY.MinorTickMark.Enabled = false;
+            chartArea.AxisY.LineColor = ColorTranslator.FromHtml("#666666");
+
+            chartArea.Position.X = 8;
+            chartArea.Position.Y = 12;
+            chartArea.Position.Width = 88;
+            chartArea.Position.Height = 80;
+
+            chartArea.InnerPlotPosition.X = 10;
+            chartArea.InnerPlotPosition.Y = 2;
+            chartArea.InnerPlotPosition.Width = 85;
+            chartArea.InnerPlotPosition.Height = 90;
+
             salesTrendChart.ChartAreas.Add(chartArea);
 
             Legend legend = new Legend("Legend")
@@ -439,7 +465,7 @@ namespace FlavorFlowIT13
                 Docking = Docking.Top,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
-                Font = new Font("Segoe UI", 14F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
             };
             salesTrendChart.Legends.Add(legend);
 
@@ -447,7 +473,8 @@ namespace FlavorFlowIT13
             salesTrendChart.Titles.Add(new Title("Sales Trend")
             {
                 ForeColor = Color.White,
-                Font = new Font("Segoe UI", 17F, FontStyle.Bold)
+                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                Docking = Docking.Top
             });
 
             Series series = new Series("Net Sales")
@@ -456,13 +483,14 @@ namespace FlavorFlowIT13
                 Color = ColorTranslator.FromHtml("#5FBE6A"),
                 IsValueShownAsLabel = true,
                 LabelForeColor = Color.White,
-                Font = new Font("Segoe UI", 19F, FontStyle.Bold),
+                LabelFormat = "₱{0:N0}",
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 XValueType = ChartValueType.DateTime,
                 YValueType = ChartValueType.Double,
-                IsXValueIndexed = true,
                 ChartArea = "Main",
                 Legend = "Legend",
-                BorderWidth = 0
+                BorderColor = ColorTranslator.FromHtml("#4A9B55"),
+                BorderWidth = 1
             };
             series.SmartLabelStyle.Enabled = true;
             series.ToolTip = "#VALX: ₱#VAL{N2}";
@@ -551,6 +579,10 @@ namespace FlavorFlowIT13
             DateTime anchor = calendardatepicker.Value;
             var range = GetDateRange(anchor, period);
 
+            // Configure X-axis based on report type
+            var chartArea = salesTrendChart.ChartAreas["Main"];
+            ConfigureSalesXAxis(chartArea, period, range.start, range.end);
+
             DataTable dt = GetSalesTrendData(range.start, range.end, period);
 
             Series series = salesTrendChart.Series.IndexOf("Net Sales") >= 0
@@ -560,7 +592,6 @@ namespace FlavorFlowIT13
             series.Points.Clear();
             series.XValueType = ChartValueType.DateTime;
             series.YValueType = ChartValueType.Double;
-            series.IsXValueIndexed = true;
 
             foreach (DataRow row in dt.Rows)
             {
@@ -574,23 +605,86 @@ namespace FlavorFlowIT13
                 series.Points.AddXY(DateTime.Today, 0);
             }
 
-            // Axis label format depending on period
-            var ca = salesTrendChart.ChartAreas["Main"];
-            if (period.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
+            // Recalculate scale to fit data nicely
+            chartArea.RecalculateAxesScale();
+        }
+
+        private void ConfigureSalesXAxis(ChartArea chartArea, string reportType, DateTime startDate, DateTime endDate)
+        {
+            // Reset axis properties
+            chartArea.AxisX.LabelStyle.Format = "";
+            chartArea.AxisX.LabelStyle.Interval = 0;
+            chartArea.AxisX.LabelStyle.IntervalOffset = 0;
+            chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Auto;
+            chartArea.AxisX.LabelStyle.Angle = 0;
+            chartArea.AxisX.MajorTickMark.Enabled = true;
+            chartArea.AxisX.MajorTickMark.Interval = 0;
+            chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Auto;
+
+            // Calculate data density to determine optimal interval
+            int dataPoints = (int)(endDate - startDate).TotalDays;
+            int optimalInterval = Math.Max(1, dataPoints / 8); // Max 8 labels for readability
+
+            switch (reportType)
             {
-                ca.AxisX.LabelStyle.Format = "MMM yyyy";
-            }
-            else if (period.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
-            {
-                ca.AxisX.LabelStyle.Format = "yyyy";
-            }
-            else
-            {
-                ca.AxisX.LabelStyle.Format = "MMM dd";
+                case "Daily":
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = optimalInterval;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.MajorTickMark.Interval = optimalInterval;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
+                    break;
+
+                case "Weekly":
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = Math.Max(1, optimalInterval / 2);
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.MajorTickMark.Interval = Math.Max(1, optimalInterval / 2);
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
+                    break;
+
+                case "Monthly":
+                    chartArea.AxisX.LabelStyle.Format = "MMM yyyy";
+                    chartArea.AxisX.LabelStyle.Interval = 1;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Months;
+                    chartArea.AxisX.LabelStyle.Angle = -45;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 9F);
+                    chartArea.AxisX.MajorTickMark.Interval = 1;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Months;
+                    break;
+
+                case "Yearly":
+                    chartArea.AxisX.LabelStyle.Format = "yyyy";
+                    chartArea.AxisX.LabelStyle.Interval = 1;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Years;
+                    chartArea.AxisX.LabelStyle.Angle = 0;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
+                    chartArea.AxisX.MajorTickMark.Interval = 1;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Years;
+                    break;
+
+                default:
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = optimalInterval;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    break;
             }
 
-            // Recalculate scale to fit data nicely
-            ca.RecalculateAxesScale();
+            // Set axis range with padding to prevent edge overlap
+            double padding = (endDate.ToOADate() - startDate.ToOADate()) * 0.05; // 5% padding
+            chartArea.AxisX.Minimum = startDate.ToOADate() - padding;
+            chartArea.AxisX.Maximum = endDate.ToOADate() + padding;
+            chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+
+            // Add extra margin for labels
+            chartArea.AxisX.ScaleView.Zoomable = false;
+            chartArea.AxisX.ScrollBar.IsPositionedInside = false;
         }
 
 

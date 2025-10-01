@@ -88,16 +88,17 @@
             salestrendchart.BorderlineColor = Color.Transparent;
             chartArea1.Name = "ChartArea1";
             salestrendchart.ChartAreas.Add(chartArea1);
+            salestrendchart.Dock = DockStyle.Fill;
             legend1.Name = "Legend1";
             salestrendchart.Legends.Add(legend1);
-            salestrendchart.Location = new Point(137, 26);
+            salestrendchart.Location = new Point(0, 0);
             salestrendchart.Name = "salestrendchart";
             salestrendchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Sales Trend";
             salestrendchart.Series.Add(series1);
-            salestrendchart.Size = new Size(1239, 607);
+            salestrendchart.Size = new Size(1507, 690);
             salestrendchart.TabIndex = 0;
             salestrendchart.Text = "Sales Trend";
             title1.Name = "Sales";
@@ -388,6 +389,7 @@
             // salesposreporttype
             // 
             salesposreporttype.BackColor = Color.Coral;
+            salesposreporttype.FlatStyle = FlatStyle.Flat;
             salesposreporttype.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
             salesposreporttype.ForeColor = Color.White;
             salesposreporttype.FormattingEnabled = true;

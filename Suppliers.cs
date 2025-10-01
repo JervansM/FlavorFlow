@@ -193,6 +193,7 @@ namespace FlavorFlowIT13
             path.CloseAllFigures();
             button.Region = new System.Drawing.Region(path);
         }
+
         private void Suppliers_Load(object sender, EventArgs e)
         {
             addnewsupplierbtn.UseVisualStyleBackColor = false;
@@ -214,7 +215,6 @@ namespace FlavorFlowIT13
             {
                 if (addForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Refresh list so new supplier + synced ItemsSupplied appear
                     LoadSupplierData();
                 }
             }

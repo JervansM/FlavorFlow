@@ -49,6 +49,13 @@
             button7 = new Button();
             panel3 = new Panel();
             panel4 = new Panel();
+            panel7 = new Panel();
+            phonenotxt = new TextBox();
+            addresstxt = new TextBox();
+            customernametxt = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
             staffonlineorderscompleteorderbtn = new Button();
             satffonlineordersviewdeliverybtn = new Button();
             ordersummarylabelstaff = new Label();
@@ -74,21 +81,14 @@
             btn3 = new Button();
             btnc = new Button();
             btn7 = new Button();
-            panel7 = new Panel();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            customernametxt = new TextBox();
-            addresstxt = new TextBox();
-            phonenotxt = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            panel7.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
-            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -327,6 +327,79 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(765, 754);
             panel4.TabIndex = 36;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(phonenotxt);
+            panel7.Controls.Add(addresstxt);
+            panel7.Controls.Add(customernametxt);
+            panel7.Controls.Add(label5);
+            panel7.Controls.Add(label4);
+            panel7.Controls.Add(label3);
+            panel7.Location = new Point(8, 311);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(733, 108);
+            panel7.TabIndex = 39;
+            // 
+            // phonenotxt
+            // 
+            phonenotxt.BackColor = Color.Silver;
+            phonenotxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            phonenotxt.Location = new Point(522, 9);
+            phonenotxt.Multiline = true;
+            phonenotxt.Name = "phonenotxt";
+            phonenotxt.Size = new Size(202, 37);
+            phonenotxt.TabIndex = 44;
+            // 
+            // addresstxt
+            // 
+            addresstxt.BackColor = Color.Silver;
+            addresstxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            addresstxt.Location = new Point(112, 61);
+            addresstxt.Multiline = true;
+            addresstxt.Name = "addresstxt";
+            addresstxt.Size = new Size(244, 37);
+            addresstxt.TabIndex = 43;
+            // 
+            // customernametxt
+            // 
+            customernametxt.BackColor = Color.Silver;
+            customernametxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            customernametxt.Location = new Point(129, 13);
+            customernametxt.Multiline = true;
+            customernametxt.Name = "customernametxt";
+            customernametxt.Size = new Size(244, 37);
+            customernametxt.TabIndex = 40;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label5.Location = new Point(402, 16);
+            label5.Name = "label5";
+            label5.Size = new Size(114, 30);
+            label5.TabIndex = 42;
+            label5.Text = "Phone no:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label4.Location = new Point(9, 61);
+            label4.Name = "label4";
+            label4.Size = new Size(97, 30);
+            label4.TabIndex = 41;
+            label4.Text = "Address:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label3.Location = new Point(9, 16);
+            label3.Name = "label3";
+            label3.Size = new Size(114, 30);
+            label3.TabIndex = 40;
+            label3.Text = "Customer:";
             // 
             // staffonlineorderscompleteorderbtn
             // 
@@ -604,85 +677,12 @@
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = false;
             // 
-            // panel7
-            // 
-            panel7.Controls.Add(phonenotxt);
-            panel7.Controls.Add(addresstxt);
-            panel7.Controls.Add(customernametxt);
-            panel7.Controls.Add(label5);
-            panel7.Controls.Add(label4);
-            panel7.Controls.Add(label3);
-            panel7.Location = new Point(8, 311);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(733, 108);
-            panel7.TabIndex = 39;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label3.Location = new Point(9, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(114, 30);
-            label3.TabIndex = 40;
-            label3.Text = "Customer:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label4.Location = new Point(9, 61);
-            label4.Name = "label4";
-            label4.Size = new Size(97, 30);
-            label4.TabIndex = 41;
-            label4.Text = "Address:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label5.Location = new Point(402, 16);
-            label5.Name = "label5";
-            label5.Size = new Size(114, 30);
-            label5.TabIndex = 42;
-            label5.Text = "Phone no:";
-            // 
-            // customernametxt
-            // 
-            customernametxt.BackColor = Color.Silver;
-            customernametxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            customernametxt.Location = new Point(129, 13);
-            customernametxt.Multiline = true;
-            customernametxt.Name = "customernametxt";
-            customernametxt.Size = new Size(244, 37);
-            customernametxt.TabIndex = 40;
-            // 
-            // addresstxt
-            // 
-            addresstxt.BackColor = Color.Silver;
-            addresstxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            addresstxt.Location = new Point(112, 61);
-            addresstxt.Multiline = true;
-            addresstxt.Name = "addresstxt";
-            addresstxt.Size = new Size(244, 37);
-            addresstxt.TabIndex = 43;
-            // 
-            // phonenotxt
-            // 
-            phonenotxt.BackColor = Color.Silver;
-            phonenotxt.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            phonenotxt.Location = new Point(522, 9);
-            phonenotxt.Multiline = true;
-            phonenotxt.Name = "phonenotxt";
-            phonenotxt.Size = new Size(202, 37);
-            phonenotxt.TabIndex = 44;
-            // 
             // StaffOnlineOrders
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-
+            ClientSize = new Size(1078, 595);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(dashadrefreshicon);
@@ -699,11 +699,11 @@
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel6.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

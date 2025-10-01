@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
-            receivedordersbtn = new Button();
+            viewordersbtn = new Button();
+            paybtn = new Button();
             viewpendingbtn = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
             systemsearchbar = new TextBox();
             supplierpanelcontents = new Panel();
-            supplierdataflowpanel = new FlowLayoutPanel();
+            supplierdatagrid = new DataGridView();
             createneworderbtn = new Button();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
@@ -53,6 +54,7 @@
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
             supplierpanelcontents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)supplierdatagrid).BeginInit();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -66,7 +68,8 @@
             panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
-            panelContent.Controls.Add(receivedordersbtn);
+            panelContent.Controls.Add(viewordersbtn);
+            panelContent.Controls.Add(paybtn);
             panelContent.Controls.Add(viewpendingbtn);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(supplierpanelcontents);
@@ -82,20 +85,35 @@
             panelContent.Size = new Size(1511, 1032);
             panelContent.TabIndex = 18;
             // 
-            // receivedordersbtn
+            // viewordersbtn
             // 
-            receivedordersbtn.BackColor = Color.Black;
-            receivedordersbtn.Cursor = Cursors.Hand;
-            receivedordersbtn.FlatStyle = FlatStyle.Popup;
-            receivedordersbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            receivedordersbtn.ForeColor = Color.Honeydew;
-            receivedordersbtn.Location = new Point(635, 101);
-            receivedordersbtn.Name = "receivedordersbtn";
-            receivedordersbtn.Size = new Size(270, 62);
-            receivedordersbtn.TabIndex = 55;
-            receivedordersbtn.Text = "Received Orders";
-            receivedordersbtn.UseVisualStyleBackColor = false;
-            receivedordersbtn.Click += receivedordersbtn_Click;
+            viewordersbtn.BackColor = Color.Black;
+            viewordersbtn.Cursor = Cursors.Hand;
+            viewordersbtn.FlatStyle = FlatStyle.Popup;
+            viewordersbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            viewordersbtn.ForeColor = Color.Honeydew;
+            viewordersbtn.Location = new Point(949, 101);
+            viewordersbtn.Name = "viewordersbtn";
+            viewordersbtn.Size = new Size(270, 62);
+            viewordersbtn.TabIndex = 57;
+            viewordersbtn.Text = "Detailed Orders";
+            viewordersbtn.UseVisualStyleBackColor = false;
+            viewordersbtn.Click += viewordersbtn_Click;
+            // 
+            // paybtn
+            // 
+            paybtn.BackColor = Color.Black;
+            paybtn.Cursor = Cursors.Hand;
+            paybtn.FlatStyle = FlatStyle.Popup;
+            paybtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            paybtn.ForeColor = Color.Honeydew;
+            paybtn.Location = new Point(636, 101);
+            paybtn.Name = "paybtn";
+            paybtn.Size = new Size(270, 62);
+            paybtn.TabIndex = 56;
+            paybtn.Text = "Pay Order";
+            paybtn.UseVisualStyleBackColor = false;
+            paybtn.Click += paybtn_Click;
             // 
             // viewpendingbtn
             // 
@@ -108,7 +126,7 @@
             viewpendingbtn.Name = "viewpendingbtn";
             viewpendingbtn.Size = new Size(270, 62);
             viewpendingbtn.TabIndex = 54;
-            viewpendingbtn.Text = "View Pending Order";
+            viewpendingbtn.Text = "View Pending Orders";
             viewpendingbtn.UseVisualStyleBackColor = false;
             viewpendingbtn.Click += viewpendingbtn_Click;
             // 
@@ -150,23 +168,25 @@
             // supplierpanelcontents
             // 
             supplierpanelcontents.BackColor = Color.White;
-            supplierpanelcontents.Controls.Add(supplierdataflowpanel);
+            supplierpanelcontents.Controls.Add(supplierdatagrid);
             supplierpanelcontents.Location = new Point(12, 187);
             supplierpanelcontents.Name = "supplierpanelcontents";
             supplierpanelcontents.Size = new Size(1487, 833);
             supplierpanelcontents.TabIndex = 53;
             supplierpanelcontents.Paint += supplierpanelcontents_Paint;
             // 
-            // supplierdataflowpanel
+            // supplierdatagrid
             // 
-            supplierdataflowpanel.AutoScroll = true;
-            supplierdataflowpanel.FlowDirection = FlowDirection.TopDown;
-            supplierdataflowpanel.Location = new Point(37, 28);
-            supplierdataflowpanel.Name = "supplierdataflowpanel";
-            supplierdataflowpanel.Size = new Size(1402, 770);
-            supplierdataflowpanel.TabIndex = 0;
-            supplierdataflowpanel.WrapContents = false;
-            supplierdataflowpanel.Paint += supplierdataflowpanel_Paint;
+            supplierdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            supplierdatagrid.Dock = DockStyle.Fill;
+            supplierdatagrid.Location = new Point(0, 0);
+            supplierdatagrid.MultiSelect = false;
+            supplierdatagrid.Name = "supplierdatagrid";
+            supplierdatagrid.ReadOnly = true;
+            supplierdatagrid.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            supplierdatagrid.Size = new Size(1487, 833);
+            supplierdatagrid.TabIndex = 0;
+            supplierdatagrid.CellContentClick += supplierdatagrid_CellContentClick;
             // 
             // createneworderbtn
             // 
@@ -330,6 +350,7 @@
             systemsearchbarpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
             supplierpanelcontents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)supplierdatagrid).EndInit();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -352,7 +373,6 @@
         private PictureBox systemsearchbaricon;
         private TextBox systemsearchbar;
         private Panel supplierpanelcontents;
-        private FlowLayoutPanel supplierdataflowpanel;
         private Button createneworderbtn;
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
@@ -366,7 +386,9 @@
         private Label label8;
         private Panel panel6;
         private Label label9;
-        private Button receivedordersbtn;
         private Button viewpendingbtn;
+        private DataGridView supplierdatagrid;
+        private Button paybtn;
+        private Button viewordersbtn;
     }
 }

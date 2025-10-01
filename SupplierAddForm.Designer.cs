@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierAddForm));
             panelForm = new Panel();
             suppliercontacttxt = new TextBox();
             suppliersavebtn = new Button();
@@ -38,7 +39,6 @@
             suplliernamelbl = new Label();
             panelFormHeader = new Panel();
             addmenuitemtxt = new Label();
-            menuformstatuscheckbox = new CheckBox();
             panelForm.SuspendLayout();
             panelFormHeader.SuspendLayout();
             SuspendLayout();
@@ -50,7 +50,6 @@
             panelForm.Controls.Add(suppliercontacttxt);
             panelForm.Controls.Add(suppliersavebtn);
             panelForm.Controls.Add(suppliercontactlbl);
-            panelForm.Controls.Add(menuformstatuscheckbox);
             panelForm.Controls.Add(supplliernametxt);
             panelForm.Controls.Add(supplieraddresslbl);
             panelForm.Controls.Add(supplieraddresstxt);
@@ -58,7 +57,7 @@
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 0);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(1302, 667);
+            panelForm.Size = new Size(995, 574);
             panelForm.TabIndex = 2;
             // 
             // suppliercontacttxt
@@ -67,7 +66,7 @@
             suppliercontacttxt.BackColor = Color.White;
             suppliercontacttxt.Cursor = Cursors.IBeam;
             suppliercontacttxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            suppliercontacttxt.Location = new Point(483, 173);
+            suppliercontacttxt.Location = new Point(356, 173);
             suppliercontacttxt.Multiline = true;
             suppliercontacttxt.Name = "suppliercontacttxt";
             suppliercontacttxt.Size = new Size(480, 81);
@@ -80,11 +79,11 @@
             suppliersavebtn.FlatStyle = FlatStyle.Flat;
             suppliersavebtn.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             suppliersavebtn.ForeColor = Color.White;
-            suppliersavebtn.Location = new Point(823, 417);
+            suppliersavebtn.Location = new Point(356, 392);
             suppliersavebtn.Name = "suppliersavebtn";
-            suppliersavebtn.Size = new Size(140, 41);
+            suppliersavebtn.Size = new Size(480, 53);
             suppliersavebtn.TabIndex = 32;
-            suppliersavebtn.Text = "Save";
+            suppliersavebtn.Text = "SAVE";
             suppliersavebtn.UseVisualStyleBackColor = false;
             suppliersavebtn.Click += suppliersavebtn_Click;
             // 
@@ -95,7 +94,7 @@
             suppliercontactlbl.FlatStyle = FlatStyle.Flat;
             suppliercontactlbl.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
             suppliercontactlbl.ForeColor = Color.DimGray;
-            suppliercontactlbl.Location = new Point(219, 197);
+            suppliercontactlbl.Location = new Point(148, 197);
             suppliercontactlbl.Name = "suppliercontactlbl";
             suppliercontactlbl.Size = new Size(191, 54);
             suppliercontactlbl.TabIndex = 31;
@@ -107,7 +106,7 @@
             supplliernametxt.BackColor = Color.White;
             supplliernametxt.Cursor = Cursors.IBeam;
             supplliernametxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            supplliernametxt.Location = new Point(483, 55);
+            supplliernametxt.Location = new Point(356, 55);
             supplliernametxt.Multiline = true;
             supplliernametxt.Name = "supplliernametxt";
             supplliernametxt.Size = new Size(480, 81);
@@ -121,7 +120,7 @@
             supplieraddresslbl.FlatStyle = FlatStyle.Flat;
             supplieraddresslbl.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
             supplieraddresslbl.ForeColor = Color.DimGray;
-            supplieraddresslbl.Location = new Point(213, 323);
+            supplieraddresslbl.Location = new Point(142, 323);
             supplieraddresslbl.Name = "supplieraddresslbl";
             supplieraddresslbl.Size = new Size(197, 54);
             supplieraddresslbl.TabIndex = 26;
@@ -133,7 +132,7 @@
             supplieraddresstxt.BackColor = Color.White;
             supplieraddresstxt.Cursor = Cursors.IBeam;
             supplieraddresstxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            supplieraddresstxt.Location = new Point(483, 299);
+            supplieraddresstxt.Location = new Point(356, 285);
             supplieraddresstxt.Multiline = true;
             supplieraddresstxt.Name = "supplieraddresstxt";
             supplieraddresstxt.Size = new Size(480, 81);
@@ -147,7 +146,7 @@
             suplliernamelbl.FlatStyle = FlatStyle.Flat;
             suplliernamelbl.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
             suplliernamelbl.ForeColor = Color.DimGray;
-            suplliernamelbl.Location = new Point(253, 67);
+            suplliernamelbl.Location = new Point(182, 67);
             suplliernamelbl.Name = "suplliernamelbl";
             suplliernamelbl.Size = new Size(169, 54);
             suplliernamelbl.TabIndex = 20;
@@ -175,26 +174,16 @@
             addmenuitemtxt.TabIndex = 19;
             addmenuitemtxt.Text = "Input Menu Item";
             // 
-            // menuformstatuscheckbox
-            // 
-            menuformstatuscheckbox.AutoSize = true;
-            menuformstatuscheckbox.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            menuformstatuscheckbox.ForeColor = Color.LimeGreen;
-            menuformstatuscheckbox.Location = new Point(483, 417);
-            menuformstatuscheckbox.Name = "menuformstatuscheckbox";
-            menuformstatuscheckbox.Size = new Size(155, 41);
-            menuformstatuscheckbox.TabIndex = 28;
-            menuformstatuscheckbox.Text = "Available";
-            menuformstatuscheckbox.UseVisualStyleBackColor = true;
-            // 
             // SupplierAddForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1302, 667);
+            ClientSize = new Size(995, 574);
             Controls.Add(panelForm);
             Controls.Add(panelFormHeader);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SupplierAddForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SupplierAddForm";
             Load += SupplierAddForm_Load;
             panelForm.ResumeLayout(false);
@@ -216,6 +205,5 @@
         private Label suplliernamelbl;
         private Panel panelFormHeader;
         private Label addmenuitemtxt;
-        private CheckBox menuformstatuscheckbox;
     }
 }
