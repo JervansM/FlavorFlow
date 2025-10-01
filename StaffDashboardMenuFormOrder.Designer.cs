@@ -47,7 +47,7 @@
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1924, 849);
+            panelContent.Size = new Size(1924, 1061);
             panelContent.TabIndex = 28;
             panelContent.Paint += panelContent_Paint;
             // 
@@ -93,7 +93,7 @@
             // 
             flowLayoutMenuCard.Location = new Point(35, 80);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(936, 1500);
+            flowLayoutMenuCard.Size = new Size(936, 3000);
             flowLayoutMenuCard.TabIndex = 1;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
@@ -101,7 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1924, 849);
+            ClientSize = new Size(1924, 1061);
             Controls.Add(panelContent);
             Name = "StaffDashboardMenuFormOrder";
             Text = "StaffDashboardMenuFormOrder";

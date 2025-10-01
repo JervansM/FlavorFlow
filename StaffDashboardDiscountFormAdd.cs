@@ -20,7 +20,7 @@ namespace FlavorFlowIT13
 
         // ✅ Cloud connection
         private readonly string cloudConnectionString =
-            "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=YourPasswordHere;Encrypt=True;TrustServerCertificate=True;";
+            "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
         // ✅ Active connection
         private string connectionString;

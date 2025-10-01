@@ -13,7 +13,7 @@ namespace FlavorFlowIT13
 {
     public partial class InventoryManagementAddForm : Form
     {
-        private readonly string cloudConn = "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User ID=your_user;Password=your_password;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string cloudConn = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
         private readonly string localConn = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;";
 
         private int? _inventoryId = null;
@@ -91,29 +91,28 @@ namespace FlavorFlowIT13
                 MessageBox.Show("Please select a supplier.");
                 return;
             }
+
             int supplierId = Convert.ToInt32(inventoryformsupplertxt.SelectedValue);
 
             try
             {
-
                 using (var conn = GetConnection())
                 {
-                    conn.Open();
                     if (_inventoryId.HasValue)
                     {
                         // Update existing inventory item
                         string updateQuery = @"
-                    UPDATE Inventory SET
-                        ItemName = @ItemName,
-                        Quantity = @Quantity,
-                        Unit = @Unit,
-                        Cost = @Cost,
-                        ExpiryDate = @ExpiryDate,
-                        SupplierID = @SupplierID,
-                        IsAvailable = @IsAvailable,
-                        MinStock = @MinStock,
-                        UpdatedAt = GETDATE()
-                    WHERE InventoryID = @InventoryID";
+UPDATE Inventory SET
+    ItemName = @ItemName,
+    Quantity = @Quantity,
+    Unit = @Unit,
+    Cost = @Cost,
+    ExpiryDate = @ExpiryDate,
+    SupplierID = @SupplierID,
+    IsAvailable = @IsAvailable,
+    MinStock = @MinStock,
+    UpdatedAt = GETDATE()
+WHERE InventoryID = @InventoryID";
 
                         using (var cmd = new SqlCommand(updateQuery, conn))
                         {
@@ -129,17 +128,20 @@ namespace FlavorFlowIT13
 
                             cmd.ExecuteNonQuery();
                         }
+
                         MessageBox.Show("Inventory item updated successfully!");
                     }
                     else
                     {
                         // Insert new inventory item
                         string insertQuery = @"
-                    INSERT INTO Inventory
-                    (ItemName, Quantity, Unit, Cost, ExpiryDate, SupplierID, IsAvailable, MinStock, CreatedAt, UpdatedAt)
-                    VALUES
-                    (@ItemName, @Quantity, @Unit, @Cost, @ExpiryDate, @SupplierID, @IsAvailable, @MinStock, GETDATE(), GETDATE())";
+INSERT INTO Inventory
+(ItemName, Quantity, Unit, Cost, ExpiryDate, SupplierID, IsAvailable, MinStock, CreatedAt, UpdatedAt)
+OUTPUT INSERTED.InventoryID
+VALUES
+(@ItemName, @Quantity, @Unit, @Cost, @ExpiryDate, @SupplierID, @IsAvailable, @MinStock, GETDATE(), GETDATE())";
 
+                        int newItemId;
                         using (var cmd = new SqlCommand(insertQuery, conn))
                         {
                             cmd.Parameters.AddWithValue("@ItemName", inventorynametxt.Text);
@@ -151,10 +153,12 @@ namespace FlavorFlowIT13
                             cmd.Parameters.AddWithValue("@IsAvailable", menuformstatuscheckbox.Checked);
                             cmd.Parameters.AddWithValue("@MinStock", minStock);
 
-                            cmd.ExecuteNonQuery();
+                            newItemId = (int)cmd.ExecuteScalar();
                         }
+
                         MessageBox.Show("Inventory item saved successfully!");
                     }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -164,6 +168,7 @@ namespace FlavorFlowIT13
                 MessageBox.Show("Error saving inventory: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
@@ -182,7 +187,6 @@ namespace FlavorFlowIT13
 
                 using (var conn = GetConnection())
                 {
-                    conn.Open();
                     string query = @"
                 SELECT InventoryID, ItemName, Quantity, Unit, Cost, ExpiryDate, SupplierID, IsAvailable, MinStock
                 FROM Inventory

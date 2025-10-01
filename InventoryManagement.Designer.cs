@@ -88,7 +88,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3070, 2736);
+            panel5.Location = new Point(3070, 3986);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -110,7 +110,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3070, 5320);
+            panel4.Location = new Point(3070, 7820);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -154,7 +154,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2396, 2379);
+            dashinventoryusage.Location = new Point(2396, 3629);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -176,7 +176,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2396, 4606);
+            dashnetprofit.Location = new Point(2396, 7106);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -208,7 +208,7 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1556, 2500);
+            panelContent.Size = new Size(1556, 5000);
             panelContent.TabIndex = 17;
             panelContent.Paint += panelContent_Paint;
             // 
@@ -218,16 +218,16 @@
             inventorymanagementpanelcontents.Controls.Add(inventorydatapanel);
             inventorymanagementpanelcontents.Location = new Point(12, 176);
             inventorymanagementpanelcontents.Name = "inventorymanagementpanelcontents";
-            inventorymanagementpanelcontents.Size = new Size(1533, 2500);
+            inventorymanagementpanelcontents.Size = new Size(1533, 5000);
             inventorymanagementpanelcontents.TabIndex = 51;
             inventorymanagementpanelcontents.Paint += inventorymanagementpanelcontents_Paint;
             // 
             // inventorydatapanel
             // 
             inventorydatapanel.Controls.Add(menuedititembtn);
-            inventorydatapanel.Location = new Point(13, 18);
+            inventorydatapanel.Location = new Point(69, 30);
             inventorydatapanel.Name = "inventorydatapanel";
-            inventorydatapanel.Size = new Size(1494, 2500);
+            inventorydatapanel.Size = new Size(1402, 5000);
             inventorydatapanel.TabIndex = 0;
             inventorydatapanel.Paint += inventorydatapanel_Paint;
             // 

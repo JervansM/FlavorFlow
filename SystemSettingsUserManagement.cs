@@ -15,10 +15,18 @@ namespace FlavorFlowIT13
 {
     public partial class SystemSettingsUserManagement : Form
     {
+        private readonly string cloudConnectionString =
+         "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+
+        private readonly string localConnectionString =
+            "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        private string activeConnectionString;
         public SystemSettingsUserManagement()
         {
 
 
+            activeConnectionString = GetAvailableConnection();
 
             InitializeComponent();
 
@@ -71,6 +79,34 @@ namespace FlavorFlowIT13
             systemsettingscancelbtn.ForeColor = Color.White;
             systemsettingscancelbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             systemsettingscancelbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+        }
+         private string GetAvailableConnection()
+        {
+            if (TestConnection(cloudConnectionString))
+                return cloudConnectionString;
+
+            if (TestConnection(localConnectionString))
+                return localConnectionString;
+
+            MessageBox.Show("No available database connection.", "Database Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+        }
+
+        private bool TestConnection(string connectionString)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
         private void RoundPanel(Panel pnl, int radius)
         {

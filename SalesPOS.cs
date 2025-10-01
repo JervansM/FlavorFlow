@@ -15,7 +15,7 @@ namespace FlavorFlowIT13
 {
     public partial class SalesPOS : Form
     {
-        private readonly string cloudConnectionString = "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
+        private readonly string cloudConnectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
         private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         private Chart salesTrendChart;
@@ -131,8 +131,8 @@ namespace FlavorFlowIT13
             }
             if (period.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
             {
-                DateTime start = new DateTime(anchorDate.Year, anchorDate.Month, 1);
-                DateTime end = start.AddMonths(1);
+                DateTime start = new DateTime(anchorDate.Year, 1, 1);   // Jan 1 of the year
+                DateTime end = start.AddYears(1);                      // Jan 1 of next year
                 return (start, end);
             }
             if (period.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
@@ -157,19 +157,21 @@ namespace FlavorFlowIT13
 
             string sql = @"
                 WITH PaymentAgg AS (
-                    SELECT OrderID, SUM(ISNULL(AmountPaid,0)) AS PaidAmount
-                    FROM dbo.Payments
-                    WHERE PaymentDate >= @StartDate AND PaymentDate < @EndDate
-                    GROUP BY OrderID
-                )
-                SELECT
-                    ISNULL(SUM(o.TotalAmount), 0) AS TotalAmount,
-                    ISNULL(SUM(o.DiscountAmount), 0) AS DiscountAmount,
-                    COUNT(DISTINCT o.OrderID) AS OrderCount,
-                    ISNULL(SUM(COALESCE(p.PaidAmount, o.TotalAmount - ISNULL(o.DiscountAmount,0))), 0) AS GrossRevenue
-                FROM dbo.Orders o
-                LEFT JOIN PaymentAgg p ON p.OrderID = o.OrderID
-                WHERE o.Date >= @StartDate AND o.Date < @EndDate;";
+    SELECT OrderID, SUM(ISNULL(AmountPaid,0)) AS PaidAmount
+    FROM dbo.Payments
+    WHERE PaymentDate >= @StartDate AND PaymentDate < @EndDate
+    GROUP BY OrderID)
+    SELECT
+    ISNULL(SUM(o.TotalAmount), 0) AS TotalAmount,             
+    ISNULL(SUM(o.DiscountAmount), 0) AS DiscountAmount,        
+    COUNT(DISTINCT o.OrderID) AS OrderCount,                 
+    ISNULL(SUM(o.TotalAmount), 0) AS GrossRevenue,            
+    ISNULL(SUM(o.TotalAmount - ISNULL(o.DiscountAmount,0)), 0) AS NetSales, 
+    ISNULL(SUM(p.PaidAmount), 0) AS TotalPayments              
+    FROM dbo.Orders o
+    LEFT JOIN PaymentAgg p ON p.OrderID = o.OrderID
+    WHERE o.Date >= @StartDate AND o.Date < @EndDate;
+    ";
 
             try
             {

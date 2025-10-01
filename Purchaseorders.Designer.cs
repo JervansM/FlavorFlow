@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            receivedordersbtn = new Button();
+            viewpendingbtn = new Button();
+            systemsearchbarpanel = new Panel();
+            systemsearchbaricon = new PictureBox();
+            systemsearchbar = new TextBox();
+            supplierpanelcontents = new Panel();
+            supplierdataflowpanel = new FlowLayoutPanel();
+            createneworderbtn = new Button();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
             dashinventoryusage = new Panel();
@@ -42,6 +50,9 @@
             panel6 = new Panel();
             label9 = new Label();
             panelContent.SuspendLayout();
+            systemsearchbarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
+            supplierpanelcontents.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -52,26 +63,132 @@
             // 
             // panelContent
             // 
+            panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(receivedordersbtn);
+            panelContent.Controls.Add(viewpendingbtn);
+            panelContent.Controls.Add(systemsearchbarpanel);
+            panelContent.Controls.Add(supplierpanelcontents);
+            panelContent.Controls.Add(createneworderbtn);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
             panelContent.Controls.Add(dashtotalexpense);
             panelContent.Controls.Add(panel4);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel6);
-            panelContent.Location = new Point(1, 0);
+            panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1548, 818);
-            panelContent.TabIndex = 17;
-            panelContent.Paint += panelContent_Paint;
+            panelContent.Size = new Size(1511, 1032);
+            panelContent.TabIndex = 18;
+            // 
+            // receivedordersbtn
+            // 
+            receivedordersbtn.BackColor = Color.Black;
+            receivedordersbtn.Cursor = Cursors.Hand;
+            receivedordersbtn.FlatStyle = FlatStyle.Popup;
+            receivedordersbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            receivedordersbtn.ForeColor = Color.Honeydew;
+            receivedordersbtn.Location = new Point(635, 101);
+            receivedordersbtn.Name = "receivedordersbtn";
+            receivedordersbtn.Size = new Size(270, 62);
+            receivedordersbtn.TabIndex = 55;
+            receivedordersbtn.Text = "Received Orders";
+            receivedordersbtn.UseVisualStyleBackColor = false;
+            receivedordersbtn.Click += receivedordersbtn_Click;
+            // 
+            // viewpendingbtn
+            // 
+            viewpendingbtn.BackColor = Color.Black;
+            viewpendingbtn.Cursor = Cursors.Hand;
+            viewpendingbtn.FlatStyle = FlatStyle.Popup;
+            viewpendingbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            viewpendingbtn.ForeColor = Color.Honeydew;
+            viewpendingbtn.Location = new Point(324, 101);
+            viewpendingbtn.Name = "viewpendingbtn";
+            viewpendingbtn.Size = new Size(270, 62);
+            viewpendingbtn.TabIndex = 54;
+            viewpendingbtn.Text = "View Pending Order";
+            viewpendingbtn.UseVisualStyleBackColor = false;
+            viewpendingbtn.Click += viewpendingbtn_Click;
+            // 
+            // systemsearchbarpanel
+            // 
+            systemsearchbarpanel.BackColor = Color.White;
+            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
+            systemsearchbarpanel.Controls.Add(systemsearchbar);
+            systemsearchbarpanel.Location = new Point(12, 12);
+            systemsearchbarpanel.Name = "systemsearchbarpanel";
+            systemsearchbarpanel.Size = new Size(1487, 59);
+            systemsearchbarpanel.TabIndex = 25;
+            // 
+            // systemsearchbaricon
+            // 
+            systemsearchbaricon.BackColor = Color.Transparent;
+            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
+            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
+            systemsearchbaricon.Location = new Point(1392, 6);
+            systemsearchbaricon.Name = "systemsearchbaricon";
+            systemsearchbaricon.Size = new Size(81, 46);
+            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
+            systemsearchbaricon.TabIndex = 23;
+            systemsearchbaricon.TabStop = false;
+            // 
+            // systemsearchbar
+            // 
+            systemsearchbar.Anchor = AnchorStyles.None;
+            systemsearchbar.BorderStyle = BorderStyle.None;
+            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            systemsearchbar.ForeColor = Color.Black;
+            systemsearchbar.Location = new Point(31, 6);
+            systemsearchbar.Multiline = true;
+            systemsearchbar.Name = "systemsearchbar";
+            systemsearchbar.PlaceholderText = "Search";
+            systemsearchbar.Size = new Size(1431, 47);
+            systemsearchbar.TabIndex = 22;
+            // 
+            // supplierpanelcontents
+            // 
+            supplierpanelcontents.BackColor = Color.White;
+            supplierpanelcontents.Controls.Add(supplierdataflowpanel);
+            supplierpanelcontents.Location = new Point(12, 187);
+            supplierpanelcontents.Name = "supplierpanelcontents";
+            supplierpanelcontents.Size = new Size(1487, 833);
+            supplierpanelcontents.TabIndex = 53;
+            supplierpanelcontents.Paint += supplierpanelcontents_Paint;
+            // 
+            // supplierdataflowpanel
+            // 
+            supplierdataflowpanel.AutoScroll = true;
+            supplierdataflowpanel.FlowDirection = FlowDirection.TopDown;
+            supplierdataflowpanel.Location = new Point(37, 28);
+            supplierdataflowpanel.Name = "supplierdataflowpanel";
+            supplierdataflowpanel.Size = new Size(1402, 770);
+            supplierdataflowpanel.TabIndex = 0;
+            supplierdataflowpanel.WrapContents = false;
+            supplierdataflowpanel.Paint += supplierdataflowpanel_Paint;
+            // 
+            // createneworderbtn
+            // 
+            createneworderbtn.BackColor = Color.Black;
+            createneworderbtn.Cursor = Cursors.Hand;
+            createneworderbtn.FlatStyle = FlatStyle.Popup;
+            createneworderbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            createneworderbtn.ForeColor = Color.Honeydew;
+            createneworderbtn.Location = new Point(12, 101);
+            createneworderbtn.Name = "createneworderbtn";
+            createneworderbtn.Size = new Size(270, 62);
+            createneworderbtn.TabIndex = 51;
+            createneworderbtn.Text = "Create New Order";
+            createneworderbtn.UseVisualStyleBackColor = false;
+            createneworderbtn.Click += createneworderbtn_Click;
             // 
             // dashnetprofit
             // 
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2400, 2062);
+            dashnetprofit.Location = new Point(2437, 2305);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -93,7 +210,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2400, 1107);
+            dashinventoryusage.Location = new Point(2437, 1229);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -115,7 +232,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2400, 206);
+            dashtotalexpense.Location = new Point(2437, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -137,7 +254,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3074, 2776);
+            panel4.Location = new Point(3111, 3019);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -159,7 +276,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3074, 1464);
+            panel5.Location = new Point(3111, 1586);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -181,7 +298,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3074, 206);
+            panel6.Location = new Point(3111, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -202,11 +319,17 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1520, 1061);
+            AutoScroll = true;
+            ClientSize = new Size(1523, 1061);
             Controls.Add(panelContent);
             Name = "Purchaseorders";
             Text = "Purchaseorders";
+            Load += Purchaseorders_Load;
             panelContent.ResumeLayout(false);
+            systemsearchbarpanel.ResumeLayout(false);
+            systemsearchbarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
+            supplierpanelcontents.ResumeLayout(false);
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -225,6 +348,12 @@
         #endregion
 
         private Panel panelContent;
+        private Panel systemsearchbarpanel;
+        private PictureBox systemsearchbaricon;
+        private TextBox systemsearchbar;
+        private Panel supplierpanelcontents;
+        private FlowLayoutPanel supplierdataflowpanel;
+        private Button createneworderbtn;
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
         private Panel dashinventoryusage;
@@ -237,5 +366,7 @@
         private Label label8;
         private Panel panel6;
         private Label label9;
+        private Button receivedordersbtn;
+        private Button viewpendingbtn;
     }
 }

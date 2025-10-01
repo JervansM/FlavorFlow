@@ -97,7 +97,7 @@ namespace FlavorFlowIT13
                 "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
             private static string cloudConnection =
-                "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=ChangeThisPassword!;Encrypt=True;TrustServerCertificate=True;";
+                "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
             public static string GetConnectionString()
             {

@@ -14,13 +14,42 @@ namespace FlavorFlowIT13
 {
     public partial class CreateUserAdmin : Form
     {
-        string connectionString = "Data Source=MONTERO-JV;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
+        private readonly string cloudConnectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+        private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string activeConnectionString;
         public CreateUserAdmin()
         {
             InitializeComponent();
+            activeConnectionString = GetAvailableConnection();
+        }
+        private string GetAvailableConnection()
+        {
+            if (TestConnection(cloudConnectionString))
+                return cloudConnectionString;
+
+            if (TestConnection(localConnectionString))
+                return localConnectionString;
+
+            MessageBox.Show("No available database connection.", "Database Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
         }
 
+        private bool TestConnection(string connectionString)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void savebtn_Click(object sender, EventArgs e)
         {
             string username = createpasswordtxt.Text.Trim();
@@ -44,11 +73,10 @@ namespace FlavorFlowIT13
                 MessageBox.Show("⚠️ Please fill up the form.");
                 return;
             }
-            connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
             string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @Password, @Role)";
 
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(activeConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Username", createusertxt.Text);

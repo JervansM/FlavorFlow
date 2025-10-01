@@ -9,7 +9,7 @@ namespace FlavorFlowIT13
 {
     public partial class AdminDashboard : Form
     {
-        private readonly string cloudConnectionString = "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
+        private readonly string cloudConnectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
         private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private string activeConnectionString;
 
@@ -280,10 +280,10 @@ namespace FlavorFlowIT13
             switch (selected)
             {
 
-                case "Suppliers":
+                case "           Suppliers":
                     LoadContent(new Suppliers());
                     break;
-                case "Purchase orders":
+                case "     Purchase orders":
                     LoadContent(new Purchaseorders());
                     break;
                

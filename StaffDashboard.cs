@@ -21,17 +21,14 @@ namespace FlavorFlowIT13
         private readonly string localConnectionString =
           "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-        // ✅ Cloud connection
         private readonly string cloudConnectionString =
-            "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=YourPasswordHere;Encrypt=True;TrustServerCertificate=True;";
+            "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
-        // ✅ Active connection string (switch between cloud/local automatically)
         private string connectionString;
 
 
         private int currentStaffId;
 
-        // Add this field to store the current order before saving
         private List<OrderItem> currentOrderItems = new List<OrderItem>();
 
         // Payment method tracking
@@ -1300,41 +1297,31 @@ namespace FlavorFlowIT13
                     return;
                 }
 
-                // Check if order type is selected
                 if (string.IsNullOrEmpty(selectedOrderType))
                 {
                     ShowCustomMessageBox("Please select an order type (Dine In or Takeout) before saving the order.", "Order Type Required");
                     return;
                 }
 
-                // Debug: Show current order type before saving
                 System.Diagnostics.Debug.WriteLine($"About to save order. Current selectedOrderType: {selectedOrderType}");
 
-                // Get the current order total
                 decimal totalAmount = 0;
                 if (decimal.TryParse(fixedamounttxt.Text.Replace("₱", "").Trim(), out totalAmount))
                 {
-                    // Get billing amount for transaction
                     decimal billingAmount = 0;
                     decimal.TryParse(biilingamounttxt.Text.Replace("₱", "").Trim(), out billingAmount);
 
-                    // Calculate change
                     decimal changeAmount = billingAmount - totalAmount;
                     if (changeAmount < 0) changeAmount = 0;
 
-                    // Save the order to database
                     int orderId = SaveOrderToDatabase(totalAmount, selectedPaymentMethod);
 
-                    // Automatically save the transaction
                     SavePaymentToDatabase(totalAmount, billingAmount, changeAmount);
 
-                    // Show detailed summary before clearing
                     ShowOrderAndTransactionSummary(orderId, totalAmount, billingAmount, changeAmount);
 
-                    // Clear the order after showing summary
                     ClearOrder();
 
-                    // Force refresh the DataGridView to ensure it's completely cleared
                     RefreshDataGridView();
                 }
                 else
