@@ -286,10 +286,10 @@ namespace FlavorFlowIT13
             switch (selected)
             {
 
-                case "Suppliers":
+                case "           Suppliers":
                     LoadContent(new Suppliers());
                     break;
-                case "Purchase orders":
+                case "     Purchase orders":
                     LoadContent(new Purchaseorders());
                     break;
                

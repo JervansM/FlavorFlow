@@ -204,7 +204,14 @@ namespace FlavorFlowIT13
                             {
                                 if (editForm.ShowDialog() == DialogResult.OK)
                                 {
+                                    // Reload inventory list
                                     LoadInventoryData();
+
+                                    // 🔄 Ensure supplier's ItemsSupplied stays updated
+                                    int supplierId = GetSupplierIdByInventory(id);
+                                    if (supplierId > 0)
+                                    {
+                                    }
                                 }
                             }
                         };
@@ -218,6 +225,24 @@ namespace FlavorFlowIT13
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading inventory: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private int GetSupplierIdByInventory(int inventoryId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(activeConnectionString))
+                using (var cmd = new SqlCommand("SELECT SupplierID FROM Inventory WHERE InventoryID = @id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", inventoryId);
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+            catch
+            {
+                return 0;
             }
         }
 

@@ -225,9 +225,9 @@
             // inventorydatapanel
             // 
             inventorydatapanel.Controls.Add(menuedititembtn);
-            inventorydatapanel.Location = new Point(13, 18);
+            inventorydatapanel.Location = new Point(69, 30);
             inventorydatapanel.Name = "inventorydatapanel";
-            inventorydatapanel.Size = new Size(1494, 5000);
+            inventorydatapanel.Size = new Size(1402, 5000);
             inventorydatapanel.TabIndex = 0;
             inventorydatapanel.Paint += inventorydatapanel_Paint;
             // 
