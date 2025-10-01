@@ -41,10 +41,8 @@
             label2 = new Label();
             label4 = new Label();
             label1 = new Label();
-            panel3 = new Panel();
-            label8 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // managerstockrequestlogwastetxt
@@ -101,7 +99,7 @@
             managerstockrequestaddnewstockrequesttxt.FlatStyle = FlatStyle.Flat;
             managerstockrequestaddnewstockrequesttxt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             managerstockrequestaddnewstockrequesttxt.ForeColor = Color.White;
-            managerstockrequestaddnewstockrequesttxt.Location = new Point(399, 129);
+            managerstockrequestaddnewstockrequesttxt.Location = new Point(481, 129);
             managerstockrequestaddnewstockrequesttxt.Name = "managerstockrequestaddnewstockrequesttxt";
             managerstockrequestaddnewstockrequesttxt.Size = new Size(309, 58);
             managerstockrequestaddnewstockrequesttxt.TabIndex = 48;
@@ -217,26 +215,13 @@
             label1.TabIndex = 5;
             label1.Text = "Requested By";
             // 
-            // panel3
+            // dateTimePicker1
             // 
-            panel3.BackColor = Color.Black;
-            panel3.Controls.Add(label8);
-            panel3.Location = new Point(43, 129);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(312, 58);
-            panel3.TabIndex = 52;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Black;
-            label8.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 13);
-            label8.Name = "label8";
-            label8.Size = new Size(74, 32);
-            label8.TabIndex = 11;
-            label8.Text = "Date:";
+            dateTimePicker1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            dateTimePicker1.Location = new Point(43, 148);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(394, 39);
+            dateTimePicker1.TabIndex = 52;
             // 
             // ManagerStockRequest
             // 
@@ -244,7 +229,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(1370, 749);
-            Controls.Add(panel3);
+            Controls.Add(dateTimePicker1);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(managerstockrequestreplenishmentrequesttxt);
@@ -255,8 +240,6 @@
             Text = "ManagerStockRequest";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -275,7 +258,6 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private Panel panel3;
-        private Label label8;
+        private DateTimePicker dateTimePicker1;
     }
 }
