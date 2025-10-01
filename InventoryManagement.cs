@@ -14,6 +14,13 @@ namespace FlavorFlowIT13
 {
     public partial class InventoryManagement : Form
     {
+        private readonly string cloudConnectionString =
+            "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
+
+        private readonly string localConnectionString =
+            "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string activeConnectionString;
+
         public InventoryManagement()
         {
             InitializeComponent();
@@ -30,7 +37,36 @@ namespace FlavorFlowIT13
             addinventoryitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
             addinventoryitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");
 
+            activeConnectionString = GetAvailableConnection();
 
+        }
+        private string GetAvailableConnection()
+        {
+            if (TestConnection(cloudConnectionString))
+                return cloudConnectionString;
+
+            if (TestConnection(localConnectionString))
+                return localConnectionString;
+
+            MessageBox.Show("No available database connection.", "Database Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+        }
+
+        private bool TestConnection(string connectionString)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
         private void RoundPanel(Panel pnl, int radius)
         {
@@ -79,25 +115,28 @@ namespace FlavorFlowIT13
 
         }
         // Add this method to InventoryManagement class to fix CS0103
-        private void LoadInventoryData()
+      
+          private void LoadInventoryData()
         {
+            if (string.IsNullOrEmpty(activeConnectionString))
+                return;
+
             try
             {
-                string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-                using (var conn = new SqlConnection(connectionString))
+                using (var conn = new SqlConnection(activeConnectionString))
                 {
                     conn.Open();
                     string query = @"
-                SELECT i.InventoryID, i.ItemName, i.Quantity, i.Unit, i.Cost, 
-                       i.ExpiryDate, s.Name AS Supplier, 
-                       CASE WHEN i.IsAvailable = 1 THEN 'Available' ELSE 'Not Available' END AS Status,
-                       i.MinStock, i.CreatedAt, i.UpdatedAt 
-                FROM Inventory i 
-                INNER JOIN Supplier s ON i.SupplierID = s.SupplierID ORDER BY i.ItemName" ;
+                        SELECT i.InventoryID, i.ItemName, i.Quantity, i.Unit, i.Cost, 
+                               i.ExpiryDate, s.Name AS Supplier, 
+                               CASE WHEN i.IsAvailable = 1 THEN 'Available' ELSE 'Not Available' END AS Status,
+                               i.MinStock, i.CreatedAt, i.UpdatedAt 
+                        FROM Inventory i 
+                        INNER JOIN Supplier s ON i.SupplierID = s.SupplierID 
+                        ORDER BY i.ItemName";
 
 
-                    
+
 
                     using (var cmd = new SqlCommand(query, conn))
                     using (var adapter = new SqlDataAdapter(cmd))

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffDashboard));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dashadrefreshicon = new PictureBox();
             dashadtime = new Label();
             dashaddate = new Label();
@@ -343,7 +344,14 @@
             orderDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             orderDataGridView.Location = new Point(7, 18);
             orderDataGridView.Name = "orderDataGridView";
-            orderDataGridView.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            orderDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             orderDataGridView.Size = new Size(581, 213);
             orderDataGridView.TabIndex = 47;
             orderDataGridView.CellContentClick += orderDataGridView_CellContentClick;
@@ -443,6 +451,7 @@
             takeoutbtn2.TabIndex = 38;
             takeoutbtn2.Text = "Takeout";
             takeoutbtn2.UseVisualStyleBackColor = false;
+            takeoutbtn2.Click += takeoutbtn_Click;
             // 
             // dineinbtn
             // 
@@ -867,6 +876,7 @@
             saveorderbtn.TabIndex = 8;
             saveorderbtn.Text = "Save Order";
             saveorderbtn.UseVisualStyleBackColor = false;
+            saveorderbtn.Click += saveorderbtn_Click;
             // 
             // voidbtn
             // 

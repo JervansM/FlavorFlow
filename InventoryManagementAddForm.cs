@@ -13,11 +13,34 @@ namespace FlavorFlowIT13
 {
     public partial class InventoryManagementAddForm : Form
     {
+        private readonly string cloudConn = "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User ID=your_user;Password=your_password;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private readonly string localConn = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;";
+
+        private int? _inventoryId = null;
+
         public InventoryManagementAddForm()
         {
+
             InitializeComponent();
+         
+
             LoadSuppliers();
 
+        }
+        private SqlConnection GetConnection()
+        {
+            try
+            {
+                var conn = new SqlConnection(cloudConn);
+                conn.Open();
+                return conn; // Cloud works
+            }
+            catch
+            {
+                var conn = new SqlConnection(localConn);
+                conn.Open();
+                return conn; // Fallback to local
+            }
         }
 
         private void panelFormHeader_Paint(object sender, PaintEventArgs e)
@@ -72,9 +95,8 @@ namespace FlavorFlowIT13
 
             try
             {
-                string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-                using (var conn = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+                using (var conn = GetConnection())
                 {
                     conn.Open();
                     if (_inventoryId.HasValue)
@@ -93,7 +115,7 @@ namespace FlavorFlowIT13
                         UpdatedAt = GETDATE()
                     WHERE InventoryID = @InventoryID";
 
-                        using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(updateQuery, conn))
+                        using (var cmd = new SqlCommand(updateQuery, conn))
                         {
                             cmd.Parameters.AddWithValue("@ItemName", inventorynametxt.Text);
                             cmd.Parameters.AddWithValue("@Quantity", quantity);
@@ -118,7 +140,7 @@ namespace FlavorFlowIT13
                     VALUES
                     (@ItemName, @Quantity, @Unit, @Cost, @ExpiryDate, @SupplierID, @IsAvailable, @MinStock, GETDATE(), GETDATE())";
 
-                        using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(insertQuery, conn))
+                        using (var cmd = new SqlCommand(insertQuery, conn))
                         {
                             cmd.Parameters.AddWithValue("@ItemName", inventorynametxt.Text);
                             cmd.Parameters.AddWithValue("@Quantity", quantity);
@@ -144,7 +166,6 @@ namespace FlavorFlowIT13
         }
 
 
-        private int? _inventoryId = null;
 
         public InventoryManagementAddForm(int inventoryId)
         {
@@ -158,9 +179,8 @@ namespace FlavorFlowIT13
         {
             try
             {
-                string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-                using (var conn = new SqlConnection(connectionString))
+                using (var conn = GetConnection())
                 {
                     conn.Open();
                     string query = @"
@@ -228,25 +248,31 @@ namespace FlavorFlowIT13
         }
         private void LoadSuppliers()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            using (var conn = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
+
+            try
             {
-                conn.Open();
-                string query = "SELECT SupplierID, Name FROM Supplier";
-                using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(query, conn))
-                using (var reader = cmd.ExecuteReader())
+                using (var conn = GetConnection())
                 {
-                    var dt = new DataTable();
-                    dt.Load(reader);
+                    string query = "SELECT SupplierID, Name FROM Supplier";
+                    using (var cmd = new SqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var dt = new DataTable();
+                        dt.Load(reader);
 
-                    inventoryformsupplertxt.DataSource = dt;
-                    inventoryformsupplertxt.DisplayMember = "Name";     // what user sees
-                    inventoryformsupplertxt.ValueMember = "SupplierID"; // actual value used in SQL
-                    inventoryformsupplertxt.SelectedIndex = -1;
-
+                        inventoryformsupplertxt.DataSource = dt;
+                        inventoryformsupplertxt.DisplayMember = "Name";     // what user sees
+                        inventoryformsupplertxt.ValueMember = "SupplierID"; // actual value used in SQL
+                        inventoryformsupplertxt.SelectedIndex = -1;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Error loading suppliers: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+    
 
         private void inventoryformsupplertxt_SelectedIndexChanged(object sender, EventArgs e)
         {

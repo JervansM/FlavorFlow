@@ -51,5 +51,15 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void allitemsbtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

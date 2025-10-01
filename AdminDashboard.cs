@@ -2,12 +2,16 @@
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.Data.SqlClient; 
+
 
 namespace FlavorFlowIT13
 {
     public partial class AdminDashboard : Form
     {
-        string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private readonly string cloudConnectionString = "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
+        private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string activeConnectionString;
 
         public AdminDashboard()
         {
@@ -16,10 +20,45 @@ namespace FlavorFlowIT13
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.UserPaint, true);
+            activeConnectionString = GetAvailableConnection();
+
+            if (!string.IsNullOrEmpty(activeConnectionString))
+            {
+                // update form title so you know which DB you’re on
+                this.Text = $"Admin Dashboard - {(activeConnectionString == cloudConnectionString ? "Cloud" : "Local")} DB";
+            }
+
             Refresh();
 
         }
+        private string GetAvailableConnection()
+        {
+            if (TestConnection(cloudConnectionString))
+                return cloudConnectionString;
 
+            if (TestConnection(localConnectionString))
+                return localConnectionString;
+
+            MessageBox.Show("No available database connection.", "Database Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+        }
+
+        private bool TestConnection(string connectionString)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
             this.Text = "Admin Dashboard";

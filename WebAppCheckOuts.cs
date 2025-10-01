@@ -36,5 +36,15 @@ namespace FlavorFlowIT13
         {
             LoadContent(new WebAppMenu());
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void webappbackbtn_Click_1(object sender, EventArgs e)
+        {
+            LoadContent(new WebAppMenu());
+        }
     }
 }

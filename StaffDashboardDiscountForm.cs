@@ -12,13 +12,45 @@ namespace FlavorFlowIT13
     {
 
         private const decimal DiscountRate = 0.20m; // 20% discount rate
-        private string stringConnection = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private readonly string localConnectionString =
+                  "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
+        // ✅ Cloud connection
+        private readonly string cloudConnectionString =
+            "Data Source=db28059.public.databaseasp.net;Initial Catalog=FlavorFlowDB;User Id=sqlserver;Password=YourPasswordHere;Encrypt=True;TrustServerCertificate=True;";
+
+        // ✅ Active connection string
+        private string connectionString;
         private CancellationTokenSource typingCts; // for debounce typing
 
         public StaffDashboardDiscountForm()
         {
             InitializeComponent();
+            if (CanConnect(cloudConnectionString))
+            {
+                connectionString = cloudConnectionString;
+                Console.WriteLine("✅ Using Cloud Database");
+            }
+            else
+            {
+                connectionString = localConnectionString;
+                Console.WriteLine("⚡ Using Local Database (cloud not reachable)");
+            }
+        }
+        private bool CanConnect(string connStr)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connStr))
+                {
+                    con.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void StaffDashboardDiscountForm_Load(object sender, EventArgs e)
@@ -80,7 +112,7 @@ namespace FlavorFlowIT13
 
             try
             {
-                await using SqlConnection conn = new SqlConnection(stringConnection);
+                await using SqlConnection conn = new SqlConnection(connectionString);
                 await conn.OpenAsync();
 
                 await using SqlCommand cmd = new SqlCommand(

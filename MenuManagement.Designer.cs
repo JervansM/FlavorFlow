@@ -310,7 +310,7 @@
             flowLayoutMenuCard.Controls.Add(menuedititembtn);
             flowLayoutMenuCard.Location = new Point(13, 13);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(1505, 1500);
+            flowLayoutMenuCard.Size = new Size(1505, 2500);
             flowLayoutMenuCard.TabIndex = 0;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
