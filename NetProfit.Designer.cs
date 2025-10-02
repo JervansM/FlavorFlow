@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
             expensesposreporttype = new ComboBox();
             calendardatepicker = new DateTimePicker();
@@ -67,7 +67,6 @@
             // 
             // panelContent
             // 
-            panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
             panelContent.Controls.Add(expensesposreporttype);
@@ -84,7 +83,7 @@
             panelContent.Controls.Add(financeexpensespanel);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1511, 997);
+            panelContent.Size = new Size(1531, 997);
             panelContent.TabIndex = 19;
             // 
             // expensesposreporttype
@@ -95,7 +94,7 @@
             expensesposreporttype.ForeColor = Color.White;
             expensesposreporttype.FormattingEnabled = true;
             expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
-            expensesposreporttype.Location = new Point(882, 37);
+            expensesposreporttype.Location = new Point(12, 105);
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
@@ -106,7 +105,7 @@
             calendardatepicker.CalendarMonthBackground = Color.IndianRed;
             calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
             calendardatepicker.Font = new Font("Segoe UI", 19F);
-            calendardatepicker.Location = new Point(1128, 39);
+            calendardatepicker.Location = new Point(265, 107);
             calendardatepicker.Name = "calendardatepicker";
             calendardatepicker.Size = new Size(380, 41);
             calendardatepicker.TabIndex = 58;
@@ -118,7 +117,7 @@
             netprofitsummarybtn.FlatStyle = FlatStyle.Popup;
             netprofitsummarybtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             netprofitsummarybtn.ForeColor = Color.Honeydew;
-            netprofitsummarybtn.Location = new Point(595, 18);
+            netprofitsummarybtn.Location = new Point(588, 24);
             netprofitsummarybtn.Name = "netprofitsummarybtn";
             netprofitsummarybtn.Size = new Size(270, 62);
             netprofitsummarybtn.TabIndex = 59;
@@ -133,7 +132,7 @@
             expensereportsbtn.FlatStyle = FlatStyle.Popup;
             expensereportsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             expensereportsbtn.ForeColor = Color.Honeydew;
-            expensereportsbtn.Location = new Point(308, 18);
+            expensereportsbtn.Location = new Point(301, 24);
             expensereportsbtn.Name = "expensereportsbtn";
             expensereportsbtn.Size = new Size(270, 62);
             expensereportsbtn.TabIndex = 58;
@@ -148,7 +147,7 @@
             netsalessumbtn.FlatStyle = FlatStyle.Popup;
             netsalessumbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             netsalessumbtn.ForeColor = Color.Honeydew;
-            netsalessumbtn.Location = new Point(19, 18);
+            netsalessumbtn.Location = new Point(12, 24);
             netsalessumbtn.Name = "netsalessumbtn";
             netsalessumbtn.Size = new Size(270, 62);
             netsalessumbtn.TabIndex = 57;
@@ -161,7 +160,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(3041, 3845);
+            dashnetprofit.Location = new Point(3043, 3873);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -183,7 +182,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(3041, 1998);
+            dashinventoryusage.Location = new Point(3043, 2012);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -205,7 +204,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(3041, 206);
+            dashtotalexpense.Location = new Point(3043, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -227,7 +226,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3715, 4342);
+            panel4.Location = new Point(3717, 4370);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -249,7 +248,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3715, 2246);
+            panel5.Location = new Point(3717, 2260);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -271,7 +270,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3715, 206);
+            panel6.Location = new Point(3717, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -290,13 +289,13 @@
             // 
             // financeexpensespanel
             // 
-            financeexpensespanel.AutoScroll = true;
             financeexpensespanel.BackColor = Color.Black;
             financeexpensespanel.Controls.Add(netprofitchart);
-            financeexpensespanel.Location = new Point(19, 101);
+            financeexpensespanel.Location = new Point(12, 170);
             financeexpensespanel.Name = "financeexpensespanel";
-            financeexpensespanel.Size = new Size(1489, 776);
+            financeexpensespanel.Size = new Size(1486, 855);
             financeexpensespanel.TabIndex = 60;
+            financeexpensespanel.Paint += financeexpensespanel_Paint;
             // 
             // netprofitchart
             // 
@@ -304,43 +303,44 @@
             netprofitchart.BackgroundImageLayout = ImageLayout.None;
             netprofitchart.BackSecondaryColor = Color.Transparent;
             netprofitchart.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            netprofitchart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            netprofitchart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            netprofitchart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            netprofitchart.Legends.Add(legend2);
             netprofitchart.Location = new Point(125, 59);
             netprofitchart.Name = "netprofitchart";
             netprofitchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = Color.Blue;
-            series1.Legend = "Legend1";
-            series1.Name = "Net Profit Summary";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = Color.LimeGreen;
-            series2.Legend = "Legend1";
-            series2.Name = "Sales ";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = Color.FromArgb(192, 0, 0);
-            series3.Legend = "Legend1";
-            series3.Name = "Expenses";
-            netprofitchart.Series.Add(series1);
-            netprofitchart.Series.Add(series2);
-            netprofitchart.Series.Add(series3);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = Color.Blue;
+            series4.Legend = "Legend1";
+            series4.Name = "Net Profit Summary";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = Color.LimeGreen;
+            series5.Legend = "Legend1";
+            series5.Name = "Sales ";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Color = Color.FromArgb(192, 0, 0);
+            series6.Legend = "Legend1";
+            series6.Name = "Expenses";
+            netprofitchart.Series.Add(series4);
+            netprofitchart.Series.Add(series5);
+            netprofitchart.Series.Add(series6);
             netprofitchart.Size = new Size(1239, 714);
             netprofitchart.TabIndex = 1;
             netprofitchart.Text = "Net Profit Summary";
-            title1.ForeColor = Color.White;
-            title1.Name = "Sales";
-            netprofitchart.Titles.Add(title1);
+            title2.ForeColor = Color.White;
+            title2.Name = "Sales";
+            netprofitchart.Titles.Add(title2);
             netprofitchart.Click += netprofitchart_Click;
             // 
             // NetProfit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1633, 1058);
             Controls.Add(panelContent);
             Name = "NetProfit";

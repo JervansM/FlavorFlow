@@ -161,7 +161,7 @@ namespace FlavorFlowIT13
                 {
                     conn.Open();
 
-                    string query = "SELECT SUM(TotalAmount) FROM Orders WHERE Status = 'Completed' AND PaymentStatus = 'Paid'";
+                    string query = "SELECT \r\n    ISNULL(SUM(TotalAmount), 0) - ISNULL(SUM(DiscountAmount), 0) AS NetSales\r\nFROM Orders\r\nWHERE Status = 'Completed' AND PaymentStatus = 'Paid';";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {

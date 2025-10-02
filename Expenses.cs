@@ -146,7 +146,7 @@ namespace FlavorFlowIT13
             Series series = new Series("Expenses")
             {
                 ChartType = SeriesChartType.Column,
-                Color = ColorTranslator.FromHtml("#E74C3C"),
+                Color = ColorTranslator.FromHtml("IndianRed"),
                 IsValueShownAsLabel = true,
                 LabelForeColor = Color.White,
                 LabelFormat = "₱{0:N0}",
@@ -155,7 +155,7 @@ namespace FlavorFlowIT13
                 YValueType = ChartValueType.Double,
                 ChartArea = "Main",
                 Legend = "Legend",
-                BorderColor = ColorTranslator.FromHtml("#C0392B"),
+                BorderColor = ColorTranslator.FromHtml("IndianRed"),
                 BorderWidth = 1
             };
             series.SmartLabelStyle.Enabled = true;

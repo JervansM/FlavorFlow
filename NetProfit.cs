@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FlavorFlowIT13
 {
@@ -18,13 +19,22 @@ namespace FlavorFlowIT13
         private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         private string activeConnectionString;
-
+        private Chart netProfitChart;
+        private DateTime currentDate;
+        private string currentReportType = "Daily";
 
         public NetProfit()
         {
             InitializeComponent();
-
             activeConnectionString = GetAvailableConnection();
+            
+            // Set default values
+            currentDate = DateTime.Today;
+            currentReportType = "Daily";
+
+            // Attach event handlers
+            expensesposreporttype.SelectedIndexChanged += expensesposreporttype_SelectedIndexChanged;
+            calendardatepicker.ValueChanged += calendardatepicker_ValueChanged;
         }
         private string GetAvailableConnection()
         {
@@ -59,6 +69,452 @@ namespace FlavorFlowIT13
                 return false; // Connection failed
             }
         }
+        private void InitializeNetProfitChart()
+        {
+            if (netProfitChart == null)
+            {
+                netProfitChart = new Chart { Dock = DockStyle.Fill, BackColor = ColorTranslator.FromHtml("#2f2f2f") };
+                financeexpensespanel.Controls.Clear();
+                financeexpensespanel.Controls.Add(netProfitChart);
+            }
+
+            netProfitChart.Series.Clear();
+            netProfitChart.ChartAreas.Clear();
+            netProfitChart.Titles.Clear();
+            netProfitChart.Legends.Clear();
+        
+            // Smooth rendering
+            netProfitChart.AntiAliasing = AntiAliasingStyles.All;
+            netProfitChart.TextAntiAliasingQuality = TextAntiAliasingQuality.High;
+
+            ChartArea area = new ChartArea("Main")
+            {
+                BackColor = ColorTranslator.FromHtml("#2f2f2f"),
+                BorderColor = ColorTranslator.FromHtml("#555555"),
+                BorderWidth = 1
+            };
+            
+            // Configure X-axis
+            area.AxisX.Title = "Date";
+            area.AxisX.TitleForeColor = Color.White;
+            area.AxisX.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            area.AxisX.LabelStyle.ForeColor = Color.White;
+            area.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
+            area.AxisX.LabelStyle.Format = "MMM dd";
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisX.MajorTickMark.Enabled = true;
+            area.AxisX.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
+            area.AxisX.MinorTickMark.Enabled = false;
+            area.AxisX.LineColor = ColorTranslator.FromHtml("#666666");
+            
+            // Configure Y-axis
+            area.AxisY.Title = "Amount (₱)";
+            area.AxisY.TitleForeColor = Color.White;
+            area.AxisY.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            area.AxisY.LabelStyle.ForeColor = Color.White;
+            area.AxisY.LabelStyle.Font = new Font("Segoe UI", 10F);
+            area.AxisY.LabelStyle.Format = "₱#,0";
+            area.AxisY.IsStartedFromZero = true;
+            area.AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#444444");
+            area.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+            area.AxisY.MajorTickMark.Enabled = true;
+            area.AxisY.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
+            area.AxisY.MinorTickMark.Enabled = false;
+            area.AxisY.LineColor = ColorTranslator.FromHtml("#666666");
+            
+            // Add padding for better appearance and prevent label overlap
+            area.Position.X = 8;
+            area.Position.Y = 12;
+            area.Position.Width = 88;
+            area.Position.Height = 80;
+            
+            // Add margins to prevent label cutoff
+            area.InnerPlotPosition.X = 10;
+            area.InnerPlotPosition.Y = 2;
+            area.InnerPlotPosition.Width = 85;
+            area.InnerPlotPosition.Height = 90;
+            
+            netProfitChart.ChartAreas.Add(area);
+
+            Legend legend = new Legend("Legend")
+            {
+                Docking = Docking.Top,
+                ForeColor = Color.White,
+                BackColor = Color.Transparent,
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
+            };
+            netProfitChart.Legends.Add(legend);
+
+            // Title
+            netProfitChart.Titles.Add(new Title("Net Profit Trend")
+            {
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                Docking = Docking.Top
+            });
+
+            // Series
+            Series salesSeries = new Series("Sales")
+            {
+                ChartType = SeriesChartType.Line,
+                Color = ColorTranslator.FromHtml("#5FBE6A"),
+                IsValueShownAsLabel = true,
+                LabelForeColor = Color.White,
+                LabelFormat = "₱{0:N0}",
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                XValueType = ChartValueType.DateTime,
+                YValueType = ChartValueType.Double,
+                ChartArea = "Main",
+                Legend = "Legend",
+                BorderWidth = 3,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 8,
+                MarkerColor = ColorTranslator.FromHtml("#4A9B55"),
+                MarkerBorderColor = ColorTranslator.FromHtml("#2E7D32"),
+                MarkerBorderWidth = 2
+            };
+            salesSeries.SmartLabelStyle.Enabled = true;
+            salesSeries.ToolTip = "#VALX: Sales ₱#VAL{N2}";
+
+            Series expensesSeries = new Series("Expenses")
+            {
+                ChartType = SeriesChartType.Line,
+                Color = ColorTranslator.FromHtml("IndianRed"),
+                IsValueShownAsLabel = true,
+                LabelForeColor = Color.White,
+                LabelFormat = "₱{0:N0}",
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                XValueType = ChartValueType.DateTime,
+                YValueType = ChartValueType.Double,
+                ChartArea = "Main",
+                Legend = "Legend",
+                BorderWidth = 3,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 8,
+                MarkerColor = ColorTranslator.FromHtml("IndianRed"),
+                MarkerBorderColor = ColorTranslator.FromHtml("IndianRed"),
+                MarkerBorderWidth = 2
+            };
+            expensesSeries.SmartLabelStyle.Enabled = true;
+            expensesSeries.ToolTip = "#VALX: Expenses ₱#VAL{N2}";
+
+            Series profitSeries = new Series("Net Profit")
+            {
+                ChartType = SeriesChartType.Line,
+                Color = ColorTranslator.FromHtml("#3498DB"),
+                IsValueShownAsLabel = true,
+                LabelFormat = "₱{0:N0}",
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                XValueType = ChartValueType.DateTime,
+                YValueType = ChartValueType.Double,
+                ChartArea = "Main",
+                Legend = "Legend",
+                BorderWidth = 4,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 10,
+                MarkerColor = ColorTranslator.FromHtml("#2980B9"),
+                MarkerBorderColor = ColorTranslator.FromHtml("#1F618D"),
+                MarkerBorderWidth = 2
+            };
+            profitSeries.SmartLabelStyle.Enabled = true;
+            profitSeries.ToolTip = "#VALX: Net Profit ₱#VAL{N2}";
+
+            netProfitChart.Series.Add(salesSeries);
+            netProfitChart.Series.Add(expensesSeries);
+            netProfitChart.Series.Add(profitSeries);
+        }
+        private DataTable GetSalesData(DateTime startDate, DateTime endDate, string reportType = "Daily")
+{
+    DataTable dt = new DataTable();
+    string sql;
+
+    // Build query based on selected period granularity
+    if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
+    {
+        sql = @"
+            SELECT 
+                CAST(DATEFROMPARTS(YEAR(Date), MONTH(Date), 1) AS DATE) AS SalesDate,
+                SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
+            FROM dbo.Orders
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY DATEFROMPARTS(YEAR(Date), MONTH(Date), 1)
+            ORDER BY SalesDate;";
+    }
+    else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
+    {
+        sql = @"
+            SELECT 
+                CAST(DATEFROMPARTS(YEAR(Date), 1, 1) AS DATE) AS SalesDate,
+                SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
+            FROM dbo.Orders
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY DATEFROMPARTS(YEAR(Date), 1, 1)
+            ORDER BY SalesDate;";
+    }
+    else
+    {
+        // Daily (default) and Weekly (still plot daily buckets in the selected week)
+        sql = @"
+            SELECT CAST(Date AS DATE) AS SalesDate,
+                   SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
+            FROM dbo.Orders
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY CAST(Date AS DATE)
+            ORDER BY SalesDate;";
+    }
+
+    try
+    {
+        using (SqlConnection conn = new SqlConnection(activeConnectionString))
+        using (SqlCommand cmd = new SqlCommand(sql, conn))
+        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        {
+            cmd.Parameters.AddWithValue("@StartDate", startDate);
+            cmd.Parameters.AddWithValue("@EndDate", endDate);
+            da.Fill(dt);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error loading sales data: " + ex.Message, "Database Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    return dt;
+}
+private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string reportType = "Daily")
+{
+    DataTable dt = new DataTable();
+    string sql;
+
+    // Build query based on selected period granularity
+    if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
+    {
+        sql = @"
+            SELECT 
+                CAST(DATEFROMPARTS(YEAR(Date), MONTH(Date), 1) AS DATE) AS ExpenseDate,
+                SUM(Amount) AS TotalExpense
+            FROM dbo.Expenses
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY DATEFROMPARTS(YEAR(Date), MONTH(Date), 1)
+            ORDER BY ExpenseDate;";
+    }
+    else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
+    {
+        sql = @"
+            SELECT 
+                CAST(DATEFROMPARTS(YEAR(Date), 1, 1) AS DATE) AS ExpenseDate,
+                SUM(Amount) AS TotalExpense
+            FROM dbo.Expenses
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY DATEFROMPARTS(YEAR(Date), 1, 1)
+            ORDER BY ExpenseDate;";
+    }
+    else
+    {
+        // Daily (default) and Weekly (still plot daily buckets in the selected week)
+        sql = @"
+            SELECT CAST(Date AS DATE) AS ExpenseDate,
+                   SUM(Amount) AS TotalExpense
+            FROM dbo.Expenses
+            WHERE Date >= @StartDate AND Date < @EndDate
+            GROUP BY CAST(Date AS DATE)
+            ORDER BY ExpenseDate;";
+    }
+
+    try
+    {
+        using (SqlConnection conn = new SqlConnection(activeConnectionString))
+        using (SqlCommand cmd = new SqlCommand(sql, conn))
+        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        {
+            cmd.Parameters.AddWithValue("@StartDate", startDate);
+            cmd.Parameters.AddWithValue("@EndDate", endDate);
+            da.Fill(dt);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error loading expenses data: " + ex.Message, "Database Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    return dt;
+}
+
+        private void LoadNetProfitData(string reportType, DateTime selectedDate)
+        {
+            if (netProfitChart == null) InitializeNetProfitChart();
+
+            (DateTime start, DateTime end) = GetDateRange(selectedDate, reportType);
+
+            var chartArea = netProfitChart.ChartAreas["Main"];
+            ConfigureNetProfitXAxis(chartArea, reportType, start, end);
+
+            // Fetch Sales
+            DataTable salesDt = GetSalesData(start, end, reportType);
+            // Fetch Expenses
+            DataTable expensesDt = GetExpensesData(start, end, reportType);
+
+            // Clear old points
+            netProfitChart.Series["Sales"].Points.Clear();
+            netProfitChart.Series["Expenses"].Points.Clear();
+            netProfitChart.Series["Net Profit"].Points.Clear();
+
+            // Collect all dates for alignment
+            var allDates = salesDt.AsEnumerable().Select(r => r.Field<DateTime>("SalesDate"))
+                .Union(expensesDt.AsEnumerable().Select(r => r.Field<DateTime>("ExpenseDate")))
+                .Distinct()
+                .OrderBy(d => d);
+
+            foreach (var date in allDates)
+            {
+                double sales = salesDt.AsEnumerable()
+                    .Where(r => r.Field<DateTime>("SalesDate") == date)
+                    .Select(r => Convert.ToDouble(r.Field<decimal>("NetSales")))
+                    .FirstOrDefault();
+
+                double expenses = expensesDt.AsEnumerable()
+                    .Where(r => r.Field<DateTime>("ExpenseDate") == date)
+                    .Select(r => Convert.ToDouble(r.Field<decimal>("TotalExpense")))
+                    .FirstOrDefault();
+
+                double netProfit = sales - expenses;
+
+                // Add points to series
+                netProfitChart.Series["Sales"].Points.AddXY(date, sales);
+                netProfitChart.Series["Expenses"].Points.AddXY(date, expenses);
+                
+                // Add Net Profit point and get its index
+                int profitPointIndex = netProfitChart.Series["Net Profit"].Points.AddXY(date, netProfit);
+                
+                // Get the actual DataPoint object and set label color based on profit/loss
+                var profitPoint = netProfitChart.Series["Net Profit"].Points[profitPointIndex];
+                if (netProfit >= 0)
+                {
+                    profitPoint.LabelForeColor = ColorTranslator.FromHtml("#27AE60"); // Green for profit
+                }
+                else
+                {
+                    profitPoint.LabelForeColor = ColorTranslator.FromHtml("#E74C3C"); // Red for loss
+                }
+            }
+
+            // Recalculate scale to fit data nicely
+            chartArea.RecalculateAxesScale();
+        }
+
+        private void ConfigureNetProfitXAxis(ChartArea chartArea, string reportType, DateTime startDate, DateTime endDate)
+        {
+            // Reset axis properties
+            chartArea.AxisX.LabelStyle.Format = "";
+            chartArea.AxisX.LabelStyle.Interval = 0;
+            chartArea.AxisX.LabelStyle.IntervalOffset = 0;
+            chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Auto;
+            chartArea.AxisX.LabelStyle.Angle = 0;
+            chartArea.AxisX.MajorTickMark.Enabled = true;
+            chartArea.AxisX.MajorTickMark.Interval = 0;
+            chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Auto;
+
+            // Calculate data density to determine optimal interval
+            int dataPoints = (int)(endDate - startDate).TotalDays;
+            int optimalInterval = Math.Max(1, dataPoints / 8); // Max 8 labels for readability
+
+            switch (reportType)
+            {
+                case "Daily":
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = optimalInterval;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.MajorTickMark.Interval = optimalInterval;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
+                    break;
+
+                case "Weekly":
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = Math.Max(1, optimalInterval / 2);
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.MajorTickMark.Interval = Math.Max(1, optimalInterval / 2);
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
+                    break;
+
+                case "Monthly":
+                    chartArea.AxisX.LabelStyle.Format = "MMM yyyy";
+                    chartArea.AxisX.LabelStyle.Interval = 1;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Months;
+                    chartArea.AxisX.LabelStyle.Angle = -45;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 9F);
+                    chartArea.AxisX.MajorTickMark.Interval = 1;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Months;
+                    break;
+
+                case "Yearly":
+                    chartArea.AxisX.LabelStyle.Format = "yyyy";
+                    chartArea.AxisX.LabelStyle.Interval = 1;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Years;
+                    chartArea.AxisX.LabelStyle.Angle = 0;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
+                    chartArea.AxisX.MajorTickMark.Interval = 1;
+                    chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Years;
+                    break;
+
+                default:
+                    chartArea.AxisX.LabelStyle.Format = "MMM dd";
+                    chartArea.AxisX.LabelStyle.Interval = optimalInterval;
+                    chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+                    chartArea.AxisX.LabelStyle.Angle = -60;
+                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    break;
+            }
+
+            // Set axis range with padding to prevent edge overlap
+            double padding = (endDate.ToOADate() - startDate.ToOADate()) * 0.05; // 5% padding
+            chartArea.AxisX.Minimum = startDate.ToOADate() - padding;
+            chartArea.AxisX.Maximum = endDate.ToOADate() + padding;
+            chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            
+            // Add extra margin for labels
+            chartArea.AxisX.ScaleView.Zoomable = false;
+            chartArea.AxisX.ScrollBar.IsPositionedInside = false;
+        }
+
+        private (DateTime start, DateTime end) GetDateRange(DateTime anchorDate, string period)
+        {
+            switch (period)
+            {
+                case "Daily":
+                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
+                case "Weekly":
+                    int diff = (7 + (int)anchorDate.DayOfWeek - (int)DayOfWeek.Monday) % 7;
+                    DateTime weekStart = anchorDate.AddDays(-diff).Date;
+                    return (weekStart, weekStart.AddDays(7));
+                case "Monthly":
+                    DateTime yearStart = new DateTime(anchorDate.Year, 1, 1);  // Start of the year
+                    return (yearStart, yearStart.AddYears(1));                 // End of the year
+                case "Yearly":
+                    DateTime yearStart1 = new DateTime(anchorDate.Year, 1, 1);
+                    return (yearStart1, yearStart1.AddYears(1));
+                default:
+                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
+            }
+        }
+        private void expensesposreporttype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentReportType = expensesposreporttype.SelectedItem?.ToString() ?? "Daily";
+            LoadNetProfitData(currentReportType, currentDate);
+        }
+
+        private void calendardatepicker_ValueChanged(object sender, EventArgs e)
+        {
+            currentDate = calendardatepicker.Value;
+            LoadNetProfitData(currentReportType, currentDate);
+        }
+
+
 
         private void RoundButton(Button button, int radius)
         {
@@ -147,6 +603,47 @@ namespace FlavorFlowIT13
             RoundButton(netsalessumbtn, 20);
             RoundButton(expensereportsbtn, 20);
             RoundButton(netprofitsummarybtn, 20);
+
+            // Set default report type to Daily
+            if (expensesposreporttype.Items.Count == 0)
+            {
+                expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
+            }
+            expensesposreporttype.SelectedIndex = 0; // Set to Daily (first item)
+            currentReportType = "Daily";
+
+            // Set date to today
+            calendardatepicker.Value = DateTime.Today;
+            currentDate = DateTime.Today;
+
+            InitializeNetProfitChart();
+            LoadNetProfitData(currentReportType, currentDate);
+
+            financeexpensespanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            netsalessumbtn.UseVisualStyleBackColor = false;
+            netsalessumbtn.FlatStyle = FlatStyle.Flat;
+            netsalessumbtn.FlatAppearance.BorderSize = 0;
+            netsalessumbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            netsalessumbtn.ForeColor = Color.White;
+            netsalessumbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            netsalessumbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            expensereportsbtn.UseVisualStyleBackColor = false;
+            expensereportsbtn.FlatStyle = FlatStyle.Flat;
+            expensereportsbtn.FlatAppearance.BorderSize = 0;
+            expensereportsbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            expensereportsbtn.ForeColor = Color.White;
+            expensereportsbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            expensereportsbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            netprofitsummarybtn.UseVisualStyleBackColor = false;
+            netprofitsummarybtn.FlatStyle = FlatStyle.Flat;
+            netprofitsummarybtn.FlatAppearance.BorderSize = 0;
+            netprofitsummarybtn.BackColor = ColorTranslator.FromHtml("#6C6868");
+            netprofitsummarybtn.ForeColor = Color.White;
+            netprofitsummarybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            netprofitsummarybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
         }
 
         private void expensereportsbtn_Click(object sender, EventArgs e)
@@ -165,6 +662,11 @@ namespace FlavorFlowIT13
         }
 
         private void netprofitchart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void financeexpensespanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

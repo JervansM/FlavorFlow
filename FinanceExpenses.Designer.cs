@@ -46,6 +46,7 @@
             label8 = new Label();
             panel6 = new Panel();
             label9 = new Label();
+            totallbl = new Label();
             panelContent.SuspendLayout();
             financeexpensespanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
@@ -78,6 +79,7 @@
             // financeexpensespanel
             // 
             financeexpensespanel.BackColor = Color.Black;
+            financeexpensespanel.Controls.Add(totallbl);
             financeexpensespanel.Controls.Add(netsalestxt);
             financeexpensespanel.Location = new Point(13, 117);
             financeexpensespanel.Name = "financeexpensespanel";
@@ -274,6 +276,17 @@
             label9.TabIndex = 3;
             label9.Text = "Total Expense";
             // 
+            // totallbl
+            // 
+            totallbl.AutoSize = true;
+            totallbl.Font = new Font("Segoe UI", 50.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totallbl.ForeColor = Color.White;
+            totallbl.Location = new Point(514, 159);
+            totallbl.Name = "totallbl";
+            totallbl.Size = new Size(538, 89);
+            totallbl.TabIndex = 1;
+            totallbl.Text = "Total Net Sales :";
+            // 
             // FinanceExpenses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -321,5 +334,6 @@
         private Button netsalessumbtn;
         private Panel financeexpensespanel;
         private Label netsalestxt;
+        private Label totallbl;
     }
 }

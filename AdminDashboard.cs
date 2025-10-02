@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Microsoft.Data.SqlClient; 
+using Microsoft.Data.SqlClient;
 
 
 namespace FlavorFlowIT13
@@ -67,7 +67,7 @@ namespace FlavorFlowIT13
             dashaddate.Text = DateTime.Now.ToString("d");
             dashadtime.Text = DateTime.Now.ToString("t");
 
-            
+
 
 
 
@@ -189,7 +189,8 @@ namespace FlavorFlowIT13
             adlogoutbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Maroon");
             adlogoutbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Maroon");
 
-
+            LoadDashboardTotals();
+            LoadTopSellingMenu();
         }
         private void RefreshIcon_Click(object sender, EventArgs e)
         {
@@ -243,13 +244,13 @@ namespace FlavorFlowIT13
             form.Show();
 
         }
-       
+
 
         private void dashbtn_Click(object sender, EventArgs e)
         {
-          
-           LoadContent(new DashboardContentForm());
-          
+
+            LoadContent(new DashboardContentForm());
+
         }
 
         private void panelNav_Paint(object sender, PaintEventArgs e)
@@ -292,7 +293,7 @@ namespace FlavorFlowIT13
                 case "     Purchase orders":
                     LoadContent(new Purchaseorders());
                     break;
-               
+
                 default:
                     panelContent.Controls.Clear();
                     break;
@@ -301,7 +302,7 @@ namespace FlavorFlowIT13
 
 
             }
-                
+
 
         }
 
@@ -431,12 +432,163 @@ namespace FlavorFlowIT13
             }
         }
 
+        private void LoadDashboardTotals()
+        {
+            if (string.IsNullOrWhiteSpace(activeConnectionString))
+            {
+                activeConnectionString = GetAvailableConnection();
+                if (string.IsNullOrWhiteSpace(activeConnectionString)) return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    conn.Open();
+
+                    // TOTAL SALES
+                    decimal totalSales = Convert.ToDecimal(new SqlCommand(
+                        @"SELECT ISNULL(SUM(TotalAmount),0) FROM dbo.Orders WHERE Status='Completed' AND PaymentStatus='Paid'", conn)
+                        .ExecuteScalar());
+                    dashsalescontenttxt.Text = "₱" + totalSales.ToString("N2");
+
+                    // TOTAL EXPENSES
+                    decimal totalExpenses = Convert.ToDecimal(new SqlCommand(
+                        @"SELECT ISNULL(SUM(Amount),0) FROM dbo.Expenses", conn)
+                        .ExecuteScalar());
+                    totalexpensetxt.Text = "₱" + totalExpenses.ToString("N2");
+
+                    // NET PROFIT
+                    decimal netProfit = totalSales - totalExpenses;
+                    netprofittxt.Text = "₱" + netProfit.ToString("N2");
+
+                    // INVENTORY STATUS
+                    decimal totalItems = Convert.ToDecimal(new SqlCommand(
+                        "SELECT ISNULL(SUM(Quantity),0) FROM Inventory WHERE IsAvailable = 1", conn)
+                        .ExecuteScalar());
+                    int lowStockItems = Convert.ToInt32(new SqlCommand(
+                        "SELECT COUNT(*) FROM Inventory WHERE Quantity <= MinStock AND IsAvailable = 1", conn)
+                        .ExecuteScalar());
+                    int outOfStockItems = Convert.ToInt32(new SqlCommand(
+                        "SELECT COUNT(*) FROM Inventory WHERE Quantity = 0 AND IsAvailable = 1", conn)
+                        .ExecuteScalar());
+
+                    dashTotalItems_txt.Text = totalItems.ToString("N0");
+
+
+                    // INVENTORY USAGE
+                    decimal totalUsedThisMonth = Convert.ToDecimal(new SqlCommand(
+                        @"SELECT ISNULL(SUM(QtyUsed),0) 
+                  FROM InventoryUsage 
+                  WHERE Date >= DATEADD(MONTH,-1,GETDATE())", conn)
+                        .ExecuteScalar());
+                    dashInventoryUsed_txt.Text = totalUsedThisMonth.ToString("N0");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading dashboard totals: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadTopSellingMenu()
+        {
+            if (string.IsNullOrWhiteSpace(activeConnectionString))
+                activeConnectionString = GetAvailableConnection();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    conn.Open();
+
+                    string sql = @"
+               SELECT TOP 1 
+                 m.Name, 
+                 m.ImagePath, 
+                  SUM(od.Qty) AS TotalQuantity, 
+                   SUM(od.Qty * od.Price) AS TotalSales
+                     FROM OrderItems od
+                     INNER JOIN Menu m ON od.MenuID = m.MenuID
+                        INNER JOIN Orders o ON od.OrderID = o.OrderID
+                         WHERE o.Status = 'Completed' AND o.PaymentStatus = 'Paid'
+                      GROUP BY m.Name, m.ImagePath
+                     ORDER BY SUM(od.Qty) DESC";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string menuName = reader["Name"].ToString();
+                            string imgPath = reader["ImagePath"].ToString();
+                            int totalQty = Convert.ToInt32(reader["TotalQuantity"]);   // ✅ use new alias
+                            decimal totalSales = Convert.ToDecimal(reader["TotalSales"]);
+
+                            if (!string.IsNullOrEmpty(imgPath) && System.IO.File.Exists(imgPath))
+                            {
+                                topsellingmenupic.Image = Image.FromFile(imgPath);
+                                topsellingmenupic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            }
+                            else
+                            {
+                                topsellingmenupic.Image = Properties.Resources.lasagna;
+                                topsellingmenupic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            }
+
+                            totalsalesmenu.Text = "₱" + totalSales.ToString("N2");
+                            totalordersmenu.Text = totalQty.ToString(); // 
+                        }
+                    
+                        else
+                        {
+                            // No menu found
+                            topsellingmenupic.Image = Properties.Resources.lasagna;
+                            totalsalesmenu.Text = "₱0.00";
+                            totalordersmenu.Text = "0";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading top-selling menu: " + ex.Message);
+            }
+        }
+
+
+
         private void dashsalescontent_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void totalexpensetxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void netprofittxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalsalesmenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalordersmenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void topsellingmenupic_Click(object sender, EventArgs e)
         {
 
         }
     }
 }
-    
 
 

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
             expensesposreporttype = new ComboBox();
             calendardatepicker = new DateTimePicker();
@@ -65,7 +65,6 @@
             // 
             // panelContent
             // 
-            panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
             panelContent.Controls.Add(expensesposreporttype);
@@ -290,7 +289,6 @@
             // 
             // financeexpensespanel
             // 
-            financeexpensespanel.AutoScroll = true;
             financeexpensespanel.BackColor = Color.Black;
             financeexpensespanel.Controls.Add(expensesdata);
             financeexpensespanel.Location = new Point(12, 179);
@@ -305,23 +303,23 @@
             expensesdata.BackgroundImageLayout = ImageLayout.None;
             expensesdata.BackSecondaryColor = Color.Transparent;
             expensesdata.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            expensesdata.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            expensesdata.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            expensesdata.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            expensesdata.Legends.Add(legend2);
             expensesdata.Location = new Point(125, 59);
             expensesdata.Name = "expensesdata";
             expensesdata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Expenses Data";
-            expensesdata.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Expenses Data";
+            expensesdata.Series.Add(series2);
             expensesdata.Size = new Size(1239, 714);
             expensesdata.TabIndex = 1;
             expensesdata.Text = "Sales Trend";
-            title1.ForeColor = Color.White;
-            title1.Name = "Sales";
-            expensesdata.Titles.Add(title1);
+            title2.ForeColor = Color.White;
+            title2.Name = "Sales";
+            expensesdata.Titles.Add(title2);
             expensesdata.Click += expensesdata_Click;
             // 
             // Expenses
