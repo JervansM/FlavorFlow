@@ -41,10 +41,8 @@
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
             panelContent = new Panel();
-            button1 = new Button();
-            button3 = new Button();
-            panel1 = new Panel();
-            panel2 = new Panel();
+            panelstaffcontents = new Panel();
+            addnewstaffbtn = new Button();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -59,7 +57,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3078, 206);
+            panel6.Location = new Point(3055, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -81,7 +79,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3078, 2305);
+            panel5.Location = new Point(3055, 1467);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -103,7 +101,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3078, 4458);
+            panel4.Location = new Point(3055, 2782);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -125,7 +123,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2404, 206);
+            dashtotalexpense.Location = new Point(2381, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -147,7 +145,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2404, 1948);
+            dashinventoryusage.Location = new Point(2381, 1110);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -169,7 +167,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2404, 3744);
+            dashnetprofit.Location = new Point(2381, 2068);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -190,10 +188,8 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
-            panelContent.Controls.Add(panel2);
-            panelContent.Controls.Add(panel1);
-            panelContent.Controls.Add(button3);
-            panelContent.Controls.Add(button1);
+            panelContent.Controls.Add(panelstaffcontents);
+            panelContent.Controls.Add(addnewstaffbtn);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
             panelContent.Controls.Add(dashtotalexpense);
@@ -202,50 +198,34 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1556, 2500);
+            panelContent.Size = new Size(1511, 824);
             panelContent.TabIndex = 17;
             // 
-            // button1
+            // panelstaffcontents
             // 
-            button1.BackColor = Color.LightGreen;
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button1.Location = new Point(55, 18);
-            button1.Name = "button1";
-            button1.Size = new Size(270, 62);
-            button1.TabIndex = 21;
-            button1.Text = "Add New Staff";
-            button1.UseVisualStyleBackColor = false;
+            panelstaffcontents.BackColor = Color.White;
+            panelstaffcontents.Location = new Point(12, 130);
+            panelstaffcontents.Name = "panelstaffcontents";
+            panelstaffcontents.Size = new Size(1465, 667);
+            panelstaffcontents.TabIndex = 24;
             // 
-            // button3
+            // addnewstaffbtn
             // 
-            button3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button3.Location = new Point(375, 18);
-            button3.Name = "button3";
-            button3.Size = new Size(270, 62);
-            button3.TabIndex = 23;
-            button3.Text = "Edit Staff";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Location = new Point(55, 190);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1412, 688);
-            panel1.TabIndex = 24;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.SandyBrown;
-            panel2.Location = new Point(55, 128);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1412, 68);
-            panel2.TabIndex = 25;
+            addnewstaffbtn.BackColor = Color.LimeGreen;
+            addnewstaffbtn.FlatStyle = FlatStyle.Flat;
+            addnewstaffbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            addnewstaffbtn.Location = new Point(12, 37);
+            addnewstaffbtn.Name = "addnewstaffbtn";
+            addnewstaffbtn.Size = new Size(270, 62);
+            addnewstaffbtn.TabIndex = 21;
+            addnewstaffbtn.Text = "Add New Staff";
+            addnewstaffbtn.UseVisualStyleBackColor = false;
             // 
             // StaffManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1511, 945);
             Controls.Add(panelContent);
             Name = "StaffManagement";
@@ -282,9 +262,7 @@
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
         private Panel panelContent;
-        private Button button1;
-        private Button button3;
-        private Panel panel2;
-        private Panel panel1;
+        private Button addnewstaffbtn;
+        private Panel panelstaffcontents;
     }
 }

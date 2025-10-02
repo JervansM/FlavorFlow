@@ -85,6 +85,8 @@ namespace FlavorFlowIT13
                     {
                         string userRole = role.ToString();
 
+                        AuditLogger.Log(activeConnectionString, $"Login as {userRole}", usertxt.Text.Trim());
+
                         switch (userRole)
                         {
                             case "Admin":
@@ -173,5 +175,6 @@ namespace FlavorFlowIT13
         {
 
         }
+
     }
 }

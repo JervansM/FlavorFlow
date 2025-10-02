@@ -51,6 +51,18 @@
             dashnetprofittxt = new Label();
             dashnetprofit = new Panel();
             panelContent = new Panel();
+            discountrulestxt = new Label();
+            currencytxtlbl = new Label();
+            taxtxtlbl = new Label();
+            contacttxtnew = new Label();
+            restautxt = new Label();
+            discounttxt = new Label();
+            currencttxt = new Label();
+            taxttxt = new Label();
+            restaulbl = new Label();
+            addtxt = new Label();
+            contacttxt = new Label();
+            label1 = new Label();
             systempanelcontents.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -98,9 +110,21 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
+            systempanelcontents.Controls.Add(label1);
             systempanelcontents.Controls.Add(systemsettingscancelbtn);
+            systempanelcontents.Controls.Add(discountrulestxt);
             systempanelcontents.Controls.Add(systemsettingssavebtn);
             systempanelcontents.Controls.Add(systempanelheadercoral);
+            systempanelcontents.Controls.Add(currencytxtlbl);
+            systempanelcontents.Controls.Add(restaulbl);
+            systempanelcontents.Controls.Add(taxtxtlbl);
+            systempanelcontents.Controls.Add(contacttxt);
+            systempanelcontents.Controls.Add(contacttxtnew);
+            systempanelcontents.Controls.Add(addtxt);
+            systempanelcontents.Controls.Add(restautxt);
+            systempanelcontents.Controls.Add(taxttxt);
+            systempanelcontents.Controls.Add(discounttxt);
+            systempanelcontents.Controls.Add(currencttxt);
             systempanelcontents.Location = new Point(12, 176);
             systempanelcontents.Name = "systempanelcontents";
             systempanelcontents.Size = new Size(1521, 621);
@@ -348,6 +372,138 @@
             panelContent.TabIndex = 20;
             panelContent.Paint += panelContent_Paint;
             // 
+            // discountrulestxt
+            // 
+            discountrulestxt.AutoSize = true;
+            discountrulestxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            discountrulestxt.ForeColor = Color.Black;
+            discountrulestxt.Location = new Point(461, 450);
+            discountrulestxt.Name = "discountrulestxt";
+            discountrulestxt.Size = new Size(107, 25);
+            discountrulestxt.TabIndex = 72;
+            discountrulestxt.Text = "[ON / OFF]";
+            // 
+            // currencytxtlbl
+            // 
+            currencytxtlbl.AutoSize = true;
+            currencytxtlbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            currencytxtlbl.ForeColor = Color.Black;
+            currencytxtlbl.Location = new Point(461, 372);
+            currencytxtlbl.Name = "currencytxtlbl";
+            currencytxtlbl.Size = new Size(198, 25);
+            currencytxtlbl.TabIndex = 70;
+            currencytxtlbl.Text = "[Email / SMS / None]";
+            // 
+            // taxtxtlbl
+            // 
+            taxtxtlbl.AutoSize = true;
+            taxtxtlbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            taxtxtlbl.ForeColor = Color.Black;
+            taxtxtlbl.Location = new Point(461, 302);
+            taxtxtlbl.Name = "taxtxtlbl";
+            taxtxtlbl.Size = new Size(34, 25);
+            taxtxtlbl.TabIndex = 69;
+            taxtxtlbl.Text = "[-]";
+            // 
+            // contacttxtnew
+            // 
+            contacttxtnew.AutoSize = true;
+            contacttxtnew.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contacttxtnew.ForeColor = Color.Black;
+            contacttxtnew.Location = new Point(461, 171);
+            contacttxtnew.Name = "contacttxtnew";
+            contacttxtnew.Size = new Size(215, 25);
+            contacttxtnew.TabIndex = 67;
+            contacttxtnew.Text = "[Select Receipt Printer]";
+            // 
+            // restautxt
+            // 
+            restautxt.AutoSize = true;
+            restautxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            restautxt.ForeColor = Color.Black;
+            restautxt.Location = new Point(461, 111);
+            restautxt.Name = "restautxt";
+            restautxt.Size = new Size(185, 25);
+            restautxt.TabIndex = 66;
+            restautxt.Text = "[ Configure Tables ]";
+            // 
+            // discounttxt
+            // 
+            discounttxt.AutoSize = true;
+            discounttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            discounttxt.ForeColor = Color.Black;
+            discounttxt.Location = new Point(199, 450);
+            discounttxt.Name = "discounttxt";
+            discounttxt.Size = new Size(256, 25);
+            discounttxt.TabIndex = 65;
+            discounttxt.Text = "Online Orders Integration : ";
+            // 
+            // currencttxt
+            // 
+            currencttxt.AutoSize = true;
+            currencttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            currencttxt.ForeColor = Color.Black;
+            currencttxt.Location = new Point(245, 372);
+            currencttxt.Name = "currencttxt";
+            currencttxt.Size = new Size(210, 25);
+            currencttxt.TabIndex = 63;
+            currencttxt.Text = "Notification Settings : ";
+            // 
+            // taxttxt
+            // 
+            taxttxt.AutoSize = true;
+            taxttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            taxttxt.ForeColor = Color.Black;
+            taxttxt.Location = new Point(258, 302);
+            taxttxt.Name = "taxttxt";
+            taxttxt.Size = new Size(197, 25);
+            taxttxt.TabIndex = 62;
+            taxttxt.Text = "Auto Logout Timer : ";
+            // 
+            // restaulbl
+            // 
+            restaulbl.AutoSize = true;
+            restaulbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            restaulbl.ForeColor = Color.Black;
+            restaulbl.Location = new Point(242, 111);
+            restaulbl.Name = "restaulbl";
+            restaulbl.Size = new Size(213, 25);
+            restaulbl.TabIndex = 58;
+            restaulbl.Text = "Table Layout  Designer";
+            // 
+            // addtxt
+            // 
+            addtxt.AutoSize = true;
+            addtxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addtxt.ForeColor = Color.Black;
+            addtxt.Location = new Point(241, 236);
+            addtxt.Name = "addtxt";
+            addtxt.Size = new Size(214, 25);
+            addtxt.TabIndex = 61;
+            addtxt.Text = "Backup  / Restore Data";
+            // 
+            // contacttxt
+            // 
+            contacttxt.AutoSize = true;
+            contacttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contacttxt.ForeColor = Color.Black;
+            contacttxt.Location = new Point(289, 171);
+            contacttxt.Name = "contacttxt";
+            contacttxt.Size = new Size(166, 25);
+            contacttxt.TabIndex = 60;
+            contacttxt.Text = "Printer Settings : ";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(461, 236);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 25);
+            label1.TabIndex = 73;
+            label1.Text = "[-]";
+            // 
             // SystemSettingsAppConfigure
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -357,6 +513,7 @@
             Name = "SystemSettingsAppConfigure";
             Text = "SystemSettingsAppConfigure";
             systempanelcontents.ResumeLayout(false);
+            systempanelcontents.PerformLayout();
             systemsearchbarpanel.ResumeLayout(false);
             systemsearchbarpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
@@ -401,5 +558,17 @@
         private Label dashnetprofittxt;
         private Panel dashnetprofit;
         private Panel panelContent;
+        private Label discountrulestxt;
+        private Label currencytxtlbl;
+        private Label restaulbl;
+        private Label taxtxtlbl;
+        private Label contacttxt;
+        private Label contacttxtnew;
+        private Label addtxt;
+        private Label restautxt;
+        private Label taxttxt;
+        private Label discounttxt;
+        private Label currencttxt;
+        private Label label1;
     }
 }

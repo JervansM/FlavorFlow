@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            securitybtn = new Button();
+            systemsearchbarpanel = new Panel();
+            systemsearchbaricon = new PictureBox();
+            systemsearchbar = new TextBox();
+            auditlogspanel = new Panel();
+            auditlogsdatagrid = new DataGridView();
+            auditlogsbtn = new Button();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
             dashinventoryusage = new Panel();
@@ -42,6 +49,10 @@
             panel6 = new Panel();
             label9 = new Label();
             panelContent.SuspendLayout();
+            systemsearchbarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
+            auditlogspanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)auditlogsdatagrid).BeginInit();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -52,8 +63,13 @@
             // 
             // panelContent
             // 
+            panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(securitybtn);
+            panelContent.Controls.Add(systemsearchbarpanel);
+            panelContent.Controls.Add(auditlogspanel);
+            panelContent.Controls.Add(auditlogsbtn);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
             panelContent.Controls.Add(dashtotalexpense);
@@ -62,15 +78,100 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1548, 818);
-            panelContent.TabIndex = 17;
+            panelContent.Size = new Size(1511, 1032);
+            panelContent.TabIndex = 18;
+            // 
+            // securitybtn
+            // 
+            securitybtn.BackColor = Color.Black;
+            securitybtn.Cursor = Cursors.Hand;
+            securitybtn.FlatStyle = FlatStyle.Popup;
+            securitybtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            securitybtn.ForeColor = Color.Honeydew;
+            securitybtn.Location = new Point(325, 101);
+            securitybtn.Name = "securitybtn";
+            securitybtn.Size = new Size(270, 62);
+            securitybtn.TabIndex = 54;
+            securitybtn.Text = "Security";
+            securitybtn.UseVisualStyleBackColor = false;
+            // 
+            // systemsearchbarpanel
+            // 
+            systemsearchbarpanel.BackColor = Color.White;
+            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
+            systemsearchbarpanel.Controls.Add(systemsearchbar);
+            systemsearchbarpanel.Location = new Point(12, 12);
+            systemsearchbarpanel.Name = "systemsearchbarpanel";
+            systemsearchbarpanel.Size = new Size(1487, 59);
+            systemsearchbarpanel.TabIndex = 25;
+            // 
+            // systemsearchbaricon
+            // 
+            systemsearchbaricon.BackColor = Color.Transparent;
+            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
+            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
+            systemsearchbaricon.Location = new Point(1392, 6);
+            systemsearchbaricon.Name = "systemsearchbaricon";
+            systemsearchbaricon.Size = new Size(81, 46);
+            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
+            systemsearchbaricon.TabIndex = 23;
+            systemsearchbaricon.TabStop = false;
+            // 
+            // systemsearchbar
+            // 
+            systemsearchbar.Anchor = AnchorStyles.None;
+            systemsearchbar.BorderStyle = BorderStyle.None;
+            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            systemsearchbar.ForeColor = Color.Black;
+            systemsearchbar.Location = new Point(8, 6);
+            systemsearchbar.Multiline = true;
+            systemsearchbar.Name = "systemsearchbar";
+            systemsearchbar.PlaceholderText = "Search";
+            systemsearchbar.Size = new Size(1431, 47);
+            systemsearchbar.TabIndex = 22;
+            // 
+            // auditlogspanel
+            // 
+            auditlogspanel.BackColor = Color.White;
+            auditlogspanel.Controls.Add(auditlogsdatagrid);
+            auditlogspanel.Location = new Point(12, 187);
+            auditlogspanel.Name = "auditlogspanel";
+            auditlogspanel.Size = new Size(1487, 833);
+            auditlogspanel.TabIndex = 53;
+            auditlogspanel.Paint += auditlogspanel_Paint;
+            // 
+            // auditlogsdatagrid
+            // 
+            auditlogsdatagrid.BackgroundColor = Color.White;
+            auditlogsdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            auditlogsdatagrid.Dock = DockStyle.Fill;
+            auditlogsdatagrid.Location = new Point(0, 0);
+            auditlogsdatagrid.Name = "auditlogsdatagrid";
+            auditlogsdatagrid.ReadOnly = true;
+            auditlogsdatagrid.Size = new Size(1487, 833);
+            auditlogsdatagrid.TabIndex = 0;
+            auditlogsdatagrid.CellContentClick += auditlogsdatagrid_CellContentClick;
+            // 
+            // auditlogsbtn
+            // 
+            auditlogsbtn.BackColor = Color.Black;
+            auditlogsbtn.Cursor = Cursors.Hand;
+            auditlogsbtn.FlatStyle = FlatStyle.Popup;
+            auditlogsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            auditlogsbtn.ForeColor = Color.Honeydew;
+            auditlogsbtn.Location = new Point(12, 101);
+            auditlogsbtn.Name = "auditlogsbtn";
+            auditlogsbtn.Size = new Size(270, 62);
+            auditlogsbtn.TabIndex = 51;
+            auditlogsbtn.Text = "Audit Logs";
+            auditlogsbtn.UseVisualStyleBackColor = false;
             // 
             // dashnetprofit
             // 
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2400, 2062);
+            dashnetprofit.Location = new Point(2423, 2305);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -92,7 +193,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2400, 1107);
+            dashinventoryusage.Location = new Point(2423, 1229);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -114,7 +215,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2400, 206);
+            dashtotalexpense.Location = new Point(2423, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -136,7 +237,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3074, 2776);
+            panel4.Location = new Point(3097, 3019);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -158,7 +259,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3074, 1464);
+            panel5.Location = new Point(3097, 1586);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -180,7 +281,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3074, 206);
+            panel6.Location = new Point(3097, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -201,11 +302,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1526, 1056);
             Controls.Add(panelContent);
             Name = "AuditsLogsSecurity";
             Text = "AuditsLogsSecurity";
+            Load += AuditsLogsSecurity_Load;
             panelContent.ResumeLayout(false);
+            systemsearchbarpanel.ResumeLayout(false);
+            systemsearchbarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
+            auditlogspanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)auditlogsdatagrid).EndInit();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -224,6 +332,12 @@
         #endregion
 
         private Panel panelContent;
+        private Button securitybtn;
+        private Panel systemsearchbarpanel;
+        private PictureBox systemsearchbaricon;
+        private TextBox systemsearchbar;
+        private Panel auditlogspanel;
+        private Button auditlogsbtn;
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
         private Panel dashinventoryusage;
@@ -236,5 +350,6 @@
         private Label label8;
         private Panel panel6;
         private Label label9;
+        private DataGridView auditlogsdatagrid;
     }
 }

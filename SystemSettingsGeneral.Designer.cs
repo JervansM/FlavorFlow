@@ -51,6 +51,22 @@
             panel5 = new Panel();
             panel6 = new Panel();
             panelContent = new Panel();
+            pictureBox1 = new PictureBox();
+            discountrulestxt = new Label();
+            servicechargetxt = new Label();
+            currencytxtlbl = new Label();
+            taxtxtlbl = new Label();
+            addresstxtnew = new Label();
+            contacttxtnew = new Label();
+            restautxt = new Label();
+            discounttxt = new Label();
+            servicetxt = new Label();
+            currencttxt = new Label();
+            taxttxt = new Label();
+            restaulbl = new Label();
+            addtxt = new Label();
+            logouploadtxt = new Label();
+            contacttxt = new Label();
             systempanelcontents.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -61,6 +77,7 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panelContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label9
@@ -126,9 +143,25 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
+            systempanelcontents.Controls.Add(pictureBox1);
             systempanelcontents.Controls.Add(systemsettingscancelbtn);
+            systempanelcontents.Controls.Add(discountrulestxt);
             systempanelcontents.Controls.Add(systemsettingssavebtn);
+            systempanelcontents.Controls.Add(servicechargetxt);
             systempanelcontents.Controls.Add(systempanelheadercoral);
+            systempanelcontents.Controls.Add(currencytxtlbl);
+            systempanelcontents.Controls.Add(restaulbl);
+            systempanelcontents.Controls.Add(taxtxtlbl);
+            systempanelcontents.Controls.Add(contacttxt);
+            systempanelcontents.Controls.Add(addresstxtnew);
+            systempanelcontents.Controls.Add(logouploadtxt);
+            systempanelcontents.Controls.Add(contacttxtnew);
+            systempanelcontents.Controls.Add(addtxt);
+            systempanelcontents.Controls.Add(restautxt);
+            systempanelcontents.Controls.Add(taxttxt);
+            systempanelcontents.Controls.Add(discounttxt);
+            systempanelcontents.Controls.Add(currencttxt);
+            systempanelcontents.Controls.Add(servicetxt);
             systempanelcontents.Location = new Point(12, 176);
             systempanelcontents.Name = "systempanelcontents";
             systempanelcontents.Size = new Size(1521, 621);
@@ -334,7 +367,6 @@
             panelContent.Controls.Add(systemappconfigure);
             panelContent.Controls.Add(systemusermanagement);
             panelContent.Controls.Add(systemgeneralsettings);
-            panelContent.Controls.Add(systempanelcontents);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
@@ -342,11 +374,187 @@
             panelContent.Controls.Add(panel4);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel6);
+            panelContent.Controls.Add(systempanelcontents);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1548, 818);
             panelContent.TabIndex = 18;
             panelContent.Paint += panelContent_Paint;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.logo;
+            pictureBox1.Location = new Point(441, 147);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(212, 69);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 73;
+            pictureBox1.TabStop = false;
+            // 
+            // discountrulestxt
+            // 
+            discountrulestxt.AutoSize = true;
+            discountrulestxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            discountrulestxt.ForeColor = Color.Black;
+            discountrulestxt.Location = new Point(460, 500);
+            discountrulestxt.Name = "discountrulestxt";
+            discountrulestxt.Size = new Size(193, 25);
+            discountrulestxt.TabIndex = 72;
+            discountrulestxt.Text = "[ManagerDiscounts]";
+            // 
+            // servicechargetxt
+            // 
+            servicechargetxt.AutoSize = true;
+            servicechargetxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            servicechargetxt.ForeColor = Color.Black;
+            servicechargetxt.Location = new Point(473, 436);
+            servicechargetxt.Name = "servicechargetxt";
+            servicechargetxt.Size = new Size(64, 25);
+            servicechargetxt.TabIndex = 71;
+            servicechargetxt.Text = "[10%]";
+            // 
+            // currencytxtlbl
+            // 
+            currencytxtlbl.AutoSize = true;
+            currencytxtlbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            currencytxtlbl.ForeColor = Color.Black;
+            currencytxtlbl.Location = new Point(473, 382);
+            currencytxtlbl.Name = "currencytxtlbl";
+            currencytxtlbl.Size = new Size(65, 25);
+            currencytxtlbl.TabIndex = 70;
+            currencytxtlbl.Text = "[PHP]";
+            // 
+            // taxtxtlbl
+            // 
+            taxtxtlbl.AutoSize = true;
+            taxtxtlbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            taxtxtlbl.ForeColor = Color.Black;
+            taxtxtlbl.Location = new Point(473, 331);
+            taxtxtlbl.Name = "taxtxtlbl";
+            taxtxtlbl.Size = new Size(64, 25);
+            taxtxtlbl.TabIndex = 69;
+            taxtxtlbl.Text = "[12%]";
+            // 
+            // addresstxtnew
+            // 
+            addresstxtnew.AutoSize = true;
+            addresstxtnew.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addresstxtnew.ForeColor = Color.Black;
+            addresstxtnew.Location = new Point(460, 277);
+            addresstxtnew.Name = "addresstxtnew";
+            addresstxtnew.Size = new Size(146, 25);
+            addresstxtnew.TabIndex = 68;
+            addresstxtnew.Text = "[_______________]";
+            // 
+            // contacttxtnew
+            // 
+            contacttxtnew.AutoSize = true;
+            contacttxtnew.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contacttxtnew.ForeColor = Color.Black;
+            contacttxtnew.Location = new Point(460, 219);
+            contacttxtnew.Name = "contacttxtnew";
+            contacttxtnew.Size = new Size(212, 25);
+            contacttxtnew.TabIndex = 67;
+            contacttxtnew.Text = "Phone [___]  Email [___]";
+            // 
+            // restautxt
+            // 
+            restautxt.AutoSize = true;
+            restautxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            restautxt.ForeColor = Color.Black;
+            restautxt.Location = new Point(460, 103);
+            restautxt.Name = "restautxt";
+            restautxt.Size = new Size(133, 25);
+            restautxt.TabIndex = 66;
+            restautxt.Text = "[ FlavorFlow ]";
+            // 
+            // discounttxt
+            // 
+            discounttxt.AutoSize = true;
+            discounttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            discounttxt.ForeColor = Color.Black;
+            discounttxt.Location = new Point(287, 500);
+            discounttxt.Name = "discounttxt";
+            discounttxt.Size = new Size(158, 25);
+            discounttxt.TabIndex = 65;
+            discounttxt.Text = "Discount Rules : ";
+            // 
+            // servicetxt
+            // 
+            servicetxt.AutoSize = true;
+            servicetxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            servicetxt.ForeColor = Color.Black;
+            servicetxt.Location = new Point(265, 436);
+            servicetxt.Name = "servicetxt";
+            servicetxt.Size = new Size(180, 25);
+            servicetxt.TabIndex = 64;
+            servicetxt.Text = "Service Charge % : ";
+            // 
+            // currencttxt
+            // 
+            currencttxt.AutoSize = true;
+            currencttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            currencttxt.ForeColor = Color.Black;
+            currencttxt.Location = new Point(337, 382);
+            currencttxt.Name = "currencttxt";
+            currencttxt.Size = new Size(108, 25);
+            currencttxt.TabIndex = 63;
+            currencttxt.Text = "Currency : ";
+            // 
+            // taxttxt
+            // 
+            taxttxt.AutoSize = true;
+            taxttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            taxttxt.ForeColor = Color.Black;
+            taxttxt.Location = new Point(301, 331);
+            taxttxt.Name = "taxttxt";
+            taxttxt.Size = new Size(144, 25);
+            taxttxt.TabIndex = 62;
+            taxttxt.Text = "Tax/VAT Rate : ";
+            // 
+            // restaulbl
+            // 
+            restaulbl.AutoSize = true;
+            restaulbl.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            restaulbl.ForeColor = Color.Black;
+            restaulbl.Location = new Point(265, 103);
+            restaulbl.Name = "restaulbl";
+            restaulbl.Size = new Size(180, 25);
+            restaulbl.TabIndex = 58;
+            restaulbl.Text = "Restaurant Name : ";
+            // 
+            // addtxt
+            // 
+            addtxt.AutoSize = true;
+            addtxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addtxt.ForeColor = Color.Black;
+            addtxt.Location = new Point(347, 277);
+            addtxt.Name = "addtxt";
+            addtxt.Size = new Size(98, 25);
+            addtxt.TabIndex = 61;
+            addtxt.Text = "Address : ";
+            // 
+            // logouploadtxt
+            // 
+            logouploadtxt.AutoSize = true;
+            logouploadtxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            logouploadtxt.ForeColor = Color.Black;
+            logouploadtxt.Location = new Point(302, 160);
+            logouploadtxt.Name = "logouploadtxt";
+            logouploadtxt.Size = new Size(138, 25);
+            logouploadtxt.TabIndex = 59;
+            logouploadtxt.Text = "Logo Upload :";
+            // 
+            // contacttxt
+            // 
+            contacttxt.AutoSize = true;
+            contacttxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contacttxt.ForeColor = Color.Black;
+            contacttxt.Location = new Point(307, 219);
+            contacttxt.Name = "contacttxt";
+            contacttxt.Size = new Size(138, 25);
+            contacttxt.TabIndex = 60;
+            contacttxt.Text = "Contact Info : ";
             // 
             // SystemSettingsGeneral
             // 
@@ -358,6 +566,7 @@
             Text = "SystemSettingsGeneral";
             Load += SystemSettingsGeneral_Load;
             systempanelcontents.ResumeLayout(false);
+            systempanelcontents.PerformLayout();
             systemsearchbarpanel.ResumeLayout(false);
             systemsearchbarpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
@@ -374,6 +583,7 @@
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panelContent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -402,5 +612,21 @@
         private Panel panel5;
         private Panel panel6;
         private Panel panelContent;
+        private PictureBox pictureBox1;
+        private Label discountrulestxt;
+        private Label servicechargetxt;
+        private Label currencytxtlbl;
+        private Label restaulbl;
+        private Label taxtxtlbl;
+        private Label contacttxt;
+        private Label addresstxtnew;
+        private Label logouploadtxt;
+        private Label contacttxtnew;
+        private Label addtxt;
+        private Label restautxt;
+        private Label taxttxt;
+        private Label discounttxt;
+        private Label currencttxt;
+        private Label servicetxt;
     }
 }

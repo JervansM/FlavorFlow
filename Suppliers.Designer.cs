@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Suppliers));
             panelContent = new Panel();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
@@ -289,6 +290,7 @@
             AutoScroll = true;
             ClientSize = new Size(1532, 1061);
             Controls.Add(panelContent);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Suppliers";
             Text = "Suppliers";
             Load += Suppliers_Load;
