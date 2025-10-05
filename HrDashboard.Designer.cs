@@ -34,6 +34,16 @@
             dashadtime = new Label();
             dashaddate = new Label();
             panelContent = new Panel();
+            label5 = new Label();
+            dashnotif = new Panel();
+            hrdashboardexpiriestxt = new TextBox();
+            hrdashboardbirthdaystxt = new TextBox();
+            dashlowstackalerts = new Label();
+            dashrecenttransactions = new Label();
+            hrdashboardleaverequestspanel = new Panel();
+            hrdashboardleaverequeststxt = new TextBox();
+            label3 = new Label();
+            dashvisualtxtsales = new Label();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
             dashinventoryusage = new Panel();
@@ -41,17 +51,17 @@
             dashtotalexpense = new Panel();
             dashtotalexptxt = new Label();
             dashattendancetodaypanel = new Panel();
+            hrdashboardattendancetodaytxt = new TextBox();
             dashinventorytxt = new Label();
             dashactive = new Panel();
+            label4 = new Label();
+            hrdashboardleavecontractstxt = new TextBox();
             dashactiveon = new PictureBox();
             label1 = new Label();
-            dashnotif = new Panel();
-            dashlowstackalerts = new Label();
-            dashrecenttransactions = new Label();
             dashvisuals = new Panel();
             dashvisualtoptxt = new Label();
-            dashvisualtxtsales = new Label();
             dashtotalsales = new Panel();
+            hrdashboardemployeeheadcounttxt = new TextBox();
             dashsalestxt = new Label();
             panelNav = new Panel();
             admenubtn = new Button();
@@ -67,32 +77,22 @@
             adminicon = new PictureBox();
             userwelcome = new Label();
             fficonadmin = new PictureBox();
-            hrdashboardleaverequestspanel = new Panel();
-            label3 = new Label();
-            hrdashboardleaverequeststxt = new TextBox();
-            hrdashboardattendancetodaytxt = new TextBox();
-            hrdashboardleavecontractstxt = new TextBox();
-            label4 = new Label();
-            hrdashboardemployeeheadcounttxt = new TextBox();
-            label5 = new Label();
-            hrdashboardbirthdaystxt = new TextBox();
-            hrdashboardexpiriestxt = new TextBox();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             panelContent.SuspendLayout();
+            dashnotif.SuspendLayout();
+            hrdashboardleaverequestspanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
             dashattendancetodaypanel.SuspendLayout();
             dashactive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashactiveon).BeginInit();
-            dashnotif.SuspendLayout();
             dashvisuals.SuspendLayout();
             dashtotalsales.SuspendLayout();
             panelNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
-            hrdashboardleaverequestspanel.SuspendLayout();
             SuspendLayout();
             // 
             // panelTop
@@ -172,6 +172,114 @@
             panelContent.Size = new Size(1545, 814);
             panelContent.TabIndex = 14;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(27, 522);
+            label5.Name = "label5";
+            label5.Size = new Size(231, 45);
+            label5.TabIndex = 5;
+            label5.Text = "Notifications: ";
+            // 
+            // dashnotif
+            // 
+            dashnotif.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            dashnotif.BackColor = Color.Black;
+            dashnotif.Controls.Add(hrdashboardexpiriestxt);
+            dashnotif.Controls.Add(hrdashboardbirthdaystxt);
+            dashnotif.Controls.Add(dashlowstackalerts);
+            dashnotif.Controls.Add(dashrecenttransactions);
+            dashnotif.Location = new Point(27, 570);
+            dashnotif.Name = "dashnotif";
+            dashnotif.Size = new Size(1021, 939);
+            dashnotif.TabIndex = 2;
+            // 
+            // hrdashboardexpiriestxt
+            // 
+            hrdashboardexpiriestxt.Location = new Point(252, 85);
+            hrdashboardexpiriestxt.Multiline = true;
+            hrdashboardexpiriestxt.Name = "hrdashboardexpiriestxt";
+            hrdashboardexpiriestxt.Size = new Size(171, 44);
+            hrdashboardexpiriestxt.TabIndex = 6;
+            // 
+            // hrdashboardbirthdaystxt
+            // 
+            hrdashboardbirthdaystxt.Location = new Point(252, 15);
+            hrdashboardbirthdaystxt.Multiline = true;
+            hrdashboardbirthdaystxt.Name = "hrdashboardbirthdaystxt";
+            hrdashboardbirthdaystxt.Size = new Size(171, 44);
+            hrdashboardbirthdaystxt.TabIndex = 5;
+            // 
+            // dashlowstackalerts
+            // 
+            dashlowstackalerts.AutoSize = true;
+            dashlowstackalerts.BackColor = Color.Transparent;
+            dashlowstackalerts.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            dashlowstackalerts.ForeColor = Color.White;
+            dashlowstackalerts.Location = new Point(19, 90);
+            dashlowstackalerts.Name = "dashlowstackalerts";
+            dashlowstackalerts.Size = new Size(110, 32);
+            dashlowstackalerts.TabIndex = 4;
+            dashlowstackalerts.Text = "Expiries:";
+            dashlowstackalerts.Click += dashlowstackalerts_Click;
+            // 
+            // dashrecenttransactions
+            // 
+            dashrecenttransactions.AutoSize = true;
+            dashrecenttransactions.BackColor = Color.Transparent;
+            dashrecenttransactions.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            dashrecenttransactions.ForeColor = Color.White;
+            dashrecenttransactions.Location = new Point(19, 27);
+            dashrecenttransactions.Name = "dashrecenttransactions";
+            dashrecenttransactions.Size = new Size(129, 32);
+            dashrecenttransactions.TabIndex = 3;
+            dashrecenttransactions.Text = "Birthdays:";
+            // 
+            // hrdashboardleaverequestspanel
+            // 
+            hrdashboardleaverequestspanel.BackColor = Color.Black;
+            hrdashboardleaverequestspanel.Controls.Add(hrdashboardleaverequeststxt);
+            hrdashboardleaverequestspanel.Controls.Add(label3);
+            hrdashboardleaverequestspanel.Location = new Point(919, 152);
+            hrdashboardleaverequestspanel.Name = "hrdashboardleaverequestspanel";
+            hrdashboardleaverequestspanel.Size = new Size(603, 126);
+            hrdashboardleaverequestspanel.TabIndex = 3;
+            // 
+            // hrdashboardleaverequeststxt
+            // 
+            hrdashboardleaverequeststxt.Location = new Point(127, 57);
+            hrdashboardleaverequeststxt.Multiline = true;
+            hrdashboardleaverequeststxt.Name = "hrdashboardleaverequeststxt";
+            hrdashboardleaverequeststxt.Size = new Size(174, 52);
+            hrdashboardleaverequeststxt.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(26, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(246, 45);
+            label3.TabIndex = 2;
+            label3.Text = "Leave Requests";
+            // 
+            // dashvisualtxtsales
+            // 
+            dashvisualtxtsales.AutoSize = true;
+            dashvisualtxtsales.BackColor = Color.Transparent;
+            dashvisualtxtsales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            dashvisualtxtsales.ForeColor = Color.White;
+            dashvisualtxtsales.Location = new Point(27, 290);
+            dashvisualtxtsales.Name = "dashvisualtxtsales";
+            dashvisualtxtsales.Size = new Size(235, 45);
+            dashvisualtxtsales.TabIndex = 1;
+            dashvisualtxtsales.Text = "Visual Insights";
+            // 
             // dashnetprofit
             // 
             dashnetprofit.Anchor = AnchorStyles.Bottom;
@@ -248,6 +356,14 @@
             dashattendancetodaypanel.Size = new Size(603, 126);
             dashattendancetodaypanel.TabIndex = 2;
             // 
+            // hrdashboardattendancetodaytxt
+            // 
+            hrdashboardattendancetodaytxt.Location = new Point(127, 54);
+            hrdashboardattendancetodaytxt.Multiline = true;
+            hrdashboardattendancetodaytxt.Name = "hrdashboardattendancetodaytxt";
+            hrdashboardattendancetodaytxt.Size = new Size(174, 52);
+            hrdashboardattendancetodaytxt.TabIndex = 4;
+            // 
             // dashinventorytxt
             // 
             dashinventorytxt.AutoSize = true;
@@ -271,6 +387,26 @@
             dashactive.Name = "dashactive";
             dashactive.Size = new Size(457, 241);
             dashactive.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(30, 143);
+            label4.Name = "label4";
+            label4.Size = new Size(148, 80);
+            label4.TabIndex = 5;
+            label4.Text = "Leave\nContracts";
+            // 
+            // hrdashboardleavecontractstxt
+            // 
+            hrdashboardleavecontractstxt.Location = new Point(223, 148);
+            hrdashboardleavecontractstxt.Multiline = true;
+            hrdashboardleavecontractstxt.Name = "hrdashboardleavecontractstxt";
+            hrdashboardleavecontractstxt.Size = new Size(185, 75);
+            hrdashboardleavecontractstxt.TabIndex = 4;
             // 
             // dashactiveon
             // 
@@ -298,44 +434,6 @@
             label1.Text = " Pending \nApprovals";
             label1.Click += label1_Click;
             // 
-            // dashnotif
-            // 
-            dashnotif.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            dashnotif.BackColor = Color.Black;
-            dashnotif.Controls.Add(hrdashboardexpiriestxt);
-            dashnotif.Controls.Add(hrdashboardbirthdaystxt);
-            dashnotif.Controls.Add(dashlowstackalerts);
-            dashnotif.Controls.Add(dashrecenttransactions);
-            dashnotif.Location = new Point(27, 570);
-            dashnotif.Name = "dashnotif";
-            dashnotif.Size = new Size(1021, 939);
-            dashnotif.TabIndex = 2;
-            // 
-            // dashlowstackalerts
-            // 
-            dashlowstackalerts.AutoSize = true;
-            dashlowstackalerts.BackColor = Color.Transparent;
-            dashlowstackalerts.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            dashlowstackalerts.ForeColor = Color.White;
-            dashlowstackalerts.Location = new Point(19, 90);
-            dashlowstackalerts.Name = "dashlowstackalerts";
-            dashlowstackalerts.Size = new Size(110, 32);
-            dashlowstackalerts.TabIndex = 4;
-            dashlowstackalerts.Text = "Expiries:";
-            dashlowstackalerts.Click += dashlowstackalerts_Click;
-            // 
-            // dashrecenttransactions
-            // 
-            dashrecenttransactions.AutoSize = true;
-            dashrecenttransactions.BackColor = Color.Transparent;
-            dashrecenttransactions.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            dashrecenttransactions.ForeColor = Color.White;
-            dashrecenttransactions.Location = new Point(19, 27);
-            dashrecenttransactions.Name = "dashrecenttransactions";
-            dashrecenttransactions.Size = new Size(129, 32);
-            dashrecenttransactions.TabIndex = 3;
-            dashrecenttransactions.Text = "Birthdays:";
-            // 
             // dashvisuals
             // 
             dashvisuals.BackColor = Color.Black;
@@ -357,18 +455,6 @@
             dashvisualtoptxt.TabIndex = 2;
             dashvisualtoptxt.Text = "Upcoming Contracts Renewals";
             // 
-            // dashvisualtxtsales
-            // 
-            dashvisualtxtsales.AutoSize = true;
-            dashvisualtxtsales.BackColor = Color.Transparent;
-            dashvisualtxtsales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            dashvisualtxtsales.ForeColor = Color.White;
-            dashvisualtxtsales.Location = new Point(27, 290);
-            dashvisualtxtsales.Name = "dashvisualtxtsales";
-            dashvisualtxtsales.Size = new Size(235, 45);
-            dashvisualtxtsales.TabIndex = 1;
-            dashvisualtxtsales.Text = "Visual Insights";
-            // 
             // dashtotalsales
             // 
             dashtotalsales.BackColor = Color.Black;
@@ -378,6 +464,14 @@
             dashtotalsales.Name = "dashtotalsales";
             dashtotalsales.Size = new Size(423, 241);
             dashtotalsales.TabIndex = 0;
+            // 
+            // hrdashboardemployeeheadcounttxt
+            // 
+            hrdashboardemployeeheadcounttxt.Location = new Point(120, 101);
+            hrdashboardemployeeheadcounttxt.Multiline = true;
+            hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
+            hrdashboardemployeeheadcounttxt.Size = new Size(192, 118);
+            hrdashboardemployeeheadcounttxt.TabIndex = 1;
             // 
             // dashsalestxt
             // 
@@ -589,100 +683,6 @@
             fficonadmin.TabIndex = 0;
             fficonadmin.TabStop = false;
             // 
-            // hrdashboardleaverequestspanel
-            // 
-            hrdashboardleaverequestspanel.BackColor = Color.Black;
-            hrdashboardleaverequestspanel.Controls.Add(hrdashboardleaverequeststxt);
-            hrdashboardleaverequestspanel.Controls.Add(label3);
-            hrdashboardleaverequestspanel.Location = new Point(919, 152);
-            hrdashboardleaverequestspanel.Name = "hrdashboardleaverequestspanel";
-            hrdashboardleaverequestspanel.Size = new Size(603, 126);
-            hrdashboardleaverequestspanel.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(26, 6);
-            label3.Name = "label3";
-            label3.Size = new Size(246, 45);
-            label3.TabIndex = 2;
-            label3.Text = "Leave Requests";
-            // 
-            // hrdashboardleaverequeststxt
-            // 
-            hrdashboardleaverequeststxt.Location = new Point(127, 57);
-            hrdashboardleaverequeststxt.Multiline = true;
-            hrdashboardleaverequeststxt.Name = "hrdashboardleaverequeststxt";
-            hrdashboardleaverequeststxt.Size = new Size(174, 52);
-            hrdashboardleaverequeststxt.TabIndex = 3;
-            // 
-            // hrdashboardattendancetodaytxt
-            // 
-            hrdashboardattendancetodaytxt.Location = new Point(127, 54);
-            hrdashboardattendancetodaytxt.Multiline = true;
-            hrdashboardattendancetodaytxt.Name = "hrdashboardattendancetodaytxt";
-            hrdashboardattendancetodaytxt.Size = new Size(174, 52);
-            hrdashboardattendancetodaytxt.TabIndex = 4;
-            // 
-            // hrdashboardleavecontractstxt
-            // 
-            hrdashboardleavecontractstxt.Location = new Point(223, 148);
-            hrdashboardleavecontractstxt.Multiline = true;
-            hrdashboardleavecontractstxt.Name = "hrdashboardleavecontractstxt";
-            hrdashboardleavecontractstxt.Size = new Size(185, 75);
-            hrdashboardleavecontractstxt.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(30, 143);
-            label4.Name = "label4";
-            label4.Size = new Size(148, 80);
-            label4.TabIndex = 5;
-            label4.Text = "Leave\nContracts";
-            // 
-            // hrdashboardemployeeheadcounttxt
-            // 
-            hrdashboardemployeeheadcounttxt.Location = new Point(120, 101);
-            hrdashboardemployeeheadcounttxt.Multiline = true;
-            hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
-            hrdashboardemployeeheadcounttxt.Size = new Size(192, 118);
-            hrdashboardemployeeheadcounttxt.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(27, 522);
-            label5.Name = "label5";
-            label5.Size = new Size(231, 45);
-            label5.TabIndex = 5;
-            label5.Text = "Notifications: ";
-            // 
-            // hrdashboardbirthdaystxt
-            // 
-            hrdashboardbirthdaystxt.Location = new Point(252, 15);
-            hrdashboardbirthdaystxt.Multiline = true;
-            hrdashboardbirthdaystxt.Name = "hrdashboardbirthdaystxt";
-            hrdashboardbirthdaystxt.Size = new Size(171, 44);
-            hrdashboardbirthdaystxt.TabIndex = 5;
-            // 
-            // hrdashboardexpiriestxt
-            // 
-            hrdashboardexpiriestxt.Location = new Point(252, 85);
-            hrdashboardexpiriestxt.Multiline = true;
-            hrdashboardexpiriestxt.Name = "hrdashboardexpiriestxt";
-            hrdashboardexpiriestxt.Size = new Size(171, 44);
-            hrdashboardexpiriestxt.TabIndex = 6;
-            // 
             // HrDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -692,11 +692,16 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "HrDashboard";
             Text = "HR Dashboard";
+            Load += HrDashboard_Load_1;
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).EndInit();
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
+            dashnotif.ResumeLayout(false);
+            dashnotif.PerformLayout();
+            hrdashboardleaverequestspanel.ResumeLayout(false);
+            hrdashboardleaverequestspanel.PerformLayout();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -708,8 +713,6 @@
             dashactive.ResumeLayout(false);
             dashactive.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dashactiveon).EndInit();
-            dashnotif.ResumeLayout(false);
-            dashnotif.PerformLayout();
             dashvisuals.ResumeLayout(false);
             dashvisuals.PerformLayout();
             dashtotalsales.ResumeLayout(false);
@@ -717,8 +720,6 @@
             panelNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
-            hrdashboardleaverequestspanel.ResumeLayout(false);
-            hrdashboardleaverequestspanel.PerformLayout();
             ResumeLayout(false);
         }
 
