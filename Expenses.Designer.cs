@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
             expensesposreporttype = new ComboBox();
             calendardatepicker = new DateTimePicker();
@@ -86,17 +86,17 @@
             // 
             // expensesposreporttype
             // 
-            expensesposreporttype.BackColor = Color.Coral;
+            expensesposreporttype.BackColor = Color.White;
+            expensesposreporttype.DropDownStyle = ComboBoxStyle.DropDownList;
             expensesposreporttype.FlatStyle = FlatStyle.Flat;
             expensesposreporttype.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
-            expensesposreporttype.ForeColor = Color.White;
+            expensesposreporttype.ForeColor = Color.Black;
             expensesposreporttype.FormattingEnabled = true;
             expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
             expensesposreporttype.Location = new Point(12, 112);
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
-            expensesposreporttype.Text = "  Report Type : ";
             expensesposreporttype.SelectedIndexChanged += expensesposreporttype_SelectedIndexChanged;
             // 
             // calendardatepicker
@@ -303,23 +303,23 @@
             expensesdata.BackgroundImageLayout = ImageLayout.None;
             expensesdata.BackSecondaryColor = Color.Transparent;
             expensesdata.BorderlineColor = Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            expensesdata.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            expensesdata.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            expensesdata.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            expensesdata.Legends.Add(legend1);
             expensesdata.Location = new Point(125, 59);
             expensesdata.Name = "expensesdata";
             expensesdata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Expenses Data";
-            expensesdata.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Expenses Data";
+            expensesdata.Series.Add(series1);
             expensesdata.Size = new Size(1239, 714);
             expensesdata.TabIndex = 1;
             expensesdata.Text = "Sales Trend";
-            title2.ForeColor = Color.White;
-            title2.Name = "Sales";
-            expensesdata.Titles.Add(title2);
+            title1.ForeColor = Color.White;
+            title1.Name = "Sales";
+            expensesdata.Titles.Add(title1);
             expensesdata.Click += expensesdata_Click;
             // 
             // Expenses

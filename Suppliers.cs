@@ -234,5 +234,140 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = systemsearchbar.Text.Trim();
+            LoadSupplierData(keyword);
+        }
+        private void LoadSupplierData(string keyword = "")
+        {
+            if (string.IsNullOrEmpty(activeConnectionString))
+                return;
+
+            try
+            {
+                using (var conn = new SqlConnection(activeConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.SupplierID,
+                            s.Name,
+                            s.Contact,
+                            s.Address,
+                            ISNULL(STUFF((
+                                SELECT ', ' + i.ItemName
+                                FROM Inventory i
+                                WHERE i.SupplierID = s.SupplierID
+                                FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, ''), 'No items') AS ItemsSupplied
+                        FROM Supplier s";
+
+                    if (!string.IsNullOrWhiteSpace(keyword))
+                    {
+                        query += @"
+                            WHERE 
+                                s.Name LIKE @keyword OR 
+                                s.Contact LIKE @keyword OR 
+                                s.Address LIKE @keyword";
+                    }
+
+                    query += " ORDER BY s.Name";
+
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                            cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                        using (var adapter = new SqlDataAdapter(cmd))
+                        {
+                            var dt = new DataTable();
+                            adapter.Fill(dt);
+
+                            supplierdataflowpanel.SuspendLayout();
+                            supplierdataflowpanel.Controls.Clear();
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                int supplierId = Convert.ToInt32(row["SupplierID"]);
+
+                                Panel card = new Panel
+                                {
+                                    Width = supplierdataflowpanel.ClientSize.Width - 40,
+                                    Height = 120,
+                                    BackColor = Color.White,
+                                    Margin = new Padding(10),
+                                    Padding = new Padding(10),
+                                    BorderStyle = BorderStyle.FixedSingle,
+                                    Tag = supplierId
+                                };
+
+                                Label nameLabel = new Label
+                                {
+                                    Text = row["Name"].ToString(),
+                                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                                    AutoSize = true,
+                                    ForeColor = Color.Black,
+                                    Location = new Point(10, 10)
+                                };
+
+                                Label contactLabel = new Label
+                                {
+                                    Text = $"📞 {row["Contact"]}",
+                                    Font = new Font("Segoe UI", 10, FontStyle.Regular),
+                                    AutoSize = true,
+                                    ForeColor = Color.DimGray,
+                                    Location = new Point(10, 35)
+                                };
+
+                                Label addressLabel = new Label
+                                {
+                                    Text = $"🏠 {row["Address"]}",
+                                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                                    AutoSize = true,
+                                    ForeColor = Color.Gray,
+                                    Location = new Point(10, 55)
+                                };
+
+                                Label itemsLabel = new Label
+                                {
+                                    Text = $"📦 {row["ItemsSupplied"]}",
+                                    Font = new Font("Segoe UI", 9, FontStyle.Italic),
+                                    AutoSize = true,
+                                    ForeColor = Color.DarkGreen,
+                                    Location = new Point(10, 75)
+                                };
+
+                                card.Controls.Add(nameLabel);
+                                card.Controls.Add(contactLabel);
+                                card.Controls.Add(addressLabel);
+                                card.Controls.Add(itemsLabel);
+
+                                // DOUBLE-CLICK = EDIT
+                                card.DoubleClick += (s, e) =>
+                                {
+                                    int id = (int)((Panel)s).Tag;
+                                    using (var editForm = new SupplierAddForm(id))
+                                    {
+                                        if (editForm.ShowDialog() == DialogResult.OK)
+                                        {
+                                            LoadSupplierData(systemsearchbar.Text.Trim());
+                                        }
+                                    }
+                                };
+
+                                supplierdataflowpanel.Controls.Add(card);
+                            }
+
+                            supplierdataflowpanel.ResumeLayout();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading suppliers: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

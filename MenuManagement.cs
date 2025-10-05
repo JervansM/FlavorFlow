@@ -18,7 +18,7 @@ namespace FlavorFlowIT13
 
         private int? _selectedMenuId = null;
 
-        
+
 
         public MenuManagement()
         {
@@ -98,7 +98,7 @@ namespace FlavorFlowIT13
         private void MenuManagement_Load(object sender, EventArgs e)
         {
             LoadMenuData();
-    
+
 
 
 
@@ -111,7 +111,7 @@ namespace FlavorFlowIT13
                 RoundButton(menumanagementrecipebtn, 20);
                 RoundButton(menuedititembtn, 20);
 
-                
+
 
                 menumanagementrecipebtn.UseVisualStyleBackColor = false;
                 menumanagementrecipebtn.FlatStyle = FlatStyle.Flat;
@@ -138,7 +138,7 @@ namespace FlavorFlowIT13
                 menuedititembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#B47E32");
             }
         }
-       
+
         public void AddMenuIngredients(int menuId, List<(int InventoryId, decimal QuantityUsed)> ingredients)
         {
 
@@ -234,7 +234,7 @@ namespace FlavorFlowIT13
                 }
             }
         }
-        
+
 
 
 
@@ -274,7 +274,7 @@ namespace FlavorFlowIT13
                 using (var cmd = new SqlCommand(query, con))
                 using (var reader = cmd.ExecuteReader())
                 {
-                   
+
                     {
                         while (reader.Read())
                         {
@@ -293,7 +293,7 @@ namespace FlavorFlowIT13
         private Panel CreateMenuCard(SqlDataReader reader)
         {
             Panel card = new Panel();
-            card.Width = 290;
+            card.Width = 285;
             card.Height = 375;
             card.Margin = new Padding(5);
             card.BackColor = Color.White;
@@ -412,6 +412,52 @@ namespace FlavorFlowIT13
             recipeForm.Show();
 
         }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = systemsearchbar.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                LoadMenuData(); // reload all if searchbar is cleared
+            }
+            else
+            {
+                SearchMenuData(keyword); // filter results
+            }
+        }
+        private void SearchMenuData(string keyword)
+        {
+            flowLayoutMenuCard.Controls.Clear();
+
+            string query = @"
+        SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath
+        FROM Menu
+        WHERE Name LIKE @keyword OR Category LIKE @keyword OR Description LIKE @keyword
+        ORDER BY Name";
+
+            try
+            {
+                using (var con = GetConnection())
+                using (var cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching menu: " + ex.Message);
+            }
+        }
+
     }
 
 }

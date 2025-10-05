@@ -98,6 +98,7 @@
             Controls.Add(hrreportsreportbtn);
             Name = "HrReports";
             Text = "HrReports";
+            Load += HrReports_Load;
             ResumeLayout(false);
         }
 

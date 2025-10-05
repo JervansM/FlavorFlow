@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            panel1 = new Panel();
+            label10 = new Label();
+            hrleaveaddnewleavebtn = new Button();
             hrleaveviewbalancebtn = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
@@ -51,9 +54,6 @@
             label1 = new Label();
             hrleavetimeoffbtn = new Button();
             hrleaveleaverequestbtn = new Button();
-            hrleaveaddnewleavebtn = new Button();
-            panel1 = new Panel();
-            label10 = new Label();
             panelContent.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -82,6 +82,35 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1538, 1021);
             panelContent.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Location = new Point(86, 679);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1369, 120);
+            panel1.TabIndex = 56;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label10.Location = new Point(86, 644);
+            label10.Name = "label10";
+            label10.Size = new Size(173, 32);
+            label10.TabIndex = 55;
+            label10.Text = "Leave Balance";
+            // 
+            // hrleaveaddnewleavebtn
+            // 
+            hrleaveaddnewleavebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrleaveaddnewleavebtn.Location = new Point(349, 811);
+            hrleaveaddnewleavebtn.Name = "hrleaveaddnewleavebtn";
+            hrleaveaddnewleavebtn.Size = new Size(287, 62);
+            hrleaveaddnewleavebtn.TabIndex = 52;
+            hrleaveaddnewleavebtn.Text = "Add New Leave";
+            hrleaveaddnewleavebtn.UseVisualStyleBackColor = true;
+            hrleaveaddnewleavebtn.Click += button1_Click;
             // 
             // hrleaveviewbalancebtn
             // 
@@ -316,35 +345,6 @@
             hrleaveleaverequestbtn.Text = "Leave Request";
             hrleaveleaverequestbtn.UseVisualStyleBackColor = false;
             // 
-            // hrleaveaddnewleavebtn
-            // 
-            hrleaveaddnewleavebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrleaveaddnewleavebtn.Location = new Point(349, 811);
-            hrleaveaddnewleavebtn.Name = "hrleaveaddnewleavebtn";
-            hrleaveaddnewleavebtn.Size = new Size(287, 62);
-            hrleaveaddnewleavebtn.TabIndex = 52;
-            hrleaveaddnewleavebtn.Text = "Add New Leave";
-            hrleaveaddnewleavebtn.UseVisualStyleBackColor = true;
-            hrleaveaddnewleavebtn.Click += button1_Click;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Location = new Point(86, 679);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1369, 120);
-            panel1.TabIndex = 56;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label10.Location = new Point(86, 644);
-            label10.Name = "label10";
-            label10.Size = new Size(173, 32);
-            label10.TabIndex = 55;
-            label10.Text = "Leave Balance";
-            // 
             // HrLeave
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,6 +353,7 @@
             Controls.Add(panelContent);
             Name = "HrLeave";
             Text = "HrLeave";
+            Load += HrLeave_Load;
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             systemsearchbarpanel.ResumeLayout(false);

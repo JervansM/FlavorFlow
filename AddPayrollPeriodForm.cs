@@ -6,6 +6,8 @@ namespace FlavorFlowIT13
 {
     public partial class AddPayrollPeriodForm : Form
     {
+        private readonly string connStr = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+
         public AddPayrollPeriodForm()
         {
             InitializeComponent();
@@ -16,7 +18,6 @@ namespace FlavorFlowIT13
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string connStr = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True"; // adjust your connection string
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -40,6 +41,11 @@ namespace FlavorFlowIT13
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void AddPayrollPeriodForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

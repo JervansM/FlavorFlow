@@ -108,12 +108,13 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(31, 6);
+            systemsearchbar.Location = new Point(14, 6);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(1431, 47);
+            systemsearchbar.Size = new Size(1448, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // supplierpanelcontents
             // 

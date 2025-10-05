@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            panel1 = new Panel();
+            label10 = new Label();
             hrleaveaddnewtimeoffbtn = new Button();
             hrleaveviewbalancebtn = new Button();
             systemsearchbarpanel = new Panel();
@@ -45,6 +47,7 @@
             label7 = new Label();
             systempanelcontents = new Panel();
             systempanelheadercoral = new Panel();
+            label3 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -52,9 +55,6 @@
             label1 = new Label();
             hrleavetimeoffbtn = new Button();
             hrleaveleaverequestbtn = new Button();
-            label3 = new Label();
-            label10 = new Label();
-            panel1 = new Panel();
             panelContent.SuspendLayout();
             systemsearchbarpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
@@ -83,6 +83,24 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1538, 1021);
             panelContent.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Location = new Point(86, 672);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1369, 120);
+            panel1.TabIndex = 54;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label10.Location = new Point(86, 637);
+            label10.Name = "label10";
+            label10.Size = new Size(232, 32);
+            label10.TabIndex = 7;
+            label10.Text = "Time-Off Summary";
             // 
             // hrleaveaddnewtimeoffbtn
             // 
@@ -248,6 +266,16 @@
             systempanelheadercoral.Size = new Size(1447, 82);
             systempanelheadercoral.TabIndex = 38;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.Location = new Point(859, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 32);
+            label3.TabIndex = 6;
+            label3.Text = "Hours";
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -328,34 +356,6 @@
             hrleaveleaverequestbtn.Text = "Leave Request";
             hrleaveleaverequestbtn.UseVisualStyleBackColor = false;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(859, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(83, 32);
-            label3.TabIndex = 6;
-            label3.Text = "Hours";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label10.Location = new Point(86, 637);
-            label10.Name = "label10";
-            label10.Size = new Size(232, 32);
-            label10.TabIndex = 7;
-            label10.Text = "Time-Off Summary";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Location = new Point(86, 672);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1369, 120);
-            panel1.TabIndex = 54;
-            // 
             // HrTime_Off
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -364,6 +364,7 @@
             Controls.Add(panelContent);
             Name = "HrTime_Off";
             Text = "HrTime_Off";
+            Load += HrTime_Off_Load;
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             systemsearchbarpanel.ResumeLayout(false);

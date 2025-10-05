@@ -24,18 +24,7 @@ namespace FlavorFlowIT13
         public InventoryManagement()
         {
             InitializeComponent();
-            RoundPanel(panelContent, 25);
-            RoundPanel(systemsearchbarpanel, 25);
-            RoundButton(addinventoryitembtn, 25);
-            RoundPanel(inventorymanagementpanelcontents, 25);
-
-            addinventoryitembtn.UseVisualStyleBackColor = false;
-            addinventoryitembtn.FlatStyle = FlatStyle.Flat;
-            addinventoryitembtn.FlatAppearance.BorderSize = 0;
-            addinventoryitembtn.BackColor = ColorTranslator.FromHtml("LimeGreen");
-            addinventoryitembtn.ForeColor = Color.White;
-            addinventoryitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
-            addinventoryitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");
+         
 
             activeConnectionString = GetAvailableConnection();
 
@@ -94,6 +83,19 @@ namespace FlavorFlowIT13
 
         private void InventoryManagement_Load(object sender, EventArgs e)
         {
+            RoundPanel(panelContent, 25);
+            RoundPanel(systemsearchbarpanel, 25);
+            RoundButton(addinventoryitembtn, 25);
+            RoundPanel(inventorymanagementpanelcontents, 25);
+
+            addinventoryitembtn.UseVisualStyleBackColor = false;
+            addinventoryitembtn.FlatStyle = FlatStyle.Flat;
+            addinventoryitembtn.FlatAppearance.BorderSize = 0;
+            addinventoryitembtn.BackColor = ColorTranslator.FromHtml("LimeGreen");
+            addinventoryitembtn.ForeColor = Color.White;
+            addinventoryitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
+            addinventoryitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");
+
             LoadInventoryData();
 
         }
@@ -115,8 +117,8 @@ namespace FlavorFlowIT13
         {
 
         }
-      
-          private void LoadInventoryData()
+
+        private void LoadInventoryData()
         {
             if (string.IsNullOrEmpty(activeConnectionString))
                 return;
@@ -266,6 +268,130 @@ namespace FlavorFlowIT13
         {
 
         }
-    }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+
+            string keyword = systemsearchbar.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword))
+                LoadInventoryData();
+            else
+                SearchInventoryData(keyword);
+
+        }
+        private void SearchInventoryData(string keyword)
+        {
+            LoadInventoryCards(keyword);
+
+        }
+        private void LoadInventoryCards(string keyword)
+        {
+            if (string.IsNullOrEmpty(activeConnectionString))
+                return;
+
+            try
+            {
+                using (var conn = new SqlConnection(activeConnectionString))
+                using (var cmd = new SqlCommand(@"
+                    SELECT i.InventoryID, i.ItemName, i.Quantity, i.Unit, i.Cost, 
+                           i.ExpiryDate, s.Name AS Supplier, 
+                           CASE WHEN i.IsAvailable = 1 THEN 'Available' ELSE 'Not Available' END AS Status,
+                           i.MinStock, i.CreatedAt, i.UpdatedAt 
+                    FROM Inventory i 
+                    INNER JOIN Supplier s ON i.SupplierID = s.SupplierID 
+                    WHERE (@keyword IS NULL OR i.ItemName LIKE @search OR s.Name LIKE @search OR i.Unit LIKE @search)
+                    ORDER BY i.ItemName", conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", (object)keyword ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@search", $"%{keyword ?? ""}%");
+
+                    using (var adapter = new SqlDataAdapter(cmd))
+                    {
+                        var dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        inventorydatapanel.SuspendLayout();
+                        inventorydatapanel.Controls.Clear();
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            int inventoryId = Convert.ToInt32(row["InventoryID"]);
+
+                            Panel card = new Panel
+                            {
+                                Width = inventorydatapanel.Width - 40,
+                                Height = 100,
+                                BackColor = Color.White,
+                                Margin = new Padding(10),
+                                Padding = new Padding(10),
+                                BorderStyle = BorderStyle.FixedSingle,
+                                Tag = inventoryId
+                            };
+
+                            Label nameLabel = new Label
+                            {
+                                Text = $"{row["ItemName"]} ({row["Quantity"]} {row["Unit"]})",
+                                Font = new Font("Segoe UI", 13, FontStyle.Bold),
+                                AutoSize = true,
+                                ForeColor = Color.Black,
+                                Location = new Point(10, 10)
+                            };
+
+                            Label supplierLabel = new Label
+                            {
+                                Text = $"Cost: ₱{row["Cost"]} | Supplier: {row["Supplier"]}",
+                                Font = new Font("Segoe UI", 11, FontStyle.Regular),
+                                AutoSize = true,
+                                ForeColor = Color.DimGray,
+                                Location = new Point(10, 35)
+                            };
+
+                            Label statusLabel = new Label
+                            {
+                                Text = $"Expiry: {Convert.ToDateTime(row["ExpiryDate"]).ToShortDateString()} | Status: {row["Status"]}",
+                                Font = new Font("Segoe UI", 10, FontStyle.Italic),
+                                AutoSize = true,
+                                ForeColor = (row["Status"].ToString() == "Available") ? Color.Green : Color.Red,
+                                Location = new Point(10, 60)
+                            };
+
+                            Label minStockLabel = new Label
+                            {
+                                Text = $"Min Stock: {row["MinStock"]}",
+                                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                                AutoSize = true,
+                                ForeColor = Color.DarkOrange,
+                                Location = new Point(10, 80)
+                            };
+
+                            card.Controls.Add(nameLabel);
+                            card.Controls.Add(supplierLabel);
+                            card.Controls.Add(statusLabel);
+                            card.Controls.Add(minStockLabel);
+
+                            card.DoubleClick += (s, e) =>
+                            {
+                                int id = (int)((Panel)s).Tag;
+                                using (var editForm = new InventoryManagementAddForm(id))
+                                {
+                                    if (editForm.ShowDialog() == DialogResult.OK)
+                                        LoadInventoryData();
+                                }
+                            };
+
+                            inventorydatapanel.Controls.Add(card);
+                        }
+
+                        inventorydatapanel.ResumeLayout();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading inventory: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        }
 }
    

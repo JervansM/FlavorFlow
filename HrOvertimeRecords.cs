@@ -10,6 +10,8 @@ namespace FlavorFlowIT13
 {
     public partial class HrOvertimeRecords : Form
     {
+        private readonly string connectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+
         public HrOvertimeRecords()
         {
             InitializeComponent();
@@ -22,7 +24,6 @@ namespace FlavorFlowIT13
 
         private void LoadOvertimeRecords()
         {
-            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             string query = @"
               SELECT 

@@ -89,17 +89,17 @@
             // 
             // expensesposreporttype
             // 
-            expensesposreporttype.BackColor = Color.Coral;
+            expensesposreporttype.BackColor = Color.White;
+            expensesposreporttype.DropDownStyle = ComboBoxStyle.DropDownList;
             expensesposreporttype.FlatStyle = FlatStyle.Flat;
             expensesposreporttype.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
-            expensesposreporttype.ForeColor = Color.White;
+            expensesposreporttype.ForeColor = Color.Black;
             expensesposreporttype.FormattingEnabled = true;
             expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
             expensesposreporttype.Location = new Point(12, 105);
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
-            expensesposreporttype.Text = "  Report Type : ";
             // 
             // calendardatepicker
             // 

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             salespospanelcontents = new Panel();
             salestrendchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             salespostotalsalessummarytxt = new Panel();
@@ -86,23 +86,23 @@
             salestrendchart.BackgroundImageLayout = ImageLayout.None;
             salestrendchart.BackSecondaryColor = Color.Transparent;
             salestrendchart.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            salestrendchart.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            salestrendchart.ChartAreas.Add(chartArea2);
             salestrendchart.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            salestrendchart.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            salestrendchart.Legends.Add(legend2);
             salestrendchart.Location = new Point(0, 0);
             salestrendchart.Name = "salestrendchart";
             salestrendchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Sales Trend";
-            salestrendchart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Sales Trend";
+            salestrendchart.Series.Add(series2);
             salestrendchart.Size = new Size(1507, 690);
             salestrendchart.TabIndex = 0;
             salestrendchart.Text = "Sales Trend";
-            title1.Name = "Sales";
-            salestrendchart.Titles.Add(title1);
+            title2.Name = "Sales";
+            salestrendchart.Titles.Add(title2);
             salestrendchart.Click += salestrendchart_Click;
             // 
             // salespostotalsalessummarytxt
@@ -388,17 +388,17 @@
             // 
             // salesposreporttype
             // 
-            salesposreporttype.BackColor = Color.Coral;
+            salesposreporttype.BackColor = Color.White;
+            salesposreporttype.DropDownStyle = ComboBoxStyle.DropDownList;
             salesposreporttype.FlatStyle = FlatStyle.Flat;
             salesposreporttype.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
-            salesposreporttype.ForeColor = Color.White;
+            salesposreporttype.ForeColor = Color.Black;
             salesposreporttype.FormattingEnabled = true;
             salesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
             salesposreporttype.Location = new Point(13, 109);
             salesposreporttype.Name = "salesposreporttype";
             salesposreporttype.Size = new Size(309, 43);
             salesposreporttype.TabIndex = 52;
-            salesposreporttype.Text = "  Report Type : ";
             salesposreporttype.SelectedIndexChanged += salesposreporttype_SelectedIndexChanged;
             // 
             // SalesPOS

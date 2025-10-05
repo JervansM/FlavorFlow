@@ -34,6 +34,7 @@
             hrcompliancesrenewdocumentsbtn = new Button();
             systempanelcontents = new Panel();
             systempanelheadercoral = new Panel();
+            label3 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -41,7 +42,6 @@
             label1 = new Label();
             hrcompliancespoliciesbtn = new Button();
             hrcompliancescompliancesbtn = new Button();
-            label3 = new Label();
             systempanelheadercoral.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,6 +105,16 @@
             systempanelheadercoral.Name = "systempanelheadercoral";
             systempanelheadercoral.Size = new Size(1447, 82);
             systempanelheadercoral.TabIndex = 57;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.Location = new Point(1206, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 32);
+            label3.TabIndex = 6;
+            label3.Text = "Action";
             // 
             // label6
             // 
@@ -186,16 +196,6 @@
             hrcompliancescompliancesbtn.Text = "Compliances";
             hrcompliancescompliancesbtn.UseVisualStyleBackColor = false;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(1206, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(89, 32);
-            label3.TabIndex = 6;
-            label3.Text = "Action";
-            // 
             // HrCompliances
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -212,6 +212,7 @@
             Controls.Add(hrcompliancescompliancesbtn);
             Name = "HrCompliances";
             Text = "HrCompliances";
+            Load += HrCompliances_Load;
             systempanelheadercoral.ResumeLayout(false);
             systempanelheadercoral.PerformLayout();
             ResumeLayout(false);

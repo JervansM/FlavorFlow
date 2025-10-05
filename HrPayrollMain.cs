@@ -21,5 +21,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void HrPayrollMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

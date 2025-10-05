@@ -40,90 +40,156 @@ namespace FlavorFlow
 
         private void InitializeComponent()
         {
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtPosition = new System.Windows.Forms.TextBox();
-            this.txtBasicSalary = new System.Windows.Forms.TextBox();
-            this.dtpHireDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.lblLastName = new System.Windows.Forms.Label();
-            this.lblPosition = new System.Windows.Forms.Label();
-            this.lblBasicSalary = new System.Windows.Forms.Label();
-            this.lblHireDate = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-
-            this.SuspendLayout();
-
-            // Form properties
-            this.ClientSize = new System.Drawing.Size(400, 400);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add Employee";
-
-            // Labels + Inputs
-            this.lblFirstName.Text = "First Name:";
-            this.lblFirstName.Location = new System.Drawing.Point(20, 20);
-            this.txtFirstName.Location = new System.Drawing.Point(150, 20);
-            this.txtFirstName.Width = 200;
-
-            this.lblLastName.Text = "Last Name:";
-            this.lblLastName.Location = new System.Drawing.Point(20, 60);
-            this.txtLastName.Location = new System.Drawing.Point(150, 60);
-            this.txtLastName.Width = 200;
-
-            this.lblPosition.Text = "Position:";
-            this.lblPosition.Location = new System.Drawing.Point(20, 100);
-            this.txtPosition.Location = new System.Drawing.Point(150, 100);
-            this.txtPosition.Width = 200;
-
-            this.lblBasicSalary.Text = "Basic Salary:";
-            this.lblBasicSalary.Location = new System.Drawing.Point(20, 140);
-            this.txtBasicSalary.Location = new System.Drawing.Point(150, 140);
-            this.txtBasicSalary.Width = 200;
-
-            this.lblHireDate.Text = "Hire Date:";
-            this.lblHireDate.Location = new System.Drawing.Point(20, 180);
-            this.dtpHireDate.Location = new System.Drawing.Point(150, 180);
-            this.dtpHireDate.Width = 200;
-            this.dtpHireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-
-            this.lblStatus.Text = "Status:";
-            this.lblStatus.Location = new System.Drawing.Point(20, 220);
-            this.cmbStatus.Location = new System.Drawing.Point(150, 220);
-            this.cmbStatus.Width = 200;
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
-
-            // Buttons
-            this.btnSave.Text = "Save";
-            this.btnSave.Location = new System.Drawing.Point(80, 280);
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Location = new System.Drawing.Point(200, 280);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-
-            // Add controls
-            this.Controls.Add(this.lblFirstName);
-            this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.txtLastName);
-            this.Controls.Add(this.lblPosition);
-            this.Controls.Add(this.txtPosition);
-            this.Controls.Add(this.lblBasicSalary);
-            this.Controls.Add(this.txtBasicSalary);
-            this.Controls.Add(this.lblHireDate);
-            this.Controls.Add(this.dtpHireDate);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.cmbStatus);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-
-            this.ResumeLayout(false);
+            txtFirstName = new TextBox();
+            txtLastName = new TextBox();
+            txtPosition = new TextBox();
+            txtBasicSalary = new TextBox();
+            dtpHireDate = new DateTimePicker();
+            cmbStatus = new ComboBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            lblFirstName = new Label();
+            lblLastName = new Label();
+            lblPosition = new Label();
+            lblBasicSalary = new Label();
+            lblHireDate = new Label();
+            lblStatus = new Label();
+            SuspendLayout();
+            // 
+            // txtFirstName
+            // 
+            txtFirstName.Location = new Point(150, 20);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(200, 23);
+            txtFirstName.TabIndex = 1;
+            // 
+            // txtLastName
+            // 
+            txtLastName.Location = new Point(150, 60);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(200, 23);
+            txtLastName.TabIndex = 3;
+            // 
+            // txtPosition
+            // 
+            txtPosition.Location = new Point(150, 100);
+            txtPosition.Name = "txtPosition";
+            txtPosition.Size = new Size(200, 23);
+            txtPosition.TabIndex = 5;
+            // 
+            // txtBasicSalary
+            // 
+            txtBasicSalary.Location = new Point(150, 140);
+            txtBasicSalary.Name = "txtBasicSalary";
+            txtBasicSalary.Size = new Size(200, 23);
+            txtBasicSalary.TabIndex = 7;
+            // 
+            // dtpHireDate
+            // 
+            dtpHireDate.Format = DateTimePickerFormat.Short;
+            dtpHireDate.Location = new Point(150, 180);
+            dtpHireDate.Name = "dtpHireDate";
+            dtpHireDate.Size = new Size(200, 23);
+            dtpHireDate.TabIndex = 9;
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
+            cmbStatus.Location = new Point(150, 220);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(200, 23);
+            cmbStatus.TabIndex = 11;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(80, 280);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Save";
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(200, 280);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 13;
+            btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // lblFirstName
+            // 
+            lblFirstName.Location = new Point(20, 20);
+            lblFirstName.Name = "lblFirstName";
+            lblFirstName.Size = new Size(100, 23);
+            lblFirstName.TabIndex = 0;
+            lblFirstName.Text = "First Name:";
+            // 
+            // lblLastName
+            // 
+            lblLastName.Location = new Point(20, 60);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new Size(100, 23);
+            lblLastName.TabIndex = 2;
+            lblLastName.Text = "Last Name:";
+            // 
+            // lblPosition
+            // 
+            lblPosition.Location = new Point(20, 100);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(100, 23);
+            lblPosition.TabIndex = 4;
+            lblPosition.Text = "Position:";
+            // 
+            // lblBasicSalary
+            // 
+            lblBasicSalary.Location = new Point(20, 140);
+            lblBasicSalary.Name = "lblBasicSalary";
+            lblBasicSalary.Size = new Size(100, 23);
+            lblBasicSalary.TabIndex = 6;
+            lblBasicSalary.Text = "Basic Salary:";
+            // 
+            // lblHireDate
+            // 
+            lblHireDate.Location = new Point(20, 180);
+            lblHireDate.Name = "lblHireDate";
+            lblHireDate.Size = new Size(100, 23);
+            lblHireDate.TabIndex = 8;
+            lblHireDate.Text = "Hire Date:";
+            // 
+            // lblStatus
+            // 
+            lblStatus.Location = new Point(20, 220);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(100, 23);
+            lblStatus.TabIndex = 10;
+            lblStatus.Text = "Status:";
+            // 
+            // EmployeeForm
+            // 
+            ClientSize = new Size(400, 400);
+            Controls.Add(lblFirstName);
+            Controls.Add(txtFirstName);
+            Controls.Add(lblLastName);
+            Controls.Add(txtLastName);
+            Controls.Add(lblPosition);
+            Controls.Add(txtPosition);
+            Controls.Add(lblBasicSalary);
+            Controls.Add(txtBasicSalary);
+            Controls.Add(lblHireDate);
+            Controls.Add(dtpHireDate);
+            Controls.Add(lblStatus);
+            Controls.Add(cmbStatus);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            Name = "EmployeeForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Add Employee";
+            Load += EmployeeForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

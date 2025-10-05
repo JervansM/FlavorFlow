@@ -24,109 +24,110 @@
 
         private void InitializeComponent()
         {
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblStartDate = new Label();
+            lblEndDate = new Label();
+            lblStatus = new Label();
+            dtpStartDate = new DateTimePicker();
+            dtpEndDate = new DateTimePicker();
+            cmbStatus = new ComboBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblStartDate
             // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(30, 30);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(70, 15);
-            this.lblStartDate.TabIndex = 0;
-            this.lblStartDate.Text = "Start Date:";
+            lblStartDate.AutoSize = true;
+            lblStartDate.Location = new Point(30, 30);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(61, 15);
+            lblStartDate.TabIndex = 0;
+            lblStartDate.Text = "Start Date:";
             // 
             // lblEndDate
             // 
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(30, 70);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(65, 15);
-            this.lblEndDate.TabIndex = 1;
-            this.lblEndDate.Text = "End Date:";
+            lblEndDate.AutoSize = true;
+            lblEndDate.Location = new Point(30, 70);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(57, 15);
+            lblEndDate.TabIndex = 1;
+            lblEndDate.Text = "End Date:";
             // 
             // lblStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(30, 110);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(46, 15);
-            this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "Status:";
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(30, 110);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(42, 15);
+            lblStatus.TabIndex = 2;
+            lblStatus.Text = "Status:";
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(120, 25);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(200, 23);
-            this.dtpStartDate.TabIndex = 3;
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpStartDate.Location = new Point(120, 25);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(200, 23);
+            dtpStartDate.TabIndex = 3;
             // 
             // dtpEndDate
             // 
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(120, 65);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(200, 23);
-            this.dtpEndDate.TabIndex = 4;
+            dtpEndDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Location = new Point(120, 65);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(200, 23);
+            dtpEndDate.TabIndex = 4;
             // 
             // cmbStatus
             // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(120, 105);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(200, 23);
-            this.cmbStatus.TabIndex = 5;
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(120, 105);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(200, 23);
+            cmbStatus.TabIndex = 5;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(120, 150);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(90, 30);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(120, 150);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(90, 30);
+            btnSave.TabIndex = 6;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(230, 150);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(90, 30);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(230, 150);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(90, 30);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // AddPayrollPeriodForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 210);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cmbStatus);
-            this.Controls.Add(this.dtpEndDate);
-            this.Controls.Add(this.dtpStartDate);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.lblEndDate);
-            this.Controls.Add(this.lblStartDate);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AddPayrollPeriodForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add Payroll Period";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(380, 210);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(cmbStatus);
+            Controls.Add(dtpEndDate);
+            Controls.Add(dtpStartDate);
+            Controls.Add(lblStatus);
+            Controls.Add(lblEndDate);
+            Controls.Add(lblStartDate);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AddPayrollPeriodForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Add Payroll Period";
+            Load += AddPayrollPeriodForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

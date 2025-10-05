@@ -7,7 +7,7 @@ namespace FlavorFlowIT13
 {
     public partial class DashboardControl : UserControl
     {
-        private string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
         public DashboardControl()
         {
@@ -131,6 +131,11 @@ namespace FlavorFlowIT13
         }
 
         private void dashtotalsales_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelContent_Paint(object sender, PaintEventArgs e)
         {
 
         }

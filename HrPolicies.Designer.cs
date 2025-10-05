@@ -192,6 +192,7 @@
             Controls.Add(hrcompliancescompliancesbtn);
             Name = "HrPolicies";
             Text = "HrPolicies";
+            Load += HrPolicies_Load;
             systempanelcontents.ResumeLayout(false);
             systempanelcontents.PerformLayout();
             ResumeLayout(false);

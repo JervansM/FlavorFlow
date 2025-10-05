@@ -26,5 +26,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void HrLeave_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

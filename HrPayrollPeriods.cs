@@ -16,5 +16,10 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void HrPayrollPeriods_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

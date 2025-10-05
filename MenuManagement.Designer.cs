@@ -67,7 +67,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3070, 206);
+            panel6.Location = new Point(3064, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -89,7 +89,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3070, 2423);
+            panel5.Location = new Point(3064, 2423);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -111,7 +111,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3070, 4693);
+            panel4.Location = new Point(3064, 4693);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -133,7 +133,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2396, 206);
+            dashtotalexpense.Location = new Point(2390, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -155,7 +155,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2396, 2066);
+            dashinventoryusage.Location = new Point(2390, 2066);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -177,7 +177,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2396, 3979);
+            dashnetprofit.Location = new Point(2390, 3979);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -201,7 +201,7 @@
             systemsearchbarpanel.Controls.Add(systemsearchbar);
             systemsearchbarpanel.Location = new Point(12, 17);
             systemsearchbarpanel.Name = "systemsearchbarpanel";
-            systemsearchbarpanel.Size = new Size(1521, 59);
+            systemsearchbarpanel.Size = new Size(1500, 59);
             systemsearchbarpanel.TabIndex = 23;
             // 
             // systemsearchbaricon
@@ -209,7 +209,7 @@
             systemsearchbaricon.BackColor = Color.Transparent;
             systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
             systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
-            systemsearchbaricon.Location = new Point(1426, 6);
+            systemsearchbaricon.Location = new Point(1409, 10);
             systemsearchbaricon.Name = "systemsearchbaricon";
             systemsearchbaricon.Size = new Size(81, 46);
             systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
@@ -222,12 +222,13 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(13, 5);
+            systemsearchbar.Location = new Point(3, 5);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(961, 47);
+            systemsearchbar.Size = new Size(1487, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // addmenuitembtn
             // 
@@ -277,7 +278,7 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1536, 2732);
+            panelContent.Size = new Size(1525, 2732);
             panelContent.TabIndex = 17;
             // 
             // menumanagementrecipebtn
@@ -301,7 +302,7 @@
             salespospanelcontents.Controls.Add(flowLayoutMenuCard);
             salespospanelcontents.Location = new Point(12, 169);
             salespospanelcontents.Name = "salespospanelcontents";
-            salespospanelcontents.Size = new Size(1521, 2560);
+            salespospanelcontents.Size = new Size(1500, 2560);
             salespospanelcontents.TabIndex = 48;
             salespospanelcontents.Paint += salespospanelcontents_Paint;
             // 
@@ -310,7 +311,7 @@
             flowLayoutMenuCard.Controls.Add(menuedititembtn);
             flowLayoutMenuCard.Location = new Point(13, 13);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(1505, 2500);
+            flowLayoutMenuCard.Size = new Size(1500, 2500);
             flowLayoutMenuCard.TabIndex = 0;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
@@ -319,7 +320,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1161, 860);
+            ClientSize = new Size(1768, 860);
             Controls.Add(panelContent);
             DoubleBuffered = true;
             Name = "MenuManagement";

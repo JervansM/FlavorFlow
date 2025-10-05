@@ -76,8 +76,9 @@
             panelContent.Location = new Point(3, 4);
             panelContent.Margin = new Padding(3, 4, 3, 4);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1510, 1028);
+            panelContent.Size = new Size(1510, 1261);
             panelContent.TabIndex = 15;
+            panelContent.Paint += panelContent_Paint;
             // 
             // label5
             // 
@@ -87,7 +88,7 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(16, 574);
             label5.Name = "label5";
-            label5.Size = new Size(198, 37);
+            label5.Size = new Size(153, 30);
             label5.TabIndex = 5;
             label5.Text = "Notifications: ";
             // 
@@ -102,7 +103,7 @@
             dashnotif.Location = new Point(16, 615);
             dashnotif.Margin = new Padding(3, 4, 3, 4);
             dashnotif.Name = "dashnotif";
-            dashnotif.Size = new Size(1476, 1302);
+            dashnotif.Size = new Size(1476, 500);
             dashnotif.TabIndex = 2;
             // 
             // hrdashboardexpiriestxt
@@ -131,7 +132,7 @@
             dashlowstackalerts.ForeColor = Color.White;
             dashlowstackalerts.Location = new Point(45, 129);
             dashlowstackalerts.Name = "dashlowstackalerts";
-            dashlowstackalerts.Size = new Size(137, 41);
+            dashlowstackalerts.Size = new Size(110, 32);
             dashlowstackalerts.TabIndex = 4;
             dashlowstackalerts.Text = "Expiries:";
             // 
@@ -143,7 +144,7 @@
             dashrecenttransactions.ForeColor = Color.White;
             dashrecenttransactions.Location = new Point(45, 42);
             dashrecenttransactions.Name = "dashrecenttransactions";
-            dashrecenttransactions.Size = new Size(161, 41);
+            dashrecenttransactions.Size = new Size(129, 32);
             dashrecenttransactions.TabIndex = 3;
             dashrecenttransactions.Text = "Birthdays:";
             // 
@@ -176,7 +177,7 @@
             dashinventorytxt.ForeColor = Color.White;
             dashinventorytxt.Location = new Point(30, 8);
             dashinventorytxt.Name = "dashinventorytxt";
-            dashinventorytxt.Size = new Size(206, 31);
+            dashinventorytxt.Size = new Size(172, 25);
             dashinventorytxt.TabIndex = 2;
             dashinventorytxt.Text = "Attendance Today";
             // 
@@ -208,7 +209,7 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(30, 8);
             label3.Name = "label3";
-            label3.Size = new Size(175, 31);
+            label3.Size = new Size(146, 25);
             label3.TabIndex = 2;
             label3.Text = "Leave Requests";
             // 
@@ -220,7 +221,7 @@
             dashvisualtxtsales.ForeColor = Color.White;
             dashvisualtxtsales.Location = new Point(24, 314);
             dashvisualtxtsales.Name = "dashvisualtxtsales";
-            dashvisualtxtsales.Size = new Size(382, 70);
+            dashvisualtxtsales.Size = new Size(303, 55);
             dashvisualtxtsales.TabIndex = 1;
             dashvisualtxtsales.Text = "Visual Insights";
             // 
@@ -229,7 +230,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2500, 2651);
+            dashnetprofit.Location = new Point(2500, 2884);
             dashnetprofit.Margin = new Padding(3, 4, 3, 4);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(535, 232);
@@ -243,7 +244,7 @@
             dashnetprofittxt.ForeColor = Color.White;
             dashnetprofittxt.Location = new Point(32, 0);
             dashnetprofittxt.Name = "dashnetprofittxt";
-            dashnetprofittxt.Size = new Size(403, 54);
+            dashnetprofittxt.Size = new Size(321, 45);
             dashnetprofittxt.TabIndex = 5;
             dashnetprofittxt.Text = "Net Profit Summary";
             // 
@@ -252,7 +253,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2500, 1421);
+            dashinventoryusage.Location = new Point(2500, 1537);
             dashinventoryusage.Margin = new Padding(3, 4, 3, 4);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(535, 311);
@@ -266,7 +267,7 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(32, 0);
             label2.Name = "label2";
-            label2.Size = new Size(335, 54);
+            label2.Size = new Size(265, 45);
             label2.TabIndex = 4;
             label2.Text = "Inventory Usage";
             // 
@@ -289,7 +290,7 @@
             dashtotalexptxt.ForeColor = Color.White;
             dashtotalexptxt.Location = new Point(32, 0);
             dashtotalexptxt.Name = "dashtotalexptxt";
-            dashtotalexptxt.Size = new Size(280, 54);
+            dashtotalexptxt.Size = new Size(225, 45);
             dashtotalexptxt.TabIndex = 3;
             dashtotalexptxt.Text = "Total Expense";
             // 
@@ -314,7 +315,7 @@
             label4.ForeColor = Color.White;
             label4.Location = new Point(40, 126);
             label4.Name = "label4";
-            label4.Size = new Size(182, 31);
+            label4.Size = new Size(152, 25);
             label4.TabIndex = 5;
             label4.Text = "Leave Contracts";
             // 
@@ -350,7 +351,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(28, 23);
             label1.Name = "label1";
-            label1.Size = new Size(222, 31);
+            label1.Size = new Size(186, 25);
             label1.TabIndex = 1;
             label1.Text = " Pending Approvals";
             // 
@@ -372,7 +373,7 @@
             dashvisualtoptxt.ForeColor = Color.White;
             dashvisualtoptxt.Location = new Point(3, 5);
             dashvisualtoptxt.Name = "dashvisualtoptxt";
-            dashvisualtoptxt.Size = new Size(407, 37);
+            dashvisualtoptxt.Size = new Size(311, 30);
             dashvisualtoptxt.TabIndex = 2;
             dashvisualtoptxt.Text = "Upcoming Contracts Renewals";
             // 
@@ -406,7 +407,7 @@
             dashsalestxt.ForeColor = Color.White;
             dashsalestxt.Location = new Point(30, 34);
             dashsalestxt.Name = "dashsalestxt";
-            dashsalestxt.Size = new Size(251, 31);
+            dashsalestxt.Size = new Size(210, 25);
             dashsalestxt.TabIndex = 0;
             dashsalestxt.Text = "Employee Head Count";
             // 
@@ -414,7 +415,7 @@
             // 
             Controls.Add(panelContent);
             Name = "DashboardControl";
-            Size = new Size(1510, 1028);
+            Size = new Size(1510, 1335);
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             dashnotif.ResumeLayout(false);

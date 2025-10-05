@@ -463,6 +463,7 @@ namespace FlavorFlowIT13
 
         private void expensereportsbtn_Click(object sender, EventArgs e)
         {
+            LoadContent(new Expenses());
             InitializeExpensesChart();
             LoadExpensesTrend(currentReportType, currentDate);
 

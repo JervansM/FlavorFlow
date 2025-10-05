@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            hrattendanceadd = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
             systemsearchbar = new TextBox();
@@ -45,14 +46,7 @@
             totalsalestxtbox = new TextBox();
             label7 = new Label();
             systempanelcontents = new Panel();
-            systempanelheadercoral = new Panel();
-            label12 = new Label();
-            label11 = new Label();
-            label1 = new Label();
-            label6 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
+            dgvAttendance = new DataGridView();
             hrattendanceschedulebtn = new Button();
             hrattendancedailyttendancebtn = new Button();
             panelContent.SuspendLayout();
@@ -62,25 +56,38 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
-            systempanelheadercoral.SuspendLayout();
+            systempanelcontents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
             // 
             // panelContent
             // 
             panelContent.BackColor = Color.Silver;
+            panelContent.Controls.Add(hrattendanceadd);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel3);
             panelContent.Controls.Add(panel4);
             panelContent.Controls.Add(panel2);
             panelContent.Controls.Add(systempanelcontents);
-            panelContent.Controls.Add(systempanelheadercoral);
             panelContent.Controls.Add(hrattendanceschedulebtn);
             panelContent.Controls.Add(hrattendancedailyttendancebtn);
             panelContent.Location = new Point(-84, -136);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1538, 1021);
+            panelContent.Size = new Size(1358, 771);
             panelContent.TabIndex = 4;
+            panelContent.Paint += panelContent_Paint;
+            // 
+            // hrattendanceadd
+            // 
+            hrattendanceadd.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrattendanceadd.Location = new Point(564, 732);
+            hrattendanceadd.Margin = new Padding(3, 2, 3, 2);
+            hrattendanceadd.Name = "hrattendanceadd";
+            hrattendanceadd.Size = new Size(362, 37);
+            hrattendanceadd.TabIndex = 51;
+            hrattendanceadd.Text = "Add New Attendance";
+            hrattendanceadd.UseVisualStyleBackColor = true;
             // 
             // systemsearchbarpanel
             // 
@@ -122,10 +129,11 @@
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label10);
             panel5.Controls.Add(hrattendancesdatetxt);
-            panel5.Location = new Point(47, 237);
+            panel5.Location = new Point(94, 248);
             panel5.Name = "panel5";
             panel5.Size = new Size(308, 57);
             panel5.TabIndex = 50;
+            panel5.Paint += panel5_Paint;
             // 
             // label10
             // 
@@ -140,10 +148,10 @@
             // 
             // hrattendancesdatetxt
             // 
-            hrattendancesdatetxt.Location = new Point(135, 3);
+            hrattendancesdatetxt.Location = new Point(88, 12);
             hrattendancesdatetxt.Multiline = true;
             hrattendancesdatetxt.Name = "hrattendancesdatetxt";
-            hrattendancesdatetxt.Size = new Size(169, 50);
+            hrattendancesdatetxt.Size = new Size(205, 41);
             hrattendancesdatetxt.TabIndex = 1;
             // 
             // panel3
@@ -236,95 +244,21 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(46, 403);
+            systempanelcontents.Controls.Add(dgvAttendance);
+            systempanelcontents.Location = new Point(97, 334);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 493);
+            systempanelcontents.Size = new Size(1231, 386);
             systempanelcontents.TabIndex = 46;
             // 
-            // systempanelheadercoral
+            // dgvAttendance
             // 
-            systempanelheadercoral.BackColor = Color.Coral;
-            systempanelheadercoral.Controls.Add(label12);
-            systempanelheadercoral.Controls.Add(label11);
-            systempanelheadercoral.Controls.Add(label1);
-            systempanelheadercoral.Controls.Add(label6);
-            systempanelheadercoral.Controls.Add(label4);
-            systempanelheadercoral.Controls.Add(label3);
-            systempanelheadercoral.Controls.Add(label2);
-            systempanelheadercoral.Location = new Point(46, 324);
-            systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1447, 82);
-            systempanelheadercoral.TabIndex = 38;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label12.Location = new Point(992, 28);
-            label12.Name = "label12";
-            label12.Size = new Size(56, 32);
-            label12.TabIndex = 8;
-            label12.Text = "Out";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label11.Location = new Point(442, 28);
-            label11.Name = "label11";
-            label11.Size = new Size(64, 32);
-            label11.TabIndex = 7;
-            label11.Text = "Role";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.Location = new Point(50, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 32);
-            label1.TabIndex = 6;
-            label1.Text = "EmpID";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label6.Location = new Point(824, 28);
-            label6.Name = "label6";
-            label6.Size = new Size(44, 32);
-            label6.TabIndex = 5;
-            label6.Text = "In ";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label4.Location = new Point(228, 28);
-            label4.Name = "label4";
-            label4.Size = new Size(81, 32);
-            label4.TabIndex = 3;
-            label4.Text = "Name";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(1140, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(246, 32);
-            label3.TabIndex = 2;
-            label3.Text = "Status(Late,On time)";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label2.Location = new Point(603, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(116, 32);
-            label2.TabIndex = 1;
-            label2.Text = "Schedule";
+            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAttendance.Location = new Point(0, 0);
+            dgvAttendance.Margin = new Padding(3, 2, 3, 2);
+            dgvAttendance.Name = "dgvAttendance";
+            dgvAttendance.RowHeadersWidth = 51;
+            dgvAttendance.Size = new Size(1229, 385);
+            dgvAttendance.TabIndex = 0;
             // 
             // hrattendanceschedulebtn
             // 
@@ -334,12 +268,13 @@
             hrattendanceschedulebtn.FlatStyle = FlatStyle.Flat;
             hrattendanceschedulebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendanceschedulebtn.ForeColor = Color.White;
-            hrattendanceschedulebtn.Location = new Point(412, 146);
+            hrattendanceschedulebtn.Location = new Point(463, 164);
             hrattendanceschedulebtn.Name = "hrattendanceschedulebtn";
             hrattendanceschedulebtn.Size = new Size(309, 58);
             hrattendanceschedulebtn.TabIndex = 43;
             hrattendanceschedulebtn.Text = "Schedule";
             hrattendanceschedulebtn.UseVisualStyleBackColor = false;
+            hrattendanceschedulebtn.Click += hrattendanceschedulebtn_Click;
             // 
             // hrattendancedailyttendancebtn
             // 
@@ -349,21 +284,23 @@
             hrattendancedailyttendancebtn.FlatStyle = FlatStyle.Flat;
             hrattendancedailyttendancebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendancedailyttendancebtn.ForeColor = Color.White;
-            hrattendancedailyttendancebtn.Location = new Point(46, 146);
+            hrattendancedailyttendancebtn.Location = new Point(96, 164);
             hrattendancedailyttendancebtn.Name = "hrattendancedailyttendancebtn";
             hrattendancedailyttendancebtn.Size = new Size(340, 58);
             hrattendancedailyttendancebtn.TabIndex = 42;
             hrattendancedailyttendancebtn.Text = "Daily Attendance";
             hrattendancedailyttendancebtn.UseVisualStyleBackColor = false;
+            hrattendancedailyttendancebtn.Click += hrattendancedailyttendancebtn_Click;
             // 
             // HrAttendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1253, 641);
             Controls.Add(panelContent);
             Name = "HrAttendance";
             Text = "HrAttendance";
+            Load += HrAttendance_Load_1;
             panelContent.ResumeLayout(false);
             systemsearchbarpanel.ResumeLayout(false);
             systemsearchbarpanel.PerformLayout();
@@ -376,8 +313,8 @@
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            systempanelheadercoral.ResumeLayout(false);
-            systempanelheadercoral.PerformLayout();
+            systempanelcontents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAttendance).EndInit();
             ResumeLayout(false);
         }
 
@@ -399,16 +336,10 @@
         private TextBox totalsalestxtbox;
         private Label label7;
         private Panel systempanelcontents;
-        private Panel systempanelheadercoral;
-        private Label label6;
-        private Label label4;
-        private Label label3;
-        private Label label2;
         private Button hrattendanceschedulebtn;
         private Button hrattendancedailyttendancebtn;
         private Label label10;
-        private Label label12;
-        private Label label11;
-        private Label label1;
+        private DataGridView dgvAttendance;
+        private Button hrattendanceadd;
     }
 }

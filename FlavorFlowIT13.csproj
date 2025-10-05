@@ -48,6 +48,10 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="kill.bat" />
+  </Target>
+
  
 
 

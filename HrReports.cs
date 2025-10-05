@@ -16,5 +16,10 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void HrReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

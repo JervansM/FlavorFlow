@@ -185,6 +185,7 @@
             Controls.Add(panel2);
             Name = "HrPayrollPeriods";
             Text = "HrPayrollPeriods";
+            Load += HrPayrollPeriods_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);

@@ -13,8 +13,7 @@ namespace FlavorFlowIT13
 {
     public partial class HrGeneratePayroll : Form
     {
-        // connection string (replace with your actual server + database)
-        string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
         public HrGeneratePayroll()
         {
@@ -28,7 +27,6 @@ namespace FlavorFlowIT13
 
         private void LoadPayrollData()
         {
-            string connString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
 
             string query = @"
                 SELECT 

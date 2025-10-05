@@ -16,5 +16,10 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void HrTime_Off_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
