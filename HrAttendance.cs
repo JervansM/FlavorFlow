@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace FlavorFlowIT13
 {
@@ -19,6 +20,51 @@ namespace FlavorFlowIT13
         private void HrAttendance_Load(object sender, EventArgs e)
         {
             LoadAttendance();
+
+            RoundPanel(systempanelcontents, 25);
+            RoundPanel(systemsearchbarpanel, 25);
+            RoundPanel(panel5, 19);
+            RoundButton(hrattendancedailyttendancebtn, 19);
+            RoundButton(hrattendanceschedulebtn, 19);
+            RoundButton(hrattendanceadd, 19);
+
+
+
+            panel5.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            hrattendanceadd.UseVisualStyleBackColor = false;
+            hrattendanceadd.FlatStyle = FlatStyle.Flat;
+            hrattendanceadd.FlatAppearance.BorderSize = 0;
+            hrattendanceadd.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrattendanceadd.ForeColor = Color.White;
+            hrattendanceadd.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrattendanceadd.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+
+            hrattendancedailyttendancebtn.UseVisualStyleBackColor = false;
+            hrattendancedailyttendancebtn.FlatStyle = FlatStyle.Flat;
+            hrattendancedailyttendancebtn.FlatAppearance.BorderSize = 0;
+            hrattendancedailyttendancebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrattendancedailyttendancebtn.ForeColor = Color.White;
+            hrattendancedailyttendancebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrattendancedailyttendancebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrattendanceschedulebtn.UseVisualStyleBackColor = false;
+            hrattendanceschedulebtn.FlatStyle = FlatStyle.Flat;
+            hrattendanceschedulebtn.FlatAppearance.BorderSize = 0;
+            hrattendanceschedulebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrattendanceschedulebtn.ForeColor = Color.White;
+            hrattendanceschedulebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrattendanceschedulebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrattendanceschedulebtn.UseVisualStyleBackColor = false;
+            hrattendanceschedulebtn.FlatStyle = FlatStyle.Flat;
+            hrattendanceschedulebtn.FlatAppearance.BorderSize = 0;
+            hrattendanceschedulebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrattendanceschedulebtn.ForeColor = Color.White;
+            hrattendanceschedulebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrattendanceschedulebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
         }
 
         // 🔹 Load attendance data from your database
@@ -153,10 +199,34 @@ ORDER BY A.Date DESC;
             LoadContent(new HrAttendance());
 
         }
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
+        }
+
+        private void RoundPanel(Panel pnl, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            pnl.Region = new Region(path);
+        }
 
         private void StyleUserGrid()
         {
             dgvAttendance.EnableHeadersVisualStyles = false;
+            dgvAttendance.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+
             dgvAttendance.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dgvAttendance.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             dgvAttendance.DefaultCellStyle.BackColor = Color.White;
@@ -167,14 +237,16 @@ ORDER BY A.Date DESC;
             dgvAttendance.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAttendance.MultiSelect = false;
             dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvAttendance.BorderStyle = BorderStyle.FixedSingle;
+            dgvAttendance.BorderStyle = BorderStyle.None;
+            dgvAttendance.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvAttendance.GridColor = Color.White;
+            dgvAttendance.ClearSelection();
             dgvAttendance.GridColor = Color.LightGray;
             dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             dgvAttendance.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
             dgvAttendance.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvAttendance.BackgroundColor = Color.WhiteSmoke;
         }
-
         private void hrattendanceadd_Click(object sender, EventArgs e)
         {
 
@@ -183,6 +255,54 @@ ORDER BY A.Date DESC;
         private void dgvAttendance_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = systemsearchbar.Text.Trim();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = @"
+SELECT 
+    A.AttendanceID,
+    E.EmployeeID,
+    CONCAT(E.FirstName, ' ', E.LastName) AS EmployeeName,
+    S.Name AS ShiftName,
+    S.StartTime,
+    S.EndTime,
+    A.Date,
+    A.TimeIn,
+    A.TimeOut,
+    A.Status
+FROM Attendance A
+INNER JOIN Employee E ON A.EmployeeID = E.EmployeeID
+LEFT JOIN ShiftSchedule SS ON E.EmployeeID = SS.EmployeeID
+LEFT JOIN Shift S ON SS.ShiftID = S.ShiftID
+WHERE 
+    (E.FirstName LIKE @search OR E.LastName LIKE @search OR CONCAT(E.FirstName,' ',E.LastName) LIKE @search OR S.Name LIKE @search)
+    AND A.Date BETWEEN SS.EffectiveDate AND SS.ExpiryDate
+ORDER BY A.Date DESC;
+";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dgvAttendance.DataSource = dt;
+
+                        StyleUserGrid(); // reapply styling
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching attendance: " + ex.Message);
+            }
         }
     }
 }

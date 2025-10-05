@@ -187,6 +187,7 @@
             webappbackbtn.TabIndex = 17;
             webappbackbtn.Text = "<-Back";
             webappbackbtn.UseVisualStyleBackColor = true;
+            webappbackbtn.Click += webappbackbtn_Click;
             // 
             // webappproceedcheckoutbtn
             // 
@@ -196,6 +197,7 @@
             webappproceedcheckoutbtn.TabIndex = 16;
             webappproceedcheckoutbtn.Text = "Proceed Checkout";
             webappproceedcheckoutbtn.UseVisualStyleBackColor = true;
+            webappproceedcheckoutbtn.Click += webappproceedcheckoutbtn_Click;
             // 
             // webappconfirmationorderitemspanel
             // 

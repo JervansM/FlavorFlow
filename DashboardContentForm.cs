@@ -175,13 +175,13 @@ namespace FlavorFlowIT13
                         .ExecuteScalar());
 
                     decimal totalSalesToday = Convert.ToDecimal(new SqlCommand(
-                       @"SELECT 
-    ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount, 0)), 0) AS TotalSalesToday
-  FROM dbo.Orders
-  WHERE 
-      Status = 'Completed'
-      AND PaymentStatus = 'Paid'
-      AND CAST([Date] AS DATE) = CAST(GETDATE() AS DATE);", conn)
+                       @"  SELECT 
+            ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount, 0)), 0) AS TotalSalesToday
+        FROM dbo.Orders
+        WHERE 
+            Status = 'Completed'
+            AND PaymentStatus = 'Paid'
+            AND CAST([Date] AS DATE) = CAST(GETDATE() AS DATE);", conn)
                        .ExecuteScalar());
 
 

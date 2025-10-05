@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            hrattendanceadd = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
             systemsearchbar = new TextBox();
@@ -36,7 +37,6 @@
             label10 = new Label();
             hrattendancesdatetxt = new TextBox();
             systempanelcontents = new Panel();
-            hrattendanceadd = new Button();
             dgvAttendance = new DataGridView();
             hrattendanceschedulebtn = new Button();
             hrattendancedailyttendancebtn = new Button();
@@ -52,6 +52,7 @@
             // 
             panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
+            panelContent.Controls.Add(hrattendanceadd);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(systempanelcontents);
@@ -64,14 +65,28 @@
             panelContent.TabIndex = 4;
             panelContent.Paint += panelContent_Paint;
             // 
+            // hrattendanceadd
+            // 
+            hrattendanceadd.BackColor = Color.Black;
+            hrattendanceadd.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrattendanceadd.ForeColor = Color.White;
+            hrattendanceadd.Location = new Point(1032, 90);
+            hrattendanceadd.Margin = new Padding(3, 2, 3, 2);
+            hrattendanceadd.Name = "hrattendanceadd";
+            hrattendanceadd.Size = new Size(309, 58);
+            hrattendanceadd.TabIndex = 51;
+            hrattendanceadd.Text = "Add New Attendance";
+            hrattendanceadd.UseVisualStyleBackColor = false;
+            hrattendanceadd.Click += hrattendanceadd_Click;
+            // 
             // systemsearchbarpanel
             // 
             systemsearchbarpanel.BackColor = Color.White;
             systemsearchbarpanel.Controls.Add(systemsearchbaricon);
             systemsearchbarpanel.Controls.Add(systemsearchbar);
-            systemsearchbarpanel.Location = new Point(12, 12);
+            systemsearchbarpanel.Location = new Point(12, 13);
             systemsearchbarpanel.Name = "systemsearchbarpanel";
-            systemsearchbarpanel.Size = new Size(1523, 59);
+            systemsearchbarpanel.Size = new Size(1510, 59);
             systemsearchbarpanel.TabIndex = 23;
             // 
             // systemsearchbaricon
@@ -92,19 +107,20 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(41, 6);
+            systemsearchbar.Location = new Point(35, 6);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
             systemsearchbar.Size = new Size(1476, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // panel5
             // 
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label10);
             panel5.Controls.Add(hrattendancesdatetxt);
-            panel5.Location = new Point(712, 90);
+            panel5.Location = new Point(699, 91);
             panel5.Name = "panel5";
             panel5.Size = new Size(308, 57);
             panel5.TabIndex = 50;
@@ -132,35 +148,22 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Controls.Add(hrattendanceadd);
             systempanelcontents.Controls.Add(dgvAttendance);
-            systempanelcontents.Location = new Point(15, 179);
+            systempanelcontents.Location = new Point(12, 180);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1520, 879);
+            systempanelcontents.Size = new Size(1510, 879);
             systempanelcontents.TabIndex = 46;
-            // 
-            // hrattendanceadd
-            // 
-            hrattendanceadd.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrattendanceadd.Location = new Point(580, 719);
-            hrattendanceadd.Margin = new Padding(3, 2, 3, 2);
-            hrattendanceadd.Name = "hrattendanceadd";
-            hrattendanceadd.Size = new Size(362, 37);
-            hrattendanceadd.TabIndex = 51;
-            hrattendanceadd.Text = "Add New Attendance";
-            hrattendanceadd.UseVisualStyleBackColor = true;
-            hrattendanceadd.Click += hrattendanceadd_Click;
             // 
             // dgvAttendance
             // 
             dgvAttendance.AllowUserToDeleteRows = false;
             dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAttendance.Dock = DockStyle.Fill;
-            dgvAttendance.Location = new Point(13, 32);
+            dgvAttendance.Location = new Point(0, 0);
             dgvAttendance.Margin = new Padding(3, 2, 3, 2);
             dgvAttendance.Name = "dgvAttendance";
             dgvAttendance.RowHeadersWidth = 51;
-            dgvAttendance.Size = new Size(1444, 799);
+            dgvAttendance.Size = new Size(1510, 879);
             dgvAttendance.TabIndex = 0;
             dgvAttendance.CellContentClick += dgvAttendance_CellContentClick;
             // 
@@ -172,7 +175,7 @@
             hrattendanceschedulebtn.FlatStyle = FlatStyle.Flat;
             hrattendanceschedulebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendanceschedulebtn.ForeColor = Color.White;
-            hrattendanceschedulebtn.Location = new Point(378, 90);
+            hrattendanceschedulebtn.Location = new Point(371, 91);
             hrattendanceschedulebtn.Name = "hrattendanceschedulebtn";
             hrattendanceschedulebtn.Size = new Size(309, 58);
             hrattendanceschedulebtn.TabIndex = 43;
@@ -188,7 +191,7 @@
             hrattendancedailyttendancebtn.FlatStyle = FlatStyle.Flat;
             hrattendancedailyttendancebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendancedailyttendancebtn.ForeColor = Color.White;
-            hrattendancedailyttendancebtn.Location = new Point(12, 90);
+            hrattendancedailyttendancebtn.Location = new Point(12, 91);
             hrattendancedailyttendancebtn.Name = "hrattendancedailyttendancebtn";
             hrattendancedailyttendancebtn.Size = new Size(340, 58);
             hrattendancedailyttendancebtn.TabIndex = 42;

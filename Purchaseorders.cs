@@ -139,7 +139,7 @@ namespace FlavorFlowIT13
 
             createorder.OrderCreated += (s, args) =>
             {
-                LoadPurchaseOrders(); 
+                LoadPurchaseOrders();
             };
             createorder.Show();
         }
@@ -237,6 +237,9 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             supplierdatagrid.EnableHeadersVisualStyles = false;
+            supplierdatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+
             supplierdatagrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             supplierdatagrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             supplierdatagrid.DefaultCellStyle.BackColor = Color.White;
@@ -247,7 +250,10 @@ namespace FlavorFlowIT13
             supplierdatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             supplierdatagrid.MultiSelect = false;
             supplierdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            supplierdatagrid.BorderStyle = BorderStyle.FixedSingle;
+            supplierdatagrid.BorderStyle = BorderStyle.None;
+            supplierdatagrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            supplierdatagrid.GridColor = Color.White;
+            supplierdatagrid.ClearSelection();
             supplierdatagrid.GridColor = Color.LightGray;
             supplierdatagrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             supplierdatagrid.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
@@ -369,6 +375,50 @@ namespace FlavorFlowIT13
         private void viewordersbtn_Click(object sender, EventArgs e)
         {
             LoadPurchaseOrders();
+        }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = systemsearchbar.Text.Trim();
+
+            if (string.IsNullOrEmpty(activeConnectionString)) return;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    string query = @"
+SELECT 
+    po.PurchaseOrderID,
+    s.Name AS SupplierName,
+    po.OrderDate,
+    po.Status,
+    po.TotalAmount
+FROM PurchaseOrder po
+INNER JOIN Supplier s ON po.SupplierID = s.SupplierID
+WHERE 
+    CAST(po.PurchaseOrderID AS NVARCHAR) LIKE @search
+    OR s.Name LIKE @search
+    OR po.Status LIKE @search
+ORDER BY po.OrderDate DESC";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        supplierdatagrid.DataSource = dt;
+
+                        StyleUserGrid(); // reapply DataGridView styling
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching purchase orders: " + ex.Message);
+            }
         }
     }
 

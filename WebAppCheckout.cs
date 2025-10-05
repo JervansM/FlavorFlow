@@ -21,5 +21,21 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void webappbackbtn_Click(object sender, EventArgs e)
+        {
+            WebAppMenu webAppMenu = new WebAppMenu();
+            this.Hide();
+            webAppMenu.Show();
+
+        }
+
+        private void webappproceedcheckoutbtn_Click(object sender, EventArgs e)
+        {
+            WebAppConfirmation webAppConfirmation = new WebAppConfirmation();
+            this.Hide();
+            webAppConfirmation.Show();
+           
+        }
     }
 }

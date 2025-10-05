@@ -271,6 +271,7 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             orderDataGridView.EnableHeadersVisualStyles = false;
+        
 
             orderDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             orderDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;

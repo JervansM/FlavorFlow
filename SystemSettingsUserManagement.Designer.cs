@@ -275,7 +275,7 @@
             systempanelheadercoral.Controls.Add(systemsettingsuseraddicon);
             systempanelheadercoral.Location = new Point(0, 0);
             systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1521, 44);
+            systempanelheadercoral.Size = new Size(1521, 50);
             systempanelheadercoral.TabIndex = 25;
             // 
             // systemsettingsuseraddicon
@@ -370,7 +370,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvUsers.Location = new Point(13, 50);
+            dgvUsers.Location = new Point(0, 47);
             dgvUsers.Name = "dgvUsers";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -380,7 +380,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvUsers.Size = new Size(1494, 495);
+            dgvUsers.Size = new Size(1521, 498);
             dgvUsers.StandardTab = true;
             dgvUsers.TabIndex = 34;
             dgvUsers.CellContentClick += dgvUsers_CellContentClick;

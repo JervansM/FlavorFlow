@@ -42,6 +42,7 @@
             dashnetprofittxt = new Label();
             panelContent = new Panel();
             panelstaffcontents = new Panel();
+            dgvstaff = new DataGridView();
             addnewstaffbtn = new Button();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
@@ -50,6 +51,8 @@
             dashinventoryusage.SuspendLayout();
             dashnetprofit.SuspendLayout();
             panelContent.SuspendLayout();
+            panelstaffcontents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvstaff).BeginInit();
             SuspendLayout();
             // 
             // panel6
@@ -204,14 +207,29 @@
             // panelstaffcontents
             // 
             panelstaffcontents.BackColor = Color.White;
+            panelstaffcontents.Controls.Add(dgvstaff);
             panelstaffcontents.Location = new Point(12, 130);
             panelstaffcontents.Name = "panelstaffcontents";
             panelstaffcontents.Size = new Size(1465, 667);
             panelstaffcontents.TabIndex = 24;
             // 
+            // dgvstaff
+            // 
+            dgvstaff.AllowUserToAddRows = false;
+            dgvstaff.AllowUserToDeleteRows = false;
+            dgvstaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvstaff.Dock = DockStyle.Fill;
+            dgvstaff.Location = new Point(0, 0);
+            dgvstaff.Name = "dgvstaff";
+            dgvstaff.ReadOnly = true;
+            dgvstaff.Size = new Size(1465, 667);
+            dgvstaff.TabIndex = 0;
+            dgvstaff.CellContentClick += dgvstaff_CellContentClick;
+            // 
             // addnewstaffbtn
             // 
             addnewstaffbtn.BackColor = Color.LimeGreen;
+            addnewstaffbtn.Cursor = Cursors.Hand;
             addnewstaffbtn.FlatStyle = FlatStyle.Flat;
             addnewstaffbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             addnewstaffbtn.Location = new Point(12, 37);
@@ -244,6 +262,8 @@
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             panelContent.ResumeLayout(false);
+            panelstaffcontents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvstaff).EndInit();
             ResumeLayout(false);
         }
 
@@ -264,5 +284,6 @@
         private Panel panelContent;
         private Button addnewstaffbtn;
         private Panel panelstaffcontents;
+        private DataGridView dgvstaff;
     }
 }

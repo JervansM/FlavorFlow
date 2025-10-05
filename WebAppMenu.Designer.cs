@@ -47,8 +47,10 @@
             button1 = new Button();
             label1 = new Label();
             panel7 = new Panel();
+            flowLayoutMenuCard = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
             // 
@@ -186,6 +188,7 @@
             // panel5
             // 
             panel5.BackColor = Color.White;
+            panel5.Controls.Add(flowLayoutMenuCard);
             panel5.Location = new Point(40, 281);
             panel5.Name = "panel5";
             panel5.Size = new Size(1179, 705);
@@ -234,6 +237,14 @@
             panel7.Size = new Size(59, 46);
             panel7.TabIndex = 45;
             // 
+            // flowLayoutMenuCard
+            // 
+            flowLayoutMenuCard.Dock = DockStyle.Fill;
+            flowLayoutMenuCard.Location = new Point(0, 0);
+            flowLayoutMenuCard.Name = "flowLayoutMenuCard";
+            flowLayoutMenuCard.Size = new Size(1179, 705);
+            flowLayoutMenuCard.TabIndex = 0;
+            // 
             // WebAppMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -253,6 +264,7 @@
             Load += WebAppMenu_Load;
             ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ResumeLayout(false);
@@ -278,5 +290,6 @@
         private Label label1;
         private Panel panel7;
         private Button button1;
+        private FlowLayoutPanel flowLayoutMenuCard;
     }
 }

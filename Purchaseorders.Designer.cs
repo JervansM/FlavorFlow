@@ -164,6 +164,7 @@
             systemsearchbar.PlaceholderText = "Search";
             systemsearchbar.Size = new Size(1431, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // supplierpanelcontents
             // 

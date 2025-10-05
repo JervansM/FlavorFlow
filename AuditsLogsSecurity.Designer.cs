@@ -129,6 +129,7 @@
             systemsearchbar.PlaceholderText = "Search";
             systemsearchbar.Size = new Size(1431, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // auditlogspanel
             // 
@@ -136,7 +137,7 @@
             auditlogspanel.Controls.Add(auditlogsdatagrid);
             auditlogspanel.Location = new Point(12, 187);
             auditlogspanel.Name = "auditlogspanel";
-            auditlogspanel.Size = new Size(1487, 833);
+            auditlogspanel.Size = new Size(1487, 3000);
             auditlogspanel.TabIndex = 53;
             auditlogspanel.Paint += auditlogspanel_Paint;
             // 
@@ -148,7 +149,7 @@
             auditlogsdatagrid.Location = new Point(0, 0);
             auditlogsdatagrid.Name = "auditlogsdatagrid";
             auditlogsdatagrid.ReadOnly = true;
-            auditlogsdatagrid.Size = new Size(1487, 833);
+            auditlogsdatagrid.Size = new Size(1487, 3000);
             auditlogsdatagrid.TabIndex = 0;
             auditlogsdatagrid.CellContentClick += auditlogsdatagrid_CellContentClick;
             // 
@@ -171,7 +172,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2423, 2305);
+            dashnetprofit.Location = new Point(2417, 4460);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -193,7 +194,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2423, 1229);
+            dashinventoryusage.Location = new Point(2417, 2306);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -215,7 +216,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2423, 206);
+            dashtotalexpense.Location = new Point(2417, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -237,7 +238,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3097, 3019);
+            panel4.Location = new Point(3091, 5174);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -259,7 +260,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3097, 1586);
+            panel5.Location = new Point(3091, 2663);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -281,7 +282,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3097, 206);
+            panel6.Location = new Point(3091, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -302,7 +303,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
             ClientSize = new Size(1526, 1056);
             Controls.Add(panelContent);
             Name = "AuditsLogsSecurity";

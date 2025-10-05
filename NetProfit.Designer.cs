@@ -58,6 +58,7 @@
             label9 = new Label();
             financeexpensespanel = new Panel();
             netprofitchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            generatereportbtn = new Button();
             panelContent.SuspendLayout();
             totalnetprofitpanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(generatereportbtn);
             panelContent.Controls.Add(totalnetprofitpanel);
             panelContent.Controls.Add(expensesposreporttype);
             panelContent.Controls.Add(calendardatepicker);
@@ -378,6 +380,21 @@
             netprofitchart.Titles.Add(title1);
             netprofitchart.Click += netprofitchart_Click;
             // 
+            // generatereportbtn
+            // 
+            generatereportbtn.BackColor = Color.Black;
+            generatereportbtn.Cursor = Cursors.Hand;
+            generatereportbtn.FlatStyle = FlatStyle.Flat;
+            generatereportbtn.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            generatereportbtn.ForeColor = Color.White;
+            generatereportbtn.Location = new Point(874, 25);
+            generatereportbtn.Name = "generatereportbtn";
+            generatereportbtn.Size = new Size(259, 63);
+            generatereportbtn.TabIndex = 59;
+            generatereportbtn.Text = "Generate Report";
+            generatereportbtn.UseVisualStyleBackColor = false;
+            generatereportbtn.Click += generatereportbtn_Click;
+            // 
             // NetProfit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -434,5 +451,6 @@
         private Panel totalnetprofitpanel;
         private Label totalnetprofttxt;
         private Label totalnetprofitlbl;
+        private Button generatereportbtn;
     }
 }

@@ -76,18 +76,19 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(40, 6);
+            systemsearchbar.Location = new Point(19, 6);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(1455, 47);
+            systemsearchbar.Size = new Size(1476, 47);
             systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged_1;
             // 
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
             systempanelcontents.Controls.Add(scheduleGrid);
-            systempanelcontents.Location = new Point(12, 154);
+            systempanelcontents.Location = new Point(12, 180);
             systempanelcontents.Margin = new Padding(3, 2, 3, 2);
             systempanelcontents.Name = "systempanelcontents";
             systempanelcontents.Size = new Size(1520, 799);
@@ -103,6 +104,7 @@
             scheduleGrid.RowHeadersWidth = 51;
             scheduleGrid.Size = new Size(1520, 799);
             scheduleGrid.TabIndex = 0;
+            scheduleGrid.CellContentClick += scheduleGrid_CellContentClick_1;
             // 
             // hrscheduleschedulebtn
             // 

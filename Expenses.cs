@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Data.SqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+
 
 namespace FlavorFlowIT13
 {
@@ -96,9 +100,9 @@ namespace FlavorFlowIT13
             // Configure X-axis
             area.AxisX.Title = "Date";
             area.AxisX.TitleForeColor = Color.White;
-            area.AxisX.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            area.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             area.AxisX.LabelStyle.ForeColor = Color.White;
-            area.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
+            area.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
             area.AxisX.LabelStyle.Format = "MMM dd";
             area.AxisX.MajorGrid.Enabled = false;
             area.AxisX.MajorTickMark.Enabled = true;
@@ -109,9 +113,9 @@ namespace FlavorFlowIT13
             // Configure Y-axis
             area.AxisY.Title = "Expenses (₱)";
             area.AxisY.TitleForeColor = Color.White;
-            area.AxisY.TitleFont = new Font("Segoe UI", 12F, FontStyle.Bold);
+            area.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             area.AxisY.LabelStyle.ForeColor = Color.White;
-            area.AxisY.LabelStyle.Font = new Font("Segoe UI", 10F);
+            area.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
             area.AxisY.IsStartedFromZero = true;
             area.AxisY.MajorGrid.LineColor = ColorTranslator.FromHtml("#444444");
             area.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
@@ -139,7 +143,7 @@ namespace FlavorFlowIT13
                 Docking = Docking.Top,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold)
+                Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold)
             };
             expensesChart.Legends.Add(legend);
 
@@ -150,7 +154,7 @@ namespace FlavorFlowIT13
                 IsValueShownAsLabel = true,
                 LabelForeColor = Color.White,
                 LabelFormat = "₱{0:N0}",
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Font = new System.Drawing.Font("Segoe UI", 9F, FontStyle.Bold),
                 XValueType = ChartValueType.DateTime,
                 YValueType = ChartValueType.Double,
                 ChartArea = "Main",
@@ -165,7 +169,7 @@ namespace FlavorFlowIT13
             expensesChart.Titles.Add(new Title("Expenses Trend")
             {
                 ForeColor = Color.White,
-                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                Font = new System.Drawing.Font("Segoe UI", 16F, FontStyle.Bold),
                 Docking = Docking.Top
             });
         }
@@ -249,7 +253,7 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Interval = optimalInterval;
                     chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
                     chartArea.AxisX.LabelStyle.Angle = -60;
-                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
                     chartArea.AxisX.MajorTickMark.Interval = optimalInterval;
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
                     break;
@@ -259,7 +263,7 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Interval = Math.Max(1, optimalInterval / 2);
                     chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
                     chartArea.AxisX.LabelStyle.Angle = -60;
-                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
                     chartArea.AxisX.MajorTickMark.Interval = Math.Max(1, optimalInterval / 2);
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Days;
                     break;
@@ -269,7 +273,7 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Interval = 1;
                     chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Months;
                     chartArea.AxisX.LabelStyle.Angle = -45;
-                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 9F);
+                    chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
                     chartArea.AxisX.MajorTickMark.Interval = 1;
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Months;
                     break;
@@ -279,7 +283,7 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Interval = 1;
                     chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Years;
                     chartArea.AxisX.LabelStyle.Angle = 0;
-                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 10F);
+                    chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
                     chartArea.AxisX.MajorTickMark.Interval = 1;
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Years;
                     break;
@@ -289,7 +293,7 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Interval = optimalInterval;
                     chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
                     chartArea.AxisX.LabelStyle.Angle = -60;
-                    chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+                    chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
                     break;
             }
 
@@ -412,6 +416,13 @@ namespace FlavorFlowIT13
             RoundPanel(panelContent, 25);
             RoundPanel(financeexpensespanel, 25);
             RoundPanel(totalexpensepanel, 25);
+            RoundButton(generatereportbtn, 20);
+
+            generatereportbtn.UseVisualStyleBackColor = false;
+            generatereportbtn.FlatStyle = FlatStyle.Flat;
+            generatereportbtn.FlatAppearance.BorderSize = 0;
+            generatereportbtn.BackColor = ColorTranslator.FromHtml("#2823B1");
+            generatereportbtn.ForeColor = Color.White;
 
 
             // Set default report type to Daily
@@ -529,5 +540,106 @@ namespace FlavorFlowIT13
             }
         }
 
+        private void generatereportbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime currentDate = calendardatepicker.Value;
+                string currentReportType = (expensesposreporttype.SelectedItem as string) ?? "Daily";
+
+                // Get date range
+                (DateTime start, DateTime end) = GetDateRange(currentDate, currentReportType);
+
+                // Get expense trend data
+                DataTable dt = GetExpensesData(start, end);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No expense data available for the selected period.", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.Filter = "PDF files (*.pdf)|*.pdf";
+                    sfd.FileName = $"ExpenseReport_{currentReportType}_{DateTime.Now:yyyyMMdd}.pdf";
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write, FileShare.None))
+                        {
+                            Document doc = new Document(PageSize.A4, 25, 25, 30, 30);
+                            PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                            doc.Open();
+
+                            // Title
+                            Paragraph title = new Paragraph($"Expense Report ({currentReportType})",
+                                new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 16, iTextSharp.text.Font.BOLD, BaseColor.BLACK))
+                            { Alignment = Element.ALIGN_CENTER, SpacingAfter = 20f };
+                            doc.Add(title);
+
+                            // Date range
+                            Paragraph dateRange = new Paragraph($"Period: {start:MMM dd, yyyy} - {end.AddDays(-1):MMM dd, yyyy}",
+                                new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK))
+                            { Alignment = Element.ALIGN_CENTER, SpacingAfter = 20f };
+                            doc.Add(dateRange);
+
+                            // Chart image
+                            if (expensesChart != null && expensesChart.Series.Count > 0)
+                            {
+                                using (MemoryStream ms = new MemoryStream())
+                                {
+                                    expensesChart.SaveImage(ms, ChartImageFormat.Png);
+                                    iTextSharp.text.Image chartImage = iTextSharp.text.Image.GetInstance(ms.ToArray());
+                                    chartImage.ScaleToFit(500f, 400f);
+                                    chartImage.Alignment = Element.ALIGN_CENTER;
+                                    chartImage.SpacingAfter = 20f;
+                                    doc.Add(chartImage);
+                                }
+                            }
+
+                            // Table
+                            PdfPTable table = new PdfPTable(dt.Columns.Count) { WidthPercentage = 100 };
+                            foreach (DataColumn column in dt.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.ColumnName,
+                                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)))
+                                { BackgroundColor = BaseColor.LIGHT_GRAY, HorizontalAlignment = Element.ALIGN_CENTER };
+                                table.AddCell(cell);
+                            }
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                foreach (var item in row.ItemArray)
+                                {
+                                    PdfPCell cell = new PdfPCell(new Phrase(item.ToString(),
+                                        new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12)))
+                                    { HorizontalAlignment = Element.ALIGN_CENTER };
+                                    table.AddCell(cell);
+                                }
+                            }
+                            doc.Add(table);
+
+                            // Total expenses
+                            decimal totalExpenses = dt.AsEnumerable().Sum(r => Convert.ToDecimal(r["TotalExpense"]));
+                            Paragraph total = new Paragraph($"\nTotal Expenses: ₱{totalExpenses:N2}",
+                                new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK))
+                            { Alignment = Element.ALIGN_RIGHT };
+                            doc.Add(total);
+
+                            doc.Close();
+                            writer.Close();
+                        }
+
+                        MessageBox.Show("PDF expense report generated successfully!", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating PDF report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+      
     }
 }

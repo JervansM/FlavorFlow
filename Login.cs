@@ -109,7 +109,7 @@ namespace FlavorFlowIT13
                                 break;
 
                             case "Customer":
-                                new CustomerDashboard().Show();
+                                new WebAppMenu().Show();
                                 this.Hide();
                                 break;
 

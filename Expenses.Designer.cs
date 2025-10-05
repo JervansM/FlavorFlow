@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
+            generatereportbtn = new Button();
             totalexpensepanel = new Panel();
             totalexpensetxt = new Label();
             totalexpenselbl = new Label();
@@ -71,6 +72,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(generatereportbtn);
             panelContent.Controls.Add(totalexpensepanel);
             panelContent.Controls.Add(expensesposreporttype);
             panelContent.Controls.Add(calendardatepicker);
@@ -88,6 +90,21 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1479, 997);
             panelContent.TabIndex = 18;
+            // 
+            // generatereportbtn
+            // 
+            generatereportbtn.BackColor = Color.Black;
+            generatereportbtn.Cursor = Cursors.Hand;
+            generatereportbtn.FlatStyle = FlatStyle.Flat;
+            generatereportbtn.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            generatereportbtn.ForeColor = Color.White;
+            generatereportbtn.Location = new Point(874, 25);
+            generatereportbtn.Name = "generatereportbtn";
+            generatereportbtn.Size = new Size(259, 63);
+            generatereportbtn.TabIndex = 58;
+            generatereportbtn.Text = "Generate Report";
+            generatereportbtn.UseVisualStyleBackColor = false;
+            generatereportbtn.Click += generatereportbtn_Click;
             // 
             // totalexpensepanel
             // 
@@ -344,23 +361,23 @@
             expensesdata.BackgroundImageLayout = ImageLayout.None;
             expensesdata.BackSecondaryColor = Color.Transparent;
             expensesdata.BorderlineColor = Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            expensesdata.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            expensesdata.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            expensesdata.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            expensesdata.Legends.Add(legend1);
             expensesdata.Location = new Point(125, 59);
             expensesdata.Name = "expensesdata";
             expensesdata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Expenses Data";
-            expensesdata.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Expenses Data";
+            expensesdata.Series.Add(series1);
             expensesdata.Size = new Size(1239, 714);
             expensesdata.TabIndex = 1;
             expensesdata.Text = "Sales Trend";
-            title2.ForeColor = Color.White;
-            title2.Name = "Sales";
-            expensesdata.Titles.Add(title2);
+            title1.ForeColor = Color.White;
+            title1.Name = "Sales";
+            expensesdata.Titles.Add(title1);
             expensesdata.Click += expensesdata_Click;
             // 
             // Expenses
@@ -418,5 +435,6 @@
         private Panel totalexpensepanel;
         private Label totalexpensetxt;
         private Label totalexpenselbl;
+        private Button generatereportbtn;
     }
 }

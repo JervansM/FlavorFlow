@@ -26,6 +26,8 @@ namespace FlavorFlowIT13
             RoundButton(securitybtn, 20);
             RoundPanel(systemsearchbarpanel, 25);
 
+
+
         }
         private void RoundPanel(Panel pnl, int radius)
         {
@@ -50,6 +52,9 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             auditlogsdatagrid.EnableHeadersVisualStyles = false;
+            auditlogsdatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+
             auditlogsdatagrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             auditlogsdatagrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             auditlogsdatagrid.DefaultCellStyle.BackColor = Color.White;
@@ -60,7 +65,10 @@ namespace FlavorFlowIT13
             auditlogsdatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             auditlogsdatagrid.MultiSelect = false;
             auditlogsdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            auditlogsdatagrid.BorderStyle = BorderStyle.FixedSingle;
+            auditlogsdatagrid.BorderStyle = BorderStyle.None;
+            auditlogsdatagrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            auditlogsdatagrid.GridColor = Color.White;
+            auditlogsdatagrid.ClearSelection();
             auditlogsdatagrid.GridColor = Color.LightGray;
             auditlogsdatagrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             auditlogsdatagrid.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
@@ -73,7 +81,24 @@ namespace FlavorFlowIT13
             activeConnectionString = GetAvailableConnection();
             LoadAuditLogs();
             StyleUserGrid();
+
+            auditlogsbtn.UseVisualStyleBackColor = false;
+            auditlogsbtn.FlatStyle = FlatStyle.Flat;
+            auditlogsbtn.FlatAppearance.BorderSize = 0;
+            auditlogsbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            auditlogsbtn.ForeColor = Color.White;
+            auditlogsbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            auditlogsbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            securitybtn.UseVisualStyleBackColor = false;
+            securitybtn.FlatStyle = FlatStyle.Flat;
+            securitybtn.FlatAppearance.BorderSize = 0;
+            securitybtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            securitybtn.ForeColor = Color.White;
+            securitybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            securitybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
         }
+        
         private string GetAvailableConnection()
         {
             if (TestConnection(cloudConnectionString))
@@ -118,7 +143,7 @@ namespace FlavorFlowIT13
             }
         }
 
-        
+
         private void LoadAuditLogs()
         {
             using (SqlConnection conn = new SqlConnection(activeConnectionString))
@@ -146,6 +171,44 @@ namespace FlavorFlowIT13
             activeConnectionString = GetAvailableConnection();
             LoadAuditLogs();
             StyleUserGrid();
+        }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = systemsearchbar.Text.Trim();
+
+            if (string.IsNullOrEmpty(activeConnectionString)) return;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    string query = @"
+SELECT AuditID, Action, UserName, LogDate
+FROM AuditLogs
+WHERE 
+    Action LIKE @search
+    OR UserName LIKE @search
+ORDER BY LogDate DESC";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        auditlogsdatagrid.DataSource = dt;
+
+                        StyleUserGrid(); // Reapply custom DataGridView styling
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching audit logs: " + ex.Message);
+            }
+
         }
     }
 }

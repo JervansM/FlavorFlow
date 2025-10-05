@@ -192,6 +192,9 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             dgvUsers.EnableHeadersVisualStyles = false;
+            dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+
             dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             dgvUsers.DefaultCellStyle.BackColor = Color.White;
@@ -202,13 +205,17 @@ namespace FlavorFlowIT13
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.MultiSelect = false;
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvUsers.BorderStyle = BorderStyle.FixedSingle;
+            dgvUsers.BorderStyle = BorderStyle.None;
+            dgvUsers.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvUsers.GridColor = Color.White;
+            dgvUsers.ClearSelection();
             dgvUsers.GridColor = Color.LightGray;
             dgvUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
             dgvUsers.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
             dgvUsers.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvUsers.BackgroundColor = Color.WhiteSmoke;
         }
+
 
         private void ToggleLock(int userId, bool lockAccount)
         {
