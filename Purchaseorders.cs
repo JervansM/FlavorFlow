@@ -136,8 +136,12 @@ namespace FlavorFlowIT13
         private void createneworderbtn_Click(object sender, EventArgs e)
         {
             SupplierCreateOrder createorder = new SupplierCreateOrder();
+
+            createorder.OrderCreated += (s, args) =>
+            {
+                LoadPurchaseOrders(); 
+            };
             createorder.Show();
-            LoadPurchaseOrders();
         }
 
         private void viewpendingbtn_Click(object sender, EventArgs e)

@@ -96,7 +96,8 @@ namespace FlavorFlowIT13
         }
         private DataTable GetTableStatusesFromDB()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+
             string query = "SELECT TableName, Status FROM Tables";
 
             DataTable dt = new DataTable();

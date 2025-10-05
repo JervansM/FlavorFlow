@@ -13,6 +13,11 @@ namespace FlavorFlowIT13
 {
     public partial class MenuRecipeForm : Form
     {
+        private readonly string cloudConnectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+        private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+
+        private string activeConnectionString;
+
         private int? _editMenuInventoryId = null;
         private int? _editMenuId = null;
         private int? _editInventoryId = null;
@@ -20,6 +25,8 @@ namespace FlavorFlowIT13
         public MenuRecipeForm()
         {
             InitializeComponent();
+
+            activeConnectionString = GetAvailableConnection();
         }
 
         private void menunamelbl_Click(object sender, EventArgs e)
@@ -44,13 +51,48 @@ namespace FlavorFlowIT13
             LoadUnits();
             LoadAllRecipes();
 
+   
+
         }
+        private string GetAvailableConnection()
+        {
+            if (TestConnection(cloudConnectionString))
+            {
+                return cloudConnectionString;
+            }
+            else if (TestConnection(localConnectionString))
+            {
+                return localConnectionString;
+            }
+            else
+            {
+                MessageBox.Show("No available database connection.", "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private bool TestConnection(string connectionString)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false; // Connection failed
+            }
+        }
+
 
         private void LoadMenus()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(activeConnectionString))
             {
                 con.Open();
                 string query = "SELECT MenuID, Name FROM Menu ORDER BY Name;";
@@ -65,9 +107,8 @@ namespace FlavorFlowIT13
         }
         private void LoadInventoryItems()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(activeConnectionString))
             {
                 con.Open();
                 string query = "SELECT InventoryID, ItemName FROM Inventory ORDER BY ItemName;";
@@ -100,9 +141,8 @@ namespace FlavorFlowIT13
         }
         private void LoadAllRecipes()
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(activeConnectionString))
             {
                 con.Open();
                 string query = @"SELECT m.Name AS MenuName, i.ItemName, mi.QuantityUsed, mi.Unit, mi.CreatedAt
@@ -122,8 +162,7 @@ namespace FlavorFlowIT13
 
         private void LoadRecipe(int menuId)
         {
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            using (var conn = new SqlConnection(connectionString))
+            using (var conn = new SqlConnection(activeConnectionString))
             {
                 conn.Open();
                 string query = @"
@@ -175,8 +214,7 @@ namespace FlavorFlowIT13
             decimal qty = Convert.ToDecimal(quantitydata.Text);
             string unit = manageunitrecipetxt.Text;
 
-            string connectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            using (var conn = new SqlConnection(connectionString))
+            using (var conn = new SqlConnection(activeConnectionString))
             {
                 conn.Open();
                 if (_editMenuInventoryId.HasValue)

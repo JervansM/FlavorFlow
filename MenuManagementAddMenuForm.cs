@@ -21,9 +21,15 @@ namespace FlavorFlowIT13
         private int _editMenuID = -1;
 
         private int? _menuId;
+        private readonly string cloudConnectionString = "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
+        private readonly string localConnectionString = "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private string activeConnectionString;
+
         public MenuManagementAddMenuForm()
         {
             InitializeComponent();
+
+            activeConnectionString = GetAvailableConnection();
         }
 
         public MenuManagementAddMenuForm(int menuId) : this()
@@ -52,7 +58,7 @@ namespace FlavorFlowIT13
             {
                 string query = "SELECT * FROM Menu WHERE MenuID = @MenuID";
 
-                using (SqlConnection con = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                using (SqlConnection con = new SqlConnection(GetAvailableConnection()))
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@MenuID", _editMenuID);
@@ -91,31 +97,42 @@ namespace FlavorFlowIT13
                 }
             }
         }
-        public static class ConnectionHelper
-        {
-            private static string localConnection =
-                "Data Source=DESKTOP-45BU4B5;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+    
+            private string GetAvailableConnection()
+            {
+                if (TestConnection(cloudConnectionString))
+                {
+                    return cloudConnectionString;
+                }
+                else if (TestConnection(localConnectionString))
+                {
+                    return localConnectionString;
+                }
+                else
+                {
+                    MessageBox.Show("No available database connection.", "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
 
-            private static string cloudConnection =
-                "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
-
-            public static string GetConnectionString()
+            private bool TestConnection(string connectionString)
             {
                 try
                 {
-                    using (var con = new SqlConnection(cloudConnection))
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        con.Open();
-                        return cloudConnection;
+                        conn.Open();
+                        return true;
                     }
                 }
                 catch
                 {
-                    return localConnection;
+                    return false; // Connection failed
                 }
             }
-        }
-        private void RoundPanel(Panel pnl, int radius)
+        
+            private void RoundPanel(Panel pnl, int radius)
         {
             GraphicsPath path = new GraphicsPath();
             path.AddArc(0, 0, radius, radius, 180, 90);
@@ -226,7 +243,7 @@ namespace FlavorFlowIT13
 
             try
             {
-                using (SqlConnection con = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                using (SqlConnection con = new SqlConnection(GetAvailableConnection()))
                 {
                     con.Open();
                     SqlCommand cmd;

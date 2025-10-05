@@ -14,6 +14,8 @@ namespace FlavorFlowIT13
 {
     public partial class SupplierCreateOrder : Form
     {
+        public event EventHandler OrderCreated;
+
         private readonly string cloudConnectionString =
          "Server=db28059.public.databaseasp.net; Database=db28059; User Id=db28059; Password=12345678; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;";
 
@@ -288,6 +290,8 @@ namespace FlavorFlowIT13
 
                         MessageBox.Show("Purchase order saved and inventory updated!", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        OrderCreated?.Invoke(this, EventArgs.Empty);
 
                         // Reset fields
                         supplierquantitytxt.Text = "1";
