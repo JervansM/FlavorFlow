@@ -107,15 +107,18 @@ namespace FlavorFlowIT13
             using (SqlConnection conn = new SqlConnection(activeConnectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO AuditLogs (Action, UserName) VALUES (@Action, @UserName)";
+                string query = "INSERT INTO AuditLogs (Action, UserName, LogDate) VALUES (@Action, @UserName, @LogDate)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Action", action);
                     cmd.Parameters.AddWithValue("@UserName", userName);
+                    cmd.Parameters.AddWithValue("@LogDate", DateTime.Now); // Local machine time
                     cmd.ExecuteNonQuery();
                 }
             }
         }
+
+        
         private void LoadAuditLogs()
         {
             using (SqlConnection conn = new SqlConnection(activeConnectionString))

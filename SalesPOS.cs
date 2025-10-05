@@ -676,13 +676,11 @@ namespace FlavorFlowIT13
                     break;
             }
 
-            // Set axis range with padding to prevent edge overlap
-            double padding = (endDate.ToOADate() - startDate.ToOADate()) * 0.05; // 5% padding
+            double padding = (endDate.ToOADate() - startDate.ToOADate()) * 0.05; 
             chartArea.AxisX.Minimum = startDate.ToOADate() - padding;
             chartArea.AxisX.Maximum = endDate.ToOADate() + padding;
             chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
 
-            // Add extra margin for labels
             chartArea.AxisX.ScaleView.Zoomable = false;
             chartArea.AxisX.ScrollBar.IsPositionedInside = false;
         }

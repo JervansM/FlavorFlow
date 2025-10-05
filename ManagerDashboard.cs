@@ -19,6 +19,18 @@ namespace FlavorFlowIT13
         private void ManagerDashboard_Load(object sender, EventArgs e)
         {
             this.Text = "FlavorFlow - Manager Dashboard";
-        }   
+        }
+
+        private void ManagerDashboard_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
     }
 }

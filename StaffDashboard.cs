@@ -101,8 +101,15 @@ namespace FlavorFlowIT13
             RoundButton(sendtokitchenbtn, 19);
             RoundButton(printbillbtn, 19);
             RoundButton(okbtn, 19);
+            RoundButton(staffdashlogout, 19);
 
             //8E9A57//
+            staffdashlogout.FlatStyle = FlatStyle.Flat;
+            staffdashlogout.FlatAppearance.BorderSize = 0;
+            staffdashlogout.UseVisualStyleBackColor = false;
+            staffdashlogout.BackColor = ColorTranslator.FromHtml("Maroon");
+            staffdashlogout.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            staffdashlogout.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
             tablemapbtn.FlatStyle = FlatStyle.Flat;
             tablemapbtn.FlatAppearance.BorderSize = 0;

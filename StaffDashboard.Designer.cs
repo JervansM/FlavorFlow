@@ -202,6 +202,7 @@
             // menubtn
             // 
             menubtn.BackColor = Color.White;
+            menubtn.Cursor = Cursors.Hand;
             menubtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             menubtn.ForeColor = Color.White;
             menubtn.Location = new Point(844, 12);
@@ -921,11 +922,14 @@
             // 
             // staffdashlogout
             // 
-            staffdashlogout.Location = new Point(1788, 116);
+            staffdashlogout.Cursor = Cursors.Hand;
+            staffdashlogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            staffdashlogout.ForeColor = Color.White;
+            staffdashlogout.Location = new Point(1757, 91);
             staffdashlogout.Name = "staffdashlogout";
-            staffdashlogout.Size = new Size(75, 23);
+            staffdashlogout.Size = new Size(106, 48);
             staffdashlogout.TabIndex = 28;
-            staffdashlogout.Text = "Log out";
+            staffdashlogout.Text = "LOG OUT";
             staffdashlogout.UseVisualStyleBackColor = true;
             staffdashlogout.Click += staffdashlogout_Click;
             // 
@@ -934,7 +938,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
-            ClientSize = new Size(1701, 1061);
+            ClientSize = new Size(1924, 1061);
             Controls.Add(staffdashlogout);
             Controls.Add(panel17);
             Controls.Add(panelContent);
