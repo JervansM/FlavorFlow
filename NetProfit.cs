@@ -27,7 +27,7 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
             activeConnectionString = GetAvailableConnection();
-            
+
             // Set default values
             currentDate = DateTime.Today;
             currentReportType = "Daily";
@@ -82,7 +82,7 @@ namespace FlavorFlowIT13
             netProfitChart.ChartAreas.Clear();
             netProfitChart.Titles.Clear();
             netProfitChart.Legends.Clear();
-        
+
             // Smooth rendering
             netProfitChart.AntiAliasing = AntiAliasingStyles.All;
             netProfitChart.TextAntiAliasingQuality = TextAntiAliasingQuality.High;
@@ -93,7 +93,7 @@ namespace FlavorFlowIT13
                 BorderColor = ColorTranslator.FromHtml("#555555"),
                 BorderWidth = 1
             };
-            
+
             // Configure X-axis
             area.AxisX.Title = "Date";
             area.AxisX.TitleForeColor = Color.White;
@@ -106,7 +106,7 @@ namespace FlavorFlowIT13
             area.AxisX.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
             area.AxisX.MinorTickMark.Enabled = false;
             area.AxisX.LineColor = ColorTranslator.FromHtml("#666666");
-            
+
             // Configure Y-axis
             area.AxisY.Title = "Amount (₱)";
             area.AxisY.TitleForeColor = Color.White;
@@ -121,19 +121,19 @@ namespace FlavorFlowIT13
             area.AxisY.MajorTickMark.LineColor = ColorTranslator.FromHtml("#666666");
             area.AxisY.MinorTickMark.Enabled = false;
             area.AxisY.LineColor = ColorTranslator.FromHtml("#666666");
-            
+
             // Add padding for better appearance and prevent label overlap
             area.Position.X = 8;
             area.Position.Y = 12;
             area.Position.Width = 88;
             area.Position.Height = 80;
-            
+
             // Add margins to prevent label cutoff
             area.InnerPlotPosition.X = 10;
             area.InnerPlotPosition.Y = 2;
             area.InnerPlotPosition.Width = 85;
             area.InnerPlotPosition.Height = 90;
-            
+
             netProfitChart.ChartAreas.Add(area);
 
             Legend legend = new Legend("Legend")
@@ -224,14 +224,14 @@ namespace FlavorFlowIT13
             netProfitChart.Series.Add(profitSeries);
         }
         private DataTable GetSalesData(DateTime startDate, DateTime endDate, string reportType = "Daily")
-{
-    DataTable dt = new DataTable();
-    string sql;
+        {
+            DataTable dt = new DataTable();
+            string sql;
 
-    // Build query based on selected period granularity
-    if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
-    {
-        sql = @"
+            // Build query based on selected period granularity
+            if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
+            {
+                sql = @"
             SELECT 
                 CAST(DATEFROMPARTS(YEAR(Date), MONTH(Date), 1) AS DATE) AS SalesDate,
                 SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
@@ -239,10 +239,10 @@ namespace FlavorFlowIT13
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY DATEFROMPARTS(YEAR(Date), MONTH(Date), 1)
             ORDER BY SalesDate;";
-    }
-    else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
-    {
-        sql = @"
+            }
+            else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
+            {
+                sql = @"
             SELECT 
                 CAST(DATEFROMPARTS(YEAR(Date), 1, 1) AS DATE) AS SalesDate,
                 SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
@@ -250,47 +250,47 @@ namespace FlavorFlowIT13
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY DATEFROMPARTS(YEAR(Date), 1, 1)
             ORDER BY SalesDate;";
-    }
-    else
-    {
-        // Daily (default) and Weekly (still plot daily buckets in the selected week)
-        sql = @"
+            }
+            else
+            {
+                // Daily (default) and Weekly (still plot daily buckets in the selected week)
+                sql = @"
             SELECT CAST(Date AS DATE) AS SalesDate,
                    SUM(TotalAmount - ISNULL(DiscountAmount,0)) AS NetSales
             FROM dbo.Orders
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY CAST(Date AS DATE)
             ORDER BY SalesDate;";
-    }
+            }
 
-    try
-    {
-        using (SqlConnection conn = new SqlConnection(activeConnectionString))
-        using (SqlCommand cmd = new SqlCommand(sql, conn))
-        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-        {
-            cmd.Parameters.AddWithValue("@StartDate", startDate);
-            cmd.Parameters.AddWithValue("@EndDate", endDate);
-            da.Fill(dt);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading sales data: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
         }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error loading sales data: " + ex.Message, "Database Error",
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
+        private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string reportType = "Daily")
+        {
+            DataTable dt = new DataTable();
+            string sql;
 
-    return dt;
-}
-private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string reportType = "Daily")
-{
-    DataTable dt = new DataTable();
-    string sql;
-
-    // Build query based on selected period granularity
-    if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
-    {
-        sql = @"
+            // Build query based on selected period granularity
+            if (reportType.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
+            {
+                sql = @"
             SELECT 
                 CAST(DATEFROMPARTS(YEAR(Date), MONTH(Date), 1) AS DATE) AS ExpenseDate,
                 SUM(Amount) AS TotalExpense
@@ -298,10 +298,10 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY DATEFROMPARTS(YEAR(Date), MONTH(Date), 1)
             ORDER BY ExpenseDate;";
-    }
-    else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
-    {
-        sql = @"
+            }
+            else if (reportType.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
+            {
+                sql = @"
             SELECT 
                 CAST(DATEFROMPARTS(YEAR(Date), 1, 1) AS DATE) AS ExpenseDate,
                 SUM(Amount) AS TotalExpense
@@ -309,38 +309,38 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY DATEFROMPARTS(YEAR(Date), 1, 1)
             ORDER BY ExpenseDate;";
-    }
-    else
-    {
-        // Daily (default) and Weekly (still plot daily buckets in the selected week)
-        sql = @"
+            }
+            else
+            {
+                // Daily (default) and Weekly (still plot daily buckets in the selected week)
+                sql = @"
             SELECT CAST(Date AS DATE) AS ExpenseDate,
                    SUM(Amount) AS TotalExpense
             FROM dbo.Expenses
             WHERE Date >= @StartDate AND Date < @EndDate
             GROUP BY CAST(Date AS DATE)
             ORDER BY ExpenseDate;";
-    }
+            }
 
-    try
-    {
-        using (SqlConnection conn = new SqlConnection(activeConnectionString))
-        using (SqlCommand cmd = new SqlCommand(sql, conn))
-        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-        {
-            cmd.Parameters.AddWithValue("@StartDate", startDate);
-            cmd.Parameters.AddWithValue("@EndDate", endDate);
-            da.Fill(dt);
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading expenses data: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
         }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error loading expenses data: " + ex.Message, "Database Error",
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-
-    return dt;
-}
 
         private void LoadNetProfitData(string reportType, DateTime selectedDate)
         {
@@ -384,10 +384,10 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
                 // Add points to series
                 netProfitChart.Series["Sales"].Points.AddXY(date, sales);
                 netProfitChart.Series["Expenses"].Points.AddXY(date, expenses);
-                
+
                 // Add Net Profit point and get its index
                 int profitPointIndex = netProfitChart.Series["Net Profit"].Points.AddXY(date, netProfit);
-                
+
                 // Get the actual DataPoint object and set label color based on profit/loss
                 var profitPoint = netProfitChart.Series["Net Profit"].Points[profitPointIndex];
                 if (netProfit >= 0)
@@ -402,6 +402,7 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
 
             // Recalculate scale to fit data nicely
             chartArea.RecalculateAxesScale();
+            UpdateTotalNetProfit();
         }
 
         private void ConfigureNetProfitXAxis(ChartArea chartArea, string reportType, DateTime startDate, DateTime endDate)
@@ -476,7 +477,7 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             chartArea.AxisX.Minimum = startDate.ToOADate() - padding;
             chartArea.AxisX.Maximum = endDate.ToOADate() + padding;
             chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
-            
+
             // Add extra margin for labels
             chartArea.AxisX.ScaleView.Zoomable = false;
             chartArea.AxisX.ScrollBar.IsPositionedInside = false;
@@ -506,12 +507,14 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
         {
             currentReportType = expensesposreporttype.SelectedItem?.ToString() ?? "Daily";
             LoadNetProfitData(currentReportType, currentDate);
+            UpdateTotalNetProfit();
         }
 
         private void calendardatepicker_ValueChanged(object sender, EventArgs e)
         {
             currentDate = calendardatepicker.Value;
             LoadNetProfitData(currentReportType, currentDate);
+            UpdateTotalNetProfit();
         }
 
 
@@ -603,16 +606,16 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             RoundButton(netsalessumbtn, 20);
             RoundButton(expensereportsbtn, 20);
             RoundButton(netprofitsummarybtn, 20);
+            RoundPanel(totalnetprofitpanel, 25);
 
-            // Set default report type to Daily
+            // Default Daily
             if (expensesposreporttype.Items.Count == 0)
             {
                 expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
             }
-            expensesposreporttype.SelectedIndex = 0; // Set to Daily (first item)
+            expensesposreporttype.SelectedIndex = 0; 
             currentReportType = "Daily";
 
-            // Set date to today
             calendardatepicker.Value = DateTime.Today;
             currentDate = DateTime.Today;
 
@@ -620,6 +623,8 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             LoadNetProfitData(currentReportType, currentDate);
 
             financeexpensespanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            totalnetprofitpanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             netsalessumbtn.UseVisualStyleBackColor = false;
             netsalessumbtn.FlatStyle = FlatStyle.Flat;
@@ -644,6 +649,9 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
             netprofitsummarybtn.ForeColor = Color.White;
             netprofitsummarybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             netprofitsummarybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            UpdateTotalNetProfit();
+
         }
 
         private void expensereportsbtn_Click(object sender, EventArgs e)
@@ -670,5 +678,69 @@ private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string r
         {
 
         }
+
+        private void totalnetprofttxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void totalnetprofitpanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void UpdateTotalNetProfit()
+        {
+            DateTime start, end;
+            (start, end) = GetDateRange(currentDate, currentReportType);
+
+            decimal totalSales = 0;
+            decimal totalExpenses = 0;
+
+            string salesQuery = @"SELECT ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount,0)), 0)
+                          FROM dbo.Orders
+                          WHERE Date >= @StartDate AND Date < @EndDate
+                          AND Status='Completed' AND PaymentStatus='Paid'";
+
+            string expensesQuery = @"SELECT ISNULL(SUM(Amount), 0)
+                             FROM dbo.Expenses
+                             WHERE Date >= @StartDate AND Date < @EndDate";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    conn.Open();
+
+                    // Sales
+                    using (SqlCommand cmd = new SqlCommand(salesQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", start);
+                        cmd.Parameters.AddWithValue("@EndDate", end);
+                        totalSales = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+
+                    // Expenses
+                    using (SqlCommand cmd = new SqlCommand(expensesQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", start);
+                        cmd.Parameters.AddWithValue("@EndDate", end);
+                        totalExpenses = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+                }
+
+                decimal netProfit = totalSales - totalExpenses;
+
+                totalnetprofttxt.Text = $"₱{netProfit:N2}";
+                totalnetprofttxt.ForeColor = netProfit >= 0
+                    ? ColorTranslator.FromHtml("#27AE60") // PROFIT
+                    : ColorTranslator.FromHtml("#E74C3C"); // LOSS
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating net profit: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

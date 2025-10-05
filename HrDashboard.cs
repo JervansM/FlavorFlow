@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace FlavorFlowIT13
 {
@@ -18,12 +19,99 @@ namespace FlavorFlowIT13
         public HrDashboard()
         {
             InitializeComponent();
-           
+
         }
 
         private void HrDashboard_Load(object sender, EventArgs e)
         {
             LoadDashboardData();
+
+            hrdate.Text = DateTime.Now.ToString("d");
+            hrtime.Text = DateTime.Now.ToString("t");
+
+
+            RoundPanel(panelContent, 25);
+            RoundPanel(panel1, 25);
+            RoundButton(button9, 19);
+            RoundButton(EmployeeManagementbtn, 19);
+            RoundButton(hrpayrollbtn, 19);
+            RoundButton(hrattendaceshiftbtn, 19);
+            RoundButton(hrleavetimeoffbtn, 19);
+            RoundButton(hrcompliancepoliciesbtn, 19);
+            RoundButton(hrreportsanalyticsbtn, 19);
+            RoundButton(Logoutbtn, 19);
+
+            button9.UseVisualStyleBackColor = false;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.FlatAppearance.BorderSize = 0;
+            button9.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            button9.ForeColor = Color.White;
+            button9.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            button9.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            EmployeeManagementbtn.UseVisualStyleBackColor = false;
+            EmployeeManagementbtn.FlatStyle = FlatStyle.Flat;
+            EmployeeManagementbtn.FlatAppearance.BorderSize = 0;
+            EmployeeManagementbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            EmployeeManagementbtn.ForeColor = Color.White;
+            EmployeeManagementbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            EmployeeManagementbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrpayrollbtn.UseVisualStyleBackColor = false;
+            hrpayrollbtn.FlatStyle = FlatStyle.Flat;
+            hrpayrollbtn.FlatAppearance.BorderSize = 0;
+            hrpayrollbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrpayrollbtn.ForeColor = Color.White;
+            hrpayrollbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrpayrollbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrattendaceshiftbtn.UseVisualStyleBackColor = false;
+            hrattendaceshiftbtn.FlatStyle = FlatStyle.Flat;
+            hrattendaceshiftbtn.FlatAppearance.BorderSize = 0;
+            hrattendaceshiftbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrattendaceshiftbtn.ForeColor = Color.White;
+            hrattendaceshiftbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrattendaceshiftbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrleavetimeoffbtn.UseVisualStyleBackColor = false;
+            hrleavetimeoffbtn.FlatStyle = FlatStyle.Flat;
+            hrleavetimeoffbtn.FlatAppearance.BorderSize = 0;
+            hrleavetimeoffbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrleavetimeoffbtn.ForeColor = Color.White;
+            hrleavetimeoffbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrleavetimeoffbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrcompliancepoliciesbtn.UseVisualStyleBackColor = false;
+            hrcompliancepoliciesbtn.FlatStyle = FlatStyle.Flat;
+            hrcompliancepoliciesbtn.FlatAppearance.BorderSize = 0;
+            hrcompliancepoliciesbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrcompliancepoliciesbtn.ForeColor = Color.White;
+            hrcompliancepoliciesbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrcompliancepoliciesbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            hrreportsanalyticsbtn.UseVisualStyleBackColor = false;
+            hrreportsanalyticsbtn.FlatStyle = FlatStyle.Flat;
+            hrreportsanalyticsbtn.FlatAppearance.BorderSize = 0;
+            hrreportsanalyticsbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrreportsanalyticsbtn.ForeColor = Color.White;
+            hrreportsanalyticsbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hrreportsanalyticsbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            Logoutbtn.UseVisualStyleBackColor = false;
+            Logoutbtn.FlatStyle = FlatStyle.Flat;
+            Logoutbtn.FlatAppearance.BorderSize = 0;
+            Logoutbtn.BackColor = ColorTranslator.FromHtml("Coral");
+            Logoutbtn.ForeColor = Color.White;
+            Logoutbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Maroon");
+            Logoutbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Maroon");
+
+
+
+
+
+
+
+
         }
 
         private void LoadDashboardData()
@@ -32,6 +120,7 @@ namespace FlavorFlowIT13
             LoadLeaveContracts();
             LoadLeaveRequests();
             LoadAttendanceToday();
+
         }
 
         private void LoadDashboard()
@@ -43,6 +132,27 @@ namespace FlavorFlowIT13
 
             // Also refresh counts when dashboard is reloaded
             LoadDashboardData();
+        }
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
+        }
+
+        private void RoundPanel(Panel pnl, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            pnl.Region = new Region(path);
         }
 
         private void LoadContent(Form form)
@@ -186,6 +296,22 @@ namespace FlavorFlowIT13
 
         }
 
-      
+        private void hrrefresh_Click(object sender, EventArgs e)
+        {
+            RefreshUI();
+        }
+        private void RefreshIcon_Click(object sender, EventArgs e)
+        {
+            RefreshUI();
+        }
+        private void RefreshUI()
+        {
+
+            this.Hide();
+            HrDashboard newForm = new HrDashboard();
+            newForm.Show();
+            this.Close();
+
+        }
     }
 }

@@ -91,7 +91,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1544, 813);
             Controls.Add(hrreportsgeneratereportbtn);
             Controls.Add(systempanelcontents);
             Controls.Add(hrreportsanalyticsbtn);

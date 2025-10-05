@@ -36,5 +36,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void SalesReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

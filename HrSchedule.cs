@@ -19,6 +19,25 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+        private void LoadContent(Form form)
+        {
+            foreach (Control ctrl in panelContent.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panelContent.Controls.Clear();
+
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            // Add to panel
+            panelContent.Controls.Add(form);
+            form.Show();
+
+        }
 
         private void HrSchedule_Load(object sender, EventArgs e)
         {
@@ -51,23 +70,8 @@ namespace FlavorFlowIT13
 
                     // Use the DataGridView from the designer (NOT create a new one)
                     scheduleGrid.DataSource = dt;
-
-                    // Apply nice formatting
-                    scheduleGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    scheduleGrid.BackgroundColor = Color.FromArgb(45, 45, 48);
-                    scheduleGrid.ForeColor = Color.White;
-                    scheduleGrid.GridColor = Color.Gray;
-                    scheduleGrid.DefaultCellStyle.BackColor = Color.FromArgb(62, 62, 66);
-                    scheduleGrid.DefaultCellStyle.ForeColor = Color.White;
-                    scheduleGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 122, 204);
-                    scheduleGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 140, 105);
-                    scheduleGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-                    scheduleGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                    scheduleGrid.EnableHeadersVisualStyles = false;
-                    scheduleGrid.AllowUserToAddRows = false;
-                    scheduleGrid.ReadOnly = true;
-                    scheduleGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    scheduleGrid.RowHeadersVisible = false;
+                    
+                    StyleUserGrid();
                 }
             }
             catch (Exception ex)
@@ -76,18 +80,39 @@ namespace FlavorFlowIT13
             }
         }
 
+        private void StyleUserGrid()
+        {
+            scheduleGrid.EnableHeadersVisualStyles = false;
+            scheduleGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            scheduleGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            scheduleGrid.DefaultCellStyle.BackColor = Color.White;
+            scheduleGrid.DefaultCellStyle.ForeColor = Color.Black;
+            scheduleGrid.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+            scheduleGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            scheduleGrid.RowHeadersVisible = false;
+            scheduleGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            scheduleGrid.MultiSelect = false;
+            scheduleGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            scheduleGrid.BorderStyle = BorderStyle.FixedSingle;
+            scheduleGrid.GridColor = Color.LightGray;
+            scheduleGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            scheduleGrid.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            scheduleGrid.DefaultCellStyle.SelectionForeColor = Color.Black;
+            scheduleGrid.BackgroundColor = Color.WhiteSmoke;
+        }
+
+
+
         private void hrscheduleschedulebtn_Click(object sender, EventArgs e)
         {
             // Refresh schedule data
-            LoadSchedule();
+            LoadContent(new HrSchedule());
         }
 
         private void hrscheduledailyttendancebtn_Click(object sender, EventArgs e)
         {
             // Open HrAttendance form and hide current
-            HrAttendance attendanceForm = new HrAttendance();
-            attendanceForm.Show();
-            this.Hide();
+            LoadContent(new HrAttendance());
         }
 
         private void scheduleGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +141,11 @@ namespace FlavorFlowIT13
         }
 
         private void panelContent_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void systemsearchbar_TextChanged(object sender, EventArgs e)
         {
 
         }

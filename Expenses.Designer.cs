@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
+            totalexpensepanel = new Panel();
+            totalexpensetxt = new Label();
+            totalexpenselbl = new Label();
             expensesposreporttype = new ComboBox();
             calendardatepicker = new DateTimePicker();
             netprofitsummarybtn = new Button();
@@ -53,6 +56,7 @@
             financeexpensespanel = new Panel();
             expensesdata = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panelContent.SuspendLayout();
+            totalexpensepanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -67,6 +71,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(totalexpensepanel);
             panelContent.Controls.Add(expensesposreporttype);
             panelContent.Controls.Add(calendardatepicker);
             panelContent.Controls.Add(netprofitsummarybtn);
@@ -81,8 +86,44 @@
             panelContent.Controls.Add(financeexpensespanel);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1511, 997);
+            panelContent.Size = new Size(1479, 997);
             panelContent.TabIndex = 18;
+            // 
+            // totalexpensepanel
+            // 
+            totalexpensepanel.BackColor = Color.Black;
+            totalexpensepanel.Controls.Add(totalexpensetxt);
+            totalexpensepanel.Controls.Add(totalexpenselbl);
+            totalexpensepanel.Location = new Point(1223, 15);
+            totalexpensepanel.Name = "totalexpensepanel";
+            totalexpensepanel.Size = new Size(244, 158);
+            totalexpensepanel.TabIndex = 61;
+            totalexpensepanel.Paint += salespostotalsalespanel_Paint;
+            // 
+            // totalexpensetxt
+            // 
+            totalexpensetxt.AutoSize = true;
+            totalexpensetxt.BackColor = Color.Transparent;
+            totalexpensetxt.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            totalexpensetxt.ForeColor = Color.IndianRed;
+            totalexpensetxt.Location = new Point(32, 52);
+            totalexpensetxt.Name = "totalexpensetxt";
+            totalexpensetxt.Size = new Size(42, 46);
+            totalexpensetxt.TabIndex = 1;
+            totalexpensetxt.Text = "₱";
+            totalexpensetxt.Click += totalexpensetxt_Click;
+            // 
+            // totalexpenselbl
+            // 
+            totalexpenselbl.AutoSize = true;
+            totalexpenselbl.BackColor = Color.Transparent;
+            totalexpenselbl.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalexpenselbl.ForeColor = Color.White;
+            totalexpenselbl.Location = new Point(49, 22);
+            totalexpenselbl.Name = "totalexpenselbl";
+            totalexpenselbl.Size = new Size(165, 30);
+            totalexpenselbl.TabIndex = 0;
+            totalexpenselbl.Text = "Total Expense : ";
             // 
             // expensesposreporttype
             // 
@@ -160,7 +201,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(3036, 3007);
+            dashnetprofit.Location = new Point(3020, 3007);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -182,7 +223,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(3036, 1579);
+            dashinventoryusage.Location = new Point(3020, 1579);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -204,7 +245,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(3036, 206);
+            dashtotalexpense.Location = new Point(3020, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -226,7 +267,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3710, 3721);
+            panel4.Location = new Point(3694, 3721);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -248,7 +289,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3710, 1936);
+            panel5.Location = new Point(3694, 1936);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -270,7 +311,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3710, 206);
+            panel6.Location = new Point(3694, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -293,7 +334,7 @@
             financeexpensespanel.Controls.Add(expensesdata);
             financeexpensespanel.Location = new Point(12, 179);
             financeexpensespanel.Name = "financeexpensespanel";
-            financeexpensespanel.Size = new Size(1489, 776);
+            financeexpensespanel.Size = new Size(1455, 776);
             financeexpensespanel.TabIndex = 60;
             financeexpensespanel.Paint += financeexpensespanel_Paint;
             // 
@@ -303,23 +344,23 @@
             expensesdata.BackgroundImageLayout = ImageLayout.None;
             expensesdata.BackSecondaryColor = Color.Transparent;
             expensesdata.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            expensesdata.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            expensesdata.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            expensesdata.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            expensesdata.Legends.Add(legend2);
             expensesdata.Location = new Point(125, 59);
             expensesdata.Name = "expensesdata";
             expensesdata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Expenses Data";
-            expensesdata.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Expenses Data";
+            expensesdata.Series.Add(series2);
             expensesdata.Size = new Size(1239, 714);
             expensesdata.TabIndex = 1;
             expensesdata.Text = "Sales Trend";
-            title1.ForeColor = Color.White;
-            title1.Name = "Sales";
-            expensesdata.Titles.Add(title1);
+            title2.ForeColor = Color.White;
+            title2.Name = "Sales";
+            expensesdata.Titles.Add(title2);
             expensesdata.Click += expensesdata_Click;
             // 
             // Expenses
@@ -333,6 +374,8 @@
             Text = "Expenses";
             Load += Expenses_Load;
             panelContent.ResumeLayout(false);
+            totalexpensepanel.ResumeLayout(false);
+            totalexpensepanel.PerformLayout();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -372,5 +415,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart expensesdata;
         private DateTimePicker calendardatepicker;
         private ComboBox expensesposreporttype;
+        private Panel totalexpensepanel;
+        private Label totalexpensetxt;
+        private Label totalexpenselbl;
     }
 }

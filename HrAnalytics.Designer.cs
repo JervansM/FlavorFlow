@@ -63,7 +63,7 @@
             label9.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             label9.Location = new Point(67, 21);
             label9.Name = "label9";
-            label9.Size = new Size(355, 50);
+            label9.Size = new Size(357, 50);
             label9.TabIndex = 10;
             label9.Text = "Analytics\n📅 Monthly Summary (September 2025)";
             // 
@@ -107,7 +107,6 @@
             Controls.Add(hranalyticsreportbtn);
             Name = "HrAnalytics";
             Text = "HrAnalytics";
-            Load += HrAnalytics_Load;
             systempanelcontents.ResumeLayout(false);
             systempanelcontents.PerformLayout();
             ResumeLayout(false);

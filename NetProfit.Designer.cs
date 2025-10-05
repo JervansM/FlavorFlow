@@ -36,6 +36,9 @@
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetProfit));
             panelContent = new Panel();
+            totalnetprofitpanel = new Panel();
+            totalnetprofttxt = new Label();
+            totalnetprofitlbl = new Label();
             expensesposreporttype = new ComboBox();
             calendardatepicker = new DateTimePicker();
             netprofitsummarybtn = new Button();
@@ -56,6 +59,7 @@
             financeexpensespanel = new Panel();
             netprofitchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panelContent.SuspendLayout();
+            totalnetprofitpanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -70,6 +74,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(totalnetprofitpanel);
             panelContent.Controls.Add(expensesposreporttype);
             panelContent.Controls.Add(calendardatepicker);
             panelContent.Controls.Add(netprofitsummarybtn);
@@ -84,8 +89,44 @@
             panelContent.Controls.Add(financeexpensespanel);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1531, 997);
+            panelContent.Size = new Size(1479, 997);
             panelContent.TabIndex = 19;
+            // 
+            // totalnetprofitpanel
+            // 
+            totalnetprofitpanel.BackColor = Color.Black;
+            totalnetprofitpanel.Controls.Add(totalnetprofttxt);
+            totalnetprofitpanel.Controls.Add(totalnetprofitlbl);
+            totalnetprofitpanel.Location = new Point(1218, 6);
+            totalnetprofitpanel.Name = "totalnetprofitpanel";
+            totalnetprofitpanel.Size = new Size(244, 158);
+            totalnetprofitpanel.TabIndex = 62;
+            totalnetprofitpanel.Paint += totalnetprofitpanel_Paint;
+            // 
+            // totalnetprofttxt
+            // 
+            totalnetprofttxt.AutoSize = true;
+            totalnetprofttxt.BackColor = Color.Transparent;
+            totalnetprofttxt.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            totalnetprofttxt.ForeColor = Color.DeepSkyBlue;
+            totalnetprofttxt.Location = new Point(32, 52);
+            totalnetprofttxt.Name = "totalnetprofttxt";
+            totalnetprofttxt.Size = new Size(42, 46);
+            totalnetprofttxt.TabIndex = 1;
+            totalnetprofttxt.Text = "₱";
+            totalnetprofttxt.Click += totalnetprofttxt_Click;
+            // 
+            // totalnetprofitlbl
+            // 
+            totalnetprofitlbl.AutoSize = true;
+            totalnetprofitlbl.BackColor = Color.Transparent;
+            totalnetprofitlbl.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totalnetprofitlbl.ForeColor = Color.White;
+            totalnetprofitlbl.Location = new Point(49, 22);
+            totalnetprofitlbl.Name = "totalnetprofitlbl";
+            totalnetprofitlbl.Size = new Size(129, 30);
+            totalnetprofitlbl.TabIndex = 0;
+            totalnetprofitlbl.Text = "Net Profit : ";
             // 
             // expensesposreporttype
             // 
@@ -161,7 +202,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(3043, 3873);
+            dashnetprofit.Location = new Point(3017, 3873);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -183,7 +224,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(3043, 2012);
+            dashinventoryusage.Location = new Point(3017, 2012);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -205,7 +246,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(3043, 206);
+            dashtotalexpense.Location = new Point(3017, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -227,7 +268,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3717, 4370);
+            panel4.Location = new Point(3691, 4370);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -249,7 +290,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3717, 2260);
+            panel5.Location = new Point(3691, 2260);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -271,7 +312,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(3717, 206);
+            panel6.Location = new Point(3691, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -294,7 +335,7 @@
             financeexpensespanel.Controls.Add(netprofitchart);
             financeexpensespanel.Location = new Point(12, 170);
             financeexpensespanel.Name = "financeexpensespanel";
-            financeexpensespanel.Size = new Size(1486, 855);
+            financeexpensespanel.Size = new Size(1450, 855);
             financeexpensespanel.TabIndex = 60;
             financeexpensespanel.Paint += financeexpensespanel_Paint;
             // 
@@ -349,6 +390,8 @@
             Text = "NetProfit";
             Load += NetProfit_Load;
             panelContent.ResumeLayout(false);
+            totalnetprofitpanel.ResumeLayout(false);
+            totalnetprofitpanel.PerformLayout();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -388,5 +431,8 @@
         private Label label9;
         private Panel financeexpensespanel;
         private System.Windows.Forms.DataVisualization.Charting.Chart netprofitchart;
+        private Panel totalnetprofitpanel;
+        private Label totalnetprofttxt;
+        private Label totalnetprofitlbl;
     }
 }

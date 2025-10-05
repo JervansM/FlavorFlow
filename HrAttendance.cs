@@ -54,13 +54,7 @@ ORDER BY A.Date DESC;
                     dgvAttendance.DataSource = dt;
                 }
 
-                // ✅ Style DataGridView
-                dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvAttendance.DefaultCellStyle.ForeColor = Color.Black;
-                dgvAttendance.DefaultCellStyle.BackColor = Color.White;
-                dgvAttendance.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-                dgvAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                dgvAttendance.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                StyleUserGrid();
 
             }
             catch (Exception ex)
@@ -115,16 +109,22 @@ ORDER BY A.Date DESC;
         private void LoadContent(Form form)
         {
             foreach (Control ctrl in panelContent.Controls)
+            {
                 ctrl.Dispose();
+            }
 
             panelContent.Controls.Clear();
+
+            // Prepare the new form
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
+
+            // Add to panel
             panelContent.Controls.Add(form);
             form.Show();
-        }
 
+        }
 
 
 
@@ -154,7 +154,33 @@ ORDER BY A.Date DESC;
 
         }
 
-        private void HrAttendance_Load_1(object sender, EventArgs e)
+        private void StyleUserGrid()
+        {
+            dgvAttendance.EnableHeadersVisualStyles = false;
+            dgvAttendance.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvAttendance.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvAttendance.DefaultCellStyle.BackColor = Color.White;
+            dgvAttendance.DefaultCellStyle.ForeColor = Color.Black;
+            dgvAttendance.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+            dgvAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvAttendance.RowHeadersVisible = false;
+            dgvAttendance.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAttendance.MultiSelect = false;
+            dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAttendance.BorderStyle = BorderStyle.FixedSingle;
+            dgvAttendance.GridColor = Color.LightGray;
+            dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgvAttendance.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            dgvAttendance.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvAttendance.BackgroundColor = Color.WhiteSmoke;
+        }
+
+        private void hrattendanceadd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvAttendance_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

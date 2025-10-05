@@ -327,12 +327,14 @@ namespace FlavorFlowIT13
         {
             currentReportType = expensesposreporttype.SelectedItem?.ToString() ?? "Daily";
             LoadExpensesTrend(currentReportType, currentDate);
+            UpdateTotalExpense(sender, e);
         }
 
         private void calendardatepicker_ValueChanged(object sender, EventArgs e)
         {
             currentDate = calendardatepicker.Value;
             LoadExpensesTrend(currentReportType, currentDate);
+            UpdateTotalExpense(sender, e);
         }
 
 
@@ -409,6 +411,8 @@ namespace FlavorFlowIT13
             RoundButton(netprofitsummarybtn, 20);
             RoundPanel(panelContent, 25);
             RoundPanel(financeexpensespanel, 25);
+            RoundPanel(totalexpensepanel, 25);
+
 
             // Set default report type to Daily
             if (expensesposreporttype.Items.Count == 0)
@@ -426,7 +430,7 @@ namespace FlavorFlowIT13
             LoadExpensesTrend(currentReportType, currentDate);
 
             financeexpensespanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-
+            totalexpensepanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
 
             netsalessumbtn.UseVisualStyleBackColor = false;
             netsalessumbtn.FlatStyle = FlatStyle.Flat;
@@ -452,7 +456,7 @@ namespace FlavorFlowIT13
             netprofitsummarybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#6C6868");
             netprofitsummarybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
-
+            UpdateTotalExpense(this, EventArgs.Empty);
 
         }
 
@@ -478,5 +482,52 @@ namespace FlavorFlowIT13
         {
             LoadContent(new NetProfit());
         }
+
+        private void salespostotalsalespanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void totalexpensetxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateTotalExpense(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get the selected date range
+                DateTime start, end;
+                (start, end) = GetDateRange(currentDate, currentReportType);
+
+                decimal totalExpense = 0;
+
+                using (SqlConnection con = new SqlConnection(activeConnectionString))
+                {
+                    con.Open();
+                    string query = @"
+                SELECT ISNULL(SUM(Amount), 0) AS TotalExpense
+                FROM Expenses
+                WHERE Date >= @StartDate AND Date <= @EndDate";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", start);
+                        cmd.Parameters.AddWithValue("@EndDate", end);
+                        object result = cmd.ExecuteScalar();
+                        totalExpense = result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                    }
+                }
+
+                totalexpensetxt.Text = $"₱{totalExpense:N2}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating total expense: {ex.Message}",
+                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

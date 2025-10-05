@@ -39,29 +39,28 @@
             panel1.BackColor = Color.White;
             panel1.Controls.Add(dataovertimerecords);
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(12, 30);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(10, 22);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1398, 533);
+            panel1.Size = new Size(1223, 400);
             panel1.TabIndex = 52;
             // 
             // dataovertimerecords
             // 
             dataovertimerecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataovertimerecords.Location = new Point(0, 0);
+            dataovertimerecords.Margin = new Padding(3, 2, 3, 2);
             dataovertimerecords.Name = "dataovertimerecords";
             dataovertimerecords.RowHeadersWidth = 51;
-            dataovertimerecords.Size = new Size(1395, 533);
+            dataovertimerecords.Size = new Size(1221, 400);
             dataovertimerecords.TabIndex = 0;
             // 
             // HrOvertimeRecords
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(1419, 769);
+            ClientSize = new Size(1544, 813);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "HrOvertimeRecords";
             Text = "HrOvertimeRecords";
             Load += HrOvertimeRecords_Load;

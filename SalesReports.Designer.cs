@@ -369,6 +369,7 @@
             Controls.Add(panelContent);
             Name = "SalesReports";
             Text = "SalesReports";
+            Load += SalesReports_Load;
             panelContent.ResumeLayout(false);
             systemsearchbarpanel.ResumeLayout(false);
             systemsearchbarpanel.PerformLayout();

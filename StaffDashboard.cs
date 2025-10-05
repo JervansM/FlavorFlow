@@ -999,19 +999,42 @@ namespace FlavorFlowIT13
                 cmd.ExecuteNonQuery();
             }
         }
-        private void DeductInventory(SqlConnection con, int inventoryId, int qtyToDeduct)
+        private void DeductInventory(SqlConnection con, int inventoryId, int qtyToDeduct, int? relatedOrderId = null)
         {
-            string updateQuery = @"UPDATE Inventory
-                           SET Quantity = Quantity - @QtyToDeduct
-                           WHERE InventoryID = @InventoryID";
+            // 1️⃣ Deduct quantity from Inventory
+            string updateQuery = @"
+        UPDATE Inventory
+        SET Quantity = Quantity - @QtyToDeduct
+        WHERE InventoryID = @InventoryID";
 
-            using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+            using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
             {
-                cmd.Parameters.AddWithValue("@QtyToDeduct", qtyToDeduct);
-                cmd.Parameters.AddWithValue("@InventoryID", inventoryId);
-                cmd.ExecuteNonQuery();
+                updateCmd.Parameters.AddWithValue("@QtyToDeduct", qtyToDeduct);
+                updateCmd.Parameters.AddWithValue("@InventoryID", inventoryId);
+                updateCmd.ExecuteNonQuery();
+            }
+
+            // 2️⃣ Insert record into InventoryUsage for tracking
+            string insertUsageQuery = @"
+        INSERT INTO InventoryUsage (InventoryID, QtyUsed, Date, RelatedOrderID)
+        VALUES (@InventoryID, @QtyUsed, @Date, @RelatedOrderID)";
+
+            using (SqlCommand insertCmd = new SqlCommand(insertUsageQuery, con))
+            {
+                insertCmd.Parameters.AddWithValue("@InventoryID", inventoryId);
+                insertCmd.Parameters.AddWithValue("@QtyUsed", qtyToDeduct);
+                insertCmd.Parameters.AddWithValue("@Date", DateTime.Now);
+
+                // Allow NULL for RelatedOrderID if no order is linked
+                if (relatedOrderId.HasValue)
+                    insertCmd.Parameters.AddWithValue("@RelatedOrderID", relatedOrderId.Value);
+                else
+                    insertCmd.Parameters.AddWithValue("@RelatedOrderID", DBNull.Value);
+
+                insertCmd.ExecuteNonQuery();
             }
         }
+
 
         private void PlaceOrder(int orderId, int menuId, int qty)
         {

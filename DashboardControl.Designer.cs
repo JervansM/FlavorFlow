@@ -76,7 +76,7 @@
             panelContent.Location = new Point(3, 4);
             panelContent.Margin = new Padding(3, 4, 3, 4);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1510, 1261);
+            panelContent.Size = new Size(1560, 852);
             panelContent.TabIndex = 15;
             panelContent.Paint += panelContent_Paint;
             // 
@@ -103,24 +103,28 @@
             dashnotif.Location = new Point(16, 615);
             dashnotif.Margin = new Padding(3, 4, 3, 4);
             dashnotif.Name = "dashnotif";
-            dashnotif.Size = new Size(1476, 500);
+            dashnotif.Size = new Size(1476, 218);
             dashnotif.TabIndex = 2;
             // 
             // hrdashboardexpiriestxt
             // 
+            hrdashboardexpiriestxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardexpiriestxt.Location = new Point(288, 113);
             hrdashboardexpiriestxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardexpiriestxt.Multiline = true;
             hrdashboardexpiriestxt.Name = "hrdashboardexpiriestxt";
+            hrdashboardexpiriestxt.ReadOnly = true;
             hrdashboardexpiriestxt.Size = new Size(195, 57);
             hrdashboardexpiriestxt.TabIndex = 6;
             // 
             // hrdashboardbirthdaystxt
             // 
+            hrdashboardbirthdaystxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardbirthdaystxt.Location = new Point(288, 20);
             hrdashboardbirthdaystxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardbirthdaystxt.Multiline = true;
             hrdashboardbirthdaystxt.Name = "hrdashboardbirthdaystxt";
+            hrdashboardbirthdaystxt.ReadOnly = true;
             hrdashboardbirthdaystxt.Size = new Size(195, 57);
             hrdashboardbirthdaystxt.TabIndex = 5;
             // 
@@ -161,10 +165,12 @@
             // 
             // hrdashboardattendancetodaytxt
             // 
+            hrdashboardattendancetodaytxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardattendancetodaytxt.Location = new Point(62, 64);
             hrdashboardattendancetodaytxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardattendancetodaytxt.Multiline = true;
             hrdashboardattendancetodaytxt.Name = "hrdashboardattendancetodaytxt";
+            hrdashboardattendancetodaytxt.ReadOnly = true;
             hrdashboardattendancetodaytxt.Size = new Size(198, 68);
             hrdashboardattendancetodaytxt.TabIndex = 4;
             hrdashboardattendancetodaytxt.TextChanged += hrdashboardattendancetodaytxt_TextChanged;
@@ -194,10 +200,12 @@
             // 
             // hrdashboardleaverequeststxt
             // 
+            hrdashboardleaverequeststxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardleaverequeststxt.Location = new Point(62, 80);
             hrdashboardleaverequeststxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardleaverequeststxt.Multiline = true;
             hrdashboardleaverequeststxt.Name = "hrdashboardleaverequeststxt";
+            hrdashboardleaverequeststxt.ReadOnly = true;
             hrdashboardleaverequeststxt.Size = new Size(198, 68);
             hrdashboardleaverequeststxt.TabIndex = 3;
             // 
@@ -230,7 +238,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2500, 2884);
+            dashnetprofit.Location = new Point(2525, 2475);
             dashnetprofit.Margin = new Padding(3, 4, 3, 4);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(535, 232);
@@ -253,7 +261,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2500, 1537);
+            dashinventoryusage.Location = new Point(2525, 1333);
             dashinventoryusage.Margin = new Padding(3, 4, 3, 4);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(535, 311);
@@ -276,7 +284,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(2500, 275);
+            dashtotalexpense.Location = new Point(2525, 275);
             dashtotalexpense.Margin = new Padding(3, 4, 3, 4);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(535, 227);
@@ -321,10 +329,12 @@
             // 
             // hrdashboardleavecontractstxt
             // 
+            hrdashboardleavecontractstxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardleavecontractstxt.Location = new Point(243, 111);
             hrdashboardleavecontractstxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardleavecontractstxt.Multiline = true;
             hrdashboardleavecontractstxt.Name = "hrdashboardleavecontractstxt";
+            hrdashboardleavecontractstxt.ReadOnly = true;
             hrdashboardleavecontractstxt.Size = new Size(219, 62);
             hrdashboardleavecontractstxt.TabIndex = 4;
             hrdashboardleavecontractstxt.TextChanged += hrdashboardleavecontractstxt_TextChanged;
@@ -391,10 +401,12 @@
             // 
             // hrdashboardemployeeheadcounttxt
             // 
+            hrdashboardemployeeheadcounttxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
             hrdashboardemployeeheadcounttxt.Location = new Point(45, 107);
             hrdashboardemployeeheadcounttxt.Margin = new Padding(3, 4, 3, 4);
             hrdashboardemployeeheadcounttxt.Multiline = true;
             hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
+            hrdashboardemployeeheadcounttxt.ReadOnly = true;
             hrdashboardemployeeheadcounttxt.Size = new Size(219, 62);
             hrdashboardemployeeheadcounttxt.TabIndex = 1;
             hrdashboardemployeeheadcounttxt.TextChanged += hrdashboardemployeeheadcounttxt_TextChanged;

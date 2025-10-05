@@ -80,7 +80,7 @@
             panelContent.Controls.Add(hrleaveleaverequestbtn);
             panelContent.Location = new Point(-84, -136);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1538, 1021);
+            panelContent.Size = new Size(1560, 1026);
             panelContent.TabIndex = 4;
             // 
             // panel1

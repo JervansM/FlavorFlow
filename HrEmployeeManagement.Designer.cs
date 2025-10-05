@@ -72,10 +72,9 @@
             panelContent.Controls.Add(panel4);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel6);
-            panelContent.Location = new Point(-102, -42);
-            panelContent.Margin = new Padding(3, 4, 3, 4);
+            panelContent.Location = new Point(-89, -32);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1596, 1028);
+            panelContent.Size = new Size(1560, 852);
             panelContent.TabIndex = 20;
             panelContent.Paint += panelContent_Paint;
             // 
@@ -83,10 +82,9 @@
             // 
             systempanelcontents.BackColor = Color.White;
             systempanelcontents.Controls.Add(dataGridViewEmployees);
-            systempanelcontents.Location = new Point(114, 219);
-            systempanelcontents.Margin = new Padding(3, 4, 3, 4);
+            systempanelcontents.Location = new Point(100, 164);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1467, 665);
+            systempanelcontents.Size = new Size(1284, 499);
             systempanelcontents.TabIndex = 24;
             systempanelcontents.Paint += systempanelcontents_Paint;
             // 
@@ -94,9 +92,10 @@
             // 
             dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEmployees.Location = new Point(0, -1);
+            dataGridViewEmployees.Margin = new Padding(3, 2, 3, 2);
             dataGridViewEmployees.Name = "dataGridViewEmployees";
             dataGridViewEmployees.RowHeadersWidth = 51;
-            dataGridViewEmployees.Size = new Size(1467, 667);
+            dataGridViewEmployees.Size = new Size(1284, 500);
             dataGridViewEmployees.TabIndex = 0;
             dataGridViewEmployees.CellContentClick += dataGridViewEmployees_CellContentClick;
             // 
@@ -105,10 +104,9 @@
             systemsettingsuseraddicon.BackColor = Color.Black;
             systemsettingsuseraddicon.Cursor = Cursors.Hand;
             systemsettingsuseraddicon.Image = Properties.Resources.plusicon;
-            systemsettingsuseraddicon.Location = new Point(118, 134);
-            systemsettingsuseraddicon.Margin = new Padding(3, 4, 3, 4);
+            systemsettingsuseraddicon.Location = new Point(103, 103);
             systemsettingsuseraddicon.Name = "systemsettingsuseraddicon";
-            systemsettingsuseraddicon.Size = new Size(65, 77);
+            systemsettingsuseraddicon.Size = new Size(57, 50);
             systemsettingsuseraddicon.SizeMode = PictureBoxSizeMode.Zoom;
             systemsettingsuseraddicon.TabIndex = 0;
             systemsettingsuseraddicon.TabStop = false;
@@ -120,12 +118,11 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(118, 55);
-            systemsearchbar.Margin = new Padding(3, 4, 3, 4);
+            systemsearchbar.Location = new Point(100, 53);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(1478, 55);
+            systemsearchbar.Size = new Size(1293, 41);
             systemsearchbar.TabIndex = 22;
             systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
@@ -137,10 +134,9 @@
             hremployeemanagementaddemployeebtn.FlatStyle = FlatStyle.Flat;
             hremployeemanagementaddemployeebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hremployeemanagementaddemployeebtn.ForeColor = Color.White;
-            hremployeemanagementaddemployeebtn.Location = new Point(118, 134);
-            hremployeemanagementaddemployeebtn.Margin = new Padding(3, 4, 3, 4);
+            hremployeemanagementaddemployeebtn.Location = new Point(100, 100);
             hremployeemanagementaddemployeebtn.Name = "hremployeemanagementaddemployeebtn";
-            hremployeemanagementaddemployeebtn.Size = new Size(346, 77);
+            hremployeemanagementaddemployeebtn.Size = new Size(306, 58);
             hremployeemanagementaddemployeebtn.TabIndex = 29;
             hremployeemanagementaddemployeebtn.Text = "Add Employee";
             hremployeemanagementaddemployeebtn.UseVisualStyleBackColor = false;
@@ -151,10 +147,9 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(4968, 5558);
-            dashnetprofit.Margin = new Padding(3, 4, 3, 4);
+            dashnetprofit.Location = new Point(4429, 4249);
             dashnetprofit.Name = "dashnetprofit";
-            dashnetprofit.Size = new Size(535, 225);
+            dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
             // 
             // dashnetprofittxt
@@ -163,9 +158,9 @@
             dashnetprofittxt.BackColor = Color.Transparent;
             dashnetprofittxt.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashnetprofittxt.ForeColor = Color.White;
-            dashnetprofittxt.Location = new Point(32, 0);
+            dashnetprofittxt.Location = new Point(28, 0);
             dashnetprofittxt.Name = "dashnetprofittxt";
-            dashnetprofittxt.Size = new Size(403, 54);
+            dashnetprofittxt.Size = new Size(321, 45);
             dashnetprofittxt.TabIndex = 5;
             dashnetprofittxt.Text = "Net Profit Summary";
             // 
@@ -174,10 +169,9 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(4968, 2881);
-            dashinventoryusage.Margin = new Padding(3, 4, 3, 4);
+            dashinventoryusage.Location = new Point(4429, 2202);
             dashinventoryusage.Name = "dashinventoryusage";
-            dashinventoryusage.Size = new Size(535, 301);
+            dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
             // 
             // label2
@@ -186,9 +180,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(32, 0);
+            label2.Location = new Point(28, 0);
             label2.Name = "label2";
-            label2.Size = new Size(335, 54);
+            label2.Size = new Size(265, 45);
             label2.TabIndex = 4;
             label2.Text = "Inventory Usage";
             // 
@@ -197,10 +191,9 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(4968, 275);
-            dashtotalexpense.Margin = new Padding(3, 4, 3, 4);
+            dashtotalexpense.Location = new Point(4429, 206);
             dashtotalexpense.Name = "dashtotalexpense";
-            dashtotalexpense.Size = new Size(535, 227);
+            dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
             // 
             // dashtotalexptxt
@@ -209,9 +202,9 @@
             dashtotalexptxt.BackColor = Color.Transparent;
             dashtotalexptxt.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             dashtotalexptxt.ForeColor = Color.White;
-            dashtotalexptxt.Location = new Point(32, 0);
+            dashtotalexptxt.Location = new Point(28, 0);
             dashtotalexptxt.Name = "dashtotalexptxt";
-            dashtotalexptxt.Size = new Size(280, 54);
+            dashtotalexptxt.Size = new Size(225, 45);
             dashtotalexptxt.TabIndex = 3;
             dashtotalexptxt.Text = "Total Expense";
             // 
@@ -220,10 +213,9 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(5738, 6510);
-            panel4.Margin = new Padding(3, 4, 3, 4);
+            panel4.Location = new Point(5103, 4963);
             panel4.Name = "panel4";
-            panel4.Size = new Size(535, 225);
+            panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
             // 
             // label7
@@ -232,9 +224,9 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(32, 0);
+            label7.Location = new Point(28, 0);
             label7.Name = "label7";
-            label7.Size = new Size(403, 54);
+            label7.Size = new Size(321, 45);
             label7.TabIndex = 5;
             label7.Text = "Net Profit Summary";
             // 
@@ -243,10 +235,9 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(5738, 3357);
-            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Location = new Point(5103, 2559);
             panel5.Name = "panel5";
-            panel5.Size = new Size(535, 301);
+            panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
             // 
             // label8
@@ -255,9 +246,9 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(32, 0);
+            label8.Location = new Point(28, 0);
             label8.Name = "label8";
-            label8.Size = new Size(335, 54);
+            label8.Size = new Size(265, 45);
             label8.TabIndex = 4;
             label8.Text = "Inventory Usage";
             // 
@@ -266,10 +257,9 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(5738, 275);
-            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Location = new Point(5103, 206);
             panel6.Name = "panel6";
-            panel6.Size = new Size(535, 227);
+            panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
             // 
             // label9
@@ -278,19 +268,18 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(32, 0);
+            label9.Location = new Point(28, 0);
             label9.Name = "label9";
-            label9.Size = new Size(280, 54);
+            label9.Size = new Size(225, 45);
             label9.TabIndex = 3;
             label9.Text = "Total Expense";
             // 
             // HrEmployeeManagement
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1506, 855);
+            ClientSize = new Size(1318, 641);
             Controls.Add(panelContent);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "HrEmployeeManagement";
             Text = "HrEmployeeManagement";
             Load += HrEmployeeManagement_Load;
