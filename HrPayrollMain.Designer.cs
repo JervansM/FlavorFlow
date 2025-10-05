@@ -75,10 +75,10 @@
             systempanelcontents.Controls.Add(label2);
             systempanelcontents.Controls.Add(label1);
             systempanelcontents.Controls.Add(label4);
-            systempanelcontents.Location = new Point(14, 172);
+            systempanelcontents.Location = new Point(26, 159);
             systempanelcontents.Margin = new Padding(3, 4, 3, 4);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1654, 697);
+            systempanelcontents.Size = new Size(1375, 675);
             systempanelcontents.TabIndex = 77;
             systempanelcontents.Paint += systempanelcontents_Paint;
             // 
@@ -270,10 +270,10 @@
             hrpayrollmaingeneratepayrollpsbtn.FlatStyle = FlatStyle.Flat;
             hrpayrollmaingeneratepayrollpsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollmaingeneratepayrollpsbtn.ForeColor = Color.White;
-            hrpayrollmaingeneratepayrollpsbtn.Location = new Point(374, 39);
+            hrpayrollmaingeneratepayrollpsbtn.Location = new Point(341, 39);
             hrpayrollmaingeneratepayrollpsbtn.Margin = new Padding(3, 4, 3, 4);
             hrpayrollmaingeneratepayrollpsbtn.Name = "hrpayrollmaingeneratepayrollpsbtn";
-            hrpayrollmaingeneratepayrollpsbtn.Size = new Size(353, 77);
+            hrpayrollmaingeneratepayrollpsbtn.Size = new Size(325, 77);
             hrpayrollmaingeneratepayrollpsbtn.TabIndex = 76;
             hrpayrollmaingeneratepayrollpsbtn.Text = "Generate Payroll";
             hrpayrollmaingeneratepayrollpsbtn.UseVisualStyleBackColor = false;
@@ -287,10 +287,10 @@
             hrpayrollmainpayrollperiodsbtn.FlatStyle = FlatStyle.Flat;
             hrpayrollmainpayrollperiodsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollmainpayrollperiodsbtn.ForeColor = Color.White;
-            hrpayrollmainpayrollperiodsbtn.Location = new Point(14, 39);
+            hrpayrollmainpayrollperiodsbtn.Location = new Point(12, 39);
             hrpayrollmainpayrollperiodsbtn.Margin = new Padding(3, 4, 3, 4);
             hrpayrollmainpayrollperiodsbtn.Name = "hrpayrollmainpayrollperiodsbtn";
-            hrpayrollmainpayrollperiodsbtn.Size = new Size(353, 77);
+            hrpayrollmainpayrollperiodsbtn.Size = new Size(323, 77);
             hrpayrollmainpayrollperiodsbtn.TabIndex = 75;
             hrpayrollmainpayrollperiodsbtn.Text = "Payroll Periods";
             hrpayrollmainpayrollperiodsbtn.UseVisualStyleBackColor = false;
@@ -304,10 +304,10 @@
             hrpayrollmainallowanceanddeductionsbtn.FlatStyle = FlatStyle.Flat;
             hrpayrollmainallowanceanddeductionsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollmainallowanceanddeductionsbtn.ForeColor = Color.White;
-            hrpayrollmainallowanceanddeductionsbtn.Location = new Point(734, 39);
+            hrpayrollmainallowanceanddeductionsbtn.Location = new Point(672, 39);
             hrpayrollmainallowanceanddeductionsbtn.Margin = new Padding(3, 4, 3, 4);
             hrpayrollmainallowanceanddeductionsbtn.Name = "hrpayrollmainallowanceanddeductionsbtn";
-            hrpayrollmainallowanceanddeductionsbtn.Size = new Size(407, 77);
+            hrpayrollmainallowanceanddeductionsbtn.Size = new Size(401, 77);
             hrpayrollmainallowanceanddeductionsbtn.TabIndex = 78;
             hrpayrollmainallowanceanddeductionsbtn.Text = "Allowance and Deductions";
             hrpayrollmainallowanceanddeductionsbtn.UseVisualStyleBackColor = false;
@@ -321,10 +321,10 @@
             hrpayrollmainovertimesrecordsbtn.FlatStyle = FlatStyle.Flat;
             hrpayrollmainovertimesrecordsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrpayrollmainovertimesrecordsbtn.ForeColor = Color.White;
-            hrpayrollmainovertimesrecordsbtn.Location = new Point(1147, 39);
+            hrpayrollmainovertimesrecordsbtn.Location = new Point(1090, 39);
             hrpayrollmainovertimesrecordsbtn.Margin = new Padding(3, 4, 3, 4);
             hrpayrollmainovertimesrecordsbtn.Name = "hrpayrollmainovertimesrecordsbtn";
-            hrpayrollmainovertimesrecordsbtn.Size = new Size(353, 77);
+            hrpayrollmainovertimesrecordsbtn.Size = new Size(311, 77);
             hrpayrollmainovertimesrecordsbtn.TabIndex = 79;
             hrpayrollmainovertimesrecordsbtn.Text = "Overtime Records";
             hrpayrollmainovertimesrecordsbtn.UseVisualStyleBackColor = false;
@@ -334,6 +334,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(1566, 999);
             Controls.Add(hrpayrollmainovertimesrecordsbtn);
             Controls.Add(hrpayrollmainallowanceanddeductionsbtn);

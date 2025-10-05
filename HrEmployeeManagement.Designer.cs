@@ -30,16 +30,9 @@
         {
             panelContent = new Panel();
             systempanelcontents = new Panel();
+            dataGridViewEmployees = new DataGridView();
             systemsettingsuseraddicon = new PictureBox();
             systemsearchbar = new TextBox();
-            label6 = new Label();
-            panel1 = new Panel();
-            systempanelheadercoral = new Panel();
-            label10 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label1 = new Label();
-            label3 = new Label();
             hremployeemanagementaddemployeebtn = new Button();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
@@ -54,8 +47,9 @@
             panel6 = new Panel();
             label9 = new Label();
             panelContent.SuspendLayout();
+            systempanelcontents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).BeginInit();
             ((System.ComponentModel.ISupportInitialize)systemsettingsuseraddicon).BeginInit();
-            systempanelheadercoral.SuspendLayout();
             dashnetprofit.SuspendLayout();
             dashinventoryusage.SuspendLayout();
             dashtotalexpense.SuspendLayout();
@@ -71,9 +65,6 @@
             panelContent.Controls.Add(systempanelcontents);
             panelContent.Controls.Add(systemsettingsuseraddicon);
             panelContent.Controls.Add(systemsearchbar);
-            panelContent.Controls.Add(label6);
-            panelContent.Controls.Add(panel1);
-            panelContent.Controls.Add(systempanelheadercoral);
             panelContent.Controls.Add(hremployeemanagementaddemployeebtn);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
@@ -91,24 +82,37 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(114, 301);
+            systempanelcontents.Controls.Add(dataGridViewEmployees);
+            systempanelcontents.Location = new Point(114, 219);
             systempanelcontents.Margin = new Padding(3, 4, 3, 4);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1467, 303);
+            systempanelcontents.Size = new Size(1467, 665);
             systempanelcontents.TabIndex = 24;
             systempanelcontents.Paint += systempanelcontents_Paint;
             // 
+            // dataGridViewEmployees
+            // 
+            dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEmployees.Location = new Point(0, -1);
+            dataGridViewEmployees.Name = "dataGridViewEmployees";
+            dataGridViewEmployees.RowHeadersWidth = 51;
+            dataGridViewEmployees.Size = new Size(1467, 667);
+            dataGridViewEmployees.TabIndex = 0;
+            dataGridViewEmployees.CellContentClick += dataGridViewEmployees_CellContentClick;
+            // 
             // systemsettingsuseraddicon
             // 
+            systemsettingsuseraddicon.BackColor = Color.Black;
             systemsettingsuseraddicon.Cursor = Cursors.Hand;
             systemsettingsuseraddicon.Image = Properties.Resources.plusicon;
-            systemsettingsuseraddicon.Location = new Point(127, 157);
+            systemsettingsuseraddicon.Location = new Point(118, 134);
             systemsettingsuseraddicon.Margin = new Padding(3, 4, 3, 4);
             systemsettingsuseraddicon.Name = "systemsettingsuseraddicon";
-            systemsettingsuseraddicon.Size = new Size(48, 33);
+            systemsettingsuseraddicon.Size = new Size(65, 77);
             systemsettingsuseraddicon.SizeMode = PictureBoxSizeMode.Zoom;
             systemsettingsuseraddicon.TabIndex = 0;
             systemsettingsuseraddicon.TabStop = false;
+            systemsettingsuseraddicon.Click += systemsettingsuseraddicon_Click;
             // 
             // systemsearchbar
             // 
@@ -125,92 +129,6 @@
             systemsearchbar.TabIndex = 22;
             systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(110, 653);
-            label6.Name = "label6";
-            label6.Size = new Size(612, 50);
-            label6.TabIndex = 38;
-            label6.Text = "Employee Profile (when  clicked): ";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Snow;
-            panel1.Location = new Point(114, 718);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1479, 178);
-            panel1.TabIndex = 31;
-            // 
-            // systempanelheadercoral
-            // 
-            systempanelheadercoral.BackColor = Color.Coral;
-            systempanelheadercoral.Controls.Add(label10);
-            systempanelheadercoral.Controls.Add(label5);
-            systempanelheadercoral.Controls.Add(label4);
-            systempanelheadercoral.Controls.Add(label1);
-            systempanelheadercoral.Controls.Add(label3);
-            systempanelheadercoral.Location = new Point(114, 234);
-            systempanelheadercoral.Margin = new Padding(3, 4, 3, 4);
-            systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1467, 68);
-            systempanelheadercoral.TabIndex = 25;
-            systempanelheadercoral.TabStop = true;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(1312, 13);
-            label10.Name = "label10";
-            label10.Size = new Size(136, 50);
-            label10.TabIndex = 38;
-            label10.Text = "Action";
-            label10.Click += label10_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(1105, 13);
-            label5.Name = "label5";
-            label5.Size = new Size(128, 50);
-            label5.TabIndex = 37;
-            label5.Text = "Status";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(767, 13);
-            label4.Name = "label4";
-            label4.Size = new Size(99, 50);
-            label4.TabIndex = 36;
-            label4.Text = "Role";
-            label4.Click += label4_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(55, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 50);
-            label1.TabIndex = 34;
-            label1.Text = "ID";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(395, 13);
-            label3.Name = "label3";
-            label3.Size = new Size(125, 50);
-            label3.TabIndex = 35;
-            label3.Text = "Name";
-            // 
             // hremployeemanagementaddemployeebtn
             // 
             hremployeemanagementaddemployeebtn.BackColor = Color.Black;
@@ -222,7 +140,7 @@
             hremployeemanagementaddemployeebtn.Location = new Point(118, 134);
             hremployeemanagementaddemployeebtn.Margin = new Padding(3, 4, 3, 4);
             hremployeemanagementaddemployeebtn.Name = "hremployeemanagementaddemployeebtn";
-            hremployeemanagementaddemployeebtn.Size = new Size(353, 77);
+            hremployeemanagementaddemployeebtn.Size = new Size(346, 77);
             hremployeemanagementaddemployeebtn.TabIndex = 29;
             hremployeemanagementaddemployeebtn.Text = "Add Employee";
             hremployeemanagementaddemployeebtn.UseVisualStyleBackColor = false;
@@ -378,9 +296,9 @@
             Load += HrEmployeeManagement_Load;
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
+            systempanelcontents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).EndInit();
             ((System.ComponentModel.ISupportInitialize)systemsettingsuseraddicon).EndInit();
-            systempanelheadercoral.ResumeLayout(false);
-            systempanelheadercoral.PerformLayout();
             dashnetprofit.ResumeLayout(false);
             dashnetprofit.PerformLayout();
             dashinventoryusage.ResumeLayout(false);
@@ -403,7 +321,6 @@
         private Button systemusermanagement;
         private Button hremployeemanagementaddemployeebtn;
         private Panel systempanelcontents;
-        private Panel systempanelheadercoral;
         private PictureBox systemsettingsuseraddicon;
         private TextBox systemsearchbar;
         private Panel dashnetprofit;
@@ -418,12 +335,6 @@
         private Label label8;
         private Panel panel6;
         private Label label9;
-        private Label label1;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label6;
-        private Panel panel1;
-        private Label label10;
+        private DataGridView dataGridViewEmployees;
     }
 }

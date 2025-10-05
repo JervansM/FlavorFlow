@@ -8,12 +8,9 @@ namespace FlavorFlowIT13
     public partial class Login : Form
     {
         private readonly string cloudConnectionString = "Data Source=db28059.public.databaseasp.net;Initial Catalog=db28059;Persist Security Info=True;User ID=db28059;Password=***********;Trust Server Certificate=True";
-<<<<<<< HEAD
-        private readonly string localConnectionString = "Data Source=DESKTOP-2ER6RLE;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
-=======
+
         private readonly string localConnectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
 
->>>>>>> main
         private string activeConnectionString;
 
         public Login()
@@ -70,17 +67,11 @@ namespace FlavorFlowIT13
                 return;
             }
 
-<<<<<<< HEAD
-        string localConnectionString = "Data Source=DESKTOP-2ER6RLE;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
-
-        string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
-
-=======
 
             string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
 
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
->>>>>>> main
+
 
             try
             {

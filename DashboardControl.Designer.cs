@@ -1,16 +1,9 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class HrDashboard
+    partial class DashboardControl
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,31 +13,8 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HrDashboard));
-            panelTop = new Panel();
-            panel1 = new Panel();
-            Logoutbtn = new Button();
-            hrpayrollbtn = new Button();
-            button2 = new Button();
-            hrreportsanalyticsbtn = new Button();
-            hrcompliancepoliciesbtn = new Button();
-            hrleavetimeoffbtn = new Button();
-            hrattendaceshiftbtn = new Button();
-            EmployeeManagementbtn = new Button();
-            button9 = new Button();
-            label8 = new Label();
-            pictureBox2 = new PictureBox();
-            pictureBox1 = new PictureBox();
-            hrtime = new Label();
-            hrdate = new Label();
             panelContent = new Panel();
             label5 = new Label();
             dashnotif = new Panel();
@@ -75,11 +45,6 @@
             dashtotalsales = new Panel();
             hrdashboardemployeeheadcounttxt = new TextBox();
             dashsalestxt = new Label();
-            fficonadmin = new PictureBox();
-            panelTop.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelContent.SuspendLayout();
             dashnotif.SuspendLayout();
             dashattendancetodaypanel.SuspendLayout();
@@ -91,259 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)dashactiveon).BeginInit();
             dashvisuals.SuspendLayout();
             dashtotalsales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             SuspendLayout();
-            // 
-            // panelTop
-            // 
-            panelTop.AutoScroll = true;
-            panelTop.BackColor = Color.WhiteSmoke;
-            panelTop.BackgroundImageLayout = ImageLayout.Zoom;
-            panelTop.Controls.Add(panel1);
-            panelTop.Controls.Add(label8);
-            panelTop.Controls.Add(pictureBox2);
-            panelTop.Controls.Add(pictureBox1);
-            panelTop.Controls.Add(hrtime);
-            panelTop.Controls.Add(hrdate);
-            panelTop.Controls.Add(panelContent);
-            panelTop.Controls.Add(fficonadmin);
-            panelTop.Location = new Point(-287, -14);
-            panelTop.Margin = new Padding(3, 4, 3, 4);
-            panelTop.Name = "panelTop";
-            panelTop.Size = new Size(2212, 1396);
-            panelTop.TabIndex = 1;
-            panelTop.Paint += panelTop_Paint;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Silver;
-            panel1.Controls.Add(Logoutbtn);
-            panel1.Controls.Add(hrpayrollbtn);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(hrreportsanalyticsbtn);
-            panel1.Controls.Add(hrcompliancepoliciesbtn);
-            panel1.Controls.Add(hrleavetimeoffbtn);
-            panel1.Controls.Add(hrattendaceshiftbtn);
-            panel1.Controls.Add(EmployeeManagementbtn);
-            panel1.Controls.Add(button9);
-            panel1.Location = new Point(299, 208);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(345, 851);
-            panel1.TabIndex = 17;
-            // 
-            // Logoutbtn
-            // 
-            Logoutbtn.BackColor = Color.Black;
-            Logoutbtn.Cursor = Cursors.Hand;
-            Logoutbtn.FlatStyle = FlatStyle.Popup;
-            Logoutbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            Logoutbtn.ForeColor = Color.Honeydew;
-            Logoutbtn.Location = new Point(28, 744);
-            Logoutbtn.Margin = new Padding(3, 4, 3, 4);
-            Logoutbtn.Name = "Logoutbtn";
-            Logoutbtn.Size = new Size(278, 83);
-            Logoutbtn.TabIndex = 14;
-            Logoutbtn.Text = "Log out";
-            Logoutbtn.UseVisualStyleBackColor = false;
-            Logoutbtn.Click += button1_Click;
-            // 
-            // hrpayrollbtn
-            // 
-            hrpayrollbtn.BackColor = Color.Black;
-            hrpayrollbtn.Cursor = Cursors.Hand;
-            hrpayrollbtn.FlatStyle = FlatStyle.Popup;
-            hrpayrollbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            hrpayrollbtn.ForeColor = Color.Honeydew;
-            hrpayrollbtn.Location = new Point(28, 324);
-            hrpayrollbtn.Margin = new Padding(3, 4, 3, 4);
-            hrpayrollbtn.Name = "hrpayrollbtn";
-            hrpayrollbtn.Size = new Size(278, 83);
-            hrpayrollbtn.TabIndex = 13;
-            hrpayrollbtn.Text = "Payroll";
-            hrpayrollbtn.UseVisualStyleBackColor = false;
-            hrpayrollbtn.Click += hrpayrollbtn_Click;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = Color.Coral;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            button2.ForeColor = Color.Honeydew;
-            button2.Location = new Point(275, 1760);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(278, 83);
-            button2.TabIndex = 12;
-            button2.Text = "Log out";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // hrreportsanalyticsbtn
-            // 
-            hrreportsanalyticsbtn.BackColor = Color.Black;
-            hrreportsanalyticsbtn.Cursor = Cursors.Hand;
-            hrreportsanalyticsbtn.FlatStyle = FlatStyle.Popup;
-            hrreportsanalyticsbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            hrreportsanalyticsbtn.ForeColor = Color.Honeydew;
-            hrreportsanalyticsbtn.Location = new Point(28, 643);
-            hrreportsanalyticsbtn.Margin = new Padding(3, 4, 3, 4);
-            hrreportsanalyticsbtn.Name = "hrreportsanalyticsbtn";
-            hrreportsanalyticsbtn.Size = new Size(278, 83);
-            hrreportsanalyticsbtn.TabIndex = 11;
-            hrreportsanalyticsbtn.Text = "Reports & Analytics";
-            hrreportsanalyticsbtn.UseVisualStyleBackColor = false;
-            hrreportsanalyticsbtn.Click += hrreportsanalyticsbtn_Click;
-            // 
-            // hrcompliancepoliciesbtn
-            // 
-            hrcompliancepoliciesbtn.BackColor = Color.Black;
-            hrcompliancepoliciesbtn.Cursor = Cursors.Hand;
-            hrcompliancepoliciesbtn.FlatStyle = FlatStyle.Popup;
-            hrcompliancepoliciesbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            hrcompliancepoliciesbtn.ForeColor = Color.Honeydew;
-            hrcompliancepoliciesbtn.Location = new Point(28, 540);
-            hrcompliancepoliciesbtn.Margin = new Padding(3, 4, 3, 4);
-            hrcompliancepoliciesbtn.Name = "hrcompliancepoliciesbtn";
-            hrcompliancepoliciesbtn.Size = new Size(278, 83);
-            hrcompliancepoliciesbtn.TabIndex = 10;
-            hrcompliancepoliciesbtn.Text = "Compliance & Policies";
-            hrcompliancepoliciesbtn.UseVisualStyleBackColor = false;
-            hrcompliancepoliciesbtn.Click += hrcompliancepoliciesbtn_Click;
-            // 
-            // hrleavetimeoffbtn
-            // 
-            hrleavetimeoffbtn.BackColor = Color.Black;
-            hrleavetimeoffbtn.Cursor = Cursors.Hand;
-            hrleavetimeoffbtn.FlatStyle = FlatStyle.Popup;
-            hrleavetimeoffbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            hrleavetimeoffbtn.ForeColor = Color.Honeydew;
-            hrleavetimeoffbtn.Location = new Point(28, 429);
-            hrleavetimeoffbtn.Margin = new Padding(3, 4, 3, 4);
-            hrleavetimeoffbtn.Name = "hrleavetimeoffbtn";
-            hrleavetimeoffbtn.Size = new Size(278, 83);
-            hrleavetimeoffbtn.TabIndex = 7;
-            hrleavetimeoffbtn.Text = "Leave &Time-Off";
-            hrleavetimeoffbtn.UseVisualStyleBackColor = false;
-            hrleavetimeoffbtn.Click += hrleavetimeoffbtn_Click;
-            // 
-            // hrattendaceshiftbtn
-            // 
-            hrattendaceshiftbtn.BackColor = Color.Black;
-            hrattendaceshiftbtn.Cursor = Cursors.Hand;
-            hrattendaceshiftbtn.FlatStyle = FlatStyle.Popup;
-            hrattendaceshiftbtn.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hrattendaceshiftbtn.ForeColor = Color.Honeydew;
-            hrattendaceshiftbtn.Location = new Point(28, 224);
-            hrattendaceshiftbtn.Margin = new Padding(3, 4, 3, 4);
-            hrattendaceshiftbtn.Name = "hrattendaceshiftbtn";
-            hrattendaceshiftbtn.Size = new Size(278, 83);
-            hrattendaceshiftbtn.TabIndex = 6;
-            hrattendaceshiftbtn.Text = "Attendance & Shifts";
-            hrattendaceshiftbtn.UseVisualStyleBackColor = false;
-            hrattendaceshiftbtn.Click += button7_Click;
-            // 
-            // EmployeeManagementbtn
-            // 
-            EmployeeManagementbtn.BackColor = Color.Black;
-            EmployeeManagementbtn.Cursor = Cursors.Hand;
-            EmployeeManagementbtn.FlatStyle = FlatStyle.Popup;
-            EmployeeManagementbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            EmployeeManagementbtn.ForeColor = Color.Honeydew;
-            EmployeeManagementbtn.Location = new Point(28, 118);
-            EmployeeManagementbtn.Margin = new Padding(3, 4, 3, 4);
-            EmployeeManagementbtn.Name = "EmployeeManagementbtn";
-            EmployeeManagementbtn.Size = new Size(278, 83);
-            EmployeeManagementbtn.TabIndex = 5;
-            EmployeeManagementbtn.Text = "Employee Management";
-            EmployeeManagementbtn.UseVisualStyleBackColor = false;
-            EmployeeManagementbtn.Click += EmployeeManagement_Click;
-            // 
-            // button9
-            // 
-            button9.BackColor = Color.Black;
-            button9.Cursor = Cursors.Hand;
-            button9.FlatStyle = FlatStyle.Popup;
-            button9.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            button9.ForeColor = Color.Honeydew;
-            button9.Location = new Point(28, 15);
-            button9.Margin = new Padding(3, 4, 3, 4);
-            button9.Name = "button9";
-            button9.Size = new Size(278, 83);
-            button9.TabIndex = 4;
-            button9.Text = "Dashboard";
-            button9.UseVisualStyleBackColor = false;
-            button9.Click += button9_Click;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Transparent;
-            label8.FlatStyle = FlatStyle.Flat;
-            label8.Font = new Font("Segoe UI", 31.8000011F, FontStyle.Bold);
-            label8.ForeColor = Color.Coral;
-            label8.Location = new Point(612, 60);
-            label8.Name = "label8";
-            label8.Size = new Size(370, 72);
-            label8.TabIndex = 23;
-            label8.Text = "Welcome, HR";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(289, 4);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(316, 216);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 22;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImageLayout = ImageLayout.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1008, 60);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(91, 103);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 21;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
-            // 
-            // hrtime
-            // 
-            hrtime.AutoSize = true;
-            hrtime.BackColor = Color.Transparent;
-            hrtime.FlatStyle = FlatStyle.Flat;
-            hrtime.Font = new Font("Segoe UI", 31.8000011F, FontStyle.Bold);
-            hrtime.ForeColor = Color.Coral;
-            hrtime.Location = new Point(1815, 77);
-            hrtime.Name = "hrtime";
-            hrtime.Size = new Size(170, 72);
-            hrtime.TabIndex = 19;
-            hrtime.Text = "Time:";
-            hrtime.Click += label6_Click;
-            // 
-            // hrdate
-            // 
-            hrdate.AutoSize = true;
-            hrdate.BackColor = Color.Transparent;
-            hrdate.FlatStyle = FlatStyle.Flat;
-            hrdate.Font = new Font("Segoe UI", 31.8000011F, FontStyle.Bold);
-            hrdate.ForeColor = Color.Coral;
-            hrdate.Location = new Point(1376, 77);
-            hrdate.Name = "hrdate";
-            hrdate.Size = new Size(164, 72);
-            hrdate.TabIndex = 18;
-            hrdate.Text = "Date:";
-            hrdate.Click += hrdate_Click;
             // 
             // panelContent
             // 
@@ -360,12 +73,11 @@
             panelContent.Controls.Add(dashactive);
             panelContent.Controls.Add(dashvisuals);
             panelContent.Controls.Add(dashtotalsales);
-            panelContent.Location = new Point(671, 208);
+            panelContent.Location = new Point(3, 4);
             panelContent.Margin = new Padding(3, 4, 3, 4);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1510, 851);
-            panelContent.TabIndex = 14;
-            panelContent.Paint += panelContent_Paint;
+            panelContent.Size = new Size(1510, 1028);
+            panelContent.TabIndex = 15;
             // 
             // label5
             // 
@@ -390,7 +102,7 @@
             dashnotif.Location = new Point(16, 615);
             dashnotif.Margin = new Padding(3, 4, 3, 4);
             dashnotif.Name = "dashnotif";
-            dashnotif.Size = new Size(1476, 197);
+            dashnotif.Size = new Size(1476, 1302);
             dashnotif.TabIndex = 2;
             // 
             // hrdashboardexpiriestxt
@@ -422,7 +134,6 @@
             dashlowstackalerts.Size = new Size(137, 41);
             dashlowstackalerts.TabIndex = 4;
             dashlowstackalerts.Text = "Expiries:";
-            dashlowstackalerts.Click += dashlowstackalerts_Click;
             // 
             // dashrecenttransactions
             // 
@@ -455,6 +166,7 @@
             hrdashboardattendancetodaytxt.Name = "hrdashboardattendancetodaytxt";
             hrdashboardattendancetodaytxt.Size = new Size(198, 68);
             hrdashboardattendancetodaytxt.TabIndex = 4;
+            hrdashboardattendancetodaytxt.TextChanged += hrdashboardattendancetodaytxt_TextChanged;
             // 
             // dashinventorytxt
             // 
@@ -467,7 +179,6 @@
             dashinventorytxt.Size = new Size(206, 31);
             dashinventorytxt.TabIndex = 2;
             dashinventorytxt.Text = "Attendance Today";
-            dashinventorytxt.Click += dashinventorytxt_Click;
             // 
             // hrdashboardleaverequestspanel
             // 
@@ -512,14 +223,13 @@
             dashvisualtxtsales.Size = new Size(382, 70);
             dashvisualtxtsales.TabIndex = 1;
             dashvisualtxtsales.Text = "Visual Insights";
-            dashvisualtxtsales.Click += dashvisualtxtsales_Click;
             // 
             // dashnetprofit
             // 
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(1845, 1546);
+            dashnetprofit.Location = new Point(2500, 2651);
             dashnetprofit.Margin = new Padding(3, 4, 3, 4);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(535, 232);
@@ -542,7 +252,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(1845, 868);
+            dashinventoryusage.Location = new Point(2500, 1421);
             dashinventoryusage.Margin = new Padding(3, 4, 3, 4);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(535, 311);
@@ -565,7 +275,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(1845, 275);
+            dashtotalexpense.Location = new Point(2500, 275);
             dashtotalexpense.Margin = new Padding(3, 4, 3, 4);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(535, 227);
@@ -607,7 +317,6 @@
             label4.Size = new Size(182, 31);
             label4.TabIndex = 5;
             label4.Text = "Leave Contracts";
-            label4.Click += label4_Click;
             // 
             // hrdashboardleavecontractstxt
             // 
@@ -644,7 +353,6 @@
             label1.Size = new Size(222, 31);
             label1.TabIndex = 1;
             label1.Text = " Pending Approvals";
-            label1.Click += label1_Click;
             // 
             // dashvisuals
             // 
@@ -655,7 +363,6 @@
             dashvisuals.Name = "dashvisuals";
             dashvisuals.Size = new Size(1479, 162);
             dashvisuals.TabIndex = 1;
-            dashvisuals.Paint += dashvisuals_Paint;
             // 
             // dashvisualtoptxt
             // 
@@ -689,7 +396,7 @@
             hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
             hrdashboardemployeeheadcounttxt.Size = new Size(219, 62);
             hrdashboardemployeeheadcounttxt.TabIndex = 1;
-            hrdashboardemployeeheadcounttxt.TextChanged += hrdashboardemployeeheadcounttxt_TextChanged_1;
+            hrdashboardemployeeheadcounttxt.TextChanged += hrdashboardemployeeheadcounttxt_TextChanged;
             // 
             // dashsalestxt
             // 
@@ -703,39 +410,11 @@
             dashsalestxt.TabIndex = 0;
             dashsalestxt.Text = "Employee Head Count";
             // 
-            // fficonadmin
+            // DashboardControl
             // 
-            fficonadmin.BackColor = Color.Transparent;
-            fficonadmin.BackgroundImageLayout = ImageLayout.None;
-            fficonadmin.Image = (Image)resources.GetObject("fficonadmin.Image");
-            fficonadmin.Location = new Point(-49, -140);
-            fficonadmin.Margin = new Padding(3, 4, 3, 4);
-            fficonadmin.MaximumSize = new Size(100, 100);
-            fficonadmin.Name = "fficonadmin";
-            fficonadmin.Size = new Size(100, 100);
-            fficonadmin.SizeMode = PictureBoxSizeMode.CenterImage;
-            fficonadmin.TabIndex = 0;
-            fficonadmin.TabStop = false;
-            fficonadmin.Click += fficonadmin_Click;
-            // 
-            // HrDashboard
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1924, 1055);
-            Controls.Add(panelTop);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "HrDashboard";
-            SizeGripStyle = SizeGripStyle.Show;
-            Text = "HR Dashboard";
-            WindowState = FormWindowState.Maximized;
-            panelTop.ResumeLayout(false);
-            panelTop.PerformLayout();
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Controls.Add(panelContent);
+            Name = "DashboardControl";
+            Size = new Size(1510, 1028);
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             dashnotif.ResumeLayout(false);
@@ -757,59 +436,37 @@
             dashvisuals.PerformLayout();
             dashtotalsales.ResumeLayout(false);
             dashtotalsales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
             ResumeLayout(false);
         }
-
-        #endregion
-
-        private Panel panelTop;
         private Panel panelContent;
+        private Label label5;
+        private Panel dashnotif;
+        private TextBox hrdashboardexpiriestxt;
+        private TextBox hrdashboardbirthdaystxt;
+        private Label dashlowstackalerts;
+        private Label dashrecenttransactions;
+        private Panel dashattendancetodaypanel;
+        private TextBox hrdashboardattendancetodaytxt;
+        private Label dashinventorytxt;
+        private Panel hrdashboardleaverequestspanel;
+        private TextBox hrdashboardleaverequeststxt;
+        private Label label3;
+        private Label dashvisualtxtsales;
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
         private Panel dashinventoryusage;
         private Label label2;
         private Panel dashtotalexpense;
         private Label dashtotalexptxt;
-        private Panel dashattendancetodaypanel;
-        private Label dashinventorytxt;
         private Panel dashactive;
-        private PictureBox dashactiveon;
-        private Label label1;
-        private Panel dashnotif;
-        private Label dashlowstackalerts;
-        private Label dashrecenttransactions;
-        private Panel dashvisuals;
-        private Label dashvisualtoptxt;
-        private Label dashvisualtxtsales;
-        private Panel dashtotalsales;
-        private Label dashsalestxt;
-        private PictureBox fficonadmin;
-        private Panel hrdashboardleaverequestspanel;
-        private Label label3;
-        private TextBox hrdashboardleaverequeststxt;
-        private TextBox hrdashboardattendancetodaytxt;
-        private Label label5;
-        private TextBox hrdashboardbirthdaystxt;
         private Label label4;
         private TextBox hrdashboardleavecontractstxt;
+        private PictureBox dashactiveon;
+        private Label label1;
+        private Panel dashvisuals;
+        private Label dashvisualtoptxt;
+        private Panel dashtotalsales;
         private TextBox hrdashboardemployeeheadcounttxt;
-        private TextBox hrdashboardexpiriestxt;
-        private Panel panel1;
-        private Button hrpayrollbtn;
-        private Button button2;
-        private Button hrreportsanalyticsbtn;
-        private Button hrcompliancepoliciesbtn;
-        private Button hrleavetimeoffbtn;
-        private Button hrattendaceshiftbtn;
-        private Button button8;
-        private Button button9;
-        private Button EmployeeManagementbtn;
-        private Label hrtime;
-        private Label hrdate;
-        private PictureBox pictureBox1;
-        private Label label8;
-        private PictureBox pictureBox2;
-        private Button Logoutbtn;
+        private Label dashsalestxt;
     }
 }
