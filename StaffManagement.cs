@@ -114,6 +114,26 @@ namespace FlavorFlowIT13
             LoadStaffData(); // <-- Load staff on form load
         }
 
+        private void LoadContent(Form form)
+        {
+            foreach (Control ctrl in panelContent.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panelContent.Controls.Clear();
+
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            // Add to panel
+            panelContent.Controls.Add(form);
+            form.Show();
+
+        }
+
         private void LoadStaffData()
         {
             StyleUserGrid();
@@ -145,6 +165,13 @@ namespace FlavorFlowIT13
                     // Optional: format columns
                     dgvstaff.Columns["HireDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     dgvstaff.AutoResizeColumns();
+
+                    dgvstaff.Columns["HireDate"].Visible = false;
+
+
+                    if (dgvstaff.Columns.Contains("UserID"))
+                        dgvstaff.Columns["UserID"].Visible = false;
+
                 }
             }
             catch (Exception ex)
@@ -152,11 +179,17 @@ namespace FlavorFlowIT13
                 MessageBox.Show("Error loading staff data: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
 
-private void dgvstaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvstaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void addnewstaffbtn_Click(object sender, EventArgs e)
+        {
+            StaffManagementAddForm newform = new StaffManagementAddForm();
+            newform.Show();
         }
     }
 }

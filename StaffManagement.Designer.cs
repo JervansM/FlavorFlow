@@ -238,6 +238,7 @@
             addnewstaffbtn.TabIndex = 21;
             addnewstaffbtn.Text = "Add New Staff";
             addnewstaffbtn.UseVisualStyleBackColor = false;
+            addnewstaffbtn.Click += addnewstaffbtn_Click;
             // 
             // StaffManagement
             // 
