@@ -375,7 +375,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(16, 574);
             label5.Name = "label5";
             label5.Size = new Size(153, 30);
@@ -392,7 +392,7 @@
             dashnotif.Controls.Add(dashrecenttransactions);
             dashnotif.Location = new Point(16, 615);
             dashnotif.Name = "dashnotif";
-            dashnotif.Size = new Size(1476, 218);
+            dashnotif.Size = new Size(1500, 218);
             dashnotif.TabIndex = 2;
             // 
             // hrdashboardexpiriestxt
@@ -445,9 +445,9 @@
             dashattendancetodaypanel.BackColor = Color.Black;
             dashattendancetodaypanel.Controls.Add(hrdashboardattendancetodaytxt);
             dashattendancetodaypanel.Controls.Add(dashinventorytxt);
-            dashattendancetodaypanel.Location = new Point(975, 20);
+            dashattendancetodaypanel.Location = new Point(1001, 16);
             dashattendancetodaypanel.Name = "dashattendancetodaypanel";
-            dashattendancetodaypanel.Size = new Size(331, 127);
+            dashattendancetodaypanel.Size = new Size(515, 127);
             dashattendancetodaypanel.TabIndex = 2;
             // 
             // hrdashboardattendancetodaytxt
@@ -478,9 +478,9 @@
             hrdashboardleaverequestspanel.BackColor = Color.Black;
             hrdashboardleaverequestspanel.Controls.Add(hrdashboardleaverequeststxt);
             hrdashboardleaverequestspanel.Controls.Add(label3);
-            hrdashboardleaverequestspanel.Location = new Point(975, 161);
+            hrdashboardleaverequestspanel.Location = new Point(1001, 160);
             hrdashboardleaverequestspanel.Name = "hrdashboardleaverequestspanel";
-            hrdashboardleaverequestspanel.Size = new Size(331, 127);
+            hrdashboardleaverequestspanel.Size = new Size(515, 127);
             hrdashboardleaverequestspanel.TabIndex = 3;
             // 
             // hrdashboardleaverequeststxt
@@ -510,8 +510,8 @@
             dashvisualtxtsales.AutoSize = true;
             dashvisualtxtsales.BackColor = Color.Transparent;
             dashvisualtxtsales.Font = new Font("Segoe UI", 30.75F, FontStyle.Bold);
-            dashvisualtxtsales.ForeColor = Color.White;
-            dashvisualtxtsales.Location = new Point(21, 236);
+            dashvisualtxtsales.ForeColor = Color.Black;
+            dashvisualtxtsales.Location = new Point(16, 246);
             dashvisualtxtsales.Name = "dashvisualtxtsales";
             dashvisualtxtsales.Size = new Size(303, 55);
             dashvisualtxtsales.TabIndex = 1;
@@ -593,7 +593,7 @@
             dashactive.Controls.Add(label1);
             dashactive.Location = new Point(413, 16);
             dashactive.Name = "dashactive";
-            dashactive.Size = new Size(540, 152);
+            dashactive.Size = new Size(540, 176);
             dashactive.TabIndex = 1;
             // 
             // label4
@@ -650,9 +650,9 @@
             // 
             dashvisuals.BackColor = Color.Black;
             dashvisuals.Controls.Add(dashvisualtoptxt);
-            dashvisuals.Location = new Point(11, 296);
+            dashvisuals.Location = new Point(13, 327);
             dashvisuals.Name = "dashvisuals";
-            dashvisuals.Size = new Size(1479, 162);
+            dashvisuals.Size = new Size(1503, 162);
             dashvisuals.TabIndex = 1;
             dashvisuals.Paint += dashvisuals_Paint;
             // 
@@ -673,16 +673,16 @@
             dashtotalsales.BackColor = Color.Black;
             dashtotalsales.Controls.Add(hrdashboardemployeeheadcounttxt);
             dashtotalsales.Controls.Add(dashsalestxt);
-            dashtotalsales.Location = new Point(35, 20);
+            dashtotalsales.Location = new Point(21, 16);
             dashtotalsales.Name = "dashtotalsales";
-            dashtotalsales.Size = new Size(348, 152);
+            dashtotalsales.Size = new Size(360, 176);
             dashtotalsales.TabIndex = 0;
             dashtotalsales.Paint += dashtotalsales_Paint;
             // 
             // hrdashboardemployeeheadcounttxt
             // 
             hrdashboardemployeeheadcounttxt.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold);
-            hrdashboardemployeeheadcounttxt.Location = new Point(39, 80);
+            hrdashboardemployeeheadcounttxt.Location = new Point(34, 89);
             hrdashboardemployeeheadcounttxt.Multiline = true;
             hrdashboardemployeeheadcounttxt.Name = "hrdashboardemployeeheadcounttxt";
             hrdashboardemployeeheadcounttxt.ReadOnly = true;

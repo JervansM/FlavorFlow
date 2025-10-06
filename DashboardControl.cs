@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace FlavorFlowIT13
 {
@@ -26,6 +27,24 @@ namespace FlavorFlowIT13
             LoadLeaveContracts();
             LoadLeaveRequests();
             LoadAttendanceToday();
+
+
+            RoundPanel(panelContent, 25);
+            RoundPanel(dashtotalsales, 25);
+            RoundPanel(dashactive, 25);
+            RoundPanel(dashattendancetodaypanel, 25);
+            RoundPanel(hrdashboardleaverequestspanel, 25);
+            RoundPanel(dashvisuals, 25);
+            RoundPanel(dashnotif, 25);
+           
+
+            dashtotalsales.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashactive.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashattendancetodaypanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrdashboardleaverequestspanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashtotalsales.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashvisuals.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashnotif.BackColor = ColorTranslator.FromHtml("#2f2f2f");
         }
 
         private void LoadActiveEmployeeHeadcount()
@@ -138,6 +157,32 @@ namespace FlavorFlowIT13
         private void panelContent_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panelContent_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
+        }
+
+        private void RoundPanel(Panel pnl, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            pnl.Region = new Region(path);
         }
     }
 }

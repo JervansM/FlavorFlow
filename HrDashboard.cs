@@ -32,6 +32,12 @@ namespace FlavorFlowIT13
 
             RoundPanel(panelContent, 25);
             RoundPanel(panel1, 25);
+            RoundPanel(dashtotalsales, 25);
+            RoundPanel(dashactive, 25);
+            RoundPanel(dashattendancetodaypanel, 25);
+            RoundPanel(hrdashboardleaverequestspanel, 25);
+            RoundPanel(dashvisuals, 25);
+            RoundPanel(dashnotif, 25);
             RoundButton(button9, 19);
             RoundButton(EmployeeManagementbtn, 19);
             RoundButton(hrpayrollbtn, 19);
@@ -40,6 +46,17 @@ namespace FlavorFlowIT13
             RoundButton(hrcompliancepoliciesbtn, 19);
             RoundButton(hrreportsanalyticsbtn, 19);
             RoundButton(Logoutbtn, 19);
+
+            dashtotalsales.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashactive.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashattendancetodaypanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hrdashboardleaverequestspanel.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashtotalsales.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashvisuals.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashnotif.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+
+
+
 
             button9.UseVisualStyleBackColor = false;
             button9.FlatStyle = FlatStyle.Flat;
