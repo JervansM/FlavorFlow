@@ -65,7 +65,7 @@
             suppliercontacttxt.Anchor = AnchorStyles.None;
             suppliercontacttxt.BackColor = Color.White;
             suppliercontacttxt.Cursor = Cursors.IBeam;
-            suppliercontacttxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            suppliercontacttxt.Font = new Font("Segoe UI", 42F);
             suppliercontacttxt.Location = new Point(356, 173);
             suppliercontacttxt.Multiline = true;
             suppliercontacttxt.Name = "suppliercontacttxt";
@@ -105,7 +105,7 @@
             supplliernametxt.Anchor = AnchorStyles.None;
             supplliernametxt.BackColor = Color.White;
             supplliernametxt.Cursor = Cursors.IBeam;
-            supplliernametxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            supplliernametxt.Font = new Font("Segoe UI", 42F);
             supplliernametxt.Location = new Point(356, 55);
             supplliernametxt.Multiline = true;
             supplliernametxt.Name = "supplliernametxt";
@@ -131,7 +131,7 @@
             supplieraddresstxt.Anchor = AnchorStyles.None;
             supplieraddresstxt.BackColor = Color.White;
             supplieraddresstxt.Cursor = Cursors.IBeam;
-            supplieraddresstxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            supplieraddresstxt.Font = new Font("Segoe UI", 42F);
             supplieraddresstxt.Location = new Point(356, 285);
             supplieraddresstxt.Multiline = true;
             supplieraddresstxt.Name = "supplieraddresstxt";

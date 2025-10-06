@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
+            systemsearchbarpanel = new Panel();
+            systemsearchbaricon = new PictureBox();
+            systemsearchbar = new TextBox();
             systempanelcontents = new Panel();
             dataGridViewEmployees = new DataGridView();
             systemsettingsuseraddicon = new PictureBox();
-            systemsearchbar = new TextBox();
             hremployeemanagementaddemployeebtn = new Button();
             dashnetprofit = new Panel();
             dashnetprofittxt = new Label();
@@ -47,6 +49,8 @@
             panel6 = new Panel();
             label9 = new Label();
             panelContent.SuspendLayout();
+            systemsearchbarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
             systempanelcontents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).BeginInit();
             ((System.ComponentModel.ISupportInitialize)systemsettingsuseraddicon).BeginInit();
@@ -62,9 +66,9 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(systempanelcontents);
             panelContent.Controls.Add(systemsettingsuseraddicon);
-            panelContent.Controls.Add(systemsearchbar);
             panelContent.Controls.Add(hremployeemanagementaddemployeebtn);
             panelContent.Controls.Add(dashnetprofit);
             panelContent.Controls.Add(dashinventoryusage);
@@ -74,24 +78,59 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(-89, -32);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1560, 852);
+            panelContent.Size = new Size(1624, 1061);
             panelContent.TabIndex = 20;
             panelContent.Paint += panelContent_Paint;
+            // 
+            // systemsearchbarpanel
+            // 
+            systemsearchbarpanel.BackColor = Color.White;
+            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
+            systemsearchbarpanel.Controls.Add(systemsearchbar);
+            systemsearchbarpanel.Location = new Point(103, 44);
+            systemsearchbarpanel.Name = "systemsearchbarpanel";
+            systemsearchbarpanel.Size = new Size(1510, 59);
+            systemsearchbarpanel.TabIndex = 24;
+            // 
+            // systemsearchbaricon
+            // 
+            systemsearchbaricon.BackColor = Color.Transparent;
+            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
+            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
+            systemsearchbaricon.Location = new Point(1426, 7);
+            systemsearchbaricon.Name = "systemsearchbaricon";
+            systemsearchbaricon.Size = new Size(81, 46);
+            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
+            systemsearchbaricon.TabIndex = 23;
+            systemsearchbaricon.TabStop = false;
+            // 
+            // systemsearchbar
+            // 
+            systemsearchbar.Anchor = AnchorStyles.None;
+            systemsearchbar.BorderStyle = BorderStyle.None;
+            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            systemsearchbar.ForeColor = Color.Black;
+            systemsearchbar.Location = new Point(13, 7);
+            systemsearchbar.Multiline = true;
+            systemsearchbar.Name = "systemsearchbar";
+            systemsearchbar.PlaceholderText = "Search";
+            systemsearchbar.Size = new Size(1476, 47);
+            systemsearchbar.TabIndex = 22;
             // 
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
             systempanelcontents.Controls.Add(dataGridViewEmployees);
-            systempanelcontents.Location = new Point(100, 164);
+            systempanelcontents.Location = new Point(100, 185);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1284, 499);
+            systempanelcontents.Size = new Size(1510, 879);
             systempanelcontents.TabIndex = 24;
             systempanelcontents.Paint += systempanelcontents_Paint;
             // 
             // dataGridViewEmployees
             // 
             dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewEmployees.Location = new Point(0, -1);
+            dataGridViewEmployees.Location = new Point(50, 132);
             dataGridViewEmployees.Margin = new Padding(3, 2, 3, 2);
             dataGridViewEmployees.Name = "dataGridViewEmployees";
             dataGridViewEmployees.RowHeadersWidth = 51;
@@ -104,27 +143,13 @@
             systemsettingsuseraddicon.BackColor = Color.Black;
             systemsettingsuseraddicon.Cursor = Cursors.Hand;
             systemsettingsuseraddicon.Image = Properties.Resources.plusicon;
-            systemsettingsuseraddicon.Location = new Point(103, 103);
+            systemsettingsuseraddicon.Location = new Point(103, 124);
             systemsettingsuseraddicon.Name = "systemsettingsuseraddicon";
             systemsettingsuseraddicon.Size = new Size(57, 50);
             systemsettingsuseraddicon.SizeMode = PictureBoxSizeMode.Zoom;
             systemsettingsuseraddicon.TabIndex = 0;
             systemsettingsuseraddicon.TabStop = false;
             systemsettingsuseraddicon.Click += systemsettingsuseraddicon_Click;
-            // 
-            // systemsearchbar
-            // 
-            systemsearchbar.Anchor = AnchorStyles.None;
-            systemsearchbar.BorderStyle = BorderStyle.None;
-            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(100, 53);
-            systemsearchbar.Multiline = true;
-            systemsearchbar.Name = "systemsearchbar";
-            systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(1293, 41);
-            systemsearchbar.TabIndex = 22;
-            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
             // 
             // hremployeemanagementaddemployeebtn
             // 
@@ -134,7 +159,7 @@
             hremployeemanagementaddemployeebtn.FlatStyle = FlatStyle.Flat;
             hremployeemanagementaddemployeebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hremployeemanagementaddemployeebtn.ForeColor = Color.White;
-            hremployeemanagementaddemployeebtn.Location = new Point(100, 100);
+            hremployeemanagementaddemployeebtn.Location = new Point(100, 121);
             hremployeemanagementaddemployeebtn.Name = "hremployeemanagementaddemployeebtn";
             hremployeemanagementaddemployeebtn.Size = new Size(306, 58);
             hremployeemanagementaddemployeebtn.TabIndex = 29;
@@ -147,7 +172,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(4429, 4249);
+            dashnetprofit.Location = new Point(4461, 4458);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -169,7 +194,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(4429, 2202);
+            dashinventoryusage.Location = new Point(4461, 2306);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -191,7 +216,7 @@
             dashtotalexpense.Anchor = AnchorStyles.Top;
             dashtotalexpense.BackColor = Color.Black;
             dashtotalexpense.Controls.Add(dashtotalexptxt);
-            dashtotalexpense.Location = new Point(4429, 206);
+            dashtotalexpense.Location = new Point(4461, 206);
             dashtotalexpense.Name = "dashtotalexpense";
             dashtotalexpense.Size = new Size(468, 170);
             dashtotalexpense.TabIndex = 19;
@@ -213,7 +238,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(5103, 4963);
+            panel4.Location = new Point(5135, 5172);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -235,7 +260,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(5103, 2559);
+            panel5.Location = new Point(5135, 2663);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -257,7 +282,7 @@
             panel6.Anchor = AnchorStyles.Top;
             panel6.BackColor = Color.Black;
             panel6.Controls.Add(label9);
-            panel6.Location = new Point(5103, 206);
+            panel6.Location = new Point(5135, 206);
             panel6.Name = "panel6";
             panel6.Size = new Size(468, 170);
             panel6.TabIndex = 3;
@@ -278,13 +303,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1318, 641);
+            AutoScroll = true;
+            ClientSize = new Size(1924, 784);
             Controls.Add(panelContent);
             Name = "HrEmployeeManagement";
             Text = "HrEmployeeManagement";
             Load += HrEmployeeManagement_Load;
             panelContent.ResumeLayout(false);
-            panelContent.PerformLayout();
+            systemsearchbarpanel.ResumeLayout(false);
+            systemsearchbarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
             systempanelcontents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).EndInit();
             ((System.ComponentModel.ISupportInitialize)systemsettingsuseraddicon).EndInit();
@@ -311,7 +339,6 @@
         private Button hremployeemanagementaddemployeebtn;
         private Panel systempanelcontents;
         private PictureBox systemsettingsuseraddicon;
-        private TextBox systemsearchbar;
         private Panel dashnetprofit;
         private Label dashnetprofittxt;
         private Panel dashinventoryusage;
@@ -325,5 +352,8 @@
         private Panel panel6;
         private Label label9;
         private DataGridView dataGridViewEmployees;
+        private Panel systemsearchbarpanel;
+        private PictureBox systemsearchbaricon;
+        private TextBox systemsearchbar;
     }
 }

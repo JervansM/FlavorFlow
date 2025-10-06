@@ -1,15 +1,16 @@
 ﻿using FlavorFlow;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace FlavorFlowIT13
 {
@@ -28,10 +29,28 @@ namespace FlavorFlowIT13
         private void HrEmployeeManagement_Load(object sender, EventArgs e)
         {
             LoadEmployees();
+
+            RoundPanel(systemsearchbarpanel, 25);
+            RoundPanel(panelContent, 25);
+            RoundPanel(systempanelcontents, 25);
+            RoundButton(hremployeemanagementaddemployeebtn, 20);
+
+
+            systemsettingsuseraddicon.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            hremployeemanagementaddemployeebtn.UseVisualStyleBackColor = false;
+            hremployeemanagementaddemployeebtn.FlatStyle = FlatStyle.Flat;
+            hremployeemanagementaddemployeebtn.FlatAppearance.BorderSize = 0;
+            hremployeemanagementaddemployeebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            hremployeemanagementaddemployeebtn.ForeColor = Color.White;
+            hremployeemanagementaddemployeebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            hremployeemanagementaddemployeebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
         }
 
         private void LoadEmployees()
         {
+            StyleUserGrid();
             string query = "SELECT EmployeeID, FirstName, LastName, Position, Status FROM Employee";
 
             try
@@ -148,33 +167,12 @@ namespace FlavorFlowIT13
                 if (dataGridViewEmployees.Columns.Contains("Edit"))
                     dataGridViewEmployees.Columns["Edit"].FillWeight = 20;
 
-                // Header styling (slightly darker orange)
-                dataGridViewEmployees.EnableHeadersVisualStyles = false;
-                dataGridViewEmployees.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 170, 60);
-                dataGridViewEmployees.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dataGridViewEmployees.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-                dataGridViewEmployees.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewEmployees.ColumnHeadersHeight = 60;
-                dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                
 
 
-                foreach (DataGridViewColumn col in dataGridViewEmployees.Columns)
-                {
-                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
+                
 
-                // Row styles
-                dataGridViewEmployees.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-                dataGridViewEmployees.DefaultCellStyle.BackColor = Color.White;
-                dataGridViewEmployees.DefaultCellStyle.ForeColor = Color.Black;
-                dataGridViewEmployees.DefaultCellStyle.SelectionBackColor = Color.LightGray;
-                dataGridViewEmployees.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-                // Ensure the click event is wired (avoid duplicate wiring)
-                dataGridViewEmployees.CellContentClick -= dataGridViewEmployees_CellContentClick;
-                dataGridViewEmployees.CellContentClick += dataGridViewEmployees_CellContentClick;
-
-                dataGridViewEmployees.ResumeLayout();
+             
             }
             catch (Exception ex)
             {
@@ -209,7 +207,56 @@ namespace FlavorFlowIT13
             }
 
         }
-        private void panelContent_Paint(object sender, PaintEventArgs e) { }
+        private void panelContent_Paint(object sender, PaintEventArgs e) {
+        
+        }
+
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
+        }
+
+        private void RoundPanel(Panel pnl, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            pnl.Region = new Region(path);
+        }
+        private void StyleUserGrid()
+        {
+            dataGridViewEmployees.EnableHeadersVisualStyles = false;
+            dataGridViewEmployees.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+
+            dataGridViewEmployees.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGridViewEmployees.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewEmployees.DefaultCellStyle.BackColor = Color.White;
+            dataGridViewEmployees.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+            dataGridViewEmployees.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dataGridViewEmployees.RowHeadersVisible = false;
+            dataGridViewEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewEmployees.MultiSelect = false;
+            dataGridViewEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployees.BorderStyle = BorderStyle.None;
+            dataGridViewEmployees.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridViewEmployees.GridColor = Color.White;
+            dataGridViewEmployees.ClearSelection();
+            dataGridViewEmployees.GridColor = Color.LightGray;
+            dataGridViewEmployees.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dataGridViewEmployees.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            dataGridViewEmployees.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridViewEmployees.BackgroundColor = Color.WhiteSmoke;
+        }
         private void systemsearchbarpanel_Paint(object sender, PaintEventArgs e) { }
         private void systemsearchbaricon_Click(object sender, EventArgs e) { }
         private void systemsearchbar_TextChanged(object sender, EventArgs e) { }

@@ -144,6 +144,7 @@
             // menuformsavebtn
             // 
             menuformsavebtn.BackColor = Color.LimeGreen;
+            menuformsavebtn.Cursor = Cursors.Hand;
             menuformsavebtn.FlatStyle = FlatStyle.Flat;
             menuformsavebtn.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuformsavebtn.ForeColor = Color.White;

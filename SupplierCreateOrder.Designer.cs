@@ -63,7 +63,7 @@
             supplierquantitytxt.Anchor = AnchorStyles.None;
             supplierquantitytxt.BackColor = Color.White;
             supplierquantitytxt.Cursor = Cursors.IBeam;
-            supplierquantitytxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            supplierquantitytxt.Font = new Font("Segoe UI", 42F);
             supplierquantitytxt.Location = new Point(418, 410);
             supplierquantitytxt.Multiline = true;
             supplierquantitytxt.Name = "supplierquantitytxt";
@@ -176,7 +176,7 @@
             suppliercosttxt.Anchor = AnchorStyles.None;
             suppliercosttxt.BackColor = Color.White;
             suppliercosttxt.Cursor = Cursors.IBeam;
-            suppliercosttxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            suppliercosttxt.Font = new Font("Segoe UI", 42F);
             suppliercosttxt.Location = new Point(418, 289);
             suppliercosttxt.Multiline = true;
             suppliercosttxt.Name = "suppliercosttxt";
@@ -206,7 +206,7 @@
             supplierbillamounttxt.Anchor = AnchorStyles.None;
             supplierbillamounttxt.BackColor = Color.White;
             supplierbillamounttxt.Cursor = Cursors.IBeam;
-            supplierbillamounttxt.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            supplierbillamounttxt.Font = new Font("Segoe UI", 42F);
             supplierbillamounttxt.Location = new Point(418, 530);
             supplierbillamounttxt.Multiline = true;
             supplierbillamounttxt.Name = "supplierbillamounttxt";

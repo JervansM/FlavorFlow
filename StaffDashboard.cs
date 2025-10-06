@@ -595,17 +595,12 @@ namespace FlavorFlowIT13
             selectedOrderType = "Takeout";
             System.Diagnostics.Debug.WriteLine($"Takeout button clicked. selectedOrderType set to: {selectedOrderType}");
 
-            // Clear any existing order data for takeout
             ClearOrder();
-
-            // Initialize DataGridView columns for takeout orders
             InitializeDataGridViewForTakeout();
 
 
-            // Set default table ID to 0 for takeout orders (no table)
-            // This will be handled in GetCurrentTableId method
+          
 
-            // Load menu form for takeout orders with "Takeout" as table name
             var menuForm = new StaffDashboardMenuFormOrder("Takeout");
 
             // Subscribe to menu item clicks for takeout
@@ -648,18 +643,12 @@ namespace FlavorFlowIT13
 
         private void OnTakeoutMenuItemClicked(StaffDashboardMenuFormOrder.OrderItem item)
         {
-            // Use the same quantity input method as dine-in orders
-            string qtyStr = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {item.Name}:", "Quantity", "1");
+            // Use the custom quantity input dialog
+            int qty = ShowQuantityInputDialog(item.Name);
 
-            if (string.IsNullOrEmpty(qtyStr))
+            if (qty <= 0)
             {
-                // User cancelled or entered empty string
-                return;
-            }
-
-            if (!int.TryParse(qtyStr, out int qty) || qty <= 0)
-            {
-                ShowCustomMessageBox("Please enter a valid quantity greater than 0.", "Invalid Quantity");
+                // User cancelled or entered invalid quantity
                 return;
             }
 
@@ -689,42 +678,55 @@ namespace FlavorFlowIT13
 
         private int ShowQuantityInputDialog(string menuItemName)
         {
-            // Create a custom quantity input dialog
+            // Create a custom form
             Form quantityForm = new Form()
             {
-                Text = "Select Quantity",
-                Size = new Size(350, 200),
+                Text = "",
+                Size = new Size(400, 220),
                 StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.FixedDialog,
-                MaximizeBox = false,
-                MinimizeBox = false,
-                ShowInTaskbar = false,
-                BackColor = Color.White
+                FormBorderStyle = FormBorderStyle.None,
+                BackColor = Color.FromArgb(248, 249, 250),
+                TopMost = true
             };
 
-            // Title label
-            Label titleLabel = new Label()
+            // Header panel
+            Panel headerPanel = new Panel()
+            {
+                BackColor = Color.FromArgb(0, 120, 215),
+                Dock = DockStyle.Top,
+                Height = 60
+            };
+
+            Label headerLabel = new Label()
             {
                 Text = $"Select quantity for {menuItemName}",
-                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(45, 45, 45),
-                Location = new Point(20, 20),
-                Size = new Size(300, 30),
-                TextAlign = ContentAlignment.MiddleLeft
+                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = Color.White,
+                Location = new Point(20, 15),
+                AutoSize = true
             };
+            headerPanel.Controls.Add(headerLabel);
 
-            // Quantity input
+            // Numeric input
             NumericUpDown quantityInput = new NumericUpDown()
             {
                 Minimum = 1,
                 Maximum = 100,
                 Value = 1,
-                Font = new Font("Segoe UI", 12F, FontStyle.Regular),
-                Location = new Point(20, 60),
-                Size = new Size(100, 30)
+                Font = new Font("Segoe UI", 12F),
+                Location = new Point(30, 80),
+                Size = new Size(100, 30),
+                TextAlign = HorizontalAlignment.Center
             };
 
-            // OK button
+            // Buttons panel
+            Panel buttonPanel = new Panel()
+            {
+                Dock = DockStyle.Bottom,
+                Height = 60,
+                BackColor = Color.Transparent
+            };
+
             Button okButton = new Button()
             {
                 Text = "Add to Order",
@@ -732,12 +734,14 @@ namespace FlavorFlowIT13
                 BackColor = Color.FromArgb(0, 120, 215),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Size = new Size(100, 35),
-                Location = new Point(140, 100),
-                DialogResult = DialogResult.OK
+                Size = new Size(120, 35),
+                DialogResult = DialogResult.OK,
+                Cursor = Cursors.Hand
             };
+            okButton.FlatAppearance.BorderSize = 0;
+            okButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 100, 180);
+            okButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 160);
 
-            // Cancel button
             Button cancelButton = new Button()
             {
                 Text = "Cancel",
@@ -745,26 +749,34 @@ namespace FlavorFlowIT13
                 BackColor = Color.FromArgb(200, 200, 200),
                 ForeColor = Color.Black,
                 FlatStyle = FlatStyle.Flat,
-                Size = new Size(80, 35),
-                Location = new Point(250, 100),
-                DialogResult = DialogResult.Cancel
+                Size = new Size(100, 35),
+                DialogResult = DialogResult.Cancel,
+                Cursor = Cursors.Hand
+            };
+            cancelButton.FlatAppearance.BorderSize = 0;
+            cancelButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(180, 180, 180);
+            cancelButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(160, 160, 160);
+
+            okButton.Location = new Point(200, 12);
+            cancelButton.Location = new Point(310, 12);
+            buttonPanel.Controls.Add(okButton);
+            buttonPanel.Controls.Add(cancelButton);
+
+            // Add controls to form
+            quantityForm.Controls.Add(headerPanel);
+            quantityForm.Controls.Add(quantityInput);
+            quantityForm.Controls.Add(buttonPanel);
+
+            // Optional: Add a subtle border
+            quantityForm.Paint += (s, e) =>
+            {
+                e.Graphics.DrawRectangle(new Pen(Color.FromArgb(200, 200, 200), 1),
+                    0, 0, quantityForm.Width - 1, quantityForm.Height - 1);
             };
 
-            okButton.FlatAppearance.BorderSize = 0;
-            cancelButton.FlatAppearance.BorderSize = 0;
-
-            quantityForm.Controls.Add(titleLabel);
-            quantityForm.Controls.Add(quantityInput);
-            quantityForm.Controls.Add(okButton);
-            quantityForm.Controls.Add(cancelButton);
-
-            if (quantityForm.ShowDialog() == DialogResult.OK)
-            {
-                return (int)quantityInput.Value;
-            }
-
-            return 0; // Return 0 if cancelled
+            return quantityForm.ShowDialog() == DialogResult.OK ? (int)quantityInput.Value : 0;
         }
+
 
         private void InitializeDataGridViewForTakeout()
         {
@@ -1130,8 +1142,9 @@ namespace FlavorFlowIT13
             var menuForm = new StaffDashboardMenuFormOrder(tableIdStr);
             menuForm.MenuItemClicked += (item) =>
             {
-                string qtyStr = Microsoft.VisualBasic.Interaction.InputBox($"Enter quantity for {item.Name}:", "Quantity", "1");
-                if (int.TryParse(qtyStr, out int qty) && qty > 0)
+                // Replace the InputBox with your custom dialog
+                int qty = ShowQuantityInputDialog(item.Name);
+                if (qty > 0)
                 {
                     item.Qty = qty;
 
@@ -1154,7 +1167,7 @@ namespace FlavorFlowIT13
 
             LoadContent(menuForm);
         }
-        private int GetOrCreateOrderIdForTable(int tableId)
+        private int GetOrCreateOrderIdForTable(int tableId) 
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {

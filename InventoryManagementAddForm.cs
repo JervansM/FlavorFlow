@@ -297,6 +297,23 @@ VALUES
         private void InventoryManagementAddForm_Load(object sender, EventArgs e)
         {
 
+
+            RoundButton(menuformsavebtn, 20);
+
+            menuformsavebtn.UseVisualStyleBackColor = false;
+            menuformsavebtn.FlatStyle = FlatStyle.Flat;
+            menuformsavebtn.FlatAppearance.BorderSize = 0;
+
+        }
+        private void RoundButton(System.Windows.Forms.Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
         }
     }
 }

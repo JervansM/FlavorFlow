@@ -54,6 +54,19 @@ namespace FlavorFlowIT13
 
         private void MenuManagementAddMenuForm_Load(object sender, EventArgs e)
         {
+            RoundButton(menuformsavebtn, 20);
+            RoundButton(menuformselectimagebtn, 20);
+
+            menuformsavebtn.UseVisualStyleBackColor = false;
+            menuformsavebtn.FlatStyle = FlatStyle.Flat;
+            menuformsavebtn.FlatAppearance.BorderSize = 0;
+
+            menuformselectimagebtn.UseVisualStyleBackColor = false;
+            menuformselectimagebtn.FlatStyle = FlatStyle.Flat;
+            menuformselectimagebtn.FlatAppearance.BorderSize = 0;
+
+
+
             if (_isEditMode && _editMenuID > 0)
             {
                 string query = "SELECT * FROM Menu WHERE MenuID = @MenuID";
@@ -97,6 +110,7 @@ namespace FlavorFlowIT13
                 }
             }
         }
+
     
             private string GetAvailableConnection()
             {
