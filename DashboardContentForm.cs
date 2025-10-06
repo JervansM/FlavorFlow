@@ -33,15 +33,15 @@ namespace FlavorFlowIT13
 
 
 
-            dashtotalsales.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashactive.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashnetprofit.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashinventorystatus.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashtotalexpense.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashinventoryusage.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashactive.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashnotif.BackColor = ColorTranslator.FromHtml("#1e1e1e");
-            dashvisuals.BackColor = ColorTranslator.FromHtml("#1e1e1e");
+            dashtotalsales.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashactive.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashnetprofit.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashinventorystatus.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashtotalexpense.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashinventoryusage.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashactive.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashnotif.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            dashvisuals.BackColor = ColorTranslator.FromHtml("#2f2f2f");
         }
 
 

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 
 namespace FlavorFlowIT13
@@ -103,7 +104,35 @@ namespace FlavorFlowIT13
             dgvexpenses.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvexpenses.BackgroundColor = Color.WhiteSmoke;
 
-            dgvexpenses.RowTemplate.Height = 35; 
+            dgvexpenses.RowTemplate.Height = 35;
+            dgvexpenses.Paint += Dgvpayroll_Paint;
+
+        }
+        private void Dgvpayroll_Paint(object sender, PaintEventArgs e)
+        {
+
+            int radius = 20; // corner roundness
+            int thickness = 2; // border thickness
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(
+                thickness / 2,
+                thickness / 2,
+                dgvexpenses.Width - thickness,
+                dgvexpenses.Height - thickness);
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddArc(rect.X, rect.Y, radius, radius, 180, 90); // top-left
+                path.AddArc(rect.Right - radius, rect.Y, radius, radius, 270, 90); // top-right
+                path.AddArc(rect.Right - radius, rect.Bottom - radius, radius, radius, 0, 90); // bottom-right
+                path.AddArc(rect.X, rect.Bottom - radius, radius, radius, 90, 90); // bottom-left
+                path.CloseFigure();
+
+                using (Pen pen = new Pen(Color.Black, thickness))
+                {
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    e.Graphics.DrawPath(pen, path);
+                }
+            }
         }
     }
 }

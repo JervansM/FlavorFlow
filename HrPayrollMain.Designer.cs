@@ -77,7 +77,7 @@
             systempanelcontents.Controls.Add(label4);
             systempanelcontents.Location = new Point(12, 109);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1490, 853);
+            systempanelcontents.Size = new Size(1517, 853);
             systempanelcontents.TabIndex = 77;
             systempanelcontents.Paint += systempanelcontents_Paint;
             // 
