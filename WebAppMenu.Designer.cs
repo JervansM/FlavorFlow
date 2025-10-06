@@ -43,11 +43,11 @@
             appetizersbtn = new Button();
             allitemsbtn = new Button();
             panel5 = new Panel();
+            flowLayoutMenuCard = new FlowLayoutPanel();
             panel6 = new Panel();
             button1 = new Button();
             label1 = new Label();
             panel7 = new Panel();
-            flowLayoutMenuCard = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -191,9 +191,17 @@
             panel5.Controls.Add(flowLayoutMenuCard);
             panel5.Location = new Point(40, 281);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1179, 705);
+            panel5.Size = new Size(1240, 705);
             panel5.TabIndex = 46;
             panel5.Paint += panel5_Paint;
+            // 
+            // flowLayoutMenuCard
+            // 
+            flowLayoutMenuCard.Dock = DockStyle.Fill;
+            flowLayoutMenuCard.Location = new Point(0, 0);
+            flowLayoutMenuCard.Name = "flowLayoutMenuCard";
+            flowLayoutMenuCard.Size = new Size(1240, 705);
+            flowLayoutMenuCard.TabIndex = 0;
             // 
             // panel6
             // 
@@ -201,9 +209,9 @@
             panel6.Controls.Add(button1);
             panel6.Controls.Add(label1);
             panel6.Controls.Add(panel7);
-            panel6.Location = new Point(1245, 281);
+            panel6.Location = new Point(1315, 281);
             panel6.Name = "panel6";
-            panel6.Size = new Size(593, 705);
+            panel6.Size = new Size(523, 705);
             panel6.TabIndex = 47;
             // 
             // button1
@@ -236,14 +244,6 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(59, 46);
             panel7.TabIndex = 45;
-            // 
-            // flowLayoutMenuCard
-            // 
-            flowLayoutMenuCard.Dock = DockStyle.Fill;
-            flowLayoutMenuCard.Location = new Point(0, 0);
-            flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(1179, 705);
-            flowLayoutMenuCard.TabIndex = 0;
             // 
             // WebAppMenu
             // 

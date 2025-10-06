@@ -104,6 +104,10 @@ namespace FlavorFlowIT13
                     break;
                 case "Customer":
                     break;
+                case "HR":
+                    break;
+                case "DeliveryRider":
+                    break;
                 default:
                     break;
             }

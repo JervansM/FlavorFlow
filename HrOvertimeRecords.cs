@@ -61,5 +61,10 @@ WHERE ad.Reason = 'Overtime';";
             dataovertimerecords.DefaultCellStyle.BackColor = Color.White; // ✅ row background
             dataovertimerecords.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
+
+        private void dataovertimerecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

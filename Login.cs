@@ -107,6 +107,10 @@ namespace FlavorFlowIT13
                                 new HrDashboard().Show();
                                 this.Hide();
                                 break;
+                            case "DeliveryRider":
+                                new DeliveryDashboard().Show();
+                                this.Hide();
+                                break;
 
                             case "Customer":
                                 new WebAppMenu().Show();

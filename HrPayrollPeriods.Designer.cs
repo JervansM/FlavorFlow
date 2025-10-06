@@ -38,9 +38,10 @@
             // Addperiod
             // 
             Addperiod.Font = new Font("Segoe UI", 20F);
-            Addperiod.Location = new Point(431, 574);
+            Addperiod.Location = new Point(706, 648);
+            Addperiod.Margin = new Padding(3, 2, 3, 2);
             Addperiod.Name = "Addperiod";
-            Addperiod.Size = new Size(235, 70);
+            Addperiod.Size = new Size(206, 52);
             Addperiod.TabIndex = 50;
             Addperiod.Text = "Add";
             Addperiod.UseVisualStyleBackColor = true;
@@ -49,34 +50,35 @@
             // datapayrollperiod
             // 
             datapayrollperiod.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            datapayrollperiod.Dock = DockStyle.Fill;
             datapayrollperiod.Location = new Point(0, 0);
+            datapayrollperiod.Margin = new Padding(3, 2, 3, 2);
             datapayrollperiod.Name = "datapayrollperiod";
             datapayrollperiod.RowHeadersWidth = 51;
-            datapayrollperiod.Size = new Size(1407, 533);
+            datapayrollperiod.Size = new Size(1646, 1061);
             datapayrollperiod.TabIndex = 0;
             datapayrollperiod.CellContentClick += datapayrollperiod_CellContentClick;
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(Addperiod);
             panel1.Controls.Add(datapayrollperiod);
+            panel1.Dock = DockStyle.Fill;
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1407, 533);
+            panel1.Size = new Size(1646, 1061);
             panel1.TabIndex = 48;
             panel1.Paint += panel1_Paint;
             // 
             // HrPayrollPeriods
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            ClientSize = new Size(1419, 769);
-            Controls.Add(Addperiod);
+            ClientSize = new Size(1646, 1061);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "HrPayrollPeriods";
             Text = "HrPayrollPeriods";
             Load += HrPayrollPeriods_Load;

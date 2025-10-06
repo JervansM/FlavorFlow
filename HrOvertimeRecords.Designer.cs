@@ -38,21 +38,24 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(dataovertimerecords);
+            panel1.Dock = DockStyle.Fill;
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(10, 22);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1223, 400);
+            panel1.Size = new Size(1544, 813);
             panel1.TabIndex = 52;
             // 
             // dataovertimerecords
             // 
             dataovertimerecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataovertimerecords.Dock = DockStyle.Fill;
             dataovertimerecords.Location = new Point(0, 0);
             dataovertimerecords.Margin = new Padding(3, 2, 3, 2);
             dataovertimerecords.Name = "dataovertimerecords";
             dataovertimerecords.RowHeadersWidth = 51;
-            dataovertimerecords.Size = new Size(1221, 400);
+            dataovertimerecords.Size = new Size(1544, 813);
             dataovertimerecords.TabIndex = 0;
+            dataovertimerecords.CellContentClick += dataovertimerecords_CellContentClick;
             // 
             // HrOvertimeRecords
             // 

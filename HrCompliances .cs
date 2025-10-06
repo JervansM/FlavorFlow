@@ -26,5 +26,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void HrCompliances_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

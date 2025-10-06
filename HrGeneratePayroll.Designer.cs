@@ -38,20 +38,23 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(datageneratepayroll);
+            panel1.Dock = DockStyle.Fill;
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(43, 53);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1236, 400);
+            panel1.Size = new Size(1608, 1022);
             panel1.TabIndex = 52;
             // 
             // datageneratepayroll
             // 
+            datageneratepayroll.AllowUserToOrderColumns = true;
             datageneratepayroll.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            datageneratepayroll.Location = new Point(-1, 1);
+            datageneratepayroll.Dock = DockStyle.Fill;
+            datageneratepayroll.Location = new Point(0, 0);
             datageneratepayroll.Margin = new Padding(3, 2, 3, 2);
             datageneratepayroll.Name = "datageneratepayroll";
             datageneratepayroll.RowHeadersWidth = 51;
-            datageneratepayroll.Size = new Size(1237, 400);
+            datageneratepayroll.Size = new Size(1608, 1022);
             datageneratepayroll.TabIndex = 0;
             datageneratepayroll.CellContentClick += datageneratepayroll_CellContentClick;
             // 
@@ -60,7 +63,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(1544, 813);
+            ClientSize = new Size(1608, 1022);
             Controls.Add(panel1);
             Name = "HrGeneratePayroll";
             Text = "HrGeneratePayroll";

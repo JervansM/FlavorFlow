@@ -87,9 +87,9 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(-38, 244);
+            systempanelcontents.Location = new Point(2, 232);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 226);
+            systempanelcontents.Size = new Size(1349, 226);
             systempanelcontents.TabIndex = 60;
             // 
             // systempanelheadercoral
@@ -101,16 +101,16 @@
             systempanelheadercoral.Controls.Add(label4);
             systempanelheadercoral.Controls.Add(label2);
             systempanelheadercoral.Controls.Add(label1);
-            systempanelheadercoral.Location = new Point(-38, 165);
+            systempanelheadercoral.Location = new Point(2, 138);
             systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1447, 82);
+            systempanelheadercoral.Size = new Size(1349, 64);
             systempanelheadercoral.TabIndex = 57;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(1206, 28);
+            label3.Location = new Point(1206, 20);
             label3.Name = "label3";
             label3.Size = new Size(89, 32);
             label3.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label6.Location = new Point(766, 28);
+            label6.Location = new Point(766, 20);
             label6.Name = "label6";
             label6.Size = new Size(146, 32);
             label6.TabIndex = 5;
@@ -130,7 +130,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.Location = new Point(1012, 28);
+            label5.Location = new Point(1012, 20);
             label5.Name = "label5";
             label5.Size = new Size(83, 32);
             label5.TabIndex = 4;
@@ -140,7 +140,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label4.Location = new Point(237, 28);
+            label4.Location = new Point(237, 20);
             label4.Name = "label4";
             label4.Size = new Size(81, 32);
             label4.TabIndex = 3;
@@ -150,7 +150,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label2.Location = new Point(522, 28);
+            label2.Location = new Point(522, 20);
             label2.Name = "label2";
             label2.Size = new Size(133, 32);
             label2.TabIndex = 1;
@@ -160,7 +160,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.Location = new Point(40, 28);
+            label1.Location = new Point(40, 20);
             label1.Name = "label1";
             label1.Size = new Size(90, 32);
             label1.TabIndex = 0;
@@ -174,7 +174,7 @@
             hrcompliancespoliciesbtn.FlatStyle = FlatStyle.Flat;
             hrcompliancespoliciesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrcompliancespoliciesbtn.ForeColor = Color.White;
-            hrcompliancespoliciesbtn.Location = new Point(295, 35);
+            hrcompliancespoliciesbtn.Location = new Point(360, 35);
             hrcompliancespoliciesbtn.Name = "hrcompliancespoliciesbtn";
             hrcompliancespoliciesbtn.Size = new Size(309, 58);
             hrcompliancespoliciesbtn.TabIndex = 59;
@@ -189,7 +189,7 @@
             hrcompliancescompliancesbtn.FlatStyle = FlatStyle.Flat;
             hrcompliancescompliancesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrcompliancescompliancesbtn.ForeColor = Color.White;
-            hrcompliancescompliancesbtn.Location = new Point(-38, 35);
+            hrcompliancescompliancesbtn.Location = new Point(20, 35);
             hrcompliancescompliancesbtn.Name = "hrcompliancescompliancesbtn";
             hrcompliancescompliancesbtn.Size = new Size(309, 58);
             hrcompliancescompliancesbtn.TabIndex = 58;
@@ -212,7 +212,7 @@
             Controls.Add(hrcompliancescompliancesbtn);
             Name = "HrCompliances";
             Text = "HrCompliances";
-            Load += HrCompliances_Load;
+            Load += HrCompliances_Load_1;
             systempanelheadercoral.ResumeLayout(false);
             systempanelheadercoral.PerformLayout();
             ResumeLayout(false);

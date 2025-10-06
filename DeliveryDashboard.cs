@@ -16,5 +16,17 @@ namespace FlavorFlowIT13
         {
             InitializeComponent();
         }
+
+        private void DeliveryDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deliverylogoutbtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
 }

@@ -81,7 +81,7 @@
             rolecombobox.Anchor = AnchorStyles.None;
             rolecombobox.Font = new Font("Sitka Display", 42F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rolecombobox.FormattingEnabled = true;
-            rolecombobox.Items.AddRange(new object[] { "Admin", "Manager", "Staff", "HR", "Customer" });
+            rolecombobox.Items.AddRange(new object[] { "Admin", "Manager", "Staff", "HR", "Customer", "DeliveryRider" });
             rolecombobox.Location = new Point(379, 247);
             rolecombobox.Name = "rolecombobox";
             rolecombobox.Size = new Size(415, 89);
