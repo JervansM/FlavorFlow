@@ -831,6 +831,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1924, 1061);
             Controls.Add(panelTop);
+            Cursor = Cursors.Hand;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AdminDashboard";

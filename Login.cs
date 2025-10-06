@@ -116,6 +116,10 @@ namespace FlavorFlowIT13
                                 new WebAppMenu().Show();
                                 this.Hide();
                                 break;
+                            case "Finance":
+                                new FinanceDashboard().Show();
+                                this.Hide();
+                                break;
 
                             default:
                                 MessageBox.Show("Invalid role assigned to user.", "Login Failed",

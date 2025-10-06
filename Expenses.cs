@@ -365,10 +365,7 @@ namespace FlavorFlowIT13
         }
         private void LoadContent(Form form)
         {
-            foreach (Control ctrl in panelContent.Controls)
-            {
-                ctrl.Dispose();
-            }
+            
 
             panelContent.Controls.Clear();
 
@@ -379,6 +376,22 @@ namespace FlavorFlowIT13
 
             // Add to panel
             panelContent.Controls.Add(form);
+            form.Show();
+
+        }
+        private void LoadContent2(Form form)
+        {
+            
+
+            financeexpensespanel.Controls.Clear();
+
+            // Prepare the new form
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            // Add to panel
+            financeexpensespanel.Controls.Add(form);
             form.Show();
 
         }
@@ -417,6 +430,7 @@ namespace FlavorFlowIT13
             RoundPanel(financeexpensespanel, 25);
             RoundPanel(totalexpensepanel, 25);
             RoundButton(generatereportbtn, 20);
+            RoundButton(expensesoriginbtn, 20);
 
             generatereportbtn.UseVisualStyleBackColor = false;
             generatereportbtn.FlatStyle = FlatStyle.Flat;
@@ -451,6 +465,14 @@ namespace FlavorFlowIT13
             netsalessumbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             netsalessumbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
+            expensesoriginbtn.UseVisualStyleBackColor = false;
+            expensesoriginbtn.FlatStyle = FlatStyle.Flat;
+            expensesoriginbtn.FlatAppearance.BorderSize = 0;
+            expensesoriginbtn.BackColor = ColorTranslator.FromHtml("IndianRed");
+            expensesoriginbtn.ForeColor = Color.White;
+            expensesoriginbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Maroon");
+            expensesoriginbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Maroon");
+
             expensereportsbtn.UseVisualStyleBackColor = false;
             expensereportsbtn.FlatStyle = FlatStyle.Flat;
             expensereportsbtn.FlatAppearance.BorderSize = 0;
@@ -468,6 +490,8 @@ namespace FlavorFlowIT13
             netprofitsummarybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
             UpdateTotalExpense(this, EventArgs.Empty);
+
+
 
         }
 
@@ -640,6 +664,9 @@ namespace FlavorFlowIT13
             }
         }
 
-      
+        private void expensesoriginbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent2( new ExpensesOrigin());
+        }
     }
 }

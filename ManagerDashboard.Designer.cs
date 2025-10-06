@@ -73,10 +73,10 @@
             fficonadmin.BackColor = Color.Transparent;
             fficonadmin.BackgroundImageLayout = ImageLayout.None;
             fficonadmin.Image = Properties.Resources.logotransparent;
-            fficonadmin.Location = new Point(-6, -50);
+            fficonadmin.Location = new Point(3, -44);
             fficonadmin.Name = "fficonadmin";
-            fficonadmin.Size = new Size(232, 244);
-            fficonadmin.SizeMode = PictureBoxSizeMode.Zoom;
+            fficonadmin.Size = new Size(276, 221);
+            fficonadmin.SizeMode = PictureBoxSizeMode.StretchImage;
             fficonadmin.TabIndex = 5;
             fficonadmin.TabStop = false;
             // 
@@ -408,12 +408,13 @@
             // panel2
             // 
             panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(userwelcome);
             panel2.Controls.Add(panelNav);
+            panel2.Controls.Add(fficonadmin);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(adminicon);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(dashaddate);
-            panel2.Controls.Add(userwelcome);
             panel2.Location = new Point(12, 26);
             panel2.Name = "panel2";
             panel2.Size = new Size(1872, 972);
@@ -425,7 +426,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateGray;
             ClientSize = new Size(1924, 1061);
-            Controls.Add(fficonadmin);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;

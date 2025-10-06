@@ -30,6 +30,7 @@
         {
             panelContent = new Panel();
             financeexpensespanel = new Panel();
+            totallbl = new Label();
             netsalestxt = new Label();
             netprofitsummarybtn = new Button();
             expensereportsbtn = new Button();
@@ -46,7 +47,6 @@
             label8 = new Label();
             panel6 = new Panel();
             label9 = new Label();
-            totallbl = new Label();
             panelContent.SuspendLayout();
             financeexpensespanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
@@ -73,7 +73,7 @@
             panelContent.Controls.Add(panel6);
             panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1511, 801);
+            panelContent.Size = new Size(1511, 816);
             panelContent.TabIndex = 17;
             // 
             // financeexpensespanel
@@ -83,9 +83,20 @@
             financeexpensespanel.Controls.Add(netsalestxt);
             financeexpensespanel.Location = new Point(13, 117);
             financeexpensespanel.Name = "financeexpensespanel";
-            financeexpensespanel.Size = new Size(1483, 650);
+            financeexpensespanel.Size = new Size(1483, 661);
             financeexpensespanel.TabIndex = 60;
             financeexpensespanel.Paint += financeexpensespanel_Paint;
+            // 
+            // totallbl
+            // 
+            totallbl.AutoSize = true;
+            totallbl.Font = new Font("Segoe UI", 50.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            totallbl.ForeColor = Color.White;
+            totallbl.Location = new Point(514, 159);
+            totallbl.Name = "totallbl";
+            totallbl.Size = new Size(538, 89);
+            totallbl.TabIndex = 1;
+            totallbl.Text = "Total Net Sales :";
             // 
             // netsalestxt
             // 
@@ -149,7 +160,7 @@
             dashnetprofit.Anchor = AnchorStyles.Bottom;
             dashnetprofit.BackColor = Color.Black;
             dashnetprofit.Controls.Add(dashnetprofittxt);
-            dashnetprofit.Location = new Point(2381, 2045);
+            dashnetprofit.Location = new Point(2381, 2060);
             dashnetprofit.Name = "dashnetprofit";
             dashnetprofit.Size = new Size(468, 169);
             dashnetprofit.TabIndex = 20;
@@ -171,7 +182,7 @@
             dashinventoryusage.Anchor = AnchorStyles.None;
             dashinventoryusage.BackColor = Color.Black;
             dashinventoryusage.Controls.Add(label2);
-            dashinventoryusage.Location = new Point(2381, 1098);
+            dashinventoryusage.Location = new Point(2381, 1106);
             dashinventoryusage.Name = "dashinventoryusage";
             dashinventoryusage.Size = new Size(468, 226);
             dashinventoryusage.TabIndex = 18;
@@ -215,7 +226,7 @@
             panel4.Anchor = AnchorStyles.Bottom;
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(3055, 2759);
+            panel4.Location = new Point(3055, 2774);
             panel4.Name = "panel4";
             panel4.Size = new Size(468, 169);
             panel4.TabIndex = 4;
@@ -237,7 +248,7 @@
             panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(3055, 1455);
+            panel5.Location = new Point(3055, 1463);
             panel5.Name = "panel5";
             panel5.Size = new Size(468, 226);
             panel5.TabIndex = 3;
@@ -275,17 +286,6 @@
             label9.Size = new Size(225, 45);
             label9.TabIndex = 3;
             label9.Text = "Total Expense";
-            // 
-            // totallbl
-            // 
-            totallbl.AutoSize = true;
-            totallbl.Font = new Font("Segoe UI", 50.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totallbl.ForeColor = Color.White;
-            totallbl.Location = new Point(514, 159);
-            totallbl.Name = "totallbl";
-            totallbl.Size = new Size(538, 89);
-            totallbl.TabIndex = 1;
-            totallbl.Text = "Total Net Sales :";
             // 
             // FinanceExpenses
             // 

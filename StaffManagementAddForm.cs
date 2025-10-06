@@ -33,7 +33,24 @@ namespace FlavorFlowIT13
 
         private void StaffManagementAddForm_Load(object sender, EventArgs e)
         {
+            RoundButton(addstaffbtn, 20);
+            RoundButton(closebtn, 20);
 
+            addstaffbtn.FlatStyle = FlatStyle.Flat;
+            addstaffbtn.FlatAppearance.BorderSize = 0;
+
+            closebtn.FlatStyle = FlatStyle.Flat;
+            closebtn.FlatAppearance.BorderSize = 0;
+        }
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
         }
 
         private void stafftxt_TextChanged(object sender, EventArgs e)

@@ -739,10 +739,19 @@ namespace FlavorFlowIT13
 
                 decimal netProfit = totalSales - totalExpenses;
 
-                totalnetprofttxt.Text = $"₱{netProfit:N2}";
-                totalnetprofttxt.ForeColor = netProfit >= 0
-                    ? ColorTranslator.FromHtml("#27AE60") // PROFIT
-                    : ColorTranslator.FromHtml("#E74C3C"); // LOSS
+                if (netProfit >= 0)
+                {
+                    totalnetprofttxt.Text = $"₱{netProfit:N2}";
+                    totalnetprofttxt.ForeColor = ColorTranslator.FromHtml("#27AE60"); // green
+                    totalnetprofitlbl.Text = "Net Profit :";
+                }
+                else
+                {
+                    totalnetprofttxt.Text = $"₱{Math.Abs(netProfit):N2}";
+                    totalnetprofttxt.ForeColor = ColorTranslator.FromHtml("#E74C3C"); // red
+                    totalnetprofitlbl.Text = "Net Loss :";
+                }
+
             }
             catch (Exception ex)
             {

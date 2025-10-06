@@ -33,6 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
+            expensesoriginbtn = new Button();
             generatereportbtn = new Button();
             totalexpensepanel = new Panel();
             totalexpensetxt = new Label();
@@ -72,6 +73,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(expensesoriginbtn);
             panelContent.Controls.Add(generatereportbtn);
             panelContent.Controls.Add(totalexpensepanel);
             panelContent.Controls.Add(expensesposreporttype);
@@ -90,6 +92,21 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1479, 997);
             panelContent.TabIndex = 18;
+            // 
+            // expensesoriginbtn
+            // 
+            expensesoriginbtn.BackColor = Color.Black;
+            expensesoriginbtn.Cursor = Cursors.Hand;
+            expensesoriginbtn.FlatStyle = FlatStyle.Popup;
+            expensesoriginbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            expensesoriginbtn.ForeColor = Color.Honeydew;
+            expensesoriginbtn.Location = new Point(12, 107);
+            expensesoriginbtn.Name = "expensesoriginbtn";
+            expensesoriginbtn.Size = new Size(270, 62);
+            expensesoriginbtn.TabIndex = 62;
+            expensesoriginbtn.Text = "Expenses Origin";
+            expensesoriginbtn.UseVisualStyleBackColor = false;
+            expensesoriginbtn.Click += expensesoriginbtn_Click;
             // 
             // generatereportbtn
             // 
@@ -151,7 +168,7 @@
             expensesposreporttype.ForeColor = Color.Black;
             expensesposreporttype.FormattingEnabled = true;
             expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
-            expensesposreporttype.Location = new Point(12, 112);
+            expensesposreporttype.Location = new Point(298, 113);
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
@@ -162,7 +179,7 @@
             calendardatepicker.CalendarMonthBackground = Color.IndianRed;
             calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
             calendardatepicker.Font = new Font("Segoe UI", 19F);
-            calendardatepicker.Location = new Point(258, 114);
+            calendardatepicker.Location = new Point(544, 115);
             calendardatepicker.Name = "calendardatepicker";
             calendardatepicker.Size = new Size(380, 41);
             calendardatepicker.TabIndex = 58;
@@ -436,5 +453,6 @@
         private Label totalexpensetxt;
         private Label totalexpenselbl;
         private Button generatereportbtn;
+        private Button expensesoriginbtn;
     }
 }
