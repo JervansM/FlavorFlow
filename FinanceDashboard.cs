@@ -185,6 +185,7 @@ namespace FlavorFlowIT13
 
         private void Dgvpayroll_Paint(object sender, PaintEventArgs e)
         {
+
             int radius = 20; // corner roundness
             int thickness = 2; // border thickness
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(

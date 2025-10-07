@@ -10,11 +10,28 @@ using System.Windows.Forms;
 
 namespace FlavorFlowIT13
 {
-    public partial class HrCompliances : Form
+    public partial class HrCompliancesContent : Form
     {
-        public HrCompliances()
+        public HrCompliancesContent()
         {
             InitializeComponent();
+        }
+
+        private void LoadContent(Form form)
+        {
+            foreach (Control ctrl in panelContent.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            panelContent.Controls.Clear();
+
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            panelContent.Controls.Add(form);
+            form.Show();
         }
 
         private void hrcompliancesrenewdocumentsbtn_Click(object sender, EventArgs e)
@@ -31,5 +48,17 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void hrcompliancespoliciesbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new HrPolicies());
+        }
+
+        private void hrcompliancescompliancesbtn_Click(object sender, EventArgs e)
+        {
+            LoadContent(new HrCompliancesContent());
+
+        }
+
     }
 }

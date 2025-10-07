@@ -287,5 +287,10 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void dataleave_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

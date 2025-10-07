@@ -1,6 +1,6 @@
 ﻿namespace FlavorFlowIT13
 {
-    partial class HrCompliances
+    partial class HrCompliancesContent
     {
         /// <summary>
         /// Required designer variable.
@@ -42,22 +42,24 @@
             label1 = new Label();
             hrcompliancespoliciesbtn = new Button();
             hrcompliancescompliancesbtn = new Button();
+            panelContent = new Panel();
             systempanelheadercoral.SuspendLayout();
+            panelContent.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Location = new Point(2, 617);
+            panel1.Location = new Point(17, 531);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1369, 120);
+            panel1.Size = new Size(1527, 279);
             panel1.TabIndex = 64;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label10.Location = new Point(2, 582);
+            label10.Location = new Point(17, 486);
             label10.Name = "label10";
             label10.Size = new Size(71, 32);
             label10.TabIndex = 63;
@@ -66,7 +68,7 @@
             // hrcompliancesuploadnewdocumnetbtn
             // 
             hrcompliancesuploadnewdocumnetbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrcompliancesuploadnewdocumnetbtn.Location = new Point(230, 476);
+            hrcompliancesuploadnewdocumnetbtn.Location = new Point(395, 360);
             hrcompliancesuploadnewdocumnetbtn.Name = "hrcompliancesuploadnewdocumnetbtn";
             hrcompliancesuploadnewdocumnetbtn.Size = new Size(352, 62);
             hrcompliancesuploadnewdocumnetbtn.TabIndex = 61;
@@ -76,7 +78,7 @@
             // hrcompliancesrenewdocumentsbtn
             // 
             hrcompliancesrenewdocumentsbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrcompliancesrenewdocumentsbtn.Location = new Point(712, 476);
+            hrcompliancesrenewdocumentsbtn.Location = new Point(930, 360);
             hrcompliancesrenewdocumentsbtn.Name = "hrcompliancesrenewdocumentsbtn";
             hrcompliancesrenewdocumentsbtn.Size = new Size(287, 62);
             hrcompliancesrenewdocumentsbtn.TabIndex = 62;
@@ -87,9 +89,9 @@
             // systempanelcontents
             // 
             systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Location = new Point(2, 232);
+            systempanelcontents.Location = new Point(0, 70);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1349, 226);
+            systempanelcontents.Size = new Size(1510, 284);
             systempanelcontents.TabIndex = 60;
             // 
             // systempanelheadercoral
@@ -101,16 +103,16 @@
             systempanelheadercoral.Controls.Add(label4);
             systempanelheadercoral.Controls.Add(label2);
             systempanelheadercoral.Controls.Add(label1);
-            systempanelheadercoral.Location = new Point(2, 138);
+            systempanelheadercoral.Location = new Point(0, 3);
             systempanelheadercoral.Name = "systempanelheadercoral";
-            systempanelheadercoral.Size = new Size(1349, 64);
+            systempanelheadercoral.Size = new Size(1527, 64);
             systempanelheadercoral.TabIndex = 57;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.Location = new Point(1206, 20);
+            label3.Location = new Point(1398, 20);
             label3.Name = "label3";
             label3.Size = new Size(89, 32);
             label3.TabIndex = 6;
@@ -120,7 +122,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label6.Location = new Point(766, 20);
+            label6.Location = new Point(913, 20);
             label6.Name = "label6";
             label6.Size = new Size(146, 32);
             label6.TabIndex = 5;
@@ -130,7 +132,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.Location = new Point(1012, 20);
+            label5.Location = new Point(1181, 20);
             label5.Name = "label5";
             label5.Size = new Size(83, 32);
             label5.TabIndex = 4;
@@ -140,7 +142,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label4.Location = new Point(237, 20);
+            label4.Location = new Point(289, 20);
             label4.Name = "label4";
             label4.Size = new Size(81, 32);
             label4.TabIndex = 3;
@@ -150,7 +152,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label2.Location = new Point(522, 20);
+            label2.Location = new Point(534, 20);
             label2.Name = "label2";
             label2.Size = new Size(133, 32);
             label2.TabIndex = 1;
@@ -174,12 +176,13 @@
             hrcompliancespoliciesbtn.FlatStyle = FlatStyle.Flat;
             hrcompliancespoliciesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrcompliancespoliciesbtn.ForeColor = Color.White;
-            hrcompliancespoliciesbtn.Location = new Point(360, 35);
+            hrcompliancespoliciesbtn.Location = new Point(398, 12);
             hrcompliancespoliciesbtn.Name = "hrcompliancespoliciesbtn";
             hrcompliancespoliciesbtn.Size = new Size(309, 58);
             hrcompliancespoliciesbtn.TabIndex = 59;
             hrcompliancespoliciesbtn.Text = "Policies";
             hrcompliancespoliciesbtn.UseVisualStyleBackColor = false;
+            hrcompliancespoliciesbtn.Click += hrcompliancespoliciesbtn_Click;
             // 
             // hrcompliancescompliancesbtn
             // 
@@ -189,34 +192,44 @@
             hrcompliancescompliancesbtn.FlatStyle = FlatStyle.Flat;
             hrcompliancescompliancesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrcompliancescompliancesbtn.ForeColor = Color.White;
-            hrcompliancescompliancesbtn.Location = new Point(20, 35);
+            hrcompliancescompliancesbtn.Location = new Point(49, 12);
             hrcompliancescompliancesbtn.Name = "hrcompliancescompliancesbtn";
             hrcompliancescompliancesbtn.Size = new Size(309, 58);
             hrcompliancescompliancesbtn.TabIndex = 58;
             hrcompliancescompliancesbtn.Text = "Compliances";
             hrcompliancescompliancesbtn.UseVisualStyleBackColor = false;
+            hrcompliancescompliancesbtn.Click += hrcompliancescompliancesbtn_Click;
+            // 
+            // panelContent
+            // 
+            panelContent.Controls.Add(systempanelheadercoral);
+            panelContent.Controls.Add(systempanelcontents);
+            panelContent.Controls.Add(panel1);
+            panelContent.Controls.Add(label10);
+            panelContent.Controls.Add(hrcompliancesrenewdocumentsbtn);
+            panelContent.Controls.Add(hrcompliancesuploadnewdocumnetbtn);
+            panelContent.Location = new Point(12, 100);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(1728, 973);
+            panelContent.TabIndex = 65;
             // 
             // HrCompliances
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(1370, 749);
-            Controls.Add(panel1);
-            Controls.Add(label10);
-            Controls.Add(hrcompliancesuploadnewdocumnetbtn);
-            Controls.Add(hrcompliancesrenewdocumentsbtn);
-            Controls.Add(systempanelcontents);
-            Controls.Add(systempanelheadercoral);
+            ClientSize = new Size(1924, 1061);
             Controls.Add(hrcompliancespoliciesbtn);
             Controls.Add(hrcompliancescompliancesbtn);
+            Controls.Add(panelContent);
             Name = "HrCompliances";
             Text = "HrCompliances";
             Load += HrCompliances_Load_1;
             systempanelheadercoral.ResumeLayout(false);
             systempanelheadercoral.PerformLayout();
+            panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -235,5 +248,6 @@
         private Button hrcompliancespoliciesbtn;
         private Button hrcompliancescompliancesbtn;
         private Label label3;
+        private Panel panelContent;
     }
 }

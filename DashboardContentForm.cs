@@ -171,7 +171,9 @@ namespace FlavorFlowIT13
 
                     // TOTAL SALES
                     decimal totalSales = Convert.ToDecimal(new SqlCommand(
-                        @"SELECT ISNULL(SUM(TotalAmount),0) FROM dbo.Orders WHERE Status='Completed' AND PaymentStatus='Paid'", conn)
+                        @"SELECT ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount, 0)), 0) 
+      FROM dbo.Orders 
+      WHERE Status = 'Completed' AND PaymentStatus = 'Paid'", conn)
                         .ExecuteScalar());
 
                     decimal totalSalesToday = Convert.ToDecimal(new SqlCommand(

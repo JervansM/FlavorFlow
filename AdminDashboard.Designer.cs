@@ -115,6 +115,7 @@
             panelTop.Controls.Add(adminicon);
             panelTop.Controls.Add(userwelcome);
             panelTop.Controls.Add(fficonadmin);
+            panelTop.Cursor = Cursors.Default;
             panelTop.Location = new Point(30, 28);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(1872, 972);
@@ -175,6 +176,7 @@
             panelContent.Controls.Add(dashnotif);
             panelContent.Controls.Add(dashvisuals);
             panelContent.Controls.Add(dashtotalsales);
+            panelContent.Cursor = Cursors.Default;
             panelContent.Location = new Point(303, 125);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1545, 814);
@@ -831,7 +833,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1924, 1061);
             Controls.Add(panelTop);
-            Cursor = Cursors.Hand;
+            Cursor = Cursors.Default;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AdminDashboard";

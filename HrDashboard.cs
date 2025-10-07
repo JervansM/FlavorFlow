@@ -291,7 +291,7 @@ namespace FlavorFlowIT13
         private void button7_Click(object sender, EventArgs e) { LoadContent(new HrAttendance()); }
         private void hrpayrollbtn_Click(object sender, EventArgs e) { LoadContent(new HrPayrollMain()); }
         private void hrleavetimeoffbtn_Click(object sender, EventArgs e) { LoadContent(new HrLeave()); }
-        private void hrcompliancepoliciesbtn_Click(object sender, EventArgs e) { LoadContent(new HrCompliances()); }
+        private void hrcompliancepoliciesbtn_Click(object sender, EventArgs e) { LoadContent(new HrCompliancesContent()); }
         private void hrreportsanalyticsbtn_Click(object sender, EventArgs e) { LoadContent(new HrReports()); }
         private void button9_Click(object sender, EventArgs e) { LoadDashboard(); }
         private void dashtotalsales_Paint(object sender, PaintEventArgs e) { }

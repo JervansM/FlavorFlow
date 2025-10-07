@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HrPolicies));
             hrpoliciesuploadnewpolicybtn = new Button();
-            systempanelcontents = new Panel();
+            panelContent = new Panel();
             hrpoliciessectiocompliancetxt = new TextBox();
             hrpoliciessectionpayrollcompensationtxt = new TextBox();
             hrpoliciessectionworkplaceconducttxt = new TextBox();
@@ -39,36 +39,34 @@
             label5 = new Label();
             label2 = new Label();
             label1 = new Label();
-            hrcompliancespoliciesbtn = new Button();
-            hrcompliancescompliancesbtn = new Button();
-            systempanelcontents.SuspendLayout();
+            panelContent.SuspendLayout();
             SuspendLayout();
             // 
             // hrpoliciesuploadnewpolicybtn
             // 
             hrpoliciesuploadnewpolicybtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrpoliciesuploadnewpolicybtn.Location = new Point(392, 675);
+            hrpoliciesuploadnewpolicybtn.Location = new Point(527, 611);
             hrpoliciesuploadnewpolicybtn.Name = "hrpoliciesuploadnewpolicybtn";
             hrpoliciesuploadnewpolicybtn.Size = new Size(352, 62);
             hrpoliciesuploadnewpolicybtn.TabIndex = 69;
             hrpoliciesuploadnewpolicybtn.Text = "Upload New Policy";
             hrpoliciesuploadnewpolicybtn.UseVisualStyleBackColor = true;
             // 
-            // systempanelcontents
+            // panelContent
             // 
-            systempanelcontents.BackColor = Color.White;
-            systempanelcontents.Controls.Add(hrpoliciessectiocompliancetxt);
-            systempanelcontents.Controls.Add(hrpoliciessectionpayrollcompensationtxt);
-            systempanelcontents.Controls.Add(hrpoliciessectionworkplaceconducttxt);
-            systempanelcontents.Controls.Add(hrpoliciessectionleavetimeofftxt);
-            systempanelcontents.Controls.Add(label7);
-            systempanelcontents.Controls.Add(label5);
-            systempanelcontents.Controls.Add(label2);
-            systempanelcontents.Controls.Add(label1);
-            systempanelcontents.Location = new Point(-42, 117);
-            systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1447, 552);
-            systempanelcontents.TabIndex = 68;
+            panelContent.BackColor = Color.White;
+            panelContent.Controls.Add(hrpoliciessectiocompliancetxt);
+            panelContent.Controls.Add(hrpoliciessectionpayrollcompensationtxt);
+            panelContent.Controls.Add(hrpoliciessectionworkplaceconducttxt);
+            panelContent.Controls.Add(hrpoliciessectionleavetimeofftxt);
+            panelContent.Controls.Add(label7);
+            panelContent.Controls.Add(label5);
+            panelContent.Controls.Add(label2);
+            panelContent.Controls.Add(label1);
+            panelContent.Location = new Point(1, 1);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(1447, 811);
+            panelContent.TabIndex = 68;
             // 
             // hrpoliciessectiocompliancetxt
             // 
@@ -150,36 +148,6 @@
             label1.TabIndex = 0;
             label1.Text = "Section:  Leave & Time -Off";
             // 
-            // hrcompliancespoliciesbtn
-            // 
-            hrcompliancespoliciesbtn.BackColor = Color.Black;
-            hrcompliancespoliciesbtn.BackgroundImageLayout = ImageLayout.None;
-            hrcompliancespoliciesbtn.Cursor = Cursors.Hand;
-            hrcompliancespoliciesbtn.FlatStyle = FlatStyle.Flat;
-            hrcompliancespoliciesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hrcompliancespoliciesbtn.ForeColor = Color.White;
-            hrcompliancespoliciesbtn.Location = new Point(295, 23);
-            hrcompliancespoliciesbtn.Name = "hrcompliancespoliciesbtn";
-            hrcompliancespoliciesbtn.Size = new Size(309, 58);
-            hrcompliancespoliciesbtn.TabIndex = 67;
-            hrcompliancespoliciesbtn.Text = "Policies";
-            hrcompliancespoliciesbtn.UseVisualStyleBackColor = false;
-            // 
-            // hrcompliancescompliancesbtn
-            // 
-            hrcompliancescompliancesbtn.BackColor = Color.Black;
-            hrcompliancescompliancesbtn.BackgroundImageLayout = ImageLayout.None;
-            hrcompliancescompliancesbtn.Cursor = Cursors.Hand;
-            hrcompliancescompliancesbtn.FlatStyle = FlatStyle.Flat;
-            hrcompliancescompliancesbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hrcompliancescompliancesbtn.ForeColor = Color.White;
-            hrcompliancescompliancesbtn.Location = new Point(-38, 23);
-            hrcompliancescompliancesbtn.Name = "hrcompliancescompliancesbtn";
-            hrcompliancescompliancesbtn.Size = new Size(309, 58);
-            hrcompliancescompliancesbtn.TabIndex = 66;
-            hrcompliancescompliancesbtn.Text = "Compliances";
-            hrcompliancescompliancesbtn.UseVisualStyleBackColor = false;
-            // 
             // HrPolicies
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -187,24 +155,20 @@
             BackColor = Color.Silver;
             ClientSize = new Size(1544, 813);
             Controls.Add(hrpoliciesuploadnewpolicybtn);
-            Controls.Add(systempanelcontents);
-            Controls.Add(hrcompliancespoliciesbtn);
-            Controls.Add(hrcompliancescompliancesbtn);
+            Controls.Add(panelContent);
             Name = "HrPolicies";
             Text = "HrPolicies";
             Load += HrPolicies_Load;
-            systempanelcontents.ResumeLayout(false);
-            systempanelcontents.PerformLayout();
+            panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button hrpoliciesuploadnewpolicybtn;
-        private Panel systempanelcontents;
+        private Panel panelContent;
         private Label label1;
-        private Button hrcompliancespoliciesbtn;
-        private Button hrcompliancescompliancesbtn;
         private Label label10;
         private Label label7;
         private Label label5;

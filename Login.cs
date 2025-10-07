@@ -95,7 +95,7 @@ namespace FlavorFlowIT13
                                 break;
 
                             case "Manager":
-                                new ManagerDashboard().Show();
+                                new AdminDashboard().Show();
                                 this.Hide();
                                 break;
 

@@ -404,6 +404,7 @@
             AutoScroll = true;
             ClientSize = new Size(1831, 980);
             Controls.Add(panelContent);
+            DoubleBuffered = true;
             Name = "Expenses";
             Text = "Expenses";
             Load += Expenses_Load;

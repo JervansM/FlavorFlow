@@ -34,10 +34,11 @@ namespace FlavorFlowIT13
             createpayrollbtn.UseVisualStyleBackColor = false;
             createpayrollbtn.FlatStyle = FlatStyle.Flat;
             createpayrollbtn.FlatAppearance.BorderSize = 0;
-            createpayrollbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            createpayrollbtn.BackColor = ColorTranslator.FromHtml("#2823B1");
             createpayrollbtn.ForeColor = Color.White;
             createpayrollbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             createpayrollbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
 
 
         }

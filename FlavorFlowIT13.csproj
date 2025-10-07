@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="kill.bat" />
+    <Exec Command="kill.bat&#xD;&#xA;" />
   </Target>
 
  

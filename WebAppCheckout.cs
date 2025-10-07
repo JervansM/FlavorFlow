@@ -35,7 +35,12 @@ namespace FlavorFlowIT13
             WebAppConfirmation webAppConfirmation = new WebAppConfirmation();
             this.Hide();
             webAppConfirmation.Show();
-           
+
+        }
+
+        private void webappconfirmationorderitemspanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
