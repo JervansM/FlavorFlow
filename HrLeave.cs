@@ -64,21 +64,38 @@ namespace FlavorFlowIT13
 
         private void hrleaveleaverequestbtn_Click(object sender, EventArgs e)
         {
-            ShowLeaveView();
+            // Hide Time-Off view if it's active
+            if (timeOffControl != null)
+            {
+                timeOffControl.Visible = false;
+                timeOffControl.SendToBack(); // ensure it's behind the leave UI
+            }
+
+            // Show Leave Request UI
+            dgvLeaveRequests.Visible = true;
+            panel1.Visible = true;
+            label10.Visible = true;
+            hrleaveaddnewleavebtn.Visible = true;
+
+            dgvLeaveRequests.BringToFront();
+            panel1.BringToFront();
+
             LoadLeaveRequests();
             LoadLeaveBalance();
         }
 
         private void hrleavetimeoffbtn_Click(object sender, EventArgs e)
         {
+            // Hide Leave Request UI
             dgvLeaveRequests.Visible = false;
             panel1.Visible = false;
             label10.Visible = false;
             hrleaveaddnewleavebtn.Visible = false;
-           
 
+            // Resize container (restores layout for time-off UI)
             systempanelcontents.Size = new Size(1654, 500);
 
+            // Show or initialize Time-Off control
             if (timeOffControl == null)
             {
                 timeOffControl = new HrTime_Off();

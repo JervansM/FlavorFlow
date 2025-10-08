@@ -166,7 +166,7 @@ namespace FlavorFlowIT13
         private void hrleavetimeoffbtn_Click(object sender, EventArgs e) {
             HrLeave hrLeave = new HrLeave();
             LoadContent(hrLeave);
-            hrLeave.ShowLeaveView();
+          //  hrLeave.ShowLeaveView();
             hrLeave.LoadLeaveRequests();
             hrLeave.LoadLeaveBalance();
       }
