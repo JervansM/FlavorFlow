@@ -163,7 +163,13 @@ namespace FlavorFlowIT13
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void button7_Click(object sender, EventArgs e) { LoadContent(new HrAttendance()); }
         private void hrpayrollbtn_Click(object sender, EventArgs e) { LoadContent(new HrPayrollMain()); }
-        private void hrleavetimeoffbtn_Click(object sender, EventArgs e) { LoadContent(new HrLeave()); }
+        private void hrleavetimeoffbtn_Click(object sender, EventArgs e) {
+            HrLeave hrLeave = new HrLeave();
+            LoadContent(hrLeave);
+            hrLeave.ShowLeaveView();
+            hrLeave.LoadLeaveRequests();
+            hrLeave.LoadLeaveBalance();
+      }
         private void hrcompliancepoliciesbtn_Click(object sender, EventArgs e) { LoadContent(new HrCompliances()); }
         private void hrreportsanalyticsbtn_Click(object sender, EventArgs e) { LoadContent(new HrReports()); }
         private void button9_Click(object sender, EventArgs e) { LoadDashboard(); }

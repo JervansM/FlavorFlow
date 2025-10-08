@@ -30,6 +30,7 @@
         {
             panelContent = new Panel();
             hrattendanceadd = new Button();
+            addnewattendancebtn = new Button();
             systemsearchbarpanel = new Panel();
             systemsearchbaricon = new PictureBox();
             systemsearchbar = new TextBox();
@@ -64,6 +65,7 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.Controls.Add(hrattendanceadd);
+            panelContent.Controls.Add(addnewattendancebtn);
             panelContent.Controls.Add(systemsearchbarpanel);
             panelContent.Controls.Add(panel5);
             panelContent.Controls.Add(panel3);
@@ -72,32 +74,44 @@
             panelContent.Controls.Add(systempanelcontents);
             panelContent.Controls.Add(hrattendanceschedulebtn);
             panelContent.Controls.Add(hrattendancedailyttendancebtn);
-            panelContent.Location = new Point(-96, -181);
+            panelContent.Dock = DockStyle.Fill;
+            panelContent.Location = new Point(0, 0);
             panelContent.Margin = new Padding(3, 4, 3, 4);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1552, 1028);
+            panelContent.Size = new Size(1924, 1055);
             panelContent.TabIndex = 4;
             panelContent.Paint += panelContent_Paint;
             // 
             // hrattendanceadd
             // 
             hrattendanceadd.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            hrattendanceadd.Location = new Point(645, 976);
+            hrattendanceadd.Location = new Point(663, 959);
             hrattendanceadd.Name = "hrattendanceadd";
             hrattendanceadd.Size = new Size(414, 49);
             hrattendanceadd.TabIndex = 51;
             hrattendanceadd.Text = "Add New Attendance";
             hrattendanceadd.UseVisualStyleBackColor = true;
             // 
+            // addnewattendancebtn
+            // 
+            addnewattendancebtn.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            addnewattendancebtn.Location = new Point(650, 780);
+            addnewattendancebtn.Name = "addnewattendancebtn";
+            addnewattendancebtn.Size = new Size(299, 61);
+            addnewattendancebtn.TabIndex = 51;
+            addnewattendancebtn.Text = "Add New Attendance";
+            addnewattendancebtn.UseVisualStyleBackColor = true;
+            addnewattendancebtn.Click += addnewattendanebtn_Click;
+            // 
             // systemsearchbarpanel
             // 
             systemsearchbarpanel.BackColor = Color.White;
             systemsearchbarpanel.Controls.Add(systemsearchbaricon);
             systemsearchbarpanel.Controls.Add(systemsearchbar);
-            systemsearchbarpanel.Location = new Point(53, 35);
+            systemsearchbarpanel.Location = new Point(14, 16);
             systemsearchbarpanel.Margin = new Padding(3, 4, 3, 4);
             systemsearchbarpanel.Name = "systemsearchbarpanel";
-            systemsearchbarpanel.Size = new Size(1654, 79);
+            systemsearchbarpanel.Size = new Size(1741, 79);
             systemsearchbarpanel.TabIndex = 23;
             // 
             // systemsearchbaricon
@@ -105,7 +119,7 @@
             systemsearchbaricon.BackColor = Color.Transparent;
             systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
             systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
-            systemsearchbaricon.Location = new Point(1558, 8);
+            systemsearchbaricon.Location = new Point(1641, 9);
             systemsearchbaricon.Margin = new Padding(3, 4, 3, 4);
             systemsearchbaricon.Name = "systemsearchbaricon";
             systemsearchbaricon.Size = new Size(93, 61);
@@ -119,12 +133,12 @@
             systemsearchbar.BorderStyle = BorderStyle.None;
             systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             systemsearchbar.ForeColor = Color.Black;
-            systemsearchbar.Location = new Point(723, -21);
+            systemsearchbar.Location = new Point(47, 8);
             systemsearchbar.Margin = new Padding(3, 4, 3, 4);
             systemsearchbar.Multiline = true;
             systemsearchbar.Name = "systemsearchbar";
             systemsearchbar.PlaceholderText = "Search";
-            systemsearchbar.Size = new Size(142, 63);
+            systemsearchbar.Size = new Size(1687, 63);
             systemsearchbar.TabIndex = 22;
             // 
             // panel5
@@ -132,12 +146,11 @@
             panel5.BackColor = Color.Black;
             panel5.Controls.Add(label10);
             panel5.Controls.Add(hrattendancesdatetxt);
-            panel5.Location = new Point(108, 331);
+            panel5.Location = new Point(814, 120);
             panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
             panel5.Size = new Size(352, 76);
             panel5.TabIndex = 50;
-            panel5.Paint += panel5_Paint;
             // 
             // label10
             // 
@@ -152,7 +165,7 @@
             // 
             // hrattendancesdatetxt
             // 
-            hrattendancesdatetxt.Location = new Point(100, 16);
+            hrattendancesdatetxt.Location = new Point(94, 13);
             hrattendancesdatetxt.Margin = new Padding(3, 4, 3, 4);
             hrattendancesdatetxt.Multiline = true;
             hrattendancesdatetxt.Name = "hrattendancesdatetxt";
@@ -256,19 +269,20 @@
             // 
             systempanelcontents.BackColor = Color.White;
             systempanelcontents.Controls.Add(dgvAttendance);
-            systempanelcontents.Location = new Point(111, 446);
+            systempanelcontents.Location = new Point(17, 239);
             systempanelcontents.Margin = new Padding(3, 4, 3, 4);
             systempanelcontents.Name = "systempanelcontents";
-            systempanelcontents.Size = new Size(1407, 514);
+            systempanelcontents.Size = new Size(1737, 500);
             systempanelcontents.TabIndex = 46;
             // 
             // dgvAttendance
             // 
             dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAttendance.Dock = DockStyle.Fill;
             dgvAttendance.Location = new Point(0, 0);
             dgvAttendance.Name = "dgvAttendance";
             dgvAttendance.RowHeadersWidth = 51;
-            dgvAttendance.Size = new Size(1405, 513);
+            dgvAttendance.Size = new Size(1737, 500);
             dgvAttendance.TabIndex = 0;
             // 
             // hrattendanceschedulebtn
@@ -279,7 +293,7 @@
             hrattendanceschedulebtn.FlatStyle = FlatStyle.Flat;
             hrattendanceschedulebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendanceschedulebtn.ForeColor = Color.White;
-            hrattendanceschedulebtn.Location = new Point(529, 218);
+            hrattendanceschedulebtn.Location = new Point(432, 120);
             hrattendanceschedulebtn.Margin = new Padding(3, 4, 3, 4);
             hrattendanceschedulebtn.Name = "hrattendanceschedulebtn";
             hrattendanceschedulebtn.Size = new Size(353, 77);
@@ -296,7 +310,7 @@
             hrattendancedailyttendancebtn.FlatStyle = FlatStyle.Flat;
             hrattendancedailyttendancebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hrattendancedailyttendancebtn.ForeColor = Color.White;
-            hrattendancedailyttendancebtn.Location = new Point(110, 218);
+            hrattendancedailyttendancebtn.Location = new Point(14, 120);
             hrattendancedailyttendancebtn.Margin = new Padding(3, 4, 3, 4);
             hrattendancedailyttendancebtn.Name = "hrattendancedailyttendancebtn";
             hrattendancedailyttendancebtn.Size = new Size(389, 77);
@@ -309,7 +323,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1432, 855);
+            AutoScroll = true;
+            ClientSize = new Size(1924, 1055);
             Controls.Add(panelContent);
             Margin = new Padding(3, 4, 3, 4);
             Name = "HrAttendance";
@@ -354,5 +369,6 @@
         private Label label10;
         private DataGridView dgvAttendance;
         private Button hrattendanceadd;
+        private Button addnewattendancebtn;
     }
 }

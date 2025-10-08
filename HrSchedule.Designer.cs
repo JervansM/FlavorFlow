@@ -17,138 +17,145 @@
 
         private void InitializeComponent()
         {
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.systemsearchbarpanel = new System.Windows.Forms.Panel();
-            this.systemsearchbaricon = new System.Windows.Forms.PictureBox();
-            this.systemsearchbar = new System.Windows.Forms.TextBox();
-            this.systempanelcontents = new System.Windows.Forms.Panel();
-            this.scheduleGrid = new System.Windows.Forms.DataGridView();
-            this.hrscheduleschedulebtn = new System.Windows.Forms.Button();
-            this.hrscheduledailyttendancebtn = new System.Windows.Forms.Button();
-
-            this.panelContent.SuspendLayout();
-            this.systemsearchbarpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.systemsearchbaricon)).BeginInit();
-            this.systempanelcontents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scheduleGrid)).BeginInit();
-            this.SuspendLayout();
-
+            panelContent = new Panel();
+            addnewschedulebtn = new Button();
+            systemsearchbarpanel = new Panel();
+            systemsearchbaricon = new PictureBox();
+            systemsearchbar = new TextBox();
+            systempanelcontents = new Panel();
+            scheduleGrid = new DataGridView();
+            hrscheduledailyttendancebtn = new Button();
+            hrscheduleschedulebtn = new Button();
+            panelContent.SuspendLayout();
+            systemsearchbarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
+            systempanelcontents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)scheduleGrid).BeginInit();
+            SuspendLayout();
             // 
             // panelContent
             // 
-            this.panelContent.BackColor = System.Drawing.Color.Silver;
-            this.panelContent.Controls.Add(this.systemsearchbarpanel);
-            this.panelContent.Controls.Add(this.systempanelcontents);
-            this.panelContent.Controls.Add(this.hrscheduleschedulebtn);
-            this.panelContent.Controls.Add(this.hrscheduledailyttendancebtn);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(0, 0);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1200, 700);
-            this.panelContent.TabIndex = 0;
-
+            panelContent.AutoScroll = true;
+            panelContent.BackColor = Color.Silver;
+            panelContent.Controls.Add(addnewschedulebtn);
+            panelContent.Controls.Add(systemsearchbarpanel);
+            panelContent.Controls.Add(systempanelcontents);
+            panelContent.Controls.Add(hrscheduledailyttendancebtn);
+            panelContent.Controls.Add(hrscheduleschedulebtn);
+            panelContent.Dock = DockStyle.Fill;
+            panelContent.Location = new Point(0, 0);
+            panelContent.Name = "panelContent";
+            panelContent.Size = new Size(1942, 1102);
+            panelContent.TabIndex = 0;
+            // 
+            // addnewschedulebtn
+            // 
+            addnewschedulebtn.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            addnewschedulebtn.Location = new Point(590, 747);
+            addnewschedulebtn.Name = "addnewschedulebtn";
+            addnewschedulebtn.Size = new Size(317, 74);
+            addnewschedulebtn.TabIndex = 25;
+            addnewschedulebtn.Text = "Add New Schedule";
+            addnewschedulebtn.UseVisualStyleBackColor = true;
+            addnewschedulebtn.Click += addnewschedulebtn_Click_2;
             // 
             // systemsearchbarpanel
             // 
-            this.systemsearchbarpanel.BackColor = System.Drawing.Color.White;
-            this.systemsearchbarpanel.Controls.Add(this.systemsearchbaricon);
-            this.systemsearchbarpanel.Controls.Add(this.systemsearchbar);
-            this.systemsearchbarpanel.Location = new System.Drawing.Point(20, 220);
-            this.systemsearchbarpanel.Location = new System.Drawing.Point(20, 220);
-            this.systemsearchbarpanel.Name = "systemsearchbarpanel";
-            this.systemsearchbarpanel.Size = new System.Drawing.Size(1150, 50);
-            this.systemsearchbarpanel.TabIndex = 1;
-
+            systemsearchbarpanel.BackColor = Color.White;
+            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
+            systemsearchbarpanel.Controls.Add(systemsearchbar);
+            systemsearchbarpanel.Location = new Point(14, 19);
+            systemsearchbarpanel.Name = "systemsearchbarpanel";
+            systemsearchbarpanel.Size = new Size(1737, 79);
+            systemsearchbarpanel.TabIndex = 24;
             // 
             // systemsearchbaricon
             // 
-            this.systemsearchbaricon.Image = global::FlavorFlowIT13.Properties.Resources.searchbar_removebg_preview;
-            this.systemsearchbaricon.Location = new System.Drawing.Point(1090, 5);
-            this.systemsearchbaricon.Size = new System.Drawing.Size(45, 40);
-            this.systemsearchbaricon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.systemsearchbaricon.TabStop = false;
-
+            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
+            systemsearchbaricon.Location = new Point(1641, 9);
+            systemsearchbaricon.Name = "systemsearchbaricon";
+            systemsearchbaricon.Size = new Size(93, 61);
+            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
+            systemsearchbaricon.TabIndex = 0;
+            systemsearchbaricon.TabStop = false;
             // 
             // systemsearchbar
             // 
-            this.systemsearchbar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.systemsearchbar.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.systemsearchbar.ForeColor = System.Drawing.Color.Black;
-            this.systemsearchbar.PlaceholderText = "Search...";
-            this.systemsearchbar.Location = new System.Drawing.Point(10, 10);
-            this.systemsearchbar.Size = new System.Drawing.Size(1070, 32);
-            this.systemsearchbar.TabIndex = 0;
-
+            systemsearchbar.BorderStyle = BorderStyle.None;
+            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold);
+            systemsearchbar.ForeColor = Color.Black;
+            systemsearchbar.Location = new Point(34, 12);
+            systemsearchbar.Multiline = true;
+            systemsearchbar.Name = "systemsearchbar";
+            systemsearchbar.PlaceholderText = "Search";
+            systemsearchbar.Size = new Size(1600, 63);
+            systemsearchbar.TabIndex = 22;
             // 
             // systempanelcontents
             // 
-            this.systempanelcontents.BackColor = System.Drawing.Color.White;
-            this.systempanelcontents.Controls.Add(this.scheduleGrid);
-            this.systempanelcontents.Location = new System.Drawing.Point(20, 150);
-            this.systempanelcontents.Name = "systempanelcontents";
-            this.systempanelcontents.Size = new System.Drawing.Size(1150, 500);
-            this.systempanelcontents.TabIndex = 2;
-
+            systempanelcontents.BackColor = Color.White;
+            systempanelcontents.Controls.Add(scheduleGrid);
+            systempanelcontents.Location = new Point(14, 205);
+            systempanelcontents.Name = "systempanelcontents";
+            systempanelcontents.Size = new Size(1737, 500);
+            systempanelcontents.TabIndex = 2;
             // 
             // scheduleGrid
             // 
-            this.scheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.scheduleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scheduleGrid.Location = new System.Drawing.Point(0, 0);
-            this.scheduleGrid.Name = "scheduleGrid";
-            this.scheduleGrid.RowHeadersWidth = 51;
-            this.scheduleGrid.Size = new System.Drawing.Size(1150, 500);
-            this.scheduleGrid.TabIndex = 0;
-
-            // 
-            // hrscheduleschedulebtn
-            // 
-            this.hrscheduleschedulebtn.BackColor = System.Drawing.Color.Black;
-            this.hrscheduleschedulebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hrscheduleschedulebtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.hrscheduleschedulebtn.ForeColor = System.Drawing.Color.White;
-            this.hrscheduleschedulebtn.Location = new System.Drawing.Point(630, 80);
-            this.hrscheduleschedulebtn.Name = "hrscheduleschedulebtn";
-            this.hrscheduleschedulebtn.Size = new System.Drawing.Size(250, 50);
-            this.hrscheduleschedulebtn.TabIndex = 3;
-            this.hrscheduleschedulebtn.Text = "Schedule";
-            this.hrscheduleschedulebtn.UseVisualStyleBackColor = false;
-            this.hrscheduleschedulebtn.Click += new System.EventHandler(this.hrscheduleschedulebtn_Click);
-
+            scheduleGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            scheduleGrid.Dock = DockStyle.Fill;
+            scheduleGrid.Location = new Point(0, 0);
+            scheduleGrid.Name = "scheduleGrid";
+            scheduleGrid.RowHeadersWidth = 51;
+            scheduleGrid.Size = new Size(1737, 500);
+            scheduleGrid.TabIndex = 0;
+            scheduleGrid.CellContentClick += scheduleGrid_CellContentClick;
             // 
             // hrscheduledailyttendancebtn
             // 
-            this.hrscheduledailyttendancebtn.BackColor = System.Drawing.Color.Black;
-            this.hrscheduledailyttendancebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hrscheduledailyttendancebtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.hrscheduledailyttendancebtn.ForeColor = System.Drawing.Color.White;
-            this.hrscheduledailyttendancebtn.Location = new System.Drawing.Point(350, 80);
-            this.hrscheduledailyttendancebtn.Name = "hrscheduledailyttendancebtn";
-            this.hrscheduledailyttendancebtn.Size = new System.Drawing.Size(250, 50);
-            this.hrscheduledailyttendancebtn.TabIndex = 4;
-            this.hrscheduledailyttendancebtn.Text = "Daily Attendance";
-            this.hrscheduledailyttendancebtn.UseVisualStyleBackColor = false;
-            this.hrscheduledailyttendancebtn.Click += new System.EventHandler(this.hrscheduledailyttendancebtn_Click);
-
+            hrscheduledailyttendancebtn.BackColor = Color.Black;
+            hrscheduledailyttendancebtn.FlatStyle = FlatStyle.Flat;
+            hrscheduledailyttendancebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrscheduledailyttendancebtn.ForeColor = Color.White;
+            hrscheduledailyttendancebtn.Location = new Point(38, 105);
+            hrscheduledailyttendancebtn.Name = "hrscheduledailyttendancebtn";
+            hrscheduledailyttendancebtn.Size = new Size(389, 77);
+            hrscheduledailyttendancebtn.TabIndex = 4;
+            hrscheduledailyttendancebtn.Text = "Daily Attendance";
+            hrscheduledailyttendancebtn.UseVisualStyleBackColor = false;
+            hrscheduledailyttendancebtn.Click += hrscheduledailyttendancebtn_Click_1;
+            // 
+            // hrscheduleschedulebtn
+            // 
+            hrscheduleschedulebtn.BackColor = Color.Black;
+            hrscheduleschedulebtn.FlatStyle = FlatStyle.Flat;
+            hrscheduleschedulebtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            hrscheduleschedulebtn.ForeColor = Color.White;
+            hrscheduleschedulebtn.Location = new Point(492, 105);
+            hrscheduleschedulebtn.Name = "hrscheduleschedulebtn";
+            hrscheduleschedulebtn.Size = new Size(389, 77);
+            hrscheduleschedulebtn.TabIndex = 3;
+            hrscheduleschedulebtn.Text = "Schedule";
+            hrscheduleschedulebtn.UseVisualStyleBackColor = false;
+            hrscheduleschedulebtn.Click += hrscheduleschedulebtn_Click;
             // 
             // HrSchedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.panelContent);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "HrSchedule";
-            this.Text = "HR Schedule";
-            this.Load += new System.EventHandler(this.HrSchedule_Load); // ✅ ADD THIS HERE
-
-            this.panelContent.ResumeLayout(false);
-            this.systemsearchbarpanel.ResumeLayout(false);
-            this.systemsearchbarpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.systemsearchbaricon)).EndInit();
-            this.systempanelcontents.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scheduleGrid)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1942, 1102);
+            Controls.Add(panelContent);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "HrSchedule";
+            Text = "HR Schedule";
+            Load += HrSchedule_Load;
+            panelContent.ResumeLayout(false);
+            systemsearchbarpanel.ResumeLayout(false);
+            systemsearchbarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
+            systempanelcontents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)scheduleGrid).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -161,5 +168,6 @@
         private System.Windows.Forms.DataGridView scheduleGrid;
         private System.Windows.Forms.Button hrscheduleschedulebtn;
         private System.Windows.Forms.Button hrscheduledailyttendancebtn;
+        private System.Windows.Forms.Button addnewschedulebtn;
     }
 }

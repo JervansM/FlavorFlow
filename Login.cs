@@ -68,7 +68,7 @@ namespace FlavorFlowIT13
             }
 
 
-            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;Trust Server Certificate=True";
+            string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlowDB;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
 
             string query = "SELECT Role FROM [User] WHERE Username=@username AND Password=@password";
 

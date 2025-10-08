@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -7,13 +8,29 @@ namespace FlavorFlowIT13
 {
     public partial class HrAttendance : Form
     {
-        private readonly string connectionString =
-            "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connectionString = "Data Source=DESKTOP-2SPCOE3;Initial Catalog=FlavorFlow;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+
+        // ✅ Cache the schedule form to prevent recreation
+        private HrSchedule cachedScheduleForm = null;
 
         public HrAttendance()
         {
             InitializeComponent();
             this.Load += HrAttendance_Load;
+
+            // ✅ Enable double buffering to reduce flickering
+            this.DoubleBuffered = true;
+            SetDoubleBuffered(dgvAttendance);
+        }
+
+        private void SetDoubleBuffered(Control control)
+        {
+            if (control != null)
+            {
+                typeof(Control).InvokeMember("DoubleBuffered",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+                    null, control, new object[] { true });
+            }
         }
 
         private void HrAttendance_Load(object sender, EventArgs e)
@@ -21,7 +38,7 @@ namespace FlavorFlowIT13
             LoadAttendance();
         }
 
-        // 🔹 Load attendance data from your database
+        // 🔹 Load attendance data
         private void LoadAttendance()
         {
             try
@@ -29,39 +46,25 @@ namespace FlavorFlowIT13
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     string query = @"
-SELECT 
-    A.AttendanceID,
-    E.EmployeeID,
-    CONCAT(E.FirstName, ' ', E.LastName) AS EmployeeName,
-    S.Name AS ShiftName,
-    S.StartTime,
-    S.EndTime,
-    A.Date,
-    A.TimeIn,
-    A.TimeOut,
-    A.Status
-FROM Attendance A
-INNER JOIN Employee E ON A.EmployeeID = E.EmployeeID
-LEFT JOIN ShiftSchedule SS ON E.EmployeeID = SS.EmployeeID
-LEFT JOIN Shift S ON SS.ShiftID = S.ShiftID
-WHERE A.Date BETWEEN SS.EffectiveDate AND SS.ExpiryDate
-ORDER BY A.Date DESC;
-"; 
+                        SELECT 
+                            CONCAT(E.FirstName, ' ', E.LastName) AS EmployeeName,
+                            S.Name AS ShiftName,
+                            A.Date,
+                            A.TimeIn,
+                            A.TimeOut,
+                            A.Status
+                        FROM Attendance A
+                        INNER JOIN Employee E ON A.EmployeeID = E.EmployeeID
+                        LEFT JOIN Shift S ON A.ShiftID = S.ShiftID
+                        ORDER BY A.Date DESC, A.TimeIn DESC;";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgvAttendance.DataSource = dt;
+
+                    StyleAttendanceGrid();
                 }
-
-                // ✅ Style DataGridView
-                dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvAttendance.DefaultCellStyle.ForeColor = Color.Black;
-                dgvAttendance.DefaultCellStyle.BackColor = Color.White;
-                dgvAttendance.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-                dgvAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                dgvAttendance.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             }
             catch (Exception ex)
             {
@@ -69,88 +72,159 @@ ORDER BY A.Date DESC;
             }
         }
 
-        // 🔹 Save edits made in Time In / Time Out columns
-        private void dgvAttendance_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (dgvAttendance.Columns[e.ColumnIndex].HeaderText == "Time In" ||
-                    dgvAttendance.Columns[e.ColumnIndex].HeaderText == "Time Out")
-                {
-                    string scheduleId = dgvAttendance.Rows[e.RowIndex].Cells["Schedule ID"].Value.ToString();
-                    string timeIn = dgvAttendance.Rows[e.RowIndex].Cells["Time In"].Value?.ToString();
-                    string timeOut = dgvAttendance.Rows[e.RowIndex].Cells["Time Out"].Value?.ToString();
-
-                    using (SqlConnection conn = new SqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        string updateQuery = "UPDATE ShiftSchedule SET ShiftStart = @timeIn, ShiftEnd = @timeOut WHERE ShiftScheduleID = @id";
-                        SqlCommand cmd = new SqlCommand(updateQuery, conn);
-                        cmd.Parameters.AddWithValue("@timeIn", string.IsNullOrEmpty(timeIn) ? DBNull.Value : (object)timeIn);
-                        cmd.Parameters.AddWithValue("@timeOut", string.IsNullOrEmpty(timeOut) ? DBNull.Value : (object)timeOut);
-                        cmd.Parameters.AddWithValue("@id", scheduleId);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving edited attendance: " + ex.Message);
-            }
-        }
-
-        // 🔹 Reload attendance when "Daily Attendance" button is clicked
+        // 🔹 Daily attendance button
         private void hrdailyattendancebtn_Click(object sender, EventArgs e)
         {
             LoadAttendance();
         }
 
-        // 🔹 Open the schedule view
-        private void hrschedulebtn_Click(object sender, EventArgs e)
-        {
-            LoadContent(new HrSchedule());
-        }
-
-        // 🔹 Reuse existing content loading logic
-        private void LoadContent(Form form)
-        {
-            foreach (Control ctrl in panelContent.Controls)
-                ctrl.Dispose();
-
-            panelContent.Controls.Clear();
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            panelContent.Controls.Add(form);
-            form.Show();
-        }
-    
-
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        // ✅ IMPROVED: Smooth switching to schedule without flickering
         private void hrattendanceschedulebtn_Click(object sender, EventArgs e)
         {
-            LoadContent(new HrSchedule());
+            LoadContent();
         }
 
         private void hrattendancedailyttendancebtn_Click(object sender, EventArgs e)
         {
-            LoadContent(new HrAttendance());
+            LoadAttendance();
+        }
+
+        // ✅ NEW: Optimized content loading - reuse existing form
+        private void LoadContent()
+        {
+            if (panelContent == null) return;
+
+            // Create schedule form only once
+            if (cachedScheduleForm == null || cachedScheduleForm.IsDisposed)
+            {
+                cachedScheduleForm = new HrSchedule();
+                cachedScheduleForm.TopLevel = false;
+                cachedScheduleForm.FormBorderStyle = FormBorderStyle.None;
+                cachedScheduleForm.Dock = DockStyle.Fill;
+                panelContent.Controls.Add(cachedScheduleForm);
+            }
+
+            // Just bring it to front and show, don't recreate
+            cachedScheduleForm.BringToFront();
+            cachedScheduleForm.Show();
+        }
+
+        // 🔹 Open add attendance form
+        private void addnewattendanebtn_Click(object sender, EventArgs e)
+        {
+            OpenAddAttendanceForm();
+        }
+
+        private void OpenAddAttendanceForm()
+        {
+            addnewattendanceform addForm = new addnewattendanceform();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadAttendance();
+            }
+        }
+
+        // ✅ NEW: Validate if employee already has attendance for the given date
+        public bool HasAttendanceForDate(int employeeId, DateTime date)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"
+                        SELECT COUNT(*) 
+                        FROM Attendance 
+                        WHERE EmployeeID = @EmployeeID 
+                        AND CAST(Date AS DATE) = @Date";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                        cmd.Parameters.AddWithValue("@Date", date.Date);
+
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error checking attendance: " + ex.Message);
+                return false;
+            }
+        }
+
+        // ✅ NEW: Validate date is not in the future
+        public bool IsValidAttendanceDate(DateTime date, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            DateTime today = DateTime.Today;
+
+            if (date.Date > today)
+            {
+                errorMessage = "Cannot add attendance for future dates. Please select today or a past date.";
+                return false;
+            }
+
+            return true;
+        }
+
+        // ✅ NEW: Normalize past dates to today
+        public DateTime NormalizeDateToToday(DateTime selectedDate)
+        {
+            DateTime today = DateTime.Today;
+
+            // If selected date is in the past, return today's date
+            if (selectedDate.Date < today)
+            {
+                return today;
+            }
+
+            return selectedDate;
+        }
+
+        // ✅ Style DataGridView with dark theme matching schedule grid
+        private void StyleAttendanceGrid()
+        {
+            // Make grid read-only (non-editable)
+            dgvAttendance.ReadOnly = true;
+            dgvAttendance.AllowUserToAddRows = false;
+            dgvAttendance.AllowUserToDeleteRows = false;
+            dgvAttendance.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+            // Apply dark theme styling
+            dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAttendance.BackgroundColor = Color.FromArgb(45, 45, 48);
+            dgvAttendance.ForeColor = Color.White;
+            dgvAttendance.GridColor = Color.Gray;
+
+            // Cell styling
+            dgvAttendance.DefaultCellStyle.BackColor = Color.FromArgb(62, 62, 66);
+            dgvAttendance.DefaultCellStyle.ForeColor = Color.White;
+            dgvAttendance.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+            dgvAttendance.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 122, 204);
+            dgvAttendance.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header styling
+            dgvAttendance.EnableHeadersVisualStyles = false;
+            dgvAttendance.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 140, 105);
+            dgvAttendance.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 15, FontStyle.Bold);
+            dgvAttendance.ColumnHeadersHeight = 30;
+
+            // Selection and layout
+            dgvAttendance.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAttendance.MultiSelect = false;
+            dgvAttendance.RowHeadersVisible = false;
+            dgvAttendance.BorderStyle = BorderStyle.None;
+
+            // Alternating row colors for better readability
+            dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(52, 52, 56);
+        }
+
+        private void panelContent_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

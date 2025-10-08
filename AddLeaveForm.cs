@@ -74,7 +74,7 @@ namespace FlavorFlowIT13
 
             comboLeaveType = new ComboBox();
             comboLeaveType.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboLeaveType.Items.AddRange(new string[] { "Vacation", "Sick", "Emergency", "Personal" });
+            comboLeaveType.Items.AddRange(new string[] { "Vacation", "Sick", "Emergency"});
             comboLeaveType.BackColor = Color.FromArgb(62, 62, 66);
             comboLeaveType.ForeColor = Color.White;
             comboLeaveType.FlatStyle = FlatStyle.Flat;
