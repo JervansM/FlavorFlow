@@ -33,7 +33,6 @@
             dashadrefreshicon = new PictureBox();
             dashadtime = new Label();
             dashaddate = new Label();
-            adminicon = new PictureBox();
             userwelcome = new Label();
             fficonadmin = new PictureBox();
             panel1 = new Panel();
@@ -94,9 +93,8 @@
             voidbtn = new Button();
             addorderbtn = new Button();
             applydiscountbtn = new Button();
-            staffdashlogout = new Button();
+            staffdashlogout = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -105,6 +103,7 @@
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)staffdashlogout).BeginInit();
             SuspendLayout();
             // 
             // dashadrefreshicon
@@ -112,6 +111,7 @@
             dashadrefreshicon.BackColor = Color.Transparent;
             dashadrefreshicon.BackgroundImageLayout = ImageLayout.None;
             dashadrefreshicon.Cursor = Cursors.Hand;
+            dashadrefreshicon.Enabled = false;
             dashadrefreshicon.Image = (Image)resources.GetObject("dashadrefreshicon.Image");
             dashadrefreshicon.Location = new Point(1605, 91);
             dashadrefreshicon.Name = "dashadrefreshicon";
@@ -119,6 +119,7 @@
             dashadrefreshicon.SizeMode = PictureBoxSizeMode.Zoom;
             dashadrefreshicon.TabIndex = 20;
             dashadrefreshicon.TabStop = false;
+            dashadrefreshicon.Visible = false;
             dashadrefreshicon.Click += dashadrefreshicon_Click;
             // 
             // dashadtime
@@ -126,11 +127,11 @@
             dashadtime.AutoSize = true;
             dashadtime.BackColor = Color.Transparent;
             dashadtime.FlatStyle = FlatStyle.Flat;
-            dashadtime.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold);
+            dashadtime.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashadtime.ForeColor = Color.Coral;
-            dashadtime.Location = new Point(1322, 72);
+            dashadtime.Location = new Point(1318, 89);
             dashadtime.Name = "dashadtime";
-            dashadtime.Size = new Size(148, 68);
+            dashadtime.Size = new Size(109, 50);
             dashadtime.TabIndex = 22;
             dashadtime.Text = "Time";
             dashadtime.Click += dashadtime_Click;
@@ -140,37 +141,25 @@
             dashaddate.AutoSize = true;
             dashaddate.BackColor = Color.Transparent;
             dashaddate.FlatStyle = FlatStyle.Flat;
-            dashaddate.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold);
+            dashaddate.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashaddate.ForeColor = Color.Coral;
-            dashaddate.Location = new Point(890, 72);
+            dashaddate.Location = new Point(890, 89);
             dashaddate.Name = "dashaddate";
-            dashaddate.Size = new Size(142, 68);
+            dashaddate.Size = new Size(103, 50);
             dashaddate.TabIndex = 21;
             dashaddate.Text = "Date";
             dashaddate.Click += dashaddate_Click;
-            // 
-            // adminicon
-            // 
-            adminicon.BackColor = Color.Transparent;
-            adminicon.BackgroundImageLayout = ImageLayout.None;
-            adminicon.Image = (Image)resources.GetObject("adminicon.Image");
-            adminicon.Location = new Point(594, 44);
-            adminicon.Name = "adminicon";
-            adminicon.Size = new Size(103, 96);
-            adminicon.SizeMode = PictureBoxSizeMode.Zoom;
-            adminicon.TabIndex = 19;
-            adminicon.TabStop = false;
             // 
             // userwelcome
             // 
             userwelcome.AutoSize = true;
             userwelcome.BackColor = Color.Transparent;
             userwelcome.FlatStyle = FlatStyle.Flat;
-            userwelcome.Font = new Font("Segoe UI", 38.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            userwelcome.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             userwelcome.ForeColor = Color.Coral;
-            userwelcome.Location = new Point(213, 72);
+            userwelcome.Location = new Point(321, 89);
             userwelcome.Name = "userwelcome";
-            userwelcome.Size = new Size(394, 68);
+            userwelcome.Size = new Size(286, 50);
             userwelcome.TabIndex = 18;
             userwelcome.Text = "Welcome, Staff";
             // 
@@ -179,9 +168,9 @@
             fficonadmin.BackColor = Color.Transparent;
             fficonadmin.BackgroundImageLayout = ImageLayout.None;
             fficonadmin.Image = (Image)resources.GetObject("fficonadmin.Image");
-            fficonadmin.Location = new Point(-33, -71);
+            fficonadmin.Location = new Point(-19, -91);
             fficonadmin.Name = "fficonadmin";
-            fficonadmin.Size = new Size(324, 324);
+            fficonadmin.Size = new Size(379, 345);
             fficonadmin.SizeMode = PictureBoxSizeMode.Zoom;
             fficonadmin.TabIndex = 17;
             fficonadmin.TabStop = false;
@@ -816,6 +805,7 @@
             // 
             // panelContent
             // 
+            panelContent.AutoScroll = true;
             panelContent.BackColor = SystemColors.Control;
             panelContent.Location = new Point(873, 255);
             panelContent.Name = "panelContent";
@@ -922,16 +912,17 @@
             // 
             // staffdashlogout
             // 
+            staffdashlogout.BackColor = Color.Transparent;
             staffdashlogout.Cursor = Cursors.Hand;
-            staffdashlogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            staffdashlogout.ForeColor = Color.White;
-            staffdashlogout.Location = new Point(1757, 91);
+            staffdashlogout.ErrorImage = Properties.Resources.pngtree_exit_icon_graphic_design_template_vector_png_image_3985217_removebg_preview;
+            staffdashlogout.Image = Properties.Resources.pngtree_exit_icon_graphic_design_template_vector_png_image_3985217_removebg_preview;
+            staffdashlogout.Location = new Point(1754, 71);
             staffdashlogout.Name = "staffdashlogout";
-            staffdashlogout.Size = new Size(106, 48);
+            staffdashlogout.Size = new Size(158, 81);
+            staffdashlogout.SizeMode = PictureBoxSizeMode.Zoom;
             staffdashlogout.TabIndex = 28;
-            staffdashlogout.Text = "LOG OUT";
-            staffdashlogout.UseVisualStyleBackColor = true;
-            staffdashlogout.Click += staffdashlogout_Click;
+            staffdashlogout.TabStop = false;
+            staffdashlogout.Click += staffdashlogout_Click_1;
             // 
             // StaffDashboard
             // 
@@ -939,7 +930,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
             ClientSize = new Size(1924, 1061);
-            Controls.Add(staffdashlogout);
             Controls.Add(panel17);
             Controls.Add(panelContent);
             Controls.Add(panel3);
@@ -948,9 +938,9 @@
             Controls.Add(dashadrefreshicon);
             Controls.Add(dashadtime);
             Controls.Add(dashaddate);
-            Controls.Add(adminicon);
             Controls.Add(userwelcome);
             Controls.Add(fficonadmin);
+            Controls.Add(staffdashlogout);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -961,7 +951,6 @@
             WindowState = FormWindowState.Maximized;
             Load += StaffDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -972,6 +961,7 @@
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)staffdashlogout).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -981,7 +971,6 @@
         private PictureBox dashadrefreshicon;
         private Label dashadtime;
         private Label dashaddate;
-        private PictureBox adminicon;
         private Label userwelcome;
         private PictureBox fficonadmin;
         private Panel panel1;
@@ -1033,7 +1022,6 @@
         private Label netamountlbl;
         private Label taxlbl;
         private Label totallbl;
-        private Button staffdashlogout;
         private TextBox discounttxt;
         private TextBox fixedamounttxt;
         private Label label8;
@@ -1043,5 +1031,6 @@
         private Label taxtxt;
         private Label totaltxt;
         private Label netamounttxt;
+        private PictureBox staffdashlogout;
     }
 }

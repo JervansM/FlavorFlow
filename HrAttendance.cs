@@ -74,25 +74,18 @@ namespace FlavorFlowIT13
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = @"
-SELECT 
-    A.AttendanceID,
-    E.EmployeeID,
-    CONCAT(E.FirstName, ' ', E.LastName) AS EmployeeName,
-    S.Name AS ShiftName,
-    S.StartTime,
-    S.EndTime,
-    A.Date,
-    A.TimeIn,
-    A.TimeOut,
-    A.Status
-FROM Attendance A
-INNER JOIN Employee E ON A.EmployeeID = E.EmployeeID
-LEFT JOIN ShiftSchedule SS ON E.EmployeeID = SS.EmployeeID
-LEFT JOIN Shift S ON SS.ShiftID = S.ShiftID
-WHERE A.Date BETWEEN SS.EffectiveDate AND SS.ExpiryDate
-ORDER BY A.Date DESC;
-";
+                   string query = @"
+                        SELECT 
+                            CONCAT(E.FirstName, ' ', E.LastName) AS EmployeeName,
+                            S.Name AS ShiftName,
+                            A.Date,
+                            A.TimeIn,
+                            A.TimeOut,
+                            A.Status
+                        FROM Attendance A
+                        INNER JOIN Employee E ON A.EmployeeID = E.EmployeeID
+                        LEFT JOIN Shift S ON A.ShiftID = S.ShiftID
+                        ORDER BY A.Date DESC, A.TimeIn DESC;";
 
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();

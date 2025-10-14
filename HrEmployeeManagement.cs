@@ -106,7 +106,7 @@ namespace FlavorFlowIT13
                     try
                     {
                         // If you've added the image to Resources.resx, this will succeed:
-                        editImg = Properties.Resources.edit_icon; // <-- name depends on your resource entry
+                 //       editImg = Properties.Resources.edit_icon; 
                     }
                     catch
                     {

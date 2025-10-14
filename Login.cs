@@ -2,8 +2,13 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace FlavorFlowIT13
 {
@@ -140,6 +145,17 @@ namespace FlavorFlowIT13
                   MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                    builder.Append(b.ToString("x2"));
+                return builder.ToString();
+            }
+        }
 
         private void HandleStaffLogin(string username, string password)
         {
@@ -181,8 +197,105 @@ namespace FlavorFlowIT13
 
         private void Login_Load(object sender, EventArgs e)
         {
+            RoundPanel(loginpanel, 35);
+            RoundButton(loginbtn, 20);
+            RoundButton(loginsignupbtn, 20);
+            RoundTextBox(usertxt, 15);
+            RoundTextBox(passwordtxt, 15);
+
+            loginpanel.BackColor = Color.FromArgb(180, 240, 240, 240);
+            loginpanel.Padding = new Padding(30);
+
+
+
+            usertxt.BorderStyle = BorderStyle.None;
+            usertxt.BackColor = Color.White;
+            usertxt.ForeColor = Color.FromArgb(64, 64, 64);
+
+            passwordtxt.BorderStyle = BorderStyle.None;
+            passwordtxt.BackColor = Color.White;
+            passwordtxt.ForeColor = Color.FromArgb(64, 64, 64);
+
+
+            StyleButton(loginbtn, "#FF7F50");
+            StyleButton(loginsignupbtn, "#FF7F50");
+
+            usertxt.Focus();
 
         }
+      
 
+        private void StyleButton(Button button, string baseColorHex)
+        {
+            button.UseVisualStyleBackColor = false;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.BackColor = ColorTranslator.FromHtml(baseColorHex);
+            button.ForeColor = Color.White;
+            button.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+
+            button.MouseEnter += (s, e) => button.BackColor = ColorTranslator.FromHtml("#E06A3C");
+            button.MouseLeave += (s, e) => button.BackColor = ColorTranslator.FromHtml(baseColorHex);
+        }
+
+
+
+
+        private void loginpanel_Paint(object sender, PaintEventArgs e)
+        {
+            int radius = 50;
+            int borderThickness = 3;
+            Color borderColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddArc(0, 0, radius, radius, 180, 90);
+                path.AddArc(loginpanel.Width - radius - 1, 0, radius, radius, 270, 90);
+                path.AddArc(loginpanel.Width - radius - 1, loginpanel.Height - radius - 1, radius, radius, 0, 90);
+                path.AddArc(0, loginpanel.Height - radius - 1, radius, radius, 90, 90);
+                path.CloseAllFigures();
+
+                using (Pen pen = new Pen(borderColor, borderThickness))
+                {
+                    e.Graphics.DrawPath(pen, path);
+                }
+            }
+        }
+        private void RoundButton(Button button, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(button.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(button.Width - radius, button.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, button.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            button.Region = new System.Drawing.Region(path);
+        }
+
+        private void RoundPanel(Panel pnl, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            pnl.Region = new Region(path);
+        }
+        private void RoundTextBox(TextBox txtBox, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(txtBox.Width - radius - 1, 0, radius, radius, 270, 90);
+            path.AddArc(txtBox.Width - radius - 1, txtBox.Height - radius - 1, radius, radius, 0, 90);
+            path.AddArc(0, txtBox.Height - radius - 1, radius, radius, 90, 90);
+            path.CloseFigure();
+            txtBox.Region = new Region(path);
+        }
+
+        
     }
 }

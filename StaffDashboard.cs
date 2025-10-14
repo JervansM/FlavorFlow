@@ -101,15 +101,9 @@ namespace FlavorFlowIT13
             RoundButton(sendtokitchenbtn, 19);
             RoundButton(printbillbtn, 19);
             RoundButton(okbtn, 19);
-            RoundButton(staffdashlogout, 19);
 
             //8E9A57//
-            staffdashlogout.FlatStyle = FlatStyle.Flat;
-            staffdashlogout.FlatAppearance.BorderSize = 0;
-            staffdashlogout.UseVisualStyleBackColor = false;
-            staffdashlogout.BackColor = ColorTranslator.FromHtml("Maroon");
-            staffdashlogout.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            staffdashlogout.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
 
             tablemapbtn.FlatStyle = FlatStyle.Flat;
             tablemapbtn.FlatAppearance.BorderSize = 0;
@@ -271,7 +265,7 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             orderDataGridView.EnableHeadersVisualStyles = false;
-        
+
 
             orderDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             orderDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -470,12 +464,7 @@ namespace FlavorFlowIT13
 
         }
 
-        private void staffdashlogout_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-        }
+       
 
         private void tablemapbtn_Click(object sender, EventArgs e)
         {
@@ -599,7 +588,7 @@ namespace FlavorFlowIT13
             InitializeDataGridViewForTakeout();
 
 
-          
+
 
             var menuForm = new StaffDashboardMenuFormOrder("Takeout");
 
@@ -1167,7 +1156,7 @@ namespace FlavorFlowIT13
 
             LoadContent(menuForm);
         }
-        private int GetOrCreateOrderIdForTable(int tableId) 
+        private int GetOrCreateOrderIdForTable(int tableId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -1441,24 +1430,19 @@ namespace FlavorFlowIT13
                 {
                     try
                     {
-                        // Get the current table ID from the order items or use a default
                         int tableId = GetCurrentTableId();
 
-                        // Get discount amount from discounttxt
                         decimal discountAmount = 0;
                         if (!string.IsNullOrEmpty(discounttxt.Text))
                         {
                             decimal.TryParse(discounttxt.Text, out discountAmount);
                         }
 
-                        // Validate and set order type
                         string orderType = selectedOrderType ?? "Dine In";
 
-                        // Debug: Show what order type is being saved
                         System.Diagnostics.Debug.WriteLine($"Saving order with OrderType: {orderType}");
                         System.Diagnostics.Debug.WriteLine($"selectedOrderType value: {selectedOrderType}");
 
-                        // Create the main order record
                         string orderQuery = @"
                             INSERT INTO Orders (TableID, Status, StaffID, TotalAmount, PaymentMethod, Date, OrderType, DiscountAmount, PaymentStatus)
                             VALUES (@TableID, 'Completed', @StaffID, @TotalAmount, @PaymentMethod, @Date, @OrderType, @DiscountAmount, 'Paid')
@@ -1478,7 +1462,6 @@ namespace FlavorFlowIT13
                             orderId = Convert.ToInt32(cmd.ExecuteScalar());
                         }
 
-                        // Insert order items with safety checks
                         if (orderDataGridView.Rows.Count > 0)
                         {
                             foreach (DataGridViewRow row in orderDataGridView.Rows)
@@ -1487,7 +1470,6 @@ namespace FlavorFlowIT13
                                 {
                                     try
                                     {
-                                        // Get values from the row, handling different column name scenarios
                                         int menuId = GetMenuIdFromRow(row);
                                         int qty = Convert.ToInt32(GetCellValue(row, "Qty"));
                                         decimal price = Convert.ToDecimal(GetCellValue(row, "Price"));
@@ -1809,7 +1791,6 @@ namespace FlavorFlowIT13
                 {
                     con.Open();
 
-                    // Get order details
                     string orderQuery = @"
                         SELECT o.OrderID, o.TableID, o.TotalAmount, o.PaymentMethod, o.Date, o.OrderType, o.DiscountAmount,
                                s.Name as StaffName
@@ -1824,7 +1805,6 @@ namespace FlavorFlowIT13
                         {
                             if (reader.Read())
                             {
-                                // Create a copy of the data for printing
                                 var orderData = new
                                 {
                                     OrderID = reader["OrderID"],
@@ -1858,10 +1838,8 @@ namespace FlavorFlowIT13
         {
             try
             {
-                // Create receipt content
                 string receipt = GenerateReceiptContent(orderId, orderData);
 
-                // Print the receipt
                 PrintDocument printDoc = new PrintDocument();
                 printDoc.PrintPage += (sender, e) =>
                 {
@@ -2195,7 +2173,14 @@ namespace FlavorFlowIT13
             UpdateTotals();
         }
 
-
+        private void staffdashlogout_Click_1(object sender, EventArgs e)
+        {
+          
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+    
     }
     public class OrderItem
     {

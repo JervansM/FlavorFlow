@@ -149,6 +149,7 @@ namespace FlavorFlowIT13
 
             Series series = new Series("Expenses")
             {
+
                 ChartType = SeriesChartType.Column,
                 Color = ColorTranslator.FromHtml("IndianRed"),
                 IsValueShownAsLabel = true,
@@ -164,6 +165,7 @@ namespace FlavorFlowIT13
             };
             series.SmartLabelStyle.Enabled = true;
             series.ToolTip = "#VALX: ₱#VAL{N2}";
+            series["PointWidth"] = "0.4";
             expensesChart.Series.Add(series);
 
             expensesChart.Titles.Add(new Title("Expenses Trend")
@@ -173,31 +175,74 @@ namespace FlavorFlowIT13
                 Docking = Docking.Top
             });
         }
-        private DataTable GetExpensesData(DateTime startDate, DateTime endDate)
+        private DataTable GetExpensesData(DateTime startDate, DateTime endDate, string reportType)
         {
-            DataTable dt = new DataTable();
-            string sql = @"
-                SELECT CAST(Date AS DATE) AS ExpenseDate, SUM(Amount) AS TotalExpense
-                FROM dbo.Expenses
-                WHERE Date >= @StartDate AND Date < @EndDate
-                GROUP BY CAST(Date AS DATE)
-                ORDER BY ExpenseDate";
+            string sql = "";
 
-            try
+    if (reportType == "Daily" || reportType == "Weekly")
+    {
+        sql = @"
+           SELECT 
+    CAST(Date AS DATE) AS ExpenseDate, 
+    SUM(Amount) AS TotalExpense
+FROM dbo.Expenses
+WHERE Date >= @StartDate AND Date < @EndDate
+GROUP BY CAST(Date AS DATE)
+ORDER BY ExpenseDate;";
+    }
+    else if (reportType == "Monthly")
+    {
+        sql = @"
+           SELECT 
+    FORMAT(Date, 'yyyy-MM') AS ExpenseDate, 
+    SUM(Amount) AS TotalExpense
+FROM dbo.Expenses
+WHERE Date >= @StartDate AND Date < @EndDate
+GROUP BY FORMAT(Date, 'yyyy-MM')
+ORDER BY ExpenseDate;";
+    }
+    else if (reportType == "Yearly")
+    {
+        sql = @"
+            SELECT 
+    YEAR(Date) AS ExpenseDate, 
+    SUM(Amount) AS TotalExpense
+FROM dbo.Expenses
+WHERE Date >= @StartDate AND Date < @EndDate
+GROUP BY YEAR(Date)
+ORDER BY ExpenseDate";
+    }
+
+    DataTable dt = new DataTable();
+
+    try
+    {
+        if (string.IsNullOrWhiteSpace(activeConnectionString))
+        {
+            activeConnectionString = GetAvailableConnection();
+            if (string.IsNullOrWhiteSpace(activeConnectionString)) return dt;
+        }
+
+        using (var conn = new SqlConnection(activeConnectionString))
+        using (var cmd = new SqlCommand(sql, conn))
+        {
+            cmd.Parameters.AddWithValue("@StartDate", startDate);
+            cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
             {
-                using SqlConnection conn = new SqlConnection(activeConnectionString);
-                using SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@StartDate", startDate);
-                cmd.Parameters.AddWithValue("@EndDate", endDate);
-                using SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading expenses: " + ex.Message);
-            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error loading expense data: " + ex.Message, "Database Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
 
-            return dt;
+    return dt;
         }
 
         private void LoadExpensesTrend(string reportType, DateTime selectedDate)
@@ -214,17 +259,37 @@ namespace FlavorFlowIT13
             // Configure X-axis based on report type
             ConfigureXAxis(chartArea, reportType, start, end);
 
-            DataTable dt = GetExpensesData(start, end);
+            DataTable dt = GetExpensesData(start, end, reportType);
             series.Points.Clear();
 
             foreach (DataRow row in dt.Rows)
             {
-                if (DateTime.TryParse(row["ExpenseDate"]?.ToString(), out DateTime date) &&
-                    double.TryParse(row["TotalExpense"]?.ToString(), out double amount))
+                double.TryParse(row["TotalExpense"]?.ToString(), out double amount);
+                object xValue = null;
+
+                if (reportType == "Yearly")
                 {
-                    series.Points.AddXY(date, amount);
+                    // Convert numeric year into DateTime for proper spacing
+                    int year = Convert.ToInt32(row["ExpenseDate"]);
+                    xValue = new DateTime(year, 1, 1);
                 }
-            }
+                else if (reportType == "Monthly")
+                {
+                    // Convert yyyy-MM into DateTime
+                    if (DateTime.TryParse(row["ExpenseDate"].ToString() + "-01", out DateTime monthDate))
+                        xValue = monthDate;
+                }
+                else
+                {
+                    // Already full date
+                    if (DateTime.TryParse(row["ExpenseDate"].ToString(), out DateTime date))
+                        xValue = date;
+                }
+
+                if (xValue != null)
+                    series.Points.AddXY(xValue, amount);
+            
+        }
 
             if (series.Points.Count == 0)
                 series.Points.AddXY(DateTime.Today, 0);
@@ -233,7 +298,7 @@ namespace FlavorFlowIT13
         private void ConfigureXAxis(ChartArea chartArea, string reportType, DateTime startDate, DateTime endDate)
         {
             // Reset axis properties
-            chartArea.AxisX.LabelStyle.Format = "";
+            chartArea.AxisX.LabelStyle.Format = ""; 
             chartArea.AxisX.LabelStyle.Interval = 0;
             chartArea.AxisX.LabelStyle.IntervalOffset = 0;
             chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Auto;
@@ -276,6 +341,10 @@ namespace FlavorFlowIT13
                     chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
                     chartArea.AxisX.MajorTickMark.Interval = 1;
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Months;
+                   
+
+
+
                     break;
 
                 case "Yearly":
@@ -575,7 +644,7 @@ namespace FlavorFlowIT13
                 (DateTime start, DateTime end) = GetDateRange(currentDate, currentReportType);
 
                 // Get expense trend data
-                DataTable dt = GetExpensesData(start, end);
+                DataTable dt = GetExpensesData(start, end, currentReportType);
 
                 if (dt.Rows.Count == 0)
                 {

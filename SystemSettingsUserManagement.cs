@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace FlavorFlowIT13
 {
@@ -79,6 +80,8 @@ namespace FlavorFlowIT13
             systemsettingscancelbtn.ForeColor = Color.White;
             systemsettingscancelbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             systemsettingscancelbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+
+            
         }
         private string GetAvailableConnection()
         {
@@ -175,8 +178,19 @@ namespace FlavorFlowIT13
             createuseradmin.Show();
 
         }
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(bytes);
+            }
+        }
+      
+        
         private void LoadUsers()
         {
+
             string query = "SELECT UserID, Username, Role, Password, IsLocked FROM [User]";
 
             using (SqlConnection con = new SqlConnection(activeConnectionString))
@@ -247,6 +261,7 @@ namespace FlavorFlowIT13
 
         private void SystemSettingsUserManagement_Load(object sender, EventArgs e)
         {
+
 
             LoadUsers();
 

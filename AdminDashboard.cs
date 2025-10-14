@@ -24,7 +24,6 @@ namespace FlavorFlowIT13
 
             if (!string.IsNullOrEmpty(activeConnectionString))
             {
-                // update form title so you know which DB you’re on
                 this.Text = $"Admin Dashboard - {(activeConnectionString == cloudConnectionString ? "Cloud" : "Local")} DB";
             }
 

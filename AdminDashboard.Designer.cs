@@ -60,6 +60,7 @@
             dashlowstackalerts = new Label();
             dashrecenttransactions = new Label();
             dashvisuals = new Panel();
+            totalorderslbl = new Label();
             menulblsales = new Label();
             totalordersmenu = new Label();
             totalsalesmenu = new Label();
@@ -80,7 +81,6 @@
             adinventorybtn = new Button();
             adsalesbtn = new Button();
             dashbtn = new Button();
-            adminicon = new PictureBox();
             userwelcome = new Label();
             fficonadmin = new PictureBox();
             panelTop.SuspendLayout();
@@ -98,7 +98,6 @@
             dashtotalsales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashsalesicon).BeginInit();
             panelNav.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)adminicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             SuspendLayout();
             // 
@@ -112,10 +111,8 @@
             panelTop.Controls.Add(dashaddate);
             panelTop.Controls.Add(panelContent);
             panelTop.Controls.Add(panelNav);
-            panelTop.Controls.Add(adminicon);
             panelTop.Controls.Add(userwelcome);
             panelTop.Controls.Add(fficonadmin);
-            panelTop.Cursor = Cursors.Default;
             panelTop.Location = new Point(30, 28);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(1872, 972);
@@ -127,6 +124,7 @@
             dashadrefreshicon.BackColor = Color.Transparent;
             dashadrefreshicon.BackgroundImageLayout = ImageLayout.None;
             dashadrefreshicon.Cursor = Cursors.Hand;
+            dashadrefreshicon.Enabled = false;
             dashadrefreshicon.Image = (Image)resources.GetObject("dashadrefreshicon.Image");
             dashadrefreshicon.Location = new Point(1697, 68);
             dashadrefreshicon.Name = "dashadrefreshicon";
@@ -134,6 +132,7 @@
             dashadrefreshicon.SizeMode = PictureBoxSizeMode.Zoom;
             dashadrefreshicon.TabIndex = 3;
             dashadrefreshicon.TabStop = false;
+            dashadrefreshicon.Visible = false;
             dashadrefreshicon.Click += dashadrefreshicon_Click;
             // 
             // dashadtime
@@ -141,11 +140,11 @@
             dashadtime.AutoSize = true;
             dashadtime.BackColor = Color.Transparent;
             dashadtime.FlatStyle = FlatStyle.Flat;
-            dashadtime.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dashadtime.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashadtime.ForeColor = Color.Coral;
-            dashadtime.Location = new Point(1414, 57);
+            dashadtime.Location = new Point(1404, 64);
             dashadtime.Name = "dashadtime";
-            dashadtime.Size = new Size(124, 59);
+            dashadtime.Size = new Size(109, 50);
             dashadtime.TabIndex = 16;
             dashadtime.Text = "Time";
             dashadtime.Click += dashadtime_Click;
@@ -155,11 +154,11 @@
             dashaddate.AutoSize = true;
             dashaddate.BackColor = Color.Transparent;
             dashaddate.FlatStyle = FlatStyle.Flat;
-            dashaddate.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dashaddate.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dashaddate.ForeColor = Color.Coral;
-            dashaddate.Location = new Point(982, 57);
+            dashaddate.Location = new Point(980, 64);
             dashaddate.Name = "dashaddate";
-            dashaddate.Size = new Size(120, 59);
+            dashaddate.Size = new Size(103, 50);
             dashaddate.TabIndex = 15;
             dashaddate.Text = "Date";
             dashaddate.Click += dashaddate_Click;
@@ -176,7 +175,6 @@
             panelContent.Controls.Add(dashnotif);
             panelContent.Controls.Add(dashvisuals);
             panelContent.Controls.Add(dashtotalsales);
-            panelContent.Cursor = Cursors.Default;
             panelContent.Location = new Point(303, 125);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1545, 814);
@@ -321,9 +319,9 @@
             dashinventorytxt.ForeColor = Color.White;
             dashinventorytxt.Location = new Point(26, 6);
             dashinventorytxt.Name = "dashinventorytxt";
-            dashinventorytxt.Size = new Size(265, 45);
+            dashinventorytxt.Size = new Size(248, 45);
             dashinventorytxt.TabIndex = 2;
-            dashinventorytxt.Text = "Inventory Status";
+            dashinventorytxt.Text = "Total Inventory";
             // 
             // dashactive
             // 
@@ -494,6 +492,7 @@
             // dashvisuals
             // 
             dashvisuals.BackColor = Color.Black;
+            dashvisuals.Controls.Add(totalorderslbl);
             dashvisuals.Controls.Add(menulblsales);
             dashvisuals.Controls.Add(totalordersmenu);
             dashvisuals.Controls.Add(totalsalesmenu);
@@ -504,6 +503,18 @@
             dashvisuals.Size = new Size(1021, 357);
             dashvisuals.TabIndex = 1;
             // 
+            // totalorderslbl
+            // 
+            totalorderslbl.AutoSize = true;
+            totalorderslbl.BackColor = Color.Transparent;
+            totalorderslbl.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            totalorderslbl.ForeColor = Color.White;
+            totalorderslbl.Location = new Point(591, 165);
+            totalorderslbl.Name = "totalorderslbl";
+            totalorderslbl.Size = new Size(204, 45);
+            totalorderslbl.TabIndex = 8;
+            totalorderslbl.Text = "Total Orders";
+            // 
             // menulblsales
             // 
             menulblsales.AutoSize = true;
@@ -512,17 +523,17 @@
             menulblsales.ForeColor = Color.White;
             menulblsales.Location = new Point(591, 20);
             menulblsales.Name = "menulblsales";
-            menulblsales.Size = new Size(311, 45);
+            menulblsales.Size = new Size(95, 45);
             menulblsales.TabIndex = 7;
-            menulblsales.Text = "Total Sales / Orders";
+            menulblsales.Text = "Sales";
             // 
             // totalordersmenu
             // 
             totalordersmenu.AutoSize = true;
             totalordersmenu.BackColor = Color.Transparent;
             totalordersmenu.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalordersmenu.ForeColor = Color.White;
-            totalordersmenu.Location = new Point(623, 220);
+            totalordersmenu.ForeColor = Color.Coral;
+            totalordersmenu.Location = new Point(626, 220);
             totalordersmenu.Name = "totalordersmenu";
             totalordersmenu.Size = new Size(59, 65);
             totalordersmenu.TabIndex = 6;
@@ -786,29 +797,16 @@
             dashbtn.UseVisualStyleBackColor = false;
             dashbtn.Click += dashbtn_Click;
             // 
-            // adminicon
-            // 
-            adminicon.BackColor = Color.Transparent;
-            adminicon.BackgroundImageLayout = ImageLayout.None;
-            adminicon.Image = (Image)resources.GetObject("adminicon.Image");
-            adminicon.Location = new Point(575, 42);
-            adminicon.Name = "adminicon";
-            adminicon.Size = new Size(80, 77);
-            adminicon.SizeMode = PictureBoxSizeMode.Zoom;
-            adminicon.TabIndex = 2;
-            adminicon.TabStop = false;
-            adminicon.Click += adminicon_Click;
-            // 
             // userwelcome
             // 
             userwelcome.AutoSize = true;
             userwelcome.BackColor = Color.Transparent;
             userwelcome.FlatStyle = FlatStyle.Flat;
-            userwelcome.Font = new Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            userwelcome.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             userwelcome.ForeColor = Color.Coral;
-            userwelcome.Location = new Point(221, 57);
+            userwelcome.Location = new Point(303, 64);
             userwelcome.Name = "userwelcome";
-            userwelcome.Size = new Size(369, 59);
+            userwelcome.Size = new Size(320, 50);
             userwelcome.TabIndex = 1;
             userwelcome.Text = "Welcome, Admin";
             userwelcome.Click += userwelcome_Click;
@@ -818,7 +816,7 @@
             fficonadmin.BackColor = Color.Transparent;
             fficonadmin.BackgroundImageLayout = ImageLayout.None;
             fficonadmin.Image = (Image)resources.GetObject("fficonadmin.Image");
-            fficonadmin.Location = new Point(-43, -105);
+            fficonadmin.Location = new Point(11, -94);
             fficonadmin.Name = "fficonadmin";
             fficonadmin.Size = new Size(324, 324);
             fficonadmin.SizeMode = PictureBoxSizeMode.Zoom;
@@ -833,7 +831,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1924, 1061);
             Controls.Add(panelTop);
-            Cursor = Cursors.Default;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AdminDashboard";
@@ -865,7 +862,6 @@
             dashtotalsales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dashsalesicon).EndInit();
             panelNav.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)adminicon).EndInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
             ResumeLayout(false);
         }
@@ -875,7 +871,6 @@
         private Panel panelTop;
         private PictureBox fficonadmin;
         private Label userwelcome;
-        private PictureBox adminicon;
         private Panel panelNav;
         private Button dashbtn;
         private Button adstaffbtn;
@@ -926,5 +921,6 @@
         private Label pendinglbl;
         private Label lowstocklbl;
         private Label recenttransactionlbl;
+        private Label totalorderslbl;
     }
 }

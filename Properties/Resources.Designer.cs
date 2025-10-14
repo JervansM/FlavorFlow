@@ -93,16 +93,6 @@ namespace FlavorFlowIT13.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_icon {
-            get {
-                object obj = ResourceManager.GetObject("edit_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap inactive_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("inactive-removebg-preview", resourceCulture);
@@ -167,6 +157,17 @@ namespace FlavorFlowIT13.Properties {
         internal static System.Drawing.Bitmap plusicon {
             get {
                 object obj = ResourceManager.GetObject("plusicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_exit_icon_graphic_design_template_vector_png_image_3985217_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-exit-icon-graphic-design-template-vector-png-image_3985217-removebg-previ" +
+                        "ew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

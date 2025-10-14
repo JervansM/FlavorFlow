@@ -505,6 +505,8 @@ namespace FlavorFlowIT13
             };
             series.SmartLabelStyle.Enabled = true;
             series.ToolTip = "#VALX: ₱#VAL{N2}";
+            series["PointWidth"] = "0.4";
+
             salesTrendChart.Series.Add(series);
         }
 

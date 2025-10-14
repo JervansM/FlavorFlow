@@ -41,6 +41,7 @@
             // panelContent
             // 
             panelContent.AutoScroll = true;
+            panelContent.AutoSize = true;
             panelContent.BackColor = Color.White;
             panelContent.Controls.Add(menusearchbarpanel);
             panelContent.Controls.Add(flowLayoutMenuCard);
@@ -91,9 +92,9 @@
             // 
             // flowLayoutMenuCard
             // 
-            flowLayoutMenuCard.Location = new Point(35, 80);
+            flowLayoutMenuCard.Location = new Point(26, 80);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(936, 3000);
+            flowLayoutMenuCard.Size = new Size(935, 3000);
             flowLayoutMenuCard.TabIndex = 1;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
@@ -101,6 +102,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1924, 1061);
             Controls.Add(panelContent);
             Name = "StaffDashboardMenuFormOrder";
@@ -111,6 +113,7 @@
             menusearchbarpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -55,14 +55,21 @@
             dashinventorytxt = new Label();
             dashTotalItems_txt = new Label();
             dashactive = new Panel();
+            activeorderslbl = new Label();
             dashactiveon = new PictureBox();
             label1 = new Label();
             dashnotif = new Panel();
+            sysalertlbl = new Label();
+            pendinglbl = new Label();
+            lowstocklbl = new Label();
+            recenttransactionlbl = new Label();
             dashsystemnotif = new Label();
             dashpendingapprovals = new Label();
             dashlowstackalerts = new Label();
             dashrecenttransactions = new Label();
             dashvisuals = new Panel();
+            totalorderslbl = new Label();
+            menulblsales = new Label();
             totalordersmenu = new Label();
             totalsalesmenu = new Label();
             topsellingmenupic = new PictureBox();
@@ -71,12 +78,6 @@
             dashsalescontenttxt = new Label();
             dashsalesicon = new PictureBox();
             dashsalestxt = new Label();
-            menulblsales = new Label();
-            activeorderslbl = new Label();
-            recenttransactionlbl = new Label();
-            lowstocklbl = new Label();
-            pendinglbl = new Label();
-            sysalertlbl = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -373,9 +374,9 @@
             dashinventorytxt.ForeColor = Color.White;
             dashinventorytxt.Location = new Point(26, 6);
             dashinventorytxt.Name = "dashinventorytxt";
-            dashinventorytxt.Size = new Size(265, 45);
+            dashinventorytxt.Size = new Size(257, 45);
             dashinventorytxt.TabIndex = 2;
-            dashinventorytxt.Text = "Inventory Status";
+            dashinventorytxt.Text = "Total Inventory ";
             // 
             // dashTotalItems_txt
             // 
@@ -399,6 +400,18 @@
             dashactive.Name = "dashactive";
             dashactive.Size = new Size(457, 180);
             dashactive.TabIndex = 14;
+            // 
+            // activeorderslbl
+            // 
+            activeorderslbl.AutoSize = true;
+            activeorderslbl.BackColor = Color.Transparent;
+            activeorderslbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            activeorderslbl.ForeColor = Color.White;
+            activeorderslbl.Location = new Point(194, 63);
+            activeorderslbl.Name = "activeorderslbl";
+            activeorderslbl.Size = new Size(47, 65);
+            activeorderslbl.TabIndex = 17;
+            activeorderslbl.Text = "-";
             // 
             // dashactiveon
             // 
@@ -442,6 +455,54 @@
             dashnotif.Name = "dashnotif";
             dashnotif.Size = new Size(1022, 228);
             dashnotif.TabIndex = 17;
+            // 
+            // sysalertlbl
+            // 
+            sysalertlbl.AutoSize = true;
+            sysalertlbl.BackColor = Color.Transparent;
+            sysalertlbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            sysalertlbl.ForeColor = Color.White;
+            sysalertlbl.Location = new Point(623, 131);
+            sysalertlbl.Name = "sysalertlbl";
+            sysalertlbl.Size = new Size(47, 65);
+            sysalertlbl.TabIndex = 21;
+            sysalertlbl.Text = "-";
+            // 
+            // pendinglbl
+            // 
+            pendinglbl.AutoSize = true;
+            pendinglbl.BackColor = Color.Transparent;
+            pendinglbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pendinglbl.ForeColor = Color.White;
+            pendinglbl.Location = new Point(623, 86);
+            pendinglbl.Name = "pendinglbl";
+            pendinglbl.Size = new Size(47, 65);
+            pendinglbl.TabIndex = 20;
+            pendinglbl.Text = "-";
+            // 
+            // lowstocklbl
+            // 
+            lowstocklbl.AutoSize = true;
+            lowstocklbl.BackColor = Color.Transparent;
+            lowstocklbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lowstocklbl.ForeColor = Color.White;
+            lowstocklbl.Location = new Point(623, 36);
+            lowstocklbl.Name = "lowstocklbl";
+            lowstocklbl.Size = new Size(47, 65);
+            lowstocklbl.TabIndex = 19;
+            lowstocklbl.Text = "-";
+            // 
+            // recenttransactionlbl
+            // 
+            recenttransactionlbl.AutoSize = true;
+            recenttransactionlbl.BackColor = Color.Transparent;
+            recenttransactionlbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            recenttransactionlbl.ForeColor = Color.White;
+            recenttransactionlbl.Location = new Point(623, -16);
+            recenttransactionlbl.Name = "recenttransactionlbl";
+            recenttransactionlbl.Size = new Size(47, 65);
+            recenttransactionlbl.TabIndex = 18;
+            recenttransactionlbl.Text = "-";
             // 
             // dashsystemnotif
             // 
@@ -494,6 +555,7 @@
             // dashvisuals
             // 
             dashvisuals.BackColor = Color.Black;
+            dashvisuals.Controls.Add(totalorderslbl);
             dashvisuals.Controls.Add(menulblsales);
             dashvisuals.Controls.Add(totalordersmenu);
             dashvisuals.Controls.Add(totalsalesmenu);
@@ -504,12 +566,36 @@
             dashvisuals.Size = new Size(1022, 357);
             dashvisuals.TabIndex = 15;
             // 
+            // totalorderslbl
+            // 
+            totalorderslbl.AutoSize = true;
+            totalorderslbl.BackColor = Color.Transparent;
+            totalorderslbl.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            totalorderslbl.ForeColor = Color.White;
+            totalorderslbl.Location = new Point(591, 165);
+            totalorderslbl.Name = "totalorderslbl";
+            totalorderslbl.Size = new Size(204, 45);
+            totalorderslbl.TabIndex = 16;
+            totalorderslbl.Text = "Total Orders";
+            // 
+            // menulblsales
+            // 
+            menulblsales.AutoSize = true;
+            menulblsales.BackColor = Color.Transparent;
+            menulblsales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            menulblsales.ForeColor = Color.White;
+            menulblsales.Location = new Point(591, 20);
+            menulblsales.Name = "menulblsales";
+            menulblsales.Size = new Size(95, 45);
+            menulblsales.TabIndex = 16;
+            menulblsales.Text = "Sales";
+            // 
             // totalordersmenu
             // 
             totalordersmenu.AutoSize = true;
             totalordersmenu.BackColor = Color.Transparent;
             totalordersmenu.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            totalordersmenu.ForeColor = Color.White;
+            totalordersmenu.ForeColor = Color.Coral;
             totalordersmenu.Location = new Point(626, 220);
             totalordersmenu.Name = "totalordersmenu";
             totalordersmenu.Size = new Size(59, 65);
@@ -597,78 +683,6 @@
             dashsalestxt.Size = new Size(286, 45);
             dashsalestxt.TabIndex = 0;
             dashsalestxt.Text = "Total Sales Today ";
-            // 
-            // menulblsales
-            // 
-            menulblsales.AutoSize = true;
-            menulblsales.BackColor = Color.Transparent;
-            menulblsales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            menulblsales.ForeColor = Color.White;
-            menulblsales.Location = new Point(591, 20);
-            menulblsales.Name = "menulblsales";
-            menulblsales.Size = new Size(311, 45);
-            menulblsales.TabIndex = 16;
-            menulblsales.Text = "Total Sales / Orders";
-            // 
-            // activeorderslbl
-            // 
-            activeorderslbl.AutoSize = true;
-            activeorderslbl.BackColor = Color.Transparent;
-            activeorderslbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            activeorderslbl.ForeColor = Color.White;
-            activeorderslbl.Location = new Point(194, 63);
-            activeorderslbl.Name = "activeorderslbl";
-            activeorderslbl.Size = new Size(47, 65);
-            activeorderslbl.TabIndex = 17;
-            activeorderslbl.Text = "-";
-            // 
-            // recenttransactionlbl
-            // 
-            recenttransactionlbl.AutoSize = true;
-            recenttransactionlbl.BackColor = Color.Transparent;
-            recenttransactionlbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            recenttransactionlbl.ForeColor = Color.White;
-            recenttransactionlbl.Location = new Point(623, -16);
-            recenttransactionlbl.Name = "recenttransactionlbl";
-            recenttransactionlbl.Size = new Size(47, 65);
-            recenttransactionlbl.TabIndex = 18;
-            recenttransactionlbl.Text = "-";
-            // 
-            // lowstocklbl
-            // 
-            lowstocklbl.AutoSize = true;
-            lowstocklbl.BackColor = Color.Transparent;
-            lowstocklbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lowstocklbl.ForeColor = Color.White;
-            lowstocklbl.Location = new Point(623, 36);
-            lowstocklbl.Name = "lowstocklbl";
-            lowstocklbl.Size = new Size(47, 65);
-            lowstocklbl.TabIndex = 19;
-            lowstocklbl.Text = "-";
-            // 
-            // pendinglbl
-            // 
-            pendinglbl.AutoSize = true;
-            pendinglbl.BackColor = Color.Transparent;
-            pendinglbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            pendinglbl.ForeColor = Color.White;
-            pendinglbl.Location = new Point(623, 86);
-            pendinglbl.Name = "pendinglbl";
-            pendinglbl.Size = new Size(47, 65);
-            pendinglbl.TabIndex = 20;
-            pendinglbl.Text = "-";
-            // 
-            // sysalertlbl
-            // 
-            sysalertlbl.AutoSize = true;
-            sysalertlbl.BackColor = Color.Transparent;
-            sysalertlbl.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sysalertlbl.ForeColor = Color.White;
-            sysalertlbl.Location = new Point(623, 131);
-            sysalertlbl.Name = "sysalertlbl";
-            sysalertlbl.Size = new Size(47, 65);
-            sysalertlbl.TabIndex = 21;
-            sysalertlbl.Text = "-";
             // 
             // DashboardContentForm
             // 
@@ -763,5 +777,6 @@
         private Label pendinglbl;
         private Label lowstocklbl;
         private Label recenttransactionlbl;
+        private Label totalorderslbl;
     }
 }

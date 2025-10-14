@@ -24,43 +24,40 @@ namespace FlavorFlowIT13
 
         private void savebtn_Click(object sender, EventArgs e)
         {
-            string username = createpasswordtxt.Text.Trim();
+            string username = createusertxt.Text.Trim();
             string password = createpasswordtxt.Text.Trim();
             string role = rolecombobox.SelectedItem?.ToString();
 
-            if (string.IsNullOrEmpty(username))
+            // Validation
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
             {
-                MessageBox.Show("⚠️ Please fill up the form.");
+                MessageBox.Show("⚠️ Please fill up all fields.");
                 return;
             }
 
-            if (string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("⚠️ Please fill up the form.");
-                return;
-            }
+            // ✅ Hash the password before saving
+            string hashedPassword = PasswordHelper.HashPassword(password);
 
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("⚠️ Please fill up the form.");
-                return;
-            }
-            string query = "INSERT INTO [User] (Username, Password, Role) VALUES (@Username, @Password, @Role)";
-
+            string query = "INSERT INTO [User] (Username, Password, Role, DateCreated, IsLocked) VALUES (@Username, @Password, @Role, GETDATE(), 0)";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@Username", createusertxt.Text);
-                cmd.Parameters.AddWithValue("@Password", createpasswordtxt.Text);
-                cmd.Parameters.AddWithValue("@Role", rolecombobox.SelectedItem?.ToString() ?? "Customer");
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", hashedPassword); // hashed version!
+                cmd.Parameters.AddWithValue("@Role", role);
 
                 try
                 {
                     conn.Open();
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
-                        MessageBox.Show("✅ User added successfully!");
+                    {
+                        MessageBox.Show("✅ User added successfully (password securely hashed).");
+                        createusertxt.Clear();
+                        createpasswordtxt.Clear();
+                        rolecombobox.SelectedIndex = -1;
+                    }
                 }
                 catch (Exception ex)
                 {
