@@ -91,7 +91,7 @@ namespace FlavorFlowIT13
             addinventoryitembtn.UseVisualStyleBackColor = false;
             addinventoryitembtn.FlatStyle = FlatStyle.Flat;
             addinventoryitembtn.FlatAppearance.BorderSize = 0;
-            addinventoryitembtn.BackColor = ColorTranslator.FromHtml("LimeGreen");
+            addinventoryitembtn.BackColor = ColorTranslator.FromHtml("Coral");
             addinventoryitembtn.ForeColor = Color.White;
             addinventoryitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Green");
             addinventoryitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Green");

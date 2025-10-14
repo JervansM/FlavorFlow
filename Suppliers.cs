@@ -199,7 +199,7 @@ namespace FlavorFlowIT13
             addnewsupplierbtn.UseVisualStyleBackColor = false;
             addnewsupplierbtn.FlatStyle = FlatStyle.Flat;
             addnewsupplierbtn.FlatAppearance.BorderSize = 0;
-            addnewsupplierbtn.BackColor = ColorTranslator.FromHtml("#5CC536");
+            addnewsupplierbtn.BackColor = ColorTranslator.FromHtml("Coral");
             addnewsupplierbtn.ForeColor = Color.White;
             addnewsupplierbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#51A135");
             addnewsupplierbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#51A135");

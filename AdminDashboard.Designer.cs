@@ -71,11 +71,11 @@
             dashsalesicon = new PictureBox();
             dashsalestxt = new Label();
             panelNav = new Panel();
+            adpurchaseordersbtn = new Button();
+            adsuppliersbtn = new Button();
             admenubtn = new Button();
-            adlogoutbtn = new Button();
             adlogsbtn = new Button();
             adsystembtn = new Button();
-            adsupplybtn = new ComboBox();
             adfinancebtn = new Button();
             adstaffbtn = new Button();
             adinventorybtn = new Button();
@@ -83,6 +83,7 @@
             dashbtn = new Button();
             userwelcome = new Label();
             fficonadmin = new PictureBox();
+            adlogoutbtn = new PictureBox();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             panelContent.SuspendLayout();
@@ -99,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)dashsalesicon).BeginInit();
             panelNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)adlogoutbtn).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -113,6 +115,7 @@
             panelTop.Controls.Add(panelNav);
             panelTop.Controls.Add(userwelcome);
             panelTop.Controls.Add(fficonadmin);
+            panelTop.Controls.Add(adlogoutbtn);
             panelTop.Location = new Point(30, 28);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(1872, 972);
@@ -126,7 +129,7 @@
             dashadrefreshicon.Cursor = Cursors.Hand;
             dashadrefreshicon.Enabled = false;
             dashadrefreshicon.Image = (Image)resources.GetObject("dashadrefreshicon.Image");
-            dashadrefreshicon.Location = new Point(1697, 68);
+            dashadrefreshicon.Location = new Point(1621, 66);
             dashadrefreshicon.Name = "dashadrefreshicon";
             dashadrefreshicon.Size = new Size(118, 48);
             dashadrefreshicon.SizeMode = PictureBoxSizeMode.Zoom;
@@ -628,11 +631,11 @@
             // panelNav
             // 
             panelNav.BackColor = Color.Silver;
+            panelNav.Controls.Add(adpurchaseordersbtn);
+            panelNav.Controls.Add(adsuppliersbtn);
             panelNav.Controls.Add(admenubtn);
-            panelNav.Controls.Add(adlogoutbtn);
             panelNav.Controls.Add(adlogsbtn);
             panelNav.Controls.Add(adsystembtn);
-            panelNav.Controls.Add(adsupplybtn);
             panelNav.Controls.Add(adfinancebtn);
             panelNav.Controls.Add(adstaffbtn);
             panelNav.Controls.Add(adinventorybtn);
@@ -644,61 +647,74 @@
             panelNav.TabIndex = 3;
             panelNav.Paint += panelNav_Paint;
             // 
+            // adpurchaseordersbtn
+            // 
+            adpurchaseordersbtn.BackColor = Color.Transparent;
+            adpurchaseordersbtn.Cursor = Cursors.Hand;
+            adpurchaseordersbtn.FlatStyle = FlatStyle.Popup;
+            adpurchaseordersbtn.Font = new Font("Segoe UI", 18F);
+            adpurchaseordersbtn.ForeColor = Color.Black;
+            adpurchaseordersbtn.Location = new Point(12, 489);
+            adpurchaseordersbtn.Name = "adpurchaseordersbtn";
+            adpurchaseordersbtn.Size = new Size(243, 62);
+            adpurchaseordersbtn.TabIndex = 15;
+            adpurchaseordersbtn.Text = "Purchase Orders";
+            adpurchaseordersbtn.UseVisualStyleBackColor = false;
+            adpurchaseordersbtn.Click += adpurchaseordersbtn_Click;
+            // 
+            // adsuppliersbtn
+            // 
+            adsuppliersbtn.BackColor = Color.Transparent;
+            adsuppliersbtn.Cursor = Cursors.Hand;
+            adsuppliersbtn.FlatStyle = FlatStyle.Popup;
+            adsuppliersbtn.Font = new Font("Segoe UI", 18F);
+            adsuppliersbtn.ForeColor = Color.Black;
+            adsuppliersbtn.Location = new Point(12, 414);
+            adsuppliersbtn.Name = "adsuppliersbtn";
+            adsuppliersbtn.Size = new Size(243, 62);
+            adsuppliersbtn.TabIndex = 14;
+            adsuppliersbtn.Text = "Suppliers";
+            adsuppliersbtn.UseVisualStyleBackColor = false;
+            adsuppliersbtn.Click += adsuppliersbtn_Click;
+            // 
             // admenubtn
             // 
-            admenubtn.BackColor = Color.Black;
+            admenubtn.BackColor = Color.Transparent;
             admenubtn.Cursor = Cursors.Hand;
             admenubtn.FlatStyle = FlatStyle.Popup;
-            admenubtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            admenubtn.ForeColor = Color.Honeydew;
+            admenubtn.Font = new Font("Segoe UI", 18F);
+            admenubtn.ForeColor = Color.Black;
             admenubtn.Location = new Point(12, 260);
             admenubtn.Name = "admenubtn";
             admenubtn.Size = new Size(243, 62);
             admenubtn.TabIndex = 13;
-            admenubtn.Text = "Menu Management";
+            admenubtn.Text = "Menu";
             admenubtn.UseVisualStyleBackColor = false;
             admenubtn.Click += admenubtn_Click;
             // 
-            // adlogoutbtn
-            // 
-            adlogoutbtn.Anchor = AnchorStyles.None;
-            adlogoutbtn.BackColor = Color.Coral;
-            adlogoutbtn.BackgroundImageLayout = ImageLayout.None;
-            adlogoutbtn.Cursor = Cursors.Hand;
-            adlogoutbtn.FlatStyle = FlatStyle.Flat;
-            adlogoutbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adlogoutbtn.ForeColor = Color.Honeydew;
-            adlogoutbtn.Location = new Point(12, 734);
-            adlogoutbtn.Name = "adlogoutbtn";
-            adlogoutbtn.Size = new Size(243, 62);
-            adlogoutbtn.TabIndex = 12;
-            adlogoutbtn.Text = "Log out";
-            adlogoutbtn.UseVisualStyleBackColor = false;
-            adlogoutbtn.Click += adlogoutbtn_Click;
-            // 
             // adlogsbtn
             // 
-            adlogsbtn.BackColor = Color.Black;
+            adlogsbtn.BackColor = Color.Transparent;
             adlogsbtn.Cursor = Cursors.Hand;
             adlogsbtn.FlatStyle = FlatStyle.Popup;
-            adlogsbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adlogsbtn.ForeColor = Color.Honeydew;
-            adlogsbtn.Location = new Point(12, 630);
+            adlogsbtn.Font = new Font("Segoe UI", 18F);
+            adlogsbtn.ForeColor = Color.Black;
+            adlogsbtn.Location = new Point(12, 719);
             adlogsbtn.Name = "adlogsbtn";
             adlogsbtn.Size = new Size(243, 62);
             adlogsbtn.TabIndex = 11;
-            adlogsbtn.Text = "Audit Logs / Security";
+            adlogsbtn.Text = "Audit Logs";
             adlogsbtn.UseVisualStyleBackColor = false;
             adlogsbtn.Click += adlogsbtn_Click;
             // 
             // adsystembtn
             // 
-            adsystembtn.BackColor = Color.Black;
+            adsystembtn.BackColor = Color.Transparent;
             adsystembtn.Cursor = Cursors.Hand;
             adsystembtn.FlatStyle = FlatStyle.Popup;
-            adsystembtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adsystembtn.ForeColor = Color.Honeydew;
-            adsystembtn.Location = new Point(12, 550);
+            adsystembtn.Font = new Font("Segoe UI", 18F);
+            adsystembtn.ForeColor = Color.Black;
+            adsystembtn.Location = new Point(12, 642);
             adsystembtn.Name = "adsystembtn";
             adsystembtn.Size = new Size(243, 62);
             adsystembtn.TabIndex = 10;
@@ -706,89 +722,73 @@
             adsystembtn.UseVisualStyleBackColor = false;
             adsystembtn.Click += adsystembtn_Click;
             // 
-            // adsupplybtn
-            // 
-            adsupplybtn.BackColor = Color.Black;
-            adsupplybtn.Cursor = Cursors.Hand;
-            adsupplybtn.FlatStyle = FlatStyle.Flat;
-            adsupplybtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adsupplybtn.ForeColor = Color.Honeydew;
-            adsupplybtn.FormattingEnabled = true;
-            adsupplybtn.Items.AddRange(new object[] { "           Suppliers", "     Purchase orders" });
-            adsupplybtn.Location = new Point(12, 415);
-            adsupplybtn.Name = "adsupplybtn";
-            adsupplybtn.Size = new Size(243, 38);
-            adsupplybtn.TabIndex = 9;
-            adsupplybtn.Text = "   Supplier / Purchase";
-            adsupplybtn.SelectedIndexChanged += adsupplybtn_SelectedIndexChanged;
-            // 
             // adfinancebtn
             // 
-            adfinancebtn.BackColor = Color.Black;
+            adfinancebtn.BackColor = Color.Transparent;
             adfinancebtn.Cursor = Cursors.Hand;
             adfinancebtn.FlatStyle = FlatStyle.Popup;
-            adfinancebtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adfinancebtn.ForeColor = Color.Honeydew;
-            adfinancebtn.Location = new Point(12, 468);
+            adfinancebtn.Font = new Font("Segoe UI", 18F);
+            adfinancebtn.ForeColor = Color.Black;
+            adfinancebtn.Location = new Point(12, 565);
             adfinancebtn.Name = "adfinancebtn";
             adfinancebtn.Size = new Size(243, 62);
             adfinancebtn.TabIndex = 8;
-            adfinancebtn.Text = "Finance / Expenses";
+            adfinancebtn.Text = "Finance";
             adfinancebtn.UseVisualStyleBackColor = false;
             adfinancebtn.Click += adfinancebtn_Click;
             // 
             // adstaffbtn
             // 
-            adstaffbtn.BackColor = Color.Black;
+            adstaffbtn.BackColor = Color.Transparent;
             adstaffbtn.Cursor = Cursors.Hand;
             adstaffbtn.FlatStyle = FlatStyle.Popup;
-            adstaffbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adstaffbtn.ForeColor = Color.Honeydew;
+            adstaffbtn.Font = new Font("Segoe UI", 18F);
+            adstaffbtn.ForeColor = Color.Black;
             adstaffbtn.Location = new Point(12, 338);
             adstaffbtn.Name = "adstaffbtn";
             adstaffbtn.Size = new Size(243, 62);
             adstaffbtn.TabIndex = 7;
-            adstaffbtn.Text = "Staff Management";
+            adstaffbtn.Text = "Staff";
             adstaffbtn.UseVisualStyleBackColor = false;
             adstaffbtn.Click += adstaffbtn_Click;
             // 
             // adinventorybtn
             // 
-            adinventorybtn.BackColor = Color.Black;
+            adinventorybtn.BackColor = Color.Transparent;
             adinventorybtn.Cursor = Cursors.Hand;
             adinventorybtn.FlatStyle = FlatStyle.Popup;
-            adinventorybtn.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            adinventorybtn.ForeColor = Color.Honeydew;
+            adinventorybtn.Font = new Font("Segoe UI", 18F);
+            adinventorybtn.ForeColor = Color.Black;
             adinventorybtn.Location = new Point(12, 181);
             adinventorybtn.Name = "adinventorybtn";
             adinventorybtn.Size = new Size(243, 62);
             adinventorybtn.TabIndex = 6;
-            adinventorybtn.Text = "Inventory Management";
+            adinventorybtn.Text = "Inventory";
             adinventorybtn.UseVisualStyleBackColor = false;
             adinventorybtn.Click += adinventorybtn_Click;
             // 
             // adsalesbtn
             // 
-            adsalesbtn.BackColor = Color.Black;
+            adsalesbtn.BackColor = Color.Transparent;
             adsalesbtn.Cursor = Cursors.Hand;
             adsalesbtn.FlatStyle = FlatStyle.Popup;
-            adsalesbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            adsalesbtn.ForeColor = Color.Honeydew;
+            adsalesbtn.Font = new Font("Segoe UI", 18F);
+            adsalesbtn.ForeColor = Color.Black;
             adsalesbtn.Location = new Point(12, 100);
             adsalesbtn.Name = "adsalesbtn";
             adsalesbtn.Size = new Size(243, 62);
             adsalesbtn.TabIndex = 5;
-            adsalesbtn.Text = "Sales / POS Reports";
+            adsalesbtn.Text = "Sales";
             adsalesbtn.UseVisualStyleBackColor = false;
             adsalesbtn.Click += adsalesbtn_Click;
             // 
             // dashbtn
             // 
-            dashbtn.BackColor = Color.Black;
+            dashbtn.BackColor = Color.Transparent;
             dashbtn.Cursor = Cursors.Hand;
             dashbtn.FlatStyle = FlatStyle.Popup;
-            dashbtn.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            dashbtn.ForeColor = Color.Honeydew;
+            dashbtn.Font = new Font("Segoe UI", 18F);
+            dashbtn.ForeColor = Color.Black;
             dashbtn.Location = new Point(12, 20);
             dashbtn.Name = "dashbtn";
             dashbtn.Size = new Size(243, 62);
@@ -822,6 +822,20 @@
             fficonadmin.SizeMode = PictureBoxSizeMode.Zoom;
             fficonadmin.TabIndex = 0;
             fficonadmin.TabStop = false;
+            // 
+            // adlogoutbtn
+            // 
+            adlogoutbtn.BackColor = Color.Transparent;
+            adlogoutbtn.Cursor = Cursors.Hand;
+            adlogoutbtn.ErrorImage = Properties.Resources.pngtree_exit_icon_graphic_design_template_vector_png_image_3985217_removebg_preview;
+            adlogoutbtn.Image = Properties.Resources.pngtree_exit_icon_graphic_design_template_vector_png_image_3985217_removebg_preview;
+            adlogoutbtn.Location = new Point(1743, 57);
+            adlogoutbtn.Name = "adlogoutbtn";
+            adlogoutbtn.Size = new Size(117, 81);
+            adlogoutbtn.SizeMode = PictureBoxSizeMode.Zoom;
+            adlogoutbtn.TabIndex = 29;
+            adlogoutbtn.TabStop = false;
+            adlogoutbtn.Click += adlogoutbtn_Click;
             // 
             // AdminDashboard
             // 
@@ -863,6 +877,7 @@
             ((System.ComponentModel.ISupportInitialize)dashsalesicon).EndInit();
             panelNav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)fficonadmin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)adlogoutbtn).EndInit();
             ResumeLayout(false);
         }
 
@@ -876,11 +891,9 @@
         private Button adstaffbtn;
         private Button adinventorybtn;
         private Button adsalesbtn;
-        private ComboBox adsupplybtn;
         private Button adfinancebtn;
         private Button adlogsbtn;
         private Button adsystembtn;
-        private Button adlogoutbtn;
         private Button admenubtn;
         private Panel panelContent;
         private Panel dashtotalsales;
@@ -922,5 +935,8 @@
         private Label lowstocklbl;
         private Label recenttransactionlbl;
         private Label totalorderslbl;
+        private PictureBox adlogoutbtn;
+        private Button adpurchaseordersbtn;
+        private Button adsuppliersbtn;
     }
 }

@@ -124,7 +124,7 @@ namespace FlavorFlowIT13
                 addmenuitembtn.UseVisualStyleBackColor = false;
                 addmenuitembtn.FlatStyle = FlatStyle.Flat;
                 addmenuitembtn.FlatAppearance.BorderSize = 0;
-                addmenuitembtn.BackColor = ColorTranslator.FromHtml("#5CC536");
+                addmenuitembtn.BackColor = ColorTranslator.FromHtml("Coral");
                 addmenuitembtn.ForeColor = Color.White;
                 addmenuitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#449925");
                 addmenuitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#449925");

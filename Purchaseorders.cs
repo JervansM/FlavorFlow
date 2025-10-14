@@ -33,7 +33,6 @@ namespace FlavorFlowIT13
             RoundButton(viewpendingbtn, 20);
             RoundPanel(systemsearchbarpanel, 25);
             RoundButton(paybtn, 20);
-            RoundButton(viewordersbtn, 20);
 
             activeConnectionString = GetAvailableConnection();
         }
@@ -77,7 +76,7 @@ namespace FlavorFlowIT13
             createneworderbtn.UseVisualStyleBackColor = false;
             createneworderbtn.FlatStyle = FlatStyle.Flat;
             createneworderbtn.FlatAppearance.BorderSize = 0;
-            createneworderbtn.BackColor = ColorTranslator.FromHtml("#5CC536");
+            createneworderbtn.BackColor = ColorTranslator.FromHtml("Coral");
             createneworderbtn.ForeColor = Color.White;
             createneworderbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#51A135");
             createneworderbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#51A135");
@@ -100,13 +99,7 @@ namespace FlavorFlowIT13
             paybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#312E94");
             paybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#312E94");
 
-            viewordersbtn.UseVisualStyleBackColor = false;
-            viewordersbtn.FlatStyle = FlatStyle.Flat;
-            viewordersbtn.FlatAppearance.BorderSize = 0;
-            viewordersbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            viewordersbtn.ForeColor = Color.White;
-            viewordersbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            viewordersbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+         
 
             LoadPurchaseOrders();
             LoadPurchaseOrder();
@@ -363,8 +356,21 @@ namespace FlavorFlowIT13
         {
             using (SqlConnection conn = new SqlConnection(activeConnectionString))
             {
-                string query = "SELECT PurchaseOrderID, SupplierID, OrderDate, Status, TotalAmount FROM PurchaseOrder";
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                string sql = @"
+        SELECT 
+            po.PurchaseOrderID,
+            s.Name,
+            po.OrderDate,
+       
+            poi.Quantity,
+            poi.UnitCost,
+            (poi.Quantity * poi.UnitCost) AS TotalCost,
+            po.Status
+        FROM PurchaseOrder po
+        INNER JOIN PurchaseOrderItem poi ON po.PurchaseOrderID = poi.PurchaseOrderID
+        INNER JOIN Supplier s ON po.SupplierID = s.SupplierID
+        ORDER BY po.OrderDate DESC";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 

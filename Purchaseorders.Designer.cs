@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
-            viewordersbtn = new Button();
             paybtn = new Button();
             viewpendingbtn = new Button();
             systemsearchbarpanel = new Panel();
@@ -68,7 +67,6 @@
             panelContent.AutoScroll = true;
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
-            panelContent.Controls.Add(viewordersbtn);
             panelContent.Controls.Add(paybtn);
             panelContent.Controls.Add(viewpendingbtn);
             panelContent.Controls.Add(systemsearchbarpanel);
@@ -84,21 +82,6 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1511, 1032);
             panelContent.TabIndex = 18;
-            // 
-            // viewordersbtn
-            // 
-            viewordersbtn.BackColor = Color.Black;
-            viewordersbtn.Cursor = Cursors.Hand;
-            viewordersbtn.FlatStyle = FlatStyle.Popup;
-            viewordersbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            viewordersbtn.ForeColor = Color.Honeydew;
-            viewordersbtn.Location = new Point(949, 101);
-            viewordersbtn.Name = "viewordersbtn";
-            viewordersbtn.Size = new Size(270, 62);
-            viewordersbtn.TabIndex = 57;
-            viewordersbtn.Text = "Detailed Orders";
-            viewordersbtn.UseVisualStyleBackColor = false;
-            viewordersbtn.Click += viewordersbtn_Click;
             // 
             // paybtn
             // 
@@ -390,6 +373,5 @@
         private Button viewpendingbtn;
         private DataGridView supplierdatagrid;
         private Button paybtn;
-        private Button viewordersbtn;
     }
 }

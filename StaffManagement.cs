@@ -106,7 +106,7 @@ namespace FlavorFlowIT13
             addnewstaffbtn.UseVisualStyleBackColor = false;
             addnewstaffbtn.FlatStyle = FlatStyle.Flat;
             addnewstaffbtn.FlatAppearance.BorderSize = 0;
-            addnewstaffbtn.BackColor = ColorTranslator.FromHtml("LimeGreen");
+            addnewstaffbtn.BackColor = ColorTranslator.FromHtml("Coral");
             addnewstaffbtn.ForeColor = Color.White;
             addnewstaffbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#51A135");
             addnewstaffbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#51A135");

@@ -81,7 +81,8 @@ namespace FlavorFlowIT13
             RoundButton(adfinancebtn, 19);
             RoundButton(adsystembtn, 19);
             RoundButton(adlogsbtn, 19);
-            RoundButton(adlogoutbtn, 19);
+            RoundButton(adsuppliersbtn, 19);
+            RoundButton(adpurchaseordersbtn, 19);
             RoundPanel(panelTop, 30);
             RoundPanel(panelNav, 25);
             RoundPanel(panelContent, 25);
@@ -113,84 +114,100 @@ namespace FlavorFlowIT13
             dashbtn.UseVisualStyleBackColor = false;
             dashbtn.FlatStyle = FlatStyle.Flat;
             dashbtn.FlatAppearance.BorderSize = 0;
-            dashbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            dashbtn.ForeColor = Color.White;
-            dashbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            dashbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            dashbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
+
 
 
 
             adsalesbtn.UseVisualStyleBackColor = false;
             adsalesbtn.FlatStyle = FlatStyle.Flat;
             adsalesbtn.FlatAppearance.BorderSize = 0;
-            adsalesbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adsalesbtn.ForeColor = Color.White;
-            adsalesbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adsalesbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adsalesbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             adinventorybtn.UseVisualStyleBackColor = false;
             adinventorybtn.FlatStyle = FlatStyle.Flat;
             adinventorybtn.FlatAppearance.BorderSize = 0;
-            adinventorybtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adinventorybtn.ForeColor = Color.White;
-            adinventorybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adinventorybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adinventorybtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             admenubtn.UseVisualStyleBackColor = false;
             admenubtn.FlatStyle = FlatStyle.Flat;
             admenubtn.FlatAppearance.BorderSize = 0;
-            admenubtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            admenubtn.ForeColor = Color.White;
-            admenubtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            admenubtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            admenubtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             adstaffbtn.UseVisualStyleBackColor = false;
             adstaffbtn.FlatStyle = FlatStyle.Flat;
             adstaffbtn.FlatAppearance.BorderSize = 0;
-            adstaffbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adstaffbtn.ForeColor = Color.White;
-            adstaffbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adstaffbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adstaffbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            adsuppliersbtn.UseVisualStyleBackColor = false;
+            adsuppliersbtn.FlatStyle = FlatStyle.Flat;
+            adsuppliersbtn.FlatAppearance.BorderSize = 0;
+            adsuppliersbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            adpurchaseordersbtn.UseVisualStyleBackColor = false;
+            adpurchaseordersbtn.FlatStyle = FlatStyle.Flat;
+            adpurchaseordersbtn.FlatAppearance.BorderSize = 0;
+            adpurchaseordersbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
 
 
-            adsupplybtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adsupplybtn.ForeColor = Color.White;
+
+
 
             adfinancebtn.UseVisualStyleBackColor = false;
             adfinancebtn.FlatStyle = FlatStyle.Flat;
             adfinancebtn.FlatAppearance.BorderSize = 0;
-            adfinancebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adfinancebtn.ForeColor = Color.White;
-            adfinancebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adfinancebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adfinancebtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             adsystembtn.UseVisualStyleBackColor = false;
             adsystembtn.FlatStyle = FlatStyle.Flat;
             adsystembtn.FlatAppearance.BorderSize = 0;
-            adsystembtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adsystembtn.ForeColor = Color.White;
-            adsystembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adsystembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adsystembtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
 
             adlogsbtn.UseVisualStyleBackColor = false;
             adlogsbtn.FlatStyle = FlatStyle.Flat;
             adlogsbtn.FlatAppearance.BorderSize = 0;
-            adlogsbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            adlogsbtn.ForeColor = Color.White;
-            adlogsbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            adlogsbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            adlogsbtn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
 
-            adlogoutbtn.UseVisualStyleBackColor = false;
-            adlogoutbtn.FlatStyle = FlatStyle.Flat;
-            adlogoutbtn.FlatAppearance.BorderSize = 0;
-            adlogoutbtn.BackColor = ColorTranslator.FromHtml("Coral");
-            adlogoutbtn.ForeColor = Color.White;
-            adlogoutbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("Maroon");
-            adlogoutbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("Maroon");
+
+
 
             LoadDashboardTotals();
             LoadTopSellingMenu();
         }
+        private void SetActiveButton(Button activeButton)
+        {
+            foreach (Control ctrl in panelNav.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+                    btn.Padding = new Padding(0);
+                    btn.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+                    btn.BackColor = Color.Transparent;
+
+
+                    btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                    btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.UseVisualStyleBackColor = false;
+                }
+            }
+
+            // --- HIGHLIGHT ACTIVE BUTTON ---
+            activeButton.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+          
+            activeButton.Padding = new Padding(0, 0, 0, 5);
+            activeButton.ForeColor = ColorTranslator.FromHtml("#2f2f2f");
+
+            activeButton.BackColor = Color.FromArgb(245, 245, 245);
+        }
+
         private void RefreshIcon_Click(object sender, EventArgs e)
         {
             RefreshUI();
@@ -247,7 +264,7 @@ namespace FlavorFlowIT13
 
         private void dashbtn_Click(object sender, EventArgs e)
         {
-
+            SetActiveButton(dashbtn);
             LoadContent(new DashboardContentForm());
 
         }
@@ -261,57 +278,40 @@ namespace FlavorFlowIT13
 
         private void adsalesbtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(adsalesbtn);
+
             LoadContent(new SalesPOS());
         }
 
         private void adinventorybtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(adinventorybtn);
             LoadContent(new InventoryManagement());
         }
 
         private void admenubtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(admenubtn);
             LoadContent(new MenuManagement());
         }
 
         private void adstaffbtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(adstaffbtn);
             LoadContent(new StaffManagement());
         }
 
-        private void adsupplybtn_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selected = adsupplybtn.SelectedItem.ToString();
 
-            switch (selected)
-            {
-
-                case "           Suppliers":
-                    LoadContent(new Suppliers());
-                    break;
-                case "     Purchase orders":
-                    LoadContent(new Purchaseorders());
-                    break;
-
-                default:
-                    panelContent.Controls.Clear();
-                    break;
-
-
-
-
-            }
-
-
-        }
 
         private void adfinancebtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(adfinancebtn);
             LoadContent(new FinanceExpenses());
         }
 
         private void adsystembtn_Click(object sender, EventArgs e)
         {
+            SetActiveButton(adsystembtn);
             LoadContent(new SystemSettings());
         }
 
@@ -552,7 +552,7 @@ namespace FlavorFlowIT13
                             totalsalesmenu.Text = "₱" + totalSales.ToString("N2");
                             totalordersmenu.Text = totalQty.ToString(); // 
                         }
-                    
+
                         else
                         {
                             // No menu found
@@ -602,6 +602,21 @@ namespace FlavorFlowIT13
         {
 
         }
+
+        private void adsuppliersbtn_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(adsuppliersbtn);
+            LoadContent(new Suppliers());
+        }
+
+        private void adpurchaseordersbtn_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(adpurchaseordersbtn);
+            LoadContent(new Purchaseorders());
+
+        }
+
+       
     }
 }
 
