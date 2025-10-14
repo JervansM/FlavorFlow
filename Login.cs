@@ -243,8 +243,8 @@ namespace FlavorFlowIT13
 
         private void loginpanel_Paint(object sender, PaintEventArgs e)
         {
-            int radius = 50;
-            int borderThickness = 3;
+            int radius = 40;
+            int borderThickness = 1;
             Color borderColor = ColorTranslator.FromHtml("#2f2f2f");
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;

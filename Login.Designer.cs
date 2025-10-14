@@ -35,9 +35,9 @@
             usertxt = new TextBox();
             loginsignupbtn = new Button();
             loginpanel = new Panel();
+            loginlbl = new Label();
             forgotpass = new Label();
             loginbtn = new Button();
-            loginlbl = new Label();
             loginpanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,11 +46,11 @@
             passlbl.Anchor = AnchorStyles.None;
             passlbl.AutoSize = true;
             passlbl.BackColor = Color.Transparent;
-            passlbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            passlbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passlbl.ForeColor = Color.Black;
             passlbl.Location = new Point(19, 202);
             passlbl.Name = "passlbl";
-            passlbl.Size = new Size(101, 28);
+            passlbl.Size = new Size(93, 28);
             passlbl.TabIndex = 1;
             passlbl.Text = "Password";
             passlbl.TextAlign = ContentAlignment.MiddleRight;
@@ -75,11 +75,11 @@
             userlbl.Anchor = AnchorStyles.None;
             userlbl.AutoSize = true;
             userlbl.BackColor = Color.Transparent;
-            userlbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            userlbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             userlbl.ForeColor = Color.Black;
             userlbl.Location = new Point(19, 78);
             userlbl.Name = "userlbl";
-            userlbl.Size = new Size(106, 28);
+            userlbl.Size = new Size(99, 28);
             userlbl.TabIndex = 0;
             userlbl.Text = "Username";
             userlbl.TextAlign = ContentAlignment.MiddleRight;
@@ -126,11 +126,25 @@
             loginpanel.Controls.Add(userlbl);
             loginpanel.Controls.Add(passlbl);
             loginpanel.Controls.Add(passwordtxt);
-            loginpanel.Location = new Point(337, 355);
+            loginpanel.Location = new Point(496, 358);
             loginpanel.Name = "loginpanel";
             loginpanel.Size = new Size(491, 493);
             loginpanel.TabIndex = 6;
             loginpanel.Paint += loginpanel_Paint;
+            // 
+            // loginlbl
+            // 
+            loginlbl.Anchor = AnchorStyles.None;
+            loginlbl.AutoSize = true;
+            loginlbl.BackColor = Color.Transparent;
+            loginlbl.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            loginlbl.ForeColor = Color.Coral;
+            loginlbl.Location = new Point(194, 17);
+            loginlbl.Name = "loginlbl";
+            loginlbl.Size = new Size(110, 46);
+            loginlbl.TabIndex = 8;
+            loginlbl.Text = "Login";
+            loginlbl.TextAlign = ContentAlignment.MiddleRight;
             // 
             // forgotpass
             // 
@@ -163,27 +177,13 @@
             loginbtn.UseVisualStyleBackColor = false;
             loginbtn.Click += loginbtn_Click;
             // 
-            // loginlbl
-            // 
-            loginlbl.Anchor = AnchorStyles.None;
-            loginlbl.AutoSize = true;
-            loginlbl.BackColor = Color.Transparent;
-            loginlbl.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
-            loginlbl.ForeColor = Color.Coral;
-            loginlbl.Location = new Point(194, 17);
-            loginlbl.Name = "loginlbl";
-            loginlbl.Size = new Size(110, 46);
-            loginlbl.TabIndex = 8;
-            loginlbl.Text = "Login";
-            loginlbl.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1161, 860);
+            ClientSize = new Size(1478, 867);
             Controls.Add(loginpanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
