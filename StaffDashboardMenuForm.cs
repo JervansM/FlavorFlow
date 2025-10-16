@@ -148,13 +148,7 @@ namespace FlavorFlowIT13
 
             int y = pic.Bottom + 10;
 
-            Label lblID = new Label();
-            lblID.Text = "MenuID: " + reader["MenuID"].ToString();
-            lblID.SetBounds(10, y, 220, 15);
-            lblID.ForeColor = Color.Gray;
-            lblID.Font = new Font("Segoe UI", 8, FontStyle.Regular);
-            card.Controls.Add(lblID);
-            y += lblID.Height + 5;
+           
 
             Label lblName = new Label();
             lblName.Text = reader["Name"].ToString();
@@ -184,9 +178,9 @@ namespace FlavorFlowIT13
 
             Label lblPrice = new Label();
             lblPrice.Text = "₱" + Convert.ToDecimal(reader["Price"]).ToString("N2");
-            lblPrice.Font = new Font("Segoe UI", 18, FontStyle.Bold);
-            lblPrice.SetBounds(10, y, 220, 27);
-            lblPrice.ForeColor = Color.Green;
+            lblPrice.Font = new Font("Segoe UI", 18);
+            lblPrice.SetBounds(45, y, 220, 27);
+            lblPrice.ForeColor = Color.Black;
             card.Controls.Add(lblPrice);
             y += lblCategory.Height + 5;
             lblPrice.TextAlign = ContentAlignment.BottomRight;
@@ -196,7 +190,7 @@ namespace FlavorFlowIT13
             Label lblStatus = new Label();
             bool isAvailable = (bool)reader["IsAvailable"];
             lblStatus.Text = isAvailable ? "Available" : "Not Available";
-            lblStatus.SetBounds(10, y, 220, 23);
+            lblStatus.SetBounds(40, y, 220, 23);
             lblStatus.ForeColor = isAvailable ? Color.Green : Color.Red;
             card.Controls.Add(lblStatus);
             lblStatus.TextAlign = ContentAlignment.BottomRight;

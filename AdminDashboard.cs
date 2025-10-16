@@ -199,7 +199,7 @@ namespace FlavorFlowIT13
                 }
             }
 
-            // --- HIGHLIGHT ACTIVE BUTTON ---
+            // HIGHLIGHT ACTIVE BUTTON
             activeButton.Font = new Font("Segoe UI", 18, FontStyle.Bold);
           
             activeButton.Padding = new Padding(0, 0, 0, 5);

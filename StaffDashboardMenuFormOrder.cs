@@ -110,10 +110,7 @@ namespace FlavorFlowIT13
 
             int y = pic.Bottom + 10;
 
-            Label lblID = new Label { Text = "MenuID: " + menuId, ForeColor = Color.Gray, Font = new Font("Segoe UI", 8), AutoSize = true };
-            lblID.SetBounds(10, y, 220, 15);
-            card.Controls.Add(lblID);
-            y += lblID.Height + 5;
+      
 
             Label lblName = new Label { Text = name, ForeColor = Color.Black, Font = new Font("Segoe UI", 15, FontStyle.Bold) };
             lblName.SetBounds(10, y, 220, 29);
@@ -130,14 +127,14 @@ namespace FlavorFlowIT13
             card.Controls.Add(lblCategory);
             y += lblCategory.Height + 5;
 
-            Label lblPrice = new Label { Text = "₱" + price.ToString("N2"), Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = Color.Green };
-            lblPrice.SetBounds(10, y, 220, 27);
+            Label lblPrice = new Label { Text = "₱" + price.ToString("N2"), Font = new Font("Segoe UI", 18), ForeColor = Color.Black };
+            lblPrice.SetBounds(45, y, 220, 27);
             lblPrice.TextAlign = ContentAlignment.BottomRight;
             card.Controls.Add(lblPrice);
             y += lblPrice.Height + 5;
 
             Label lblStatus = new Label { Text = isAvailable ? "Available" : "Not Available", ForeColor = isAvailable ? Color.Green : Color.Red };
-            lblStatus.SetBounds(10, y, 220, 23);
+            lblStatus.SetBounds(40, y, 220, 23);
             lblStatus.TextAlign = ContentAlignment.BottomRight;
             card.Controls.Add(lblStatus);
 
