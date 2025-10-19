@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             panelContent = new Panel();
-            menusearchbarpanel = new Panel();
-            systemsearchbaricon = new PictureBox();
-            menusearchbar = new TextBox();
             flowLayoutMenuCard = new FlowLayoutPanel();
             panelContent.SuspendLayout();
-            menusearchbarpanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
             SuspendLayout();
             // 
             // panelContent
@@ -43,7 +38,6 @@
             panelContent.AutoScroll = true;
             panelContent.AutoSize = true;
             panelContent.BackColor = Color.White;
-            panelContent.Controls.Add(menusearchbarpanel);
             panelContent.Controls.Add(flowLayoutMenuCard);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(0, 0);
@@ -51,46 +45,6 @@
             panelContent.Size = new Size(1924, 1061);
             panelContent.TabIndex = 28;
             panelContent.Paint += panelContent_Paint;
-            // 
-            // menusearchbarpanel
-            // 
-            menusearchbarpanel.BackColor = Color.White;
-            menusearchbarpanel.BackgroundImageLayout = ImageLayout.None;
-            menusearchbarpanel.BorderStyle = BorderStyle.FixedSingle;
-            menusearchbarpanel.Controls.Add(systemsearchbaricon);
-            menusearchbarpanel.Controls.Add(menusearchbar);
-            menusearchbarpanel.ForeColor = Color.Transparent;
-            menusearchbarpanel.Location = new Point(12, 15);
-            menusearchbarpanel.Name = "menusearchbarpanel";
-            menusearchbarpanel.Size = new Size(1231, 59);
-            menusearchbarpanel.TabIndex = 25;
-            menusearchbarpanel.Paint += menusearchbarpanel_Paint;
-            // 
-            // systemsearchbaricon
-            // 
-            systemsearchbaricon.BackColor = Color.Transparent;
-            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
-            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
-            systemsearchbaricon.Location = new Point(1149, 3);
-            systemsearchbaricon.Name = "systemsearchbaricon";
-            systemsearchbaricon.Size = new Size(81, 46);
-            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
-            systemsearchbaricon.TabIndex = 23;
-            systemsearchbaricon.TabStop = false;
-            // 
-            // menusearchbar
-            // 
-            menusearchbar.Anchor = AnchorStyles.None;
-            menusearchbar.BorderStyle = BorderStyle.None;
-            menusearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menusearchbar.ForeColor = Color.Black;
-            menusearchbar.Location = new Point(3, 4);
-            menusearchbar.Multiline = true;
-            menusearchbar.Name = "menusearchbar";
-            menusearchbar.PlaceholderText = "Search";
-            menusearchbar.Size = new Size(1212, 45);
-            menusearchbar.TabIndex = 22;
-            menusearchbar.TextChanged += menusearchbar_TextChanged;
             // 
             // flowLayoutMenuCard
             // 
@@ -114,9 +68,6 @@
             Text = "StaffDashboardMenuFormOrder";
             Load += StaffDashboardMenuFormOrder_Load;
             panelContent.ResumeLayout(false);
-            menusearchbarpanel.ResumeLayout(false);
-            menusearchbarpanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,8 +76,5 @@
 
         private Panel panelContent;
         private FlowLayoutPanel flowLayoutMenuCard;
-        private Panel menusearchbarpanel;
-        private PictureBox systemsearchbaricon;
-        private TextBox menusearchbar;
     }
 }

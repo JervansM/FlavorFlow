@@ -68,12 +68,17 @@
             applydiscountbtn = new Button();
             staffdashlogout = new PictureBox();
             menubtncheck = new Button();
+            systemsearchbarpanel = new Panel();
+            systemsearchbaricon = new PictureBox();
+            systemsearchbar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dashadrefreshicon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)fficonadmin).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)orderDataGridView).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)staffdashlogout).BeginInit();
+            systemsearchbarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).BeginInit();
             SuspendLayout();
             // 
             // dashadrefreshicon
@@ -490,9 +495,9 @@
             // 
             panelContent.AutoScroll = true;
             panelContent.BackColor = Color.White;
-            panelContent.Location = new Point(630, 154);
+            panelContent.Location = new Point(630, 224);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1268, 720);
+            panelContent.Size = new Size(1268, 650);
             panelContent.TabIndex = 26;
             panelContent.Paint += panelContent_Paint;
             // 
@@ -566,12 +571,49 @@
             menubtncheck.UseVisualStyleBackColor = false;
             menubtncheck.Click += menubtncheck_Click;
             // 
+            // systemsearchbarpanel
+            // 
+            systemsearchbarpanel.BackColor = Color.White;
+            systemsearchbarpanel.Controls.Add(systemsearchbaricon);
+            systemsearchbarpanel.Controls.Add(systemsearchbar);
+            systemsearchbarpanel.Location = new Point(630, 154);
+            systemsearchbarpanel.Name = "systemsearchbarpanel";
+            systemsearchbarpanel.Size = new Size(1268, 59);
+            systemsearchbarpanel.TabIndex = 26;
+            // 
+            // systemsearchbaricon
+            // 
+            systemsearchbaricon.BackColor = Color.Transparent;
+            systemsearchbaricon.BackgroundImageLayout = ImageLayout.None;
+            systemsearchbaricon.Image = Properties.Resources.searchbar_removebg_preview;
+            systemsearchbaricon.Location = new Point(1392, 6);
+            systemsearchbaricon.Name = "systemsearchbaricon";
+            systemsearchbaricon.Size = new Size(81, 46);
+            systemsearchbaricon.SizeMode = PictureBoxSizeMode.Zoom;
+            systemsearchbaricon.TabIndex = 23;
+            systemsearchbaricon.TabStop = false;
+            // 
+            // systemsearchbar
+            // 
+            systemsearchbar.Anchor = AnchorStyles.None;
+            systemsearchbar.BorderStyle = BorderStyle.None;
+            systemsearchbar.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            systemsearchbar.ForeColor = Color.Black;
+            systemsearchbar.Location = new Point(3, 6);
+            systemsearchbar.Multiline = true;
+            systemsearchbar.Name = "systemsearchbar";
+            systemsearchbar.PlaceholderText = "Search";
+            systemsearchbar.Size = new Size(1247, 47);
+            systemsearchbar.TabIndex = 22;
+            systemsearchbar.TextChanged += systemsearchbar_TextChanged;
+            // 
             // StaffDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.NavajoWhite;
             ClientSize = new Size(1924, 1061);
+            Controls.Add(systemsearchbarpanel);
             Controls.Add(menubtncheck);
             Controls.Add(voidbtn);
             Controls.Add(saveorderbtn);
@@ -601,6 +643,9 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)staffdashlogout).EndInit();
+            systemsearchbarpanel.ResumeLayout(false);
+            systemsearchbarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)systemsearchbaricon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -645,5 +690,8 @@
         private Label netamounttxt;
         private PictureBox staffdashlogout;
         private Button menubtncheck;
+        private Panel systemsearchbarpanel;
+        private PictureBox systemsearchbaricon;
+        private TextBox systemsearchbar;
     }
 }

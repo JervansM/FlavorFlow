@@ -208,48 +208,7 @@ namespace FlavorFlowIT13
 
         }
 
-        private void menusearchbar_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = menusearchbar.Text.Trim();
-
-            // If empty, load all menu
-            if (string.IsNullOrEmpty(searchText))
-            {
-                LoadMenuData();
-                return;
-            }
-
-            // Clear current cards
-            flowLayoutMenuCard.Controls.Clear();
-
-            string query = @"SELECT MenuID, Name, Description, Category, Price, IsAvailable, ImagePath
-                     FROM Menu
-                     WHERE Name LIKE @search OR Category LIKE @search
-                     ORDER BY Name;";
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
-                    con.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            // Add card for each result
-                            flowLayoutMenuCard.Controls.Add(CreateMenuCard(reader));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error searching menu: " + ex.Message);
-            }
-        }
+       
 
         private void panelContent_Paint(object sender, PaintEventArgs e)
         {
