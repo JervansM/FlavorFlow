@@ -100,7 +100,7 @@ namespace FlavorFlowIT13
                         while (reader.Read())
                         {
                             Panel card = new Panel();
-                            card.Width = 290;
+                            card.Width = 300;
                             card.Height = 375;
                             card.Margin = new Padding(10);
                             card.BackColor = Color.White;
@@ -121,7 +121,7 @@ namespace FlavorFlowIT13
         private Panel CreateMenuCard(SqlDataReader reader)
         {
             Panel card = new Panel();
-            card.Width = 290;
+            card.Width = 300;
             card.Height = 375;
             card.Margin = new Padding(5);
             card.BackColor = Color.White;

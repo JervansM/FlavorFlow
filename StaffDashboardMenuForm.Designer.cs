@@ -36,9 +36,10 @@
             // flowLayoutMenuCard
             // 
             flowLayoutMenuCard.AutoScroll = true;
-            flowLayoutMenuCard.Location = new Point(36, 12);
+            flowLayoutMenuCard.Dock = DockStyle.Fill;
+            flowLayoutMenuCard.Location = new Point(0, 0);
             flowLayoutMenuCard.Name = "flowLayoutMenuCard";
-            flowLayoutMenuCard.Size = new Size(964, 1500);
+            flowLayoutMenuCard.Size = new Size(1026, 961);
             flowLayoutMenuCard.TabIndex = 1;
             flowLayoutMenuCard.Paint += flowLayoutMenuCard_Paint;
             // 
@@ -58,6 +59,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1026, 961);
             Controls.Add(panelContent);
             Name = "StaffDashboardMenuForm";

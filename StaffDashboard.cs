@@ -78,105 +78,32 @@ namespace FlavorFlowIT13
 
             LoadContent(new StaffDashboardMenuForm());
             RoundPanel(panelContent, 15);
-            RoundPanel(panel1, 15);
             RoundPanel(panel2, 15);
-            RoundPanel(panel3, 15);
-            RoundPanel(panel17, 15);
-            RoundButton(allitembtn, 19);
-            RoundButton(appetizerbtn, 19);
-            RoundButton(maincoursesbtn, 19);
-            RoundButton(beveragebtn, 19);
-            RoundButton(essertbtn, 19);
             RoundButton(dineinbtn, 10);
-            RoundButton(tablemapbtn, 19);
-            RoundButton(takeoutbtn, 19);
-            RoundButton(onlineordersbtn, 19);
-            RoundButton(deliverybtn, 19);
-            RoundButton(menubtn, 19);
+            RoundButton(menubtncheck, 19);
             RoundButton(takeoutbtn2, 10);
             RoundButton(applydiscountbtn, 19);
             RoundButton(saveorderbtn, 19);
             RoundButton(voidbtn, 19);
-            RoundButton(addorderbtn, 19);
-            RoundButton(sendtokitchenbtn, 19);
             RoundButton(printbillbtn, 19);
             RoundButton(okbtn, 19);
-
+            RoundButton(cashbtn, 19);
+            RoundButton(gcashbtn, 19);
+            RoundButton(cardbtn, 19);
             //8E9A57//
 
 
-            tablemapbtn.FlatStyle = FlatStyle.Flat;
-            tablemapbtn.FlatAppearance.BorderSize = 0;
-            tablemapbtn.UseVisualStyleBackColor = false;
-            tablemapbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            tablemapbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            tablemapbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-            takeoutbtn.FlatStyle = FlatStyle.Flat;
-            takeoutbtn.FlatAppearance.BorderSize = 0;
-            takeoutbtn.UseVisualStyleBackColor = false;
-            takeoutbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            takeoutbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            takeoutbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-            onlineordersbtn.FlatStyle = FlatStyle.Flat;
-            onlineordersbtn.FlatAppearance.BorderSize = 0;
-            onlineordersbtn.UseVisualStyleBackColor = false;
-            onlineordersbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            onlineordersbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            onlineordersbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-            deliverybtn.FlatStyle = FlatStyle.Flat;
-            deliverybtn.FlatAppearance.BorderSize = 0;
-            deliverybtn.UseVisualStyleBackColor = false;
-            deliverybtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            deliverybtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            deliverybtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-            menubtn.FlatStyle = FlatStyle.Flat;
-            menubtn.FlatAppearance.BorderSize = 0;
-            menubtn.UseVisualStyleBackColor = false;
-            menubtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            menubtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            menubtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-
-            allitembtn.FlatStyle = FlatStyle.Flat;
-            allitembtn.FlatAppearance.BorderSize = 0;
-            allitembtn.UseVisualStyleBackColor = false;
-            allitembtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            allitembtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            allitembtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
 
 
-            appetizerbtn.FlatStyle = FlatStyle.Flat;
-            appetizerbtn.FlatAppearance.BorderSize = 0;
-            appetizerbtn.UseVisualStyleBackColor = false;
-            appetizerbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            appetizerbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            appetizerbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
-            maincoursesbtn.FlatStyle = FlatStyle.Flat;
-            maincoursesbtn.FlatAppearance.BorderSize = 0;
-            maincoursesbtn.UseVisualStyleBackColor = false;
-            maincoursesbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            maincoursesbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            maincoursesbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
-            beveragebtn.FlatStyle = FlatStyle.Flat;
-            beveragebtn.FlatAppearance.BorderSize = 0;
-            beveragebtn.UseVisualStyleBackColor = false;
-            beveragebtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            beveragebtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            beveragebtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
-
-            essertbtn.FlatStyle = FlatStyle.Flat;
-            essertbtn.FlatAppearance.BorderSize = 0;
-            essertbtn.UseVisualStyleBackColor = false;
-            essertbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            essertbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            essertbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
+            menubtncheck.FlatStyle = FlatStyle.Flat;
+            menubtncheck.FlatAppearance.BorderSize = 0;
+            menubtncheck.UseVisualStyleBackColor = false;
+            menubtncheck.BackColor = ColorTranslator.FromHtml("#2f2f2f");
+            menubtncheck.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
+            menubtncheck.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
             dineinbtn.FlatStyle = FlatStyle.Flat;
             dineinbtn.FlatAppearance.BorderSize = 0;
@@ -213,19 +140,7 @@ namespace FlavorFlowIT13
             voidbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
             voidbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
-            addorderbtn.FlatStyle = FlatStyle.Flat;
-            addorderbtn.FlatAppearance.BorderSize = 0;
-            addorderbtn.UseVisualStyleBackColor = false;
-            addorderbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            addorderbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            addorderbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
-            sendtokitchenbtn.FlatStyle = FlatStyle.Flat;
-            sendtokitchenbtn.FlatAppearance.BorderSize = 0;
-            sendtokitchenbtn.UseVisualStyleBackColor = false;
-            sendtokitchenbtn.BackColor = ColorTranslator.FromHtml("#2f2f2f");
-            sendtokitchenbtn.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#3a3a3a");
-            sendtokitchenbtn.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml("#1e1e1e");
 
             printbillbtn.FlatStyle = FlatStyle.Flat;
             printbillbtn.FlatAppearance.BorderSize = 0;
@@ -327,34 +242,22 @@ namespace FlavorFlowIT13
                 }
             };
         }
-
-
-
-
-        private void StyleTextBox(TextBox textBox)
+        private void RoundTextBox(TextBox txtBox, int radius)
         {
-            if (textBox != null)
-            {
-                textBox.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular);
-                textBox.BackColor = Color.White;
-                textBox.ForeColor = Color.FromArgb(50, 50, 50);
-                textBox.BorderStyle = BorderStyle.FixedSingle;
-                textBox.Padding = new Padding(6, 4, 6, 4);
-
-                // Add focus effects
-                textBox.Enter += (s, e) =>
-                {
-                    textBox.BackColor = Color.FromArgb(240, 248, 255);
-                    textBox.BorderStyle = BorderStyle.FixedSingle;
-                };
-
-                textBox.Leave += (s, e) =>
-                {
-                    textBox.BackColor = Color.White;
-                    textBox.BorderStyle = BorderStyle.FixedSingle;
-                };
-            }
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(txtBox.Width - radius - 1, 0, radius, radius, 270, 90);
+            path.AddArc(txtBox.Width - radius - 1, txtBox.Height - radius - 1, radius, radius, 0, 90);
+            path.AddArc(0, txtBox.Height - radius - 1, radius, radius, 90, 90);
+            path.CloseFigure();
+            txtBox.Region = new Region(path);
         }
+
+
+
+      
+
 
         private void StyleLabel(Label label)
         {
@@ -464,7 +367,7 @@ namespace FlavorFlowIT13
 
         }
 
-       
+
 
         private void tablemapbtn_Click(object sender, EventArgs e)
         {
@@ -1292,6 +1195,7 @@ namespace FlavorFlowIT13
 
         private void changetxt_TextChanged(object sender, EventArgs e)
         {
+
         }
 
         private void ResetPaymentButtonStyles()
@@ -2175,12 +2079,16 @@ namespace FlavorFlowIT13
 
         private void staffdashlogout_Click_1(object sender, EventArgs e)
         {
-          
+
             Login login = new Login();
             login.Show();
             this.Hide();
         }
-    
+
+        private void menubtncheck_Click(object sender, EventArgs e)
+        {
+            LoadContent(new StaffDashboardMenuForm());
+        }
     }
     public class OrderItem
     {
