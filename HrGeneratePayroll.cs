@@ -79,6 +79,7 @@ LEFT JOIN Payroll p ON e.EmployeeID = p.EmployeeID;";
             {
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
+
                     conn.Open();
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
@@ -165,29 +166,45 @@ LEFT JOIN Payroll p ON e.EmployeeID = p.EmployeeID;";
 
         private void StyleUserGrid()
         {
+
+
             datageneratepayroll.EnableHeadersVisualStyles = false;
             datageneratepayroll.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-
-            datageneratepayroll.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            datageneratepayroll.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            // Backgrounds and colors
+            datageneratepayroll.BackgroundColor = Color.WhiteSmoke;
+            datageneratepayroll.GridColor = Color.LightGray;
             datageneratepayroll.DefaultCellStyle.BackColor = Color.White;
             datageneratepayroll.DefaultCellStyle.ForeColor = Color.Black;
-            datageneratepayroll.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            datageneratepayroll.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            datageneratepayroll.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            datageneratepayroll.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            datageneratepayroll.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Fonts — larger and consistent
+            datageneratepayroll.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13.5F, FontStyle.Bold);
+            datageneratepayroll.DefaultCellStyle.Font = new Font("Segoe UI", 12.5F, FontStyle.Regular);
+
+            // Column headers
+            datageneratepayroll.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            datageneratepayroll.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            datageneratepayroll.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // left align for cleaner flow
+            datageneratepayroll.ColumnHeadersHeight = 52;
+            datageneratepayroll.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            datageneratepayroll.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 0, 0); // left margin matches cell padding
+
+            // Rows — balanced spacing and consistent margins
             datageneratepayroll.RowHeadersVisible = false;
+            datageneratepayroll.RowTemplate.Height = 50;
+            datageneratepayroll.DefaultCellStyle.Padding = new Padding(12, 6, 12, 6); // equal left/right padding matching header
+            datageneratepayroll.AllowUserToResizeRows = false;
+            datageneratepayroll.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // match header alignment
+
+            // Behavior
             datageneratepayroll.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             datageneratepayroll.MultiSelect = false;
             datageneratepayroll.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datageneratepayroll.BorderStyle = BorderStyle.None;
             datageneratepayroll.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            datageneratepayroll.GridColor = Color.White;
-            datageneratepayroll.ClearSelection();
-            datageneratepayroll.GridColor = Color.LightGray;
-            datageneratepayroll.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            datageneratepayroll.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
-            datageneratepayroll.DefaultCellStyle.SelectionForeColor = Color.Black;
-            datageneratepayroll.BackgroundColor = Color.WhiteSmoke;
         }
 
         private void hrpayrollperiodsgeneratepayrolltxt_Click(object sender, EventArgs e)
@@ -376,40 +393,105 @@ LEFT JOIN Payroll p ON e.EmployeeID = p.EmployeeID;";
             decimal salary = Convert.ToDecimal(salarytxt.Text);
             decimal overtime = Convert.ToDecimal(overtimetxt.Text);
             decimal deductions = Convert.ToDecimal(deductionstxt.Text);
-
-
             decimal net = Convert.ToDecimal(nettxt.Text);
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
 
-                string query = isEditMode
-                    ? @"UPDATE Payroll 
-        SET Salary=@Salary, Overtime=@Overtime, DeductionsTotal=@Deductions, NetPay=@NetPay 
-        WHERE PayrollID=@Id"
-                    : @"INSERT INTO Payroll (EmployeeID, PeriodID, Salary, Overtime, DeductionsTotal, NetPay) 
-        VALUES (@EmployeeID,@PeriodID,@Salary,@Overtime,@Deductions,@NetPay)";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                try
                 {
+                    int payrollId;
+
+                    // Insert or update Payroll
                     if (isEditMode)
-                        cmd.Parameters.AddWithValue("@Id", selectedPayrollId);
+                    {
+                        string updateQuery = @"UPDATE Payroll 
+                                       SET Salary=@Salary, Overtime=@Overtime, DeductionsTotal=@Deductions, NetPay=@NetPay 
+                                       WHERE PayrollID=@Id";
+                        using (SqlCommand cmd = new SqlCommand(updateQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", selectedPayrollId);
+                            cmd.Parameters.AddWithValue("@Salary", salary);
+                            cmd.Parameters.AddWithValue("@Overtime", overtime);
+                            cmd.Parameters.AddWithValue("@Deductions", deductions);
+                            cmd.Parameters.AddWithValue("@NetPay", net);
+                            cmd.ExecuteNonQuery();
+                        }
 
-                    cmd.Parameters.AddWithValue("@EmployeeID", empId);
-                    cmd.Parameters.AddWithValue("@PeriodID", periodId);
-                    cmd.Parameters.AddWithValue("@Salary", salary);
-                    cmd.Parameters.AddWithValue("@Overtime", overtime);
-                    cmd.Parameters.AddWithValue("@Deductions", deductions);
-                    cmd.Parameters.AddWithValue("@NetPay", net);
+                        payrollId = selectedPayrollId; // for updating PayrollStatus
+                    }
+                    else
+                    {
+                        string insertPayroll = @"INSERT INTO Payroll (EmployeeID, PeriodID, Salary, Overtime, DeductionsTotal, NetPay)
+     OUTPUT INSERTED.PayrollID
+     VALUES (@EmployeeID, @PeriodID, @Salary, @Overtime, @Deductions, @NetPay)";
 
-                    cmd.ExecuteNonQuery();
+                        using (SqlCommand cmd = new SqlCommand(insertPayroll, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@EmployeeID", empId); // ✅ FIXED
+                            cmd.Parameters.AddWithValue("@PeriodID", periodId);
+                            cmd.Parameters.AddWithValue("@Salary", salary);
+                            cmd.Parameters.AddWithValue("@Overtime", overtime);
+                            cmd.Parameters.AddWithValue("@Deductions", deductions);
+                            cmd.Parameters.AddWithValue("@NetPay", net);
+                            payrollId = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                    }
 
+                    string statusCheck = "SELECT COUNT(1) FROM PayrollStatus WHERE PayrollID = @PayrollID";
+                    using (SqlCommand checkCmd = new SqlCommand(statusCheck, conn, transaction))
+                    {
+                        checkCmd.Parameters.AddWithValue("@PayrollID", payrollId);
+                        int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (exists > 0)
+                        {
+                            // ✅ Update existing record
+                            string updateStatus = @"
+            UPDATE PayrollStatus 
+            SET NetPay = @NetPay, 
+                PaymentStatus = 'Pending',
+                DateReceived = ISNULL(DateReceived, @DateReceived)
+            WHERE PayrollID = @PayrollID";
+
+                            using (SqlCommand updateCmd = new SqlCommand(updateStatus, conn, transaction))
+                            {
+                                updateCmd.Parameters.AddWithValue("@NetPay", net);
+                                updateCmd.Parameters.AddWithValue("@PayrollID", payrollId);
+                                updateCmd.Parameters.AddWithValue("@DateReceived", DateTime.Now);
+                                updateCmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // ✅ Insert new record
+                            string insertStatus = @"INSERT INTO PayrollStatus (PayrollID, EmployeeID, NetPay, DateReceived, PaymentStatus)
+VALUES (@PayrollID, @EmployeeID, @NetPay, @DateReceived, 'Pending')";
+
+                            using (SqlCommand insertCmd = new SqlCommand(insertStatus, conn, transaction))
+                            {
+                                insertCmd.Parameters.AddWithValue("@PayrollID", payrollId);
+                                insertCmd.Parameters.AddWithValue("@EmployeeID", empId); // ✅ FIXED
+                                insertCmd.Parameters.AddWithValue("@NetPay", net);
+                                insertCmd.Parameters.AddWithValue("@DateReceived", DateTime.Now);
+                                insertCmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show(isEditMode ? "Payroll updated successfully!" : "Payroll created successfully!");
+
+                    ClearFields();
+                    LoadPayrollData();
                 }
-
-                MessageBox.Show(isEditMode ? "Payroll updated successfully!" : "Payroll created successfully!");
-                ClearFields();
-                LoadPayrollData();
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error creating payroll: " + ex.Message);
+                }
             }
         }
         private void datageneratepayroll_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

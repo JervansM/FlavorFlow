@@ -348,7 +348,8 @@ namespace FlavorFlowIT13
         {
             if (netProfitChart == null) InitializeNetProfitChart();
 
-            (DateTime start, DateTime end) = GetDateRange(selectedDate, reportType);
+            // Fix: pass parameters to GetDateRange
+            (DateTime start, DateTime end) = GetDateRange(selectedDate, selectedDate, reportType);
 
             var chartArea = netProfitChart.ChartAreas["Main"];
             ConfigureNetProfitXAxis(chartArea, reportType, start, end);
@@ -387,22 +388,11 @@ namespace FlavorFlowIT13
                 netProfitChart.Series["Sales"].Points.AddXY(date, sales);
                 netProfitChart.Series["Expenses"].Points.AddXY(date, expenses);
 
-                // Add Net Profit point and get its index
                 int profitPointIndex = netProfitChart.Series["Net Profit"].Points.AddXY(date, netProfit);
-
-                // Get the actual DataPoint object and set label color based on profit/loss
                 var profitPoint = netProfitChart.Series["Net Profit"].Points[profitPointIndex];
-                if (netProfit >= 0)
-                {
-                    profitPoint.LabelForeColor = ColorTranslator.FromHtml("#27AE60"); // Green for profit
-                }
-                else
-                {
-                    profitPoint.LabelForeColor = ColorTranslator.FromHtml("#E74C3C"); // Red for loss
-                }
+                profitPoint.LabelForeColor = netProfit >= 0 ? ColorTranslator.FromHtml("#27AE60") : ColorTranslator.FromHtml("#E74C3C");
             }
 
-            // Recalculate scale to fit data nicely
             chartArea.RecalculateAxesScale();
             UpdateTotalNetProfit();
         }
@@ -485,25 +475,10 @@ namespace FlavorFlowIT13
             chartArea.AxisX.ScrollBar.IsPositionedInside = false;
         }
 
-        private (DateTime start, DateTime end) GetDateRange(DateTime anchorDate, string period)
+        private (DateTime start, DateTime end) GetDateRange(DateTime startDate, DateTime endDate, string period)
         {
-            switch (period)
-            {
-                case "Daily":
-                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
-                case "Weekly":
-                    int diff = (7 + (int)anchorDate.DayOfWeek - (int)DayOfWeek.Monday) % 7;
-                    DateTime weekStart = anchorDate.AddDays(-diff).Date;
-                    return (weekStart, weekStart.AddDays(7));
-                case "Monthly":
-                    DateTime yearStart = new DateTime(anchorDate.Year, 1, 1);  // Start of the year
-                    return (yearStart, yearStart.AddYears(1));                 // End of the year
-                case "Yearly":
-                    DateTime yearStart1 = new DateTime(anchorDate.Year, 1, 1);
-                    return (yearStart1, yearStart1.AddYears(1));
-                default:
-                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
-            }
+            return (startDate.Date, endDate.Date.AddDays(1)); // end is exclusive
+
         }
         private void expensesposreporttype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -514,9 +489,17 @@ namespace FlavorFlowIT13
 
         private void calendardatepicker_ValueChanged(object sender, EventArgs e)
         {
-            currentDate = calendardatepicker.Value;
-            LoadNetProfitData(currentReportType, currentDate);
-            UpdateTotalNetProfit();
+            DateTime start = calendardatepicker.Value;
+            DateTime end = calendardatepicker2.Value;
+
+            if (end < start)
+            {
+                MessageBox.Show("End date cannot be earlier than start date.", "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                calendardatepicker2.Value = start;
+                return;
+            }
+
+            LoadNetProfitDataByRange(start, end);
         }
 
 
@@ -699,28 +682,31 @@ namespace FlavorFlowIT13
         }
         private void UpdateTotalNetProfit()
         {
-            DateTime start, end;
-            (start, end) = GetDateRange(currentDate, currentReportType);
-
-            decimal totalSales = 0;
-            decimal totalExpenses = 0;
-
-            string salesQuery = @"SELECT ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount,0)), 0)
-                          FROM dbo.Orders
-                          WHERE Date >= @StartDate AND Date < @EndDate
-                          AND Status='Completed' AND PaymentStatus='Paid'";
-
-            string expensesQuery = @"SELECT ISNULL(SUM(Amount), 0)
-                             FROM dbo.Expenses
-                             WHERE Date >= @StartDate AND Date < @EndDate";
-
             try
             {
+                // Get current values from UI
+                DateTime currentDate = calendardatepicker.Value;
+                string currentReportType = expensesposreporttype.SelectedItem?.ToString() ?? "Daily";
+
+                // Fix: Pass proper parameters to GetDateRange
+                (DateTime start, DateTime end) = GetDateRange(currentDate, currentDate, currentReportType);
+
+                decimal totalSales = 0m;
+                decimal totalExpenses = 0m;
+
+                string salesQuery = @"SELECT ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount,0)),0)
+                              FROM dbo.Orders
+                              WHERE Date >= @StartDate AND Date < @EndDate
+                                AND Status='Completed' AND PaymentStatus='Paid'";
+
+                string expensesQuery = @"SELECT ISNULL(SUM(Amount),0)
+                                 FROM dbo.Expenses
+                                 WHERE Date >= @StartDate AND Date < @EndDate";
+
                 using (SqlConnection conn = new SqlConnection(activeConnectionString))
                 {
                     conn.Open();
 
-                    // Sales
                     using (SqlCommand cmd = new SqlCommand(salesQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@StartDate", start);
@@ -728,7 +714,6 @@ namespace FlavorFlowIT13
                         totalSales = Convert.ToDecimal(cmd.ExecuteScalar());
                     }
 
-                    // Expenses
                     using (SqlCommand cmd = new SqlCommand(expensesQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@StartDate", start);
@@ -739,19 +724,11 @@ namespace FlavorFlowIT13
 
                 decimal netProfit = totalSales - totalExpenses;
 
-                if (netProfit >= 0)
-                {
-                    totalnetprofttxt.Text = $"₱{netProfit:N2}";
-                    totalnetprofttxt.ForeColor = ColorTranslator.FromHtml("#27AE60"); // green
-                    totalnetprofitlbl.Text = "Net Profit :";
-                }
-                else
-                {
-                    totalnetprofttxt.Text = $"₱{Math.Abs(netProfit):N2}";
-                    totalnetprofttxt.ForeColor = ColorTranslator.FromHtml("#E74C3C"); // red
-                    totalnetprofitlbl.Text = "Net Loss :";
-                }
-
+                totalnetprofttxt.Text = $"₱{Math.Abs(netProfit):N2}";
+                totalnetprofttxt.ForeColor = netProfit >= 0
+                    ? ColorTranslator.FromHtml("#27AE60")
+                    : ColorTranslator.FromHtml("#E74C3C");
+                totalnetprofitlbl.Text = netProfit >= 0 ? "Net Profit :" : "Net Loss :";
             }
             catch (Exception ex)
             {
@@ -760,6 +737,8 @@ namespace FlavorFlowIT13
             }
         }
 
+
+
         private void generatereportbtn_Click(object sender, EventArgs e)
         {
             try
@@ -767,8 +746,8 @@ namespace FlavorFlowIT13
                 DateTime currentDate = calendardatepicker.Value;
                 string currentReportType = expensesposreporttype.SelectedItem?.ToString() ?? "Daily";
 
-                // Get the date range
-                (DateTime start, DateTime end) = GetDateRange(currentDate, currentReportType);
+                // Fix: Pass 3 parameters (startDate, endDate, reportType)
+                (DateTime start, DateTime end) = GetDateRange(currentDate, currentDate, currentReportType);
 
                 // Fetch sales and expenses
                 DataTable salesDt = GetSalesData(start, end, currentReportType);
@@ -895,5 +874,117 @@ namespace FlavorFlowIT13
                 MessageBox.Show($"Error generating PDF report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void calendardatepicker2_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime start = calendardatepicker.Value;
+            DateTime end = calendardatepicker2.Value;
+
+            if (end < start)
+            {
+                MessageBox.Show("End date cannot be earlier than start date.", "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                calendardatepicker2.Value = start;
+                return;
+            }
+
+            LoadNetProfitDataByRange(start, end);
+        }
+
+        private void LoadNetProfitDataByRange(DateTime startDate, DateTime endDate)
+        {
+            if (netProfitChart == null) InitializeNetProfitChart();
+
+            // Reuse chart configuration
+            var chartArea = netProfitChart.ChartAreas["Main"];
+            ConfigureNetProfitXAxis(chartArea, currentReportType, startDate, endDate);
+
+            DataTable salesDt = GetSalesData(startDate, endDate, currentReportType);
+            DataTable expensesDt = GetExpensesData(startDate, endDate, currentReportType);
+
+            netProfitChart.Series["Sales"].Points.Clear();
+            netProfitChart.Series["Expenses"].Points.Clear();
+            netProfitChart.Series["Net Profit"].Points.Clear();
+
+            var allDates = salesDt.AsEnumerable().Select(r => r.Field<DateTime>("SalesDate"))
+                .Union(expensesDt.AsEnumerable().Select(r => r.Field<DateTime>("ExpenseDate")))
+                .Distinct()
+                .OrderBy(d => d);
+
+            foreach (var date in allDates)
+            {
+                double sales = salesDt.AsEnumerable()
+                    .Where(r => r.Field<DateTime>("SalesDate") == date)
+                    .Select(r => Convert.ToDouble(r.Field<decimal>("NetSales")))
+                    .FirstOrDefault();
+
+                double expenses = expensesDt.AsEnumerable()
+                    .Where(r => r.Field<DateTime>("ExpenseDate") == date)
+                    .Select(r => Convert.ToDouble(r.Field<decimal>("TotalExpense")))
+                    .FirstOrDefault();
+
+                double netProfit = sales - expenses;
+
+                netProfitChart.Series["Sales"].Points.AddXY(date, sales);
+                netProfitChart.Series["Expenses"].Points.AddXY(date, expenses);
+
+                int profitPointIndex = netProfitChart.Series["Net Profit"].Points.AddXY(date, netProfit);
+                var profitPoint = netProfitChart.Series["Net Profit"].Points[profitPointIndex];
+                profitPoint.LabelForeColor = netProfit >= 0 ? ColorTranslator.FromHtml("#27AE60") : ColorTranslator.FromHtml("#E74C3C");
+            }
+
+            chartArea.RecalculateAxesScale();
+
+            // Update total net profit
+            UpdateTotalNetProfitByRange(startDate, endDate);
+        }
+        private void UpdateTotalNetProfitByRange(DateTime startDate, DateTime endDate)
+        {
+            decimal totalSales = 0;
+            decimal totalExpenses = 0;
+
+            string salesQuery = @"SELECT ISNULL(SUM(TotalAmount - ISNULL(DiscountAmount,0)), 0)
+                          FROM dbo.Orders
+                          WHERE Date >= @StartDate AND Date < @EndDate
+                          AND Status='Completed' AND PaymentStatus='Paid'";
+
+            string expensesQuery = @"SELECT ISNULL(SUM(Amount), 0)
+                             FROM dbo.Expenses
+                             WHERE Date >= @StartDate AND Date < @EndDate";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(salesQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", startDate);
+                        cmd.Parameters.AddWithValue("@EndDate", endDate);
+                        totalSales = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(expensesQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StartDate", startDate);
+                        cmd.Parameters.AddWithValue("@EndDate", endDate);
+                        totalExpenses = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+                }
+
+                decimal netProfit = totalSales - totalExpenses;
+                totalnetprofttxt.Text = $"₱{Math.Abs(netProfit):N2}";
+                totalnetprofttxt.ForeColor = netProfit >= 0 ? ColorTranslator.FromHtml("#27AE60") : ColorTranslator.FromHtml("#E74C3C");
+                totalnetprofitlbl.Text = netProfit >= 0 ? "Net Profit :" : "Net Loss :";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calculating net profit: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

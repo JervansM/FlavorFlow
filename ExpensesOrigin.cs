@@ -79,33 +79,42 @@ namespace FlavorFlowIT13
             dgvexpenses.EnableHeadersVisualStyles = false;
             dgvexpenses.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-            // Header style
-            dgvexpenses.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvexpenses.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dgvexpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            dgvexpenses.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 5, 10, 5); // even spacing
-
-            // Cell style
+            // Backgrounds and colors
+            dgvexpenses.BackgroundColor = Color.WhiteSmoke;
+            dgvexpenses.GridColor = Color.LightGray;
             dgvexpenses.DefaultCellStyle.BackColor = Color.White;
             dgvexpenses.DefaultCellStyle.ForeColor = Color.Black;
-            dgvexpenses.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            dgvexpenses.DefaultCellStyle.Padding = new Padding(10, 5, 10, 5); // even spacing
             dgvexpenses.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgvexpenses.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            dgvexpenses.DefaultCellStyle.SelectionForeColor = Color.Black;
 
+            // Fonts — larger and consistent
+            dgvexpenses.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13.5F, FontStyle.Bold);
+            dgvexpenses.DefaultCellStyle.Font = new Font("Segoe UI", 12.5F, FontStyle.Regular);
+
+            // Column headers
+            dgvexpenses.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvexpenses.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvexpenses.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // left align for cleaner flow
+            dgvexpenses.ColumnHeadersHeight = 52;
+            dgvexpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvexpenses.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 0, 0); // left margin matches cell padding
+
+            // Rows — balanced spacing and consistent margins
             dgvexpenses.RowHeadersVisible = false;
+            dgvexpenses.RowTemplate.Height = 50;
+            dgvexpenses.DefaultCellStyle.Padding = new Padding(12, 6, 12, 6); // equal left/right padding matching header
+            dgvexpenses.AllowUserToResizeRows = false;
+            dgvexpenses.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // match header alignment
+
+            // Behavior
             dgvexpenses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvexpenses.MultiSelect = false;
             dgvexpenses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvexpenses.BorderStyle = BorderStyle.None;
-            dgvexpenses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal; // optional: shows light line
-            dgvexpenses.GridColor = Color.LightGray;
-            dgvexpenses.ClearSelection();
-            dgvexpenses.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
-            dgvexpenses.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvexpenses.BackgroundColor = Color.WhiteSmoke;
+            dgvexpenses.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
-            dgvexpenses.RowTemplate.Height = 35;
-            dgvexpenses.Paint += Dgvpayroll_Paint;
+            dgvexpenses.ClearSelection();
 
         }
         private void Dgvpayroll_Paint(object sender, PaintEventArgs e)

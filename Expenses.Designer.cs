@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panelContent = new Panel();
             expensesoriginbtn = new Button();
             generatereportbtn = new Button();
@@ -57,6 +57,9 @@
             label9 = new Label();
             financeexpensespanel = new Panel();
             expensesdata = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            calendardatepicker2 = new DateTimePicker();
+            startlbl = new Label();
+            endlbl = new Label();
             panelContent.SuspendLayout();
             totalexpensepanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
@@ -73,11 +76,14 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(calendardatepicker);
+            panelContent.Controls.Add(endlbl);
+            panelContent.Controls.Add(startlbl);
+            panelContent.Controls.Add(calendardatepicker2);
             panelContent.Controls.Add(expensesoriginbtn);
             panelContent.Controls.Add(generatereportbtn);
             panelContent.Controls.Add(totalexpensepanel);
             panelContent.Controls.Add(expensesposreporttype);
-            panelContent.Controls.Add(calendardatepicker);
             panelContent.Controls.Add(netprofitsummarybtn);
             panelContent.Controls.Add(expensereportsbtn);
             panelContent.Controls.Add(netsalessumbtn);
@@ -168,7 +174,7 @@
             expensesposreporttype.ForeColor = Color.Black;
             expensesposreporttype.FormattingEnabled = true;
             expensesposreporttype.Items.AddRange(new object[] { "Daily", "Weekly", "Monthly", "Yearly" });
-            expensesposreporttype.Location = new Point(298, 113);
+            expensesposreporttype.Location = new Point(12, 181);
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
@@ -179,9 +185,9 @@
             calendardatepicker.CalendarMonthBackground = Color.IndianRed;
             calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
             calendardatepicker.Font = new Font("Segoe UI", 19F);
-            calendardatepicker.Location = new Point(544, 115);
+            calendardatepicker.Location = new Point(383, 115);
             calendardatepicker.Name = "calendardatepicker";
-            calendardatepicker.Size = new Size(380, 41);
+            calendardatepicker.Size = new Size(314, 41);
             calendardatepicker.TabIndex = 58;
             calendardatepicker.ValueChanged += calendardatepicker_ValueChanged;
             // 
@@ -366,7 +372,7 @@
             // 
             financeexpensespanel.BackColor = Color.Black;
             financeexpensespanel.Controls.Add(expensesdata);
-            financeexpensespanel.Location = new Point(12, 179);
+            financeexpensespanel.Location = new Point(12, 240);
             financeexpensespanel.Name = "financeexpensespanel";
             financeexpensespanel.Size = new Size(1455, 776);
             financeexpensespanel.TabIndex = 60;
@@ -378,24 +384,59 @@
             expensesdata.BackgroundImageLayout = ImageLayout.None;
             expensesdata.BackSecondaryColor = Color.Transparent;
             expensesdata.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            expensesdata.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            expensesdata.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            expensesdata.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            expensesdata.Legends.Add(legend2);
             expensesdata.Location = new Point(125, 59);
             expensesdata.Name = "expensesdata";
             expensesdata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Expenses Data";
-            expensesdata.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Expenses Data";
+            expensesdata.Series.Add(series2);
             expensesdata.Size = new Size(1239, 714);
             expensesdata.TabIndex = 1;
             expensesdata.Text = "Sales Trend";
-            title1.ForeColor = Color.White;
-            title1.Name = "Sales";
-            expensesdata.Titles.Add(title1);
+            title2.ForeColor = Color.White;
+            title2.Name = "Sales";
+            expensesdata.Titles.Add(title2);
             expensesdata.Click += expensesdata_Click;
+            // 
+            // calendardatepicker2
+            // 
+            calendardatepicker2.CalendarMonthBackground = Color.IndianRed;
+            calendardatepicker2.CalendarTrailingForeColor = SystemColors.ControlText;
+            calendardatepicker2.Font = new Font("Segoe UI", 19F);
+            calendardatepicker2.Location = new Point(819, 115);
+            calendardatepicker2.Name = "calendardatepicker2";
+            calendardatepicker2.Size = new Size(314, 41);
+            calendardatepicker2.TabIndex = 63;
+            calendardatepicker2.ValueChanged += calendardatepicker2_ValueChanged;
+            // 
+            // startlbl
+            // 
+            startlbl.AutoSize = true;
+            startlbl.BackColor = Color.Transparent;
+            startlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            startlbl.ForeColor = Color.Black;
+            startlbl.Location = new Point(301, 122);
+            startlbl.Name = "startlbl";
+            startlbl.Size = new Size(89, 32);
+            startlbl.TabIndex = 64;
+            startlbl.Text = "Start : ";
+            // 
+            // endlbl
+            // 
+            endlbl.AutoSize = true;
+            endlbl.BackColor = Color.Transparent;
+            endlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            endlbl.ForeColor = Color.Black;
+            endlbl.Location = new Point(735, 124);
+            endlbl.Name = "endlbl";
+            endlbl.Size = new Size(78, 32);
+            endlbl.TabIndex = 65;
+            endlbl.Text = "End : ";
             // 
             // Expenses
             // 
@@ -409,6 +450,7 @@
             Text = "Expenses";
             Load += Expenses_Load;
             panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
             totalexpensepanel.ResumeLayout(false);
             totalexpensepanel.PerformLayout();
             dashnetprofit.ResumeLayout(false);
@@ -455,5 +497,8 @@
         private Label totalexpenselbl;
         private Button generatereportbtn;
         private Button expensesoriginbtn;
+        private DateTimePicker calendardatepicker2;
+        private Label endlbl;
+        private Label startlbl;
     }
 }

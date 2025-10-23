@@ -230,56 +230,299 @@ namespace FlavorFlowIT13
         private void StyleUserGrid()
         {
             supplierdatagrid.EnableHeadersVisualStyles = false;
+            supplierdatagrid.EnableHeadersVisualStyles = false;
             supplierdatagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-
-            supplierdatagrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            supplierdatagrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            // === COLORS & BACKGROUND ===
+            supplierdatagrid.BackgroundColor = Color.WhiteSmoke;
+            supplierdatagrid.GridColor = Color.LightGray;
             supplierdatagrid.DefaultCellStyle.BackColor = Color.White;
             supplierdatagrid.DefaultCellStyle.ForeColor = Color.Black;
-            supplierdatagrid.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            supplierdatagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            supplierdatagrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(235, 235, 235);
+            supplierdatagrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 249, 196); // softer yellow
+            supplierdatagrid.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // === FONTS — MORE READABLE (LARGER & BOLDER) ===
+            supplierdatagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            supplierdatagrid.DefaultCellStyle.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+
+            // === COLUMN HEADERS ===
+            supplierdatagrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            supplierdatagrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            supplierdatagrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            supplierdatagrid.ColumnHeadersHeight = 65; // taller header for emphasis
+            supplierdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            supplierdatagrid.ColumnHeadersDefaultCellStyle.Padding = new Padding(20, 5, 20, 5); // equal margins both sides
+
+            // === ROWS — MORE HEIGHT & EQUAL MARGINS ===
             supplierdatagrid.RowHeadersVisible = false;
+            supplierdatagrid.RowTemplate.Height = 60; // taller rows for readability
+            supplierdatagrid.DefaultCellStyle.Padding = new Padding(20, 10, 20, 10); // more breathing room
+            supplierdatagrid.AllowUserToResizeRows = false;
+            supplierdatagrid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // align content with headers
+
+            // === BEHAVIOR ===
             supplierdatagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             supplierdatagrid.MultiSelect = false;
             supplierdatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             supplierdatagrid.BorderStyle = BorderStyle.None;
             supplierdatagrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            supplierdatagrid.GridColor = Color.White;
+
             supplierdatagrid.ClearSelection();
-            supplierdatagrid.GridColor = Color.LightGray;
-            supplierdatagrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            supplierdatagrid.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
-            supplierdatagrid.DefaultCellStyle.SelectionForeColor = Color.Black;
-            supplierdatagrid.BackgroundColor = Color.WhiteSmoke;
+
+        }
+        private DialogResult ShowCustomMessage(string title, string message, MessageBoxIcon icon = MessageBoxIcon.Information, MessageBoxButtons buttons = MessageBoxButtons.OK)
+        {
+            Form msgForm = new Form()
+            {
+                Width = 400,
+                Height = 220,
+                StartPosition = FormStartPosition.CenterParent,
+                BackColor = Color.FromArgb(35, 35, 35),
+                ForeColor = Color.White,
+                FormBorderStyle = FormBorderStyle.None,
+                ShowInTaskbar = false
+            };
+
+            // Rounded corners
+            int radius = 20;
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(msgForm.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(msgForm.Width - radius, msgForm.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, msgForm.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            msgForm.Region = new Region(path);
+
+            Label lblTitle = new Label()
+            {
+                Text = title,
+                Font = new System.Drawing.Font("Segoe UI", 14, FontStyle.Bold),
+                ForeColor = Color.White,
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Dock = DockStyle.Top,
+                Height = 50,
+                Padding = new Padding(20, 0, 0, 0),
+                BackColor = Color.FromArgb(45, 45, 45)
+            };
+
+            Label lblMessage = new Label()
+            {
+                Text = message,
+                Font = new System.Drawing.Font("Segoe UI", 11, FontStyle.Regular),
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                Padding = new Padding(20)
+            };
+
+            Panel buttonPanel = new Panel()
+            {
+                Dock = DockStyle.Bottom,
+                Height = 60,
+                Padding = new Padding(0, 10, 0, 10),
+                BackColor = Color.FromArgb(40, 40, 40)
+            };
+
+            Button btnOK = new Button()
+            {
+                Text = "OK",
+                DialogResult = DialogResult.OK,
+                Width = 100,
+                Height = 35,
+                BackColor = Color.FromArgb(70, 70, 70),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnOK.FlatAppearance.BorderSize = 0;
+            btnOK.FlatAppearance.MouseOverBackColor = Color.FromArgb(90, 90, 90);
+
+            Button btnCancel = new Button()
+            {
+                Text = "Cancel",
+                DialogResult = DialogResult.Cancel,
+                Width = 100,
+                Height = 35,
+                BackColor = Color.FromArgb(70, 70, 70),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(90, 90, 90);
+
+            // Center buttons dynamically
+            if (buttons == MessageBoxButtons.OK)
+            {
+                btnOK.Location = new Point((msgForm.Width - btnOK.Width) / 2, 10);
+                buttonPanel.Controls.Add(btnOK);
+                msgForm.AcceptButton = btnOK;
+            }
+            else if (buttons == MessageBoxButtons.OKCancel)
+            {
+                btnOK.Location = new Point((msgForm.Width / 2) - 110, 10);
+                btnCancel.Location = new Point((msgForm.Width / 2) + 10, 10);
+                buttonPanel.Controls.Add(btnOK);
+                buttonPanel.Controls.Add(btnCancel);
+                msgForm.AcceptButton = btnOK;
+                msgForm.CancelButton = btnCancel;
+            }
+
+            msgForm.Controls.Add(lblMessage);
+            msgForm.Controls.Add(lblTitle);
+            msgForm.Controls.Add(buttonPanel);
+
+            // Optional icon
+            if (icon != MessageBoxIcon.None)
+            {
+                PictureBox pb = new PictureBox()
+                {
+                    Size = new Size(48, 48),
+                    Location = new Point(25, 70),
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
+
+                switch (icon)
+                {
+                    case MessageBoxIcon.Error:
+                        pb.Image = SystemIcons.Error.ToBitmap();
+                        break;
+                    case MessageBoxIcon.Warning:
+                        pb.Image = SystemIcons.Warning.ToBitmap();
+                        break;
+                    case MessageBoxIcon.Information:
+                        pb.Image = SystemIcons.Information.ToBitmap();
+                        break;
+                    case MessageBoxIcon.Question:
+                        pb.Image = SystemIcons.Question.ToBitmap();
+                        break;
+                }
+
+                msgForm.Controls.Add(pb);
+                lblMessage.Padding = new Padding(80, 20, 20, 20);
+                lblMessage.TextAlign = ContentAlignment.MiddleLeft;
+            }
+
+            return msgForm.ShowDialog();
         }
 
         private void paybtn_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Ask for PurchaseOrderID
-                string input = Microsoft.VisualBasic.Interaction.InputBox(
-                    "Enter Purchase Order ID to pay:",
-                    "Pay Purchase Order",
-                    ""
-                );
+                // === Custom dark rounded popup ===
+                Form prompt = new Form()
+                {
+                    Width = 440, // wider for better text fitting
+                    Height = 240,
+                    FormBorderStyle = FormBorderStyle.None,
+                    StartPosition = FormStartPosition.CenterParent,
+                    BackColor = Color.FromArgb(35, 35, 35)
+                };
 
-                if (string.IsNullOrEmpty(input)) return; // user cancelled
+                int radius = 20;
+                GraphicsPath path = new GraphicsPath();
+                path.AddArc(0, 0, radius, radius, 180, 90);
+                path.AddArc(prompt.Width - radius, 0, radius, radius, 270, 90);
+                path.AddArc(prompt.Width - radius, prompt.Height - radius, radius, radius, 0, 90);
+                path.AddArc(0, prompt.Height - radius, radius, radius, 90, 90);
+                path.CloseAllFigures();
+                prompt.Region = new Region(path);
+
+                Label lblTitle = new Label()
+                {
+                    Text = "Pay Purchase Order",
+                    Dock = DockStyle.Top,
+                    Height = 55,
+                    Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    BackColor = Color.FromArgb(45, 45, 45),
+                    ForeColor = Color.White
+                };
+                prompt.Controls.Add(lblTitle);
+
+                Label lblInstruction = new Label()
+                {
+                    Text = "Enter Purchase Order ID:",
+                    Left = 50,
+                    Top = 75,
+                    Width = 340,
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 11, FontStyle.Regular)
+                };
+                prompt.Controls.Add(lblInstruction);
+
+                TextBox txtPOID = new TextBox()
+                {
+                    Left = 50,
+                    Top = 105,
+                    Width = 340,
+                    Font = new Font("Segoe UI", 11, FontStyle.Regular),
+                    BackColor = Color.FromArgb(50, 50, 50),
+                    ForeColor = Color.White,
+                    BorderStyle = BorderStyle.FixedSingle
+                };
+                prompt.Controls.Add(txtPOID);
+
+                Button btnConfirm = new Button()
+                {
+                    Text = "Pay",
+                    Left = 90,
+                    Top = 160,
+                    Width = 110,
+                    Height = 38,
+                    DialogResult = DialogResult.OK,
+                    Enabled = false,
+                    BackColor = Color.FromArgb(0, 120, 215),
+                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                };
+                btnConfirm.FlatAppearance.BorderSize = 0;
+                btnConfirm.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 255);
+                prompt.Controls.Add(btnConfirm);
+
+                Button btnCancel = new Button()
+                {
+                    Text = "Cancel",
+                    Left = 240,
+                    Top = 160,
+                    Width = 110,
+                    Height = 38,
+                    DialogResult = DialogResult.Cancel,
+                    BackColor = Color.FromArgb(64, 64, 64),
+                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                };
+                btnCancel.FlatAppearance.BorderSize = 0;
+                btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(90, 90, 90);
+                prompt.Controls.Add(btnCancel);
+
+                // Enable confirm only if user types something
+                txtPOID.TextChanged += (s, ev) => btnConfirm.Enabled = !string.IsNullOrWhiteSpace(txtPOID.Text);
+
+                prompt.AcceptButton = btnConfirm;
+                prompt.CancelButton = btnCancel;
+
+                // === Show popup ===
+                DialogResult result = prompt.ShowDialog();
+                if (result != DialogResult.OK) return;
+
+                string input = txtPOID.Text.Trim();
+                if (string.IsNullOrEmpty(input)) return;
+
                 if (!int.TryParse(input, out int purchaseOrderId))
                 {
-                    MessageBox.Show("Invalid Purchase Order ID.");
+                    ShowCustomMessage("Invalid Input", "Please enter a valid numeric Purchase Order ID.", MessageBoxIcon.Warning);
                     return;
                 }
 
-                using (SqlConnection conn = new SqlConnection(activeConnectionString))
+                using (SqlConnection conn = new SqlConnection(cloudConnectionString))
                 {
                     conn.Open();
 
-                    // 2. Check if PurchaseOrder exists & unpaid
-                    string checkOrder = @"SELECT TotalAmount, Status 
-                                  FROM PurchaseOrder
-                                  WHERE PurchaseOrderID = @PurchaseOrderID";
+                    string checkOrder = @"SELECT TotalAmount, Status FROM PurchaseOrder WHERE PurchaseOrderID = @PurchaseOrderID";
                     decimal totalAmount = 0;
                     string status = "";
 
@@ -290,7 +533,7 @@ namespace FlavorFlowIT13
                         {
                             if (!reader.Read())
                             {
-                                MessageBox.Show("Purchase Order not found!");
+                                ShowCustomMessage("Not Found", "Purchase Order not found.", MessageBoxIcon.Error);
                                 return;
                             }
 
@@ -301,57 +544,59 @@ namespace FlavorFlowIT13
 
                     if (status == "Paid")
                     {
-                        MessageBox.Show("This Purchase Order is already paid.");
+                        ShowCustomMessage("Already Paid", "This Purchase Order is already paid.", MessageBoxIcon.Information);
                         return;
                     }
-                    CultureInfo ph = new CultureInfo("en-PH");
 
-                    // 3. Confirm payment
-                    DialogResult confirm = MessageBox.Show(
-                        $"Purchase Order #{purchaseOrderId}\nAmount: {totalAmount.ToString("C2", ph)}\n\nConfirm payment?",
+                    // === Confirm payment with better text spacing ===
+                    CultureInfo ph = new CultureInfo("en-PH");
+                    string message =
+                        $"Purchase Order #{purchaseOrderId}\n\n" +
+                        $"Total Amount: {totalAmount.ToString("C2", ph)}\n\n" +
+                        "Are you sure you want to mark this order as PAID?";
+
+                    DialogResult confirm = ShowCustomMessage(
                         "Confirm Payment",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
+                        message,
+                        MessageBoxIcon.Question,
+                        MessageBoxButtons.OKCancel
                     );
 
-                    if (confirm != DialogResult.Yes) return;
+                    if (confirm != DialogResult.OK) return;
 
-                    // 4. Update PurchaseOrders as Paid
+                    // === Update status & record expense ===
                     string updateOrder = @"UPDATE PurchaseOrder
                                    SET Status = 'Paid', UpdatedAt = GETDATE()
                                    WHERE PurchaseOrderID = @PurchaseOrderID";
                     using (SqlCommand cmdUpdate = new SqlCommand(updateOrder, conn))
                     {
                         cmdUpdate.Parameters.AddWithValue("@PurchaseOrderID", purchaseOrderId);
-                        cmdUpdate.Parameters.AddWithValue("@Date", DateTime.Now);
-
                         cmdUpdate.ExecuteNonQuery();
                     }
 
-                    // 5. Insert into Expenses
                     string insertExpense = @"INSERT INTO Expenses (Category, Amount, Date, Notes)
-                         VALUES (@Category, @Amount, @Date, @Notes)";
+                                     VALUES (@Category, @Amount, @Date, @Notes)";
                     using (SqlCommand cmdExpense = new SqlCommand(insertExpense, conn))
                     {
                         cmdExpense.Parameters.AddWithValue("@Category", "Purchase Order Payment");
                         cmdExpense.Parameters.AddWithValue("@Amount", totalAmount);
-                        cmdExpense.Parameters.AddWithValue("@Notes", "Payment for Purchase Order #" + purchaseOrderId);
                         cmdExpense.Parameters.AddWithValue("@Date", DateTime.Now);
+                        cmdExpense.Parameters.AddWithValue("@Notes", $"Payment for Purchase Order #{purchaseOrderId}");
                         cmdExpense.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Payment successful! Expense recorded.",
-                                    "Success",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                    ShowCustomMessage("Success", "Payment successful! Expense recorded.", MessageBoxIcon.Information);
                     LoadPurchaseOrder();
+                   
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                ShowCustomMessage("Error", "An error occurred: " + ex.Message, MessageBoxIcon.Error);
             }
         }
+
+
         private void LoadPurchaseOrder()
         {
             using (SqlConnection conn = new SqlConnection(activeConnectionString))

@@ -179,9 +179,9 @@ namespace FlavorFlowIT13
         {
             string sql = "";
 
-    if (reportType == "Daily" || reportType == "Weekly")
-    {
-        sql = @"
+            if (reportType == "Daily" || reportType == "Weekly")
+            {
+                sql = @"
            SELECT 
     CAST(Date AS DATE) AS ExpenseDate, 
     SUM(Amount) AS TotalExpense
@@ -189,10 +189,10 @@ FROM dbo.Expenses
 WHERE Date >= @StartDate AND Date < @EndDate
 GROUP BY CAST(Date AS DATE)
 ORDER BY ExpenseDate;";
-    }
-    else if (reportType == "Monthly")
-    {
-        sql = @"
+            }
+            else if (reportType == "Monthly")
+            {
+                sql = @"
            SELECT 
     FORMAT(Date, 'yyyy-MM') AS ExpenseDate, 
     SUM(Amount) AS TotalExpense
@@ -200,10 +200,10 @@ FROM dbo.Expenses
 WHERE Date >= @StartDate AND Date < @EndDate
 GROUP BY FORMAT(Date, 'yyyy-MM')
 ORDER BY ExpenseDate;";
-    }
-    else if (reportType == "Yearly")
-    {
-        sql = @"
+            }
+            else if (reportType == "Yearly")
+            {
+                sql = @"
             SELECT 
     YEAR(Date) AS ExpenseDate, 
     SUM(Amount) AS TotalExpense
@@ -211,41 +211,41 @@ FROM dbo.Expenses
 WHERE Date >= @StartDate AND Date < @EndDate
 GROUP BY YEAR(Date)
 ORDER BY ExpenseDate";
-    }
-
-    DataTable dt = new DataTable();
-
-    try
-    {
-        if (string.IsNullOrWhiteSpace(activeConnectionString))
-        {
-            activeConnectionString = GetAvailableConnection();
-            if (string.IsNullOrWhiteSpace(activeConnectionString)) return dt;
-        }
-
-        using (var conn = new SqlConnection(activeConnectionString))
-        using (var cmd = new SqlCommand(sql, conn))
-        {
-            cmd.Parameters.AddWithValue("@StartDate", startDate);
-            cmd.Parameters.AddWithValue("@EndDate", endDate);
-
-            conn.Open();
-            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-            {
-                da.Fill(dt);
             }
-        }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error loading expense data: " + ex.Message, "Database Error",
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
 
-    return dt;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(activeConnectionString))
+                {
+                    activeConnectionString = GetAvailableConnection();
+                    if (string.IsNullOrWhiteSpace(activeConnectionString)) return dt;
+                }
+
+                using (var conn = new SqlConnection(activeConnectionString))
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    conn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading expense data: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dt;
         }
 
-        private void LoadExpensesTrend(string reportType, DateTime selectedDate)
+        private void LoadExpensesTrend(string reportType, DateTime selectedDate, DateTime? customStart = null, DateTime? customEnd = null)
         {
             if (expensesChart == null) return;
 
@@ -253,10 +253,17 @@ ORDER BY ExpenseDate";
             var series = expensesChart.Series["Expenses"];
             if (chartArea == null || series == null) return;
 
-            // Calculate start/end based on report type
-            (DateTime start, DateTime end) = GetDateRange(selectedDate, reportType);
+            DateTime start, end;
+            if (customStart.HasValue && customEnd.HasValue)
+            {
+                start = customStart.Value;
+                end = customEnd.Value;
+            }
+            else
+            {
+                (start, end) = GetDateRangeFromPickers(selectedDate, reportType);
+            }
 
-            // Configure X-axis based on report type
             ConfigureXAxis(chartArea, reportType, start, end);
 
             DataTable dt = GetExpensesData(start, end, reportType);
@@ -269,27 +276,23 @@ ORDER BY ExpenseDate";
 
                 if (reportType == "Yearly")
                 {
-                    // Convert numeric year into DateTime for proper spacing
                     int year = Convert.ToInt32(row["ExpenseDate"]);
                     xValue = new DateTime(year, 1, 1);
                 }
                 else if (reportType == "Monthly")
                 {
-                    // Convert yyyy-MM into DateTime
                     if (DateTime.TryParse(row["ExpenseDate"].ToString() + "-01", out DateTime monthDate))
                         xValue = monthDate;
                 }
                 else
                 {
-                    // Already full date
                     if (DateTime.TryParse(row["ExpenseDate"].ToString(), out DateTime date))
                         xValue = date;
                 }
 
                 if (xValue != null)
                     series.Points.AddXY(xValue, amount);
-            
-        }
+            }
 
             if (series.Points.Count == 0)
                 series.Points.AddXY(DateTime.Today, 0);
@@ -298,7 +301,7 @@ ORDER BY ExpenseDate";
         private void ConfigureXAxis(ChartArea chartArea, string reportType, DateTime startDate, DateTime endDate)
         {
             // Reset axis properties
-            chartArea.AxisX.LabelStyle.Format = ""; 
+            chartArea.AxisX.LabelStyle.Format = "";
             chartArea.AxisX.LabelStyle.Interval = 0;
             chartArea.AxisX.LabelStyle.IntervalOffset = 0;
             chartArea.AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Auto;
@@ -341,7 +344,7 @@ ORDER BY ExpenseDate";
                     chartArea.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
                     chartArea.AxisX.MajorTickMark.Interval = 1;
                     chartArea.AxisX.MajorTickMark.IntervalType = DateTimeIntervalType.Months;
-                   
+
 
 
 
@@ -376,25 +379,57 @@ ORDER BY ExpenseDate";
             chartArea.AxisX.ScaleView.Zoomable = false;
             chartArea.AxisX.ScrollBar.IsPositionedInside = false;
         }
-        private (DateTime start, DateTime end) GetDateRange(DateTime anchorDate, string period)
+        private (DateTime start, DateTime end) GetDateRangeFromPickers(DateTime selectedDate, string reportType)
         {
-            switch (period)
+            DateTime start, end;
+
+            switch (reportType)
             {
                 case "Daily":
-                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
+                    start = selectedDate.Date;
+                    end = start.AddDays(1);
+                    break;
+
                 case "Weekly":
-                    int diff = (7 + (int)anchorDate.DayOfWeek - (int)DayOfWeek.Monday) % 7;
-                    DateTime weekStart = anchorDate.AddDays(-diff).Date;
-                    return (weekStart, weekStart.AddDays(7));
+                    // Get Monday as start of week
+                    int diff = (7 + (selectedDate.DayOfWeek - DayOfWeek.Monday)) % 7;
+                    start = selectedDate.AddDays(-diff).Date;
+                    end = start.AddDays(7);
+                    break;
+
                 case "Monthly":
-                    DateTime yearStart = new DateTime(anchorDate.Year, 1, 1);  // Start of the year
-                    return (yearStart, yearStart.AddYears(1));                 // End of the year
+                    start = new DateTime(selectedDate.Year, selectedDate.Month, 1);
+                    end = start.AddMonths(1);
+                    break;
+
                 case "Yearly":
-                    DateTime yearStart1 = new DateTime(anchorDate.Year, 1, 1);
-                    return (yearStart1, yearStart1.AddYears(1));
+                    start = new DateTime(selectedDate.Year, 1, 1);
+                    end = start.AddYears(1);
+                    break;
+
                 default:
-                    return (anchorDate.Date, anchorDate.Date.AddDays(1));
+                    start = selectedDate.Date;
+                    end = start.AddDays(1);
+                    break;
             }
+
+            return (start, end);
+        }
+
+        private (DateTime start, DateTime end) GetDateRangeFromPickers()
+        {
+            DateTime startDate = calendardatepicker.Value.Date;
+            DateTime endDate = calendardatepicker2.Value.Date.AddDays(1); // include the whole end day
+
+            if (endDate < startDate)
+            {
+                // Swap if user accidentally picked the end date before start
+                DateTime temp = startDate;
+                startDate = endDate.AddDays(-1); // adjust to include full day
+                endDate = temp.AddDays(1);
+            }
+
+            return (startDate, endDate);
         }
         private void expensesposreporttype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -405,9 +440,8 @@ ORDER BY ExpenseDate";
 
         private void calendardatepicker_ValueChanged(object sender, EventArgs e)
         {
-            currentDate = calendardatepicker.Value;
-            LoadExpensesTrend(currentReportType, currentDate);
-            UpdateTotalExpense(sender, e);
+            UpdateExpensesByDateRange();
+
         }
 
 
@@ -434,7 +468,7 @@ ORDER BY ExpenseDate";
         }
         private void LoadContent(Form form)
         {
-            
+
 
             panelContent.Controls.Clear();
 
@@ -450,7 +484,7 @@ ORDER BY ExpenseDate";
         }
         private void LoadContent2(Form form)
         {
-            
+
 
             financeexpensespanel.Controls.Clear();
 
@@ -596,16 +630,23 @@ ORDER BY ExpenseDate";
         {
 
         }
-
         private void UpdateTotalExpense(object sender, EventArgs e)
+        {
+            (DateTime start, DateTime end) = GetDateRangeFromPickers();
+            UpdateTotalExpense(start, end);
+        }
+
+        private void UpdateTotalExpense(DateTime start, DateTime end)
         {
             try
             {
-                // Get the selected date range
-                DateTime start, end;
-                (start, end) = GetDateRange(currentDate, currentReportType);
-
                 decimal totalExpense = 0;
+
+                if (string.IsNullOrWhiteSpace(activeConnectionString))
+                {
+                    activeConnectionString = GetAvailableConnection();
+                    if (string.IsNullOrWhiteSpace(activeConnectionString)) return;
+                }
 
                 using (SqlConnection con = new SqlConnection(activeConnectionString))
                 {
@@ -613,7 +654,7 @@ ORDER BY ExpenseDate";
                     string query = @"
                 SELECT ISNULL(SUM(Amount), 0) AS TotalExpense
                 FROM Expenses
-                WHERE Date >= @StartDate AND Date <= @EndDate";
+                WHERE Date >= @StartDate AND Date < @EndDate";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -640,10 +681,7 @@ ORDER BY ExpenseDate";
                 DateTime currentDate = calendardatepicker.Value;
                 string currentReportType = (expensesposreporttype.SelectedItem as string) ?? "Daily";
 
-                // Get date range
-                (DateTime start, DateTime end) = GetDateRange(currentDate, currentReportType);
-
-                // Get expense trend data
+                (DateTime start, DateTime end) = GetDateRangeFromPickers();
                 DataTable dt = GetExpensesData(start, end, currentReportType);
 
                 if (dt.Rows.Count == 0)
@@ -735,7 +773,19 @@ ORDER BY ExpenseDate";
 
         private void expensesoriginbtn_Click(object sender, EventArgs e)
         {
-            LoadContent2( new ExpensesOrigin());
+            LoadContent2(new ExpensesOrigin());
+        }
+
+        private void calendardatepicker2_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateExpensesByDateRange();
+
+        }
+        private void UpdateExpensesByDateRange()
+        {
+            (DateTime start, DateTime end) = GetDateRangeFromPickers();
+            LoadExpensesTrend(currentReportType, start, start, end); // Pass custom start/end
+            UpdateTotalExpense(start, end);
         }
     }
 }

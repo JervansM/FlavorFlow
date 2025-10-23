@@ -208,9 +208,9 @@
             // 
             panelstaffcontents.BackColor = Color.White;
             panelstaffcontents.Controls.Add(dgvstaff);
-            panelstaffcontents.Location = new Point(12, 130);
+            panelstaffcontents.Location = new Point(12, 90);
             panelstaffcontents.Name = "panelstaffcontents";
-            panelstaffcontents.Size = new Size(1465, 667);
+            panelstaffcontents.Size = new Size(1487, 718);
             panelstaffcontents.TabIndex = 24;
             // 
             // dgvstaff
@@ -222,7 +222,7 @@
             dgvstaff.Location = new Point(0, 0);
             dgvstaff.Name = "dgvstaff";
             dgvstaff.ReadOnly = true;
-            dgvstaff.Size = new Size(1465, 667);
+            dgvstaff.Size = new Size(1487, 718);
             dgvstaff.TabIndex = 0;
             dgvstaff.CellContentClick += dgvstaff_CellContentClick;
             // 
@@ -232,7 +232,7 @@
             addnewstaffbtn.Cursor = Cursors.Hand;
             addnewstaffbtn.FlatStyle = FlatStyle.Flat;
             addnewstaffbtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            addnewstaffbtn.Location = new Point(12, 37);
+            addnewstaffbtn.Location = new Point(12, 22);
             addnewstaffbtn.Name = "addnewstaffbtn";
             addnewstaffbtn.Size = new Size(270, 62);
             addnewstaffbtn.TabIndex = 21;

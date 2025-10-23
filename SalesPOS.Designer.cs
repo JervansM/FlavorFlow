@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             salespospanelcontents = new Panel();
             salestrendchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             salesposaverageordervaluetxt = new Panel();
+            calendardatepicker2 = new DateTimePicker();
             generatereportbtn = new Button();
             calendardatepicker = new DateTimePicker();
             salespostotalsalespanel = new Panel();
@@ -57,6 +58,8 @@
             salespostotalsalesdatapaneltxtdata = new Label();
             salespostotalsalesdatapaneltxt = new Label();
             salesposreporttype = new ComboBox();
+            startlbl = new Label();
+            endlbl = new Label();
             salespospanelcontents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)salestrendchart).BeginInit();
             salesposaverageordervaluetxt.SuspendLayout();
@@ -84,29 +87,32 @@
             salestrendchart.BackgroundImageLayout = ImageLayout.None;
             salestrendchart.BackSecondaryColor = Color.Transparent;
             salestrendchart.BorderlineColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            salestrendchart.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            salestrendchart.ChartAreas.Add(chartArea3);
             salestrendchart.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            salestrendchart.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            salestrendchart.Legends.Add(legend3);
             salestrendchart.Location = new Point(0, 0);
             salestrendchart.Name = "salestrendchart";
             salestrendchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Sales Trend";
-            salestrendchart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Sales Trend";
+            salestrendchart.Series.Add(series3);
             salestrendchart.Size = new Size(1507, 690);
             salestrendchart.TabIndex = 0;
             salestrendchart.Text = "Sales Trend";
-            title1.Name = "Sales";
-            salestrendchart.Titles.Add(title1);
+            title3.Name = "Sales";
+            salestrendchart.Titles.Add(title3);
             salestrendchart.Click += salestrendchart_Click;
             // 
             // salesposaverageordervaluetxt
             // 
             salesposaverageordervaluetxt.AutoScroll = true;
             salesposaverageordervaluetxt.BackColor = Color.Silver;
+            salesposaverageordervaluetxt.Controls.Add(endlbl);
+            salesposaverageordervaluetxt.Controls.Add(startlbl);
+            salesposaverageordervaluetxt.Controls.Add(calendardatepicker2);
             salesposaverageordervaluetxt.Controls.Add(generatereportbtn);
             salesposaverageordervaluetxt.Controls.Add(calendardatepicker);
             salesposaverageordervaluetxt.Controls.Add(salespostotalsalespanel);
@@ -122,6 +128,17 @@
             salesposaverageordervaluetxt.Size = new Size(1528, 1090);
             salesposaverageordervaluetxt.TabIndex = 2;
             salesposaverageordervaluetxt.Paint += panelContent_Paint_1;
+            // 
+            // calendardatepicker2
+            // 
+            calendardatepicker2.CalendarMonthBackground = Color.IndianRed;
+            calendardatepicker2.CalendarTrailingForeColor = SystemColors.ControlText;
+            calendardatepicker2.Font = new Font("Segoe UI", 19F);
+            calendardatepicker2.Location = new Point(960, 109);
+            calendardatepicker2.Name = "calendardatepicker2";
+            calendardatepicker2.Size = new Size(418, 41);
+            calendardatepicker2.TabIndex = 58;
+            calendardatepicker2.ValueChanged += calendardatepicker2_ValueChanged;
             // 
             // generatereportbtn
             // 
@@ -143,7 +160,7 @@
             calendardatepicker.CalendarMonthBackground = Color.IndianRed;
             calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
             calendardatepicker.Font = new Font("Segoe UI", 19F);
-            calendardatepicker.Location = new Point(366, 111);
+            calendardatepicker.Location = new Point(439, 109);
             calendardatepicker.Name = "calendardatepicker";
             calendardatepicker.Size = new Size(418, 41);
             calendardatepicker.TabIndex = 56;
@@ -393,6 +410,30 @@
             salesposreporttype.TabIndex = 52;
             salesposreporttype.SelectedIndexChanged += salesposreporttype_SelectedIndexChanged;
             // 
+            // startlbl
+            // 
+            startlbl.AutoSize = true;
+            startlbl.BackColor = Color.Transparent;
+            startlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            startlbl.ForeColor = Color.Black;
+            startlbl.Location = new Point(347, 114);
+            startlbl.Name = "startlbl";
+            startlbl.Size = new Size(89, 32);
+            startlbl.TabIndex = 2;
+            startlbl.Text = "Start : ";
+            // 
+            // endlbl
+            // 
+            endlbl.AutoSize = true;
+            endlbl.BackColor = Color.Transparent;
+            endlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            endlbl.ForeColor = Color.Black;
+            endlbl.Location = new Point(879, 114);
+            endlbl.Name = "endlbl";
+            endlbl.Size = new Size(78, 32);
+            endlbl.TabIndex = 59;
+            endlbl.Text = "End : ";
+            // 
             // SalesPOS
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -406,6 +447,7 @@
             salespospanelcontents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)salestrendchart).EndInit();
             salesposaverageordervaluetxt.ResumeLayout(false);
+            salesposaverageordervaluetxt.PerformLayout();
             salespostotalsalespanel.ResumeLayout(false);
             salespostotalsalespanel.PerformLayout();
             salesposdiscountappliedpanel.ResumeLayout(false);
@@ -447,5 +489,8 @@
         private DateTimePicker calendardatepicker;
         private System.Windows.Forms.DataVisualization.Charting.Chart salestrendchart;
         private Button generatereportbtn;
+        private DateTimePicker calendardatepicker2;
+        private Label endlbl;
+        private Label startlbl;
     }
 }

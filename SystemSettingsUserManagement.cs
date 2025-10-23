@@ -205,29 +205,53 @@ namespace FlavorFlowIT13
 
         private void StyleUserGrid()
         {
+            // --- VISUAL STYLING ---
             dgvUsers.EnableHeadersVisualStyles = false;
             dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-
-
-            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            dgvUsers.DefaultCellStyle.BackColor = Color.White;
-            dgvUsers.DefaultCellStyle.ForeColor = Color.Black;
-            dgvUsers.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             dgvUsers.RowHeadersVisible = false;
-            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsers.MultiSelect = false;
-            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Backgrounds
+            dgvUsers.BackgroundColor = Color.WhiteSmoke;
+            dgvUsers.GridColor = Color.LightGray;
             dgvUsers.BorderStyle = BorderStyle.None;
             dgvUsers.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dgvUsers.GridColor = Color.White;
-            dgvUsers.ClearSelection();
-            dgvUsers.GridColor = Color.LightGray;
-            dgvUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+
+            // --- HEADER STYLE ---
+            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            dgvUsers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvUsers.ColumnHeadersDefaultCellStyle.Padding = new Padding(16, 10, 16, 10);
+            dgvUsers.ColumnHeadersHeight = 58;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            // --- ROW STYLE ---
+            dgvUsers.DefaultCellStyle.BackColor = Color.White;
+            dgvUsers.DefaultCellStyle.ForeColor = Color.Black;
+            dgvUsers.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Regular);
+            dgvUsers.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvUsers.DefaultCellStyle.Padding = new Padding(16, 10, 16, 10);
+            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 247, 174); // soft yellow highlight
             dgvUsers.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Alternating row for better readability
+            dgvUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+
+            // --- SIZING & BEHAVIOR ---
+            dgvUsers.RowTemplate.Height = 56;
+            dgvUsers.AllowUserToResizeRows = false;
+            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsers.MultiSelect = false;
+            dgvUsers.ReadOnly = true;
+
+            // --- POLISH ---
+            dgvUsers.ClearSelection();
+            dgvUsers.AdvancedCellBorderStyle.All = DataGridViewAdvancedCellBorderStyle.None;
+
+            // Optional: rounded corners (if you use a borderless modern style)
             dgvUsers.BackgroundColor = Color.WhiteSmoke;
+
         }
 
 

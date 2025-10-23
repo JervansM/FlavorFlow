@@ -91,44 +91,19 @@ namespace FlavorFlowIT13
             calendardatepicker.CalendarMonthBackground = Color.Maroon;
         }
 
-        private (DateTime start, DateTime end) GetDateRange(DateTime anchorDate, string period)
+        private (DateTime start, DateTime end) GetDateRangeFromPickers()
         {
-            period = (period ?? "Daily").Trim();
-            if (period.Equals("Daily", StringComparison.OrdinalIgnoreCase))
-            {
-                DateTime start = anchorDate.Date;
-                DateTime end = start.AddDays(1);
-                return (start, end);
-            }
-            if (period.Equals("Weekly", StringComparison.OrdinalIgnoreCase))
-            {
-                // Week starts Monday
-                int diff = (7 + (int)anchorDate.Date.DayOfWeek - (int)DayOfWeek.Monday) % 7;
-                DateTime start = anchorDate.Date.AddDays(-diff);
-                DateTime end = start.AddDays(7);
-                return (start, end);
-            }
-            if (period.Equals("Monthly", StringComparison.OrdinalIgnoreCase))
-            {
-                DateTime start = new DateTime(anchorDate.Year, 1, 1);  // Start of the year
-                DateTime end = start.AddYears(1);                     // End of the year
-                return (start, end);
-            }
-            if (period.Equals("Yearly", StringComparison.OrdinalIgnoreCase))
-            {
-                DateTime start = new DateTime(anchorDate.Year, 1, 1);
-                DateTime end = start.AddYears(1);
-                return (start, end);
-            }
-            return (anchorDate.Date, anchorDate.Date.AddDays(1));
+            DateTime start = calendardatepicker.Value.Date;
+            DateTime end = calendardatepicker2.Value.Date.AddDays(1); // include the full end day
+            return (start, end);
         }
 
         private void LoadSalesMetrics()
         {
             decimal netSales = 0m;
-            string period = (salesposreporttype.SelectedItem as string) ?? "Daily";
-            DateTime anchor = calendardatepicker.Value;
-            var range = GetDateRange(anchor, period);
+
+            // Use new range pickers
+            var range = GetDateRangeFromPickers();
 
             decimal totalSales = 0m;
             decimal totalDiscount = 0m;
@@ -136,21 +111,22 @@ namespace FlavorFlowIT13
             decimal grossRevenue = 0m;
 
             string sql = @"
-                WITH PaymentAgg AS (
-    SELECT OrderID, SUM(ISNULL(AmountPaid,0)) AS PaidAmount
-    FROM dbo.Payments
-    WHERE PaymentDate >= @StartDate AND PaymentDate < @EndDate
-    GROUP BY OrderID)
-    SELECT
-    ISNULL(SUM(o.TotalAmount), 0) AS TotalAmount,             
-    ISNULL(SUM(o.DiscountAmount), 0) AS DiscountAmount,        
-    COUNT(DISTINCT o.OrderID) AS OrderCount,                 
-    ISNULL(SUM(o.TotalAmount), 0) AS GrossRevenue,            
-    ISNULL(SUM(o.TotalAmount - ISNULL(o.DiscountAmount,0)), 0) AS NetSales, 
-    ISNULL(SUM(p.PaidAmount), 0) AS TotalPayments              
-    FROM dbo.Orders o
-    LEFT JOIN PaymentAgg p ON p.OrderID = o.OrderID
-    WHERE o.Date >= @StartDate AND o.Date < @EndDate;
+        WITH PaymentAgg AS (
+            SELECT OrderID, SUM(ISNULL(AmountPaid,0)) AS PaidAmount
+            FROM dbo.Payments
+            WHERE PaymentDate >= @StartDate AND PaymentDate < @EndDate
+            GROUP BY OrderID
+        )
+        SELECT
+            ISNULL(SUM(o.TotalAmount), 0) AS TotalAmount,             
+            ISNULL(SUM(o.DiscountAmount), 0) AS DiscountAmount,        
+            COUNT(DISTINCT o.OrderID) AS OrderCount,                 
+            ISNULL(SUM(o.TotalAmount), 0) AS GrossRevenue,            
+            ISNULL(SUM(o.TotalAmount - ISNULL(o.DiscountAmount,0)), 0) AS NetSales, 
+            ISNULL(SUM(p.PaidAmount), 0) AS TotalPayments              
+        FROM dbo.Orders o
+        LEFT JOIN PaymentAgg p ON p.OrderID = o.OrderID
+        WHERE o.Date >= @StartDate AND o.Date < @EndDate;
     ";
 
             try
@@ -584,15 +560,11 @@ namespace FlavorFlowIT13
         private void LoadSalesTrend()
         {
             if (salesTrendChart == null)
-            {
                 InitializeSalesTrendChart();
-            }
 
+            var range = GetDateRangeFromPickers();
             string period = (salesposreporttype.SelectedItem as string) ?? "Daily";
-            DateTime anchor = calendardatepicker.Value;
-            var range = GetDateRange(anchor, period);
 
-            // Configure X-axis based on report type
             var chartArea = salesTrendChart.ChartAreas["Main"];
             ConfigureSalesXAxis(chartArea, period, range.start, range.end);
 
@@ -614,11 +586,8 @@ namespace FlavorFlowIT13
             }
 
             if (series.Points.Count == 0)
-            {
                 series.Points.AddXY(DateTime.Today, 0);
-            }
 
-            // Recalculate scale to fit data nicely
             chartArea.RecalculateAxesScale();
         }
 
@@ -705,7 +674,7 @@ namespace FlavorFlowIT13
                 DateTime currentDate = calendardatepicker.Value;
                 string currentReportType = (salesposreporttype.SelectedItem as string) ?? "Daily";
 
-                (DateTime start, DateTime end) = GetDateRange(currentDate, currentReportType);
+                (DateTime start, DateTime end) = GetDateRangeFromPickers();
 
                 DataTable dt = GetSalesTrendData(start, end, currentReportType);
 
@@ -792,6 +761,13 @@ namespace FlavorFlowIT13
             {
                 MessageBox.Show($"Error generating PDF report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void calendardatepicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+            LoadSalesMetrics();
+            LoadSalesTrend();
         }
     }
 

@@ -76,26 +76,41 @@ namespace FlavorFlowIT13
             dgvstaff.EnableHeadersVisualStyles = false;
             dgvstaff.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
-
-            dgvstaff.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvstaff.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            // Backgrounds and colors
+            dgvstaff.BackgroundColor = Color.WhiteSmoke;
+            dgvstaff.GridColor = Color.LightGray;
             dgvstaff.DefaultCellStyle.BackColor = Color.White;
             dgvstaff.DefaultCellStyle.ForeColor = Color.Black;
-            dgvstaff.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
-            dgvstaff.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvstaff.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgvstaff.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
+            dgvstaff.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Fonts — larger and consistent
+            dgvstaff.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 13.5F, FontStyle.Bold);
+            dgvstaff.DefaultCellStyle.Font = new Font("Segoe UI", 12.5F, FontStyle.Regular);
+
+            // Column headers
+            dgvstaff.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvstaff.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvstaff.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // left align for cleaner flow
+            dgvstaff.ColumnHeadersHeight = 52;
+            dgvstaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvstaff.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 0, 0); // left margin matches cell padding
+
+            // Rows — balanced spacing and consistent margins
             dgvstaff.RowHeadersVisible = false;
+            dgvstaff.RowTemplate.Height = 50;
+            dgvstaff.DefaultCellStyle.Padding = new Padding(12, 6, 12, 6); // equal left/right padding matching header
+            dgvstaff.AllowUserToResizeRows = false;
+            dgvstaff.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft; // match header alignment
+
+            // Behavior
             dgvstaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvstaff.MultiSelect = false;
             dgvstaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvstaff.BorderStyle = BorderStyle.None;
             dgvstaff.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dgvstaff.GridColor = Color.White;
-            dgvstaff.ClearSelection();
-            dgvstaff.GridColor = Color.LightGray;
-            dgvstaff.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dgvstaff.DefaultCellStyle.SelectionBackColor = Color.LightYellow;
-            dgvstaff.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvstaff.BackgroundColor = Color.WhiteSmoke;
+
         }
         private void StaffManagement_Load(object sender, EventArgs e)
         {

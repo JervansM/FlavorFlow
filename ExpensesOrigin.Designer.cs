@@ -41,7 +41,7 @@
             dgvexpenses.Location = new Point(0, 0);
             dgvexpenses.Name = "dgvexpenses";
             dgvexpenses.ReadOnly = true;
-            dgvexpenses.Size = new Size(838, 467);
+            dgvexpenses.Size = new Size(1439, 737);
             dgvexpenses.TabIndex = 0;
             dgvexpenses.CellContentClick += dgvexpenses_CellContentClick;
             // 
@@ -50,7 +50,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(838, 467);
+            ClientSize = new Size(1439, 737);
             Controls.Add(dgvexpenses);
             Name = "ExpensesOrigin";
             Text = "ExpensesOrigin";

@@ -36,11 +36,15 @@
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetProfit));
             panelContent = new Panel();
+            calendardatepicker2 = new DateTimePicker();
+            calendardatepicker = new DateTimePicker();
+            endlbl = new Label();
+            startlbl = new Label();
+            generatereportbtn = new Button();
             totalnetprofitpanel = new Panel();
             totalnetprofttxt = new Label();
             totalnetprofitlbl = new Label();
             expensesposreporttype = new ComboBox();
-            calendardatepicker = new DateTimePicker();
             netprofitsummarybtn = new Button();
             expensereportsbtn = new Button();
             netsalessumbtn = new Button();
@@ -58,7 +62,6 @@
             label9 = new Label();
             financeexpensespanel = new Panel();
             netprofitchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            generatereportbtn = new Button();
             panelContent.SuspendLayout();
             totalnetprofitpanel.SuspendLayout();
             dashnetprofit.SuspendLayout();
@@ -75,10 +78,13 @@
             // 
             panelContent.BackColor = Color.Silver;
             panelContent.BackgroundImageLayout = ImageLayout.None;
+            panelContent.Controls.Add(calendardatepicker2);
+            panelContent.Controls.Add(calendardatepicker);
+            panelContent.Controls.Add(endlbl);
+            panelContent.Controls.Add(startlbl);
             panelContent.Controls.Add(generatereportbtn);
             panelContent.Controls.Add(totalnetprofitpanel);
             panelContent.Controls.Add(expensesposreporttype);
-            panelContent.Controls.Add(calendardatepicker);
             panelContent.Controls.Add(netprofitsummarybtn);
             panelContent.Controls.Add(expensereportsbtn);
             panelContent.Controls.Add(netsalessumbtn);
@@ -93,6 +99,67 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(1479, 997);
             panelContent.TabIndex = 19;
+            // 
+            // calendardatepicker2
+            // 
+            calendardatepicker2.CalendarMonthBackground = Color.IndianRed;
+            calendardatepicker2.CalendarTrailingForeColor = SystemColors.ControlText;
+            calendardatepicker2.Font = new Font("Segoe UI", 19F);
+            calendardatepicker2.Location = new Point(810, 107);
+            calendardatepicker2.Name = "calendardatepicker2";
+            calendardatepicker2.Size = new Size(350, 41);
+            calendardatepicker2.TabIndex = 63;
+            calendardatepicker2.ValueChanged += calendardatepicker2_ValueChanged;
+            // 
+            // calendardatepicker
+            // 
+            calendardatepicker.CalendarMonthBackground = Color.IndianRed;
+            calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
+            calendardatepicker.Font = new Font("Segoe UI", 19F);
+            calendardatepicker.Location = new Point(365, 107);
+            calendardatepicker.Name = "calendardatepicker";
+            calendardatepicker.Size = new Size(350, 41);
+            calendardatepicker.TabIndex = 58;
+            calendardatepicker.ValueChanged += calendardatepicker_ValueChanged;
+            // 
+            // endlbl
+            // 
+            endlbl.AutoSize = true;
+            endlbl.BackColor = Color.Transparent;
+            endlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            endlbl.ForeColor = Color.Black;
+            endlbl.Location = new Point(726, 114);
+            endlbl.Name = "endlbl";
+            endlbl.Size = new Size(78, 32);
+            endlbl.TabIndex = 67;
+            endlbl.Text = "End : ";
+            // 
+            // startlbl
+            // 
+            startlbl.AutoSize = true;
+            startlbl.BackColor = Color.Transparent;
+            startlbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            startlbl.ForeColor = Color.Black;
+            startlbl.Location = new Point(270, 114);
+            startlbl.Name = "startlbl";
+            startlbl.Size = new Size(89, 32);
+            startlbl.TabIndex = 66;
+            startlbl.Text = "Start : ";
+            // 
+            // generatereportbtn
+            // 
+            generatereportbtn.BackColor = Color.Black;
+            generatereportbtn.Cursor = Cursors.Hand;
+            generatereportbtn.FlatStyle = FlatStyle.Flat;
+            generatereportbtn.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            generatereportbtn.ForeColor = Color.White;
+            generatereportbtn.Location = new Point(874, 25);
+            generatereportbtn.Name = "generatereportbtn";
+            generatereportbtn.Size = new Size(259, 63);
+            generatereportbtn.TabIndex = 59;
+            generatereportbtn.Text = "Generate Report";
+            generatereportbtn.UseVisualStyleBackColor = false;
+            generatereportbtn.Click += generatereportbtn_Click;
             // 
             // totalnetprofitpanel
             // 
@@ -143,16 +210,6 @@
             expensesposreporttype.Name = "expensesposreporttype";
             expensesposreporttype.Size = new Size(231, 43);
             expensesposreporttype.TabIndex = 57;
-            // 
-            // calendardatepicker
-            // 
-            calendardatepicker.CalendarMonthBackground = Color.IndianRed;
-            calendardatepicker.CalendarTrailingForeColor = SystemColors.ControlText;
-            calendardatepicker.Font = new Font("Segoe UI", 19F);
-            calendardatepicker.Location = new Point(265, 107);
-            calendardatepicker.Name = "calendardatepicker";
-            calendardatepicker.Size = new Size(380, 41);
-            calendardatepicker.TabIndex = 58;
             // 
             // netprofitsummarybtn
             // 
@@ -380,21 +437,6 @@
             netprofitchart.Titles.Add(title1);
             netprofitchart.Click += netprofitchart_Click;
             // 
-            // generatereportbtn
-            // 
-            generatereportbtn.BackColor = Color.Black;
-            generatereportbtn.Cursor = Cursors.Hand;
-            generatereportbtn.FlatStyle = FlatStyle.Flat;
-            generatereportbtn.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            generatereportbtn.ForeColor = Color.White;
-            generatereportbtn.Location = new Point(874, 25);
-            generatereportbtn.Name = "generatereportbtn";
-            generatereportbtn.Size = new Size(259, 63);
-            generatereportbtn.TabIndex = 59;
-            generatereportbtn.Text = "Generate Report";
-            generatereportbtn.UseVisualStyleBackColor = false;
-            generatereportbtn.Click += generatereportbtn_Click;
-            // 
             // NetProfit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -407,6 +449,7 @@
             Text = "NetProfit";
             Load += NetProfit_Load;
             panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
             totalnetprofitpanel.ResumeLayout(false);
             totalnetprofitpanel.PerformLayout();
             dashnetprofit.ResumeLayout(false);
@@ -452,5 +495,8 @@
         private Label totalnetprofttxt;
         private Label totalnetprofitlbl;
         private Button generatereportbtn;
+        private DateTimePicker calendardatepicker2;
+        private Label endlbl;
+        private Label startlbl;
     }
 }

@@ -285,6 +285,7 @@
             dashnetprofittxt.Size = new Size(321, 45);
             dashnetprofittxt.TabIndex = 5;
             dashnetprofittxt.Text = "Net Profit Summary";
+            dashnetprofittxt.Click += dashnetprofittxt_Click;
             // 
             // dashinventoryusage
             // 

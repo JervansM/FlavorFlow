@@ -472,9 +472,22 @@ namespace FlavorFlowIT13
                         .ExecuteScalar());
                     totalexpensetxt.Text = "₱" + totalExpenses.ToString("N2");
 
-                    // NET PROFIT
+               // NET PROFIT / LOSS CALCULATION
                     decimal netProfit = totalSales - totalExpenses;
-                    netprofittxt.Text = "₱" + netProfit.ToString("N2");
+
+                    // ✅ Change label + color based on profit/loss
+                    if (netProfit < 0)
+                    {
+                        dashnetprofittxt.Text = "Net Loss Summary";
+                        netprofittxt.ForeColor = Color.IndianRed;
+                    }
+                    else
+                    {
+                        dashnetprofittxt.Text = "Net Profit Summary";
+                        netprofittxt.ForeColor = Color.DeepSkyBlue; // modern green
+                    }
+
+                    netprofittxt.Text = "₱" + Math.Abs(netProfit).ToString("N2");
 
                     // INVENTORY STATUS
                     decimal totalItems = Convert.ToDecimal(new SqlCommand(
